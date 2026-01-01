@@ -9,6 +9,7 @@ describe("SeButton 组件测试", () => {
     it("应该正常渲染文字内容", () => {
         render(() => <SeButton>点击我</SeButton>);
         const btn = screen.getByRole("button");
+        console.log("11",btn);
         expect(btn).toHaveTextContent("点击我");
     });
 

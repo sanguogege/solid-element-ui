@@ -4,6 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
     plugins: [solid(), tailwindcss()],
+   
     build: {
         lib: {
             entry: "./index.ts",
@@ -19,5 +20,4 @@ export default defineConfig({
             },
         },
     },
-    
 });
