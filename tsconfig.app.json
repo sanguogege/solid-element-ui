@@ -17,6 +17,11 @@
         "jsx": "preserve",
         "jsxImportSource": "solid-js",
 
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["packages/*"]
+        },
+
         /* Linting */
         "strict": true,
         "noUnusedLocals": true,

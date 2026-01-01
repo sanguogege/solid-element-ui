@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@solidjs/testing-library";
-import { default as SeButton } from "../src/button";
+import { SeButton } from "../src/button";
 import "@testing-library/jest-dom"; // 提供 toBeInTheDocument 等断言
 
 describe("SeButton 组件测试", () => {

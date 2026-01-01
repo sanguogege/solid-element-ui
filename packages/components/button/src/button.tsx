@@ -1,19 +1,10 @@
-import { splitProps, type JSX, createMemo } from "solid-js";
-import { clsx } from "clsx";
-import { twMerge } from "tailwind-merge"; // 建议保留以处理样式冲突
+import { splitProps, createMemo } from "solid-js";
 
+import { cn } from "@/utils/cn";
 // 定义组件的 Props 类型
-export interface ButtonProps
-    extends JSX.ButtonHTMLAttributes<HTMLButtonElement> {
-    variant?: "primary" | "success" | "warning" | "danger" | "info" | "text";
-    size?: "sm" | "md" | "lg";
-    round?: boolean;
-    outline?: boolean;
-    loading?: boolean;
-    disabled?: boolean;
-}
+import {type ButtonProps } from "./type";
 
-export default(props: ButtonProps) => {
+export const SeButton =(props: ButtonProps)=> {
     // 1. 分离自定义属性和原生 HTML 属性
     const [local, others] = splitProps(props, [
         "variant",
@@ -26,13 +17,19 @@ export default(props: ButtonProps) => {
         "children",
     ]);
 
+
+    const variants = {
+        primary: "bg-blue-600 border-blue-600 text-white hover:bg-blue-500",
+        success: "bg-green-600 border-green-600 text-white hover:bg-green-500",
+        danger: "bg-red-600 border-red-600 text-white hover:bg-red-500",
+        // ... 其他
+    };
     // 2. 逻辑：计算基础样式类名 (记得带上  前缀)
     const buttonClasses = createMemo(() => {
         const variant = local.variant || "primary";
         const size = local.size || "md";
 
-        return twMerge(
-            clsx(
+        return cn(
                 // 基础样式
                 "inline-flex items-center justify-center font-medium transition-all duration-200 cursor-pointer outline-none border",
 
@@ -62,7 +59,6 @@ export default(props: ButtonProps) => {
 
                 // 合并用户自定义 class
                 local.class
-            )
         );
     });
 
