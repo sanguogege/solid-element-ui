@@ -4,23 +4,29 @@ import { cn } from "@/utils/cn";
 // 定义组件的 Props 类型
 import {type ButtonProps } from "./setting";
 
-const baseStyle = "inline-flex items-center justify-center font-medium transition-all duration-200 cursor-pointer outline-none border";
+const BASE_CLASS =
+    "inline-flex items-center justify-center font-medium transition-all duration-200 cursor-pointer outline-none border";
 
 // TODO 增加variants的样式
-const variants: Record<NonNullable<ButtonProps["variant"]>, string> = {
-    primary: "bg-blue-600 border-blue-600 text-white hover:bg-blue-500",
-    success: "bg-green-600 border-green-600 text-white hover:bg-green-500",
-    danger: "bg-red-600 border-red-600 text-white hover:bg-red-500",
+const VARIANT_MAP: Record<NonNullable<ButtonProps["variant"]>, string> = {
+    primary:
+        "bg-blue-600 border-blue-600 text-white hover:bg-blue-500 active:scale-99 active:bg-blue-700 active:border-blue-700",
+    success:
+        "bg-green-600 border-green-600 text-white hover:bg-green-500 active:scale-99 active:bg-green-700 active:border-green-700",
+    danger: "bg-red-600 border-red-600 text-white hover:bg-red-500 active:scale-99 active:bg-red-700 active:border-red-700",
     warning:
-        "bg-yellow-500 border-yellow-500 text-white hover:bg-yellow-400",
-    info: "bg-cyan-500 border-cyan-500 text-white hover:bg-cyan-400",
-    text: "bg-transparent border-transparent text-blue-600 hover:bg-gray-100",
+        "bg-yellow-500 border-yellow-500 text-white hover:bg-yellow-400 active:scale-99 active:bg-yellow-700 active:border-yellow-700",
+    info: "bg-cyan-500 border-cyan-500 text-white hover:bg-cyan-400 active:scale-99 active:bg-cyan-700 active:border-cyan-700",
+    text: "bg-transparent border-transparent text-blue-600 hover:bg-gray-100 active:scale-99",
 };
 
-const sizeStyles: Record<NonNullable<ButtonProps["size"]>, string> = {
-    sm: "px-3 py-1.5 text-sm",
-    md: "px-5 py-2 text-base",
-    lg: "px-7 py-3 text-lg",
+const SIZE_MAP: Record<NonNullable<ButtonProps["size"]>, string> = {
+    // 对应约 24px 高度
+    sm: "px-2.5 py-0.5 text-xs leading-4",
+    // 对应约 32px 高度 (Element/Ant 标准中等高度)
+    md: "px-4 py-1.5 text-sm leading-5",
+    // 对应约 40px 高度
+    lg: "px-5 py-2.5 text-base leading-6",
 };
 
 const customAttributes = [
@@ -46,17 +52,18 @@ export const SeButton =(props: ButtonProps)=> {
         const size = local.size || "md";
         return cn(
             // 基础样式
-            baseStyle,
+            BASE_CLASS,
             // 尺寸样式
-            sizeStyles[size],
+            SIZE_MAP[size],
             // 圆角样式 (使用 CSS 变量确保用户可全局修改)
             local.round ? "rounded-full" : "rounded-[var(--radius,4px)]",
             // 变体样式 (这里仅演示 Primary)
-            variants[variant],
+            VARIANT_MAP[variant],
             // 禁用与加载状态
             (local.disabled || local.loading) && loadingStyle,
             // TODO  outline
             local.outline,
+            local.round && "rounded-full",
             // 合并用户自定义 class
             local.class
         );

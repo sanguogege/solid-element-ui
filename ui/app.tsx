@@ -7,6 +7,7 @@ export default ()=>{
         <div style="padding:60px">
             <SeButton variant="primary">Primary Button</SeButton>
             <SeButton variant="danger">danger Button</SeButton>
+            <SeButton variant="text">danger Button</SeButton>
         </div>
     );
 }
