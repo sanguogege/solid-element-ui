@@ -5,8 +5,8 @@ import { SeButton } from "../packages/solid-element-ui";
 export default ()=>{
     return (
         <div style="padding:60px">
-            aaa
-            <SeButton variant="primary">111</SeButton>
+            <SeButton variant="primary">Primary Button</SeButton>
+            <SeButton variant="danger">danger Button</SeButton>
         </div>
     );
 }
