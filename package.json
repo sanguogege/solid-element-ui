@@ -1,0 +1,29 @@
+{
+    "name": "solid-element-ui",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "change": "bun changeset",
+        "version": "bun changeset version",
+        "status": "bun changeset status",
+        "build": "bun run --workspaces build",
+        "publish": "changeset publish"
+    },
+    "dependencies": {
+        "@changesets/cli": "^2.29.8",
+        "@tailwindcss/vite": "^4.1.18",
+        "solid-js": "^1.9.10",
+        "tailwindcss": "^4.1.18"
+    },
+    "devDependencies": {
+        "@types/node": "^24.10.1",
+        "typescript": "~5.9.3",
+        "vite": "^7.2.4",
+        "vite-plugin-solid": "^2.11.10",
+        "vitest": "^4.0.16"
+    },
+    "workspaces": [
+        "packages/*"
+    ]
+}
