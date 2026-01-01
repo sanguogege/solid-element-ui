@@ -1,29 +1,39 @@
 {
-    "name": "solid-element-ui",
-    "private": true,
-    "version": "0.0.0",
-    "type": "module",
-    "scripts": {
-        "change": "bun changeset",
-        "version": "bun changeset version",
-        "status": "bun changeset status",
-        "build": "bun run --workspaces build",
-        "publish": "changeset publish"
-    },
-    "dependencies": {
-        "@changesets/cli": "^2.29.8",
-        "@tailwindcss/vite": "^4.1.18",
-        "solid-js": "^1.9.10",
-        "tailwindcss": "^4.1.18"
-    },
-    "devDependencies": {
-        "@types/node": "^24.10.1",
-        "typescript": "~5.9.3",
-        "vite": "^7.2.4",
-        "vite-plugin-solid": "^2.11.10",
-        "vitest": "^4.0.16"
-    },
-    "workspaces": [
-        "packages/*"
-    ]
+  "name": "solid-element-ui",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "test:ui": "vitest --ui",
+    "change": "bun changeset",
+    "version": "bun changeset version",
+    "status": "bun changeset status",
+    "build": "bun run --workspaces build",
+    "publish": "changeset publish"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.18",
+    "clsx": "^2.1.1",
+    "solid-js": "^1.9.10",
+    "tailwind-merge": "^3.4.0",
+    "tailwindcss": "^4.1.18"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.29.8",
+    "@solidjs/testing-library": "^0.8.10",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@types/node": "^24.10.1",
+    "@vitest/browser-playwright": "^4.0.16",
+    "@vitest/coverage-v8": "^4.0.16",
+    "@vitest/ui": "^4.0.16",
+    "jsdom": "^27.4.0",
+    "playwright": "^1.57.0",
+    "typescript": "~5.9.3",
+    "vite": "^7.2.4",
+    "vite-plugin-solid": "^2.11.10",
+    "vitest": "^4.0.16"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }
