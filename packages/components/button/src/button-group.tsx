@@ -1,7 +1,6 @@
 import { splitProps, type ParentComponent } from "solid-js";
 import { cn } from "@/utils/cn";
 import { type ButtonGroupProps } from "./setting";
-
 import { ButtonGroupContext } from "./setting";
 
 export const SeButtonGroup: ParentComponent<ButtonGroupProps> = (

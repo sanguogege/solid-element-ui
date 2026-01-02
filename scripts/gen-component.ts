@@ -28,6 +28,11 @@ const targetDir = path.resolve(
 const srcDir = path.join(targetDir, "src");
 const testDir = path.join(targetDir, "__tests__");
 
+const entryFile = path.resolve(
+    __dirname,
+    "../packages/solid-element-ui/index.ts"
+);
+
 // 检查文件夹是否已存在
 if (fs.existsSync(targetDir)) {
     console.error(`❌ 组件 ${componentName} 已存在于 packages/components/ 中`);
@@ -41,12 +46,20 @@ fs.mkdirSync(testDir, { recursive: true });
 // --- 生成模板内容 ---
 
 // 1. 组件 utama.tsx (例如 button.tsx)
-const componentTemplate = `import { type ParentComponent } from "solid-js";
+const componentTemplate = `import { splitProps, type ParentComponent } from "solid-js";
+
+import { cn } from "@/utils/cn";
 import { type ${formattedName}Props } from "./setting";
 
 export const ${exportName}: ParentComponent<${formattedName}Props> = (props:${formattedName}Props) => {
+
+    const [local, others] = splitProps(props, ["children"]);
+
+
+
+
     return (
-        <div>${exportName}</div>
+        <div {...others}>{local.children}</div>
     );
 };
 `; 
@@ -55,7 +68,8 @@ export const ${exportName}: ParentComponent<${formattedName}Props> = (props:${fo
 const settingTemplate = `import { type JSX } from "solid-js";
 
 // 定义组件的 Props 类型
-export interface ${formattedName}Props {
+// TODO: 根据需要修改继承的 HTML 元素类型
+export interface ${formattedName}Props extends JSX.HTMLAttributes<HTMLDivElement>{
     // 可以在这里添加你自定义的属性，例如：
     // variant?: "primary" | "secondary";
     // size?: "sm" | "md" | "lg";
@@ -87,6 +101,25 @@ fs.writeFileSync(path.join(srcDir, `setting.ts`), settingTemplate);
 
 // 写入测试文件
 fs.writeFileSync(path.join(testDir, `${componentName}.test.tsx`), testTemplate);
+
+
+
+// 6. 关键步骤：自动追加 Export 到入口文件
+if (fs.existsSync(entryFile)) {
+    const exportStatement = `export { ${exportName} } from "@/components/${componentName}/src/${componentName}.tsx";\n`;
+    
+    // 读取现有内容防止重复添加
+    const currentContent = fs.readFileSync(entryFile, 'utf-8');
+    if (!currentContent.includes(exportStatement)) {
+        const tailNewline = currentContent.endsWith("\n") ? "" : "\n";
+        // 追加新行
+        fs.appendFileSync(entryFile, `${tailNewline}${exportStatement}\n`);
+        console.log(`✅ 已同步导出到 solid-element-ui/index.ts`);
+    }
+} else {
+    console.warn(`⚠️ 未找到入口文件: ${entryFile}，请手动配置导出`);
+}
+
 
 console.log(`
 ✅ 组件 ${componentName} 创建成功！

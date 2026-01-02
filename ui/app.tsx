@@ -1,23 +1,14 @@
 
-import { SeButton ,SeButtonGroup} from "../packages/solid-element-ui";
+import { SeButton, SeAffix } from "../packages/solid-element-ui";
 
 export default ()=>{
     return (
-        <div style="padding:60px">
-            <SeButton variant="primary">Primary Button</SeButton>
-            <SeButton variant="danger" class="rounded-xl" outline={true}>
-                danger Button
-            </SeButton>
-            <SeButton variant="text" outline={true} round={true}>
-                danger Button
-            </SeButton>
-
-            <SeButtonGroup variant="primary">
-                <SeButton>Primary Button</SeButton>
-                <SeButton>danger Button</SeButton>
-                <SeButton>danger </SeButton>
-                <SeButton>danger Button</SeButton>
-            </SeButtonGroup>
+        <div style={{ height: "200vh", padding: "50px" }}>
+            <SeAffix offsetTop={60}>
+                <div class="se-bg-blue-500 se-text-white se-p-4 se-rounded se-shadow-lg">
+                    我会固定在顶部 60px 处
+                </div>
+            </SeAffix>
         </div>
     );
 }
