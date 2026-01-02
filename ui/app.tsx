@@ -10,7 +10,7 @@ export default ()=>{
         <>
             <SeDivider />
             // 2. 带文字的分割线
-            <SeDivider contentPosition="left" color="primary">
+            <SeDivider contentPosition="right" color="danger">
                 今日资讯
             </SeDivider>
             // 3. 虚线模式
