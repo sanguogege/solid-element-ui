@@ -1,4 +1,4 @@
-import { splitProps, createMemo } from "solid-js";
+import { splitProps, createMemo, type ParentComponent } from "solid-js";
 
 import { cn } from "@/utils/cn";
 // 定义组件的 Props 类型
@@ -61,7 +61,7 @@ const customAttributes = [
 
 const loadingStyle = "opacity-50 cursor-not-allowed pointer-events-none";
 
-export const SeButton =(props: ButtonProps)=> {
+export const SeButton: ParentComponent<ButtonProps> = (props: ButtonProps) => {
     // 读取可能存在的父级配置
     const groupConfig = useButtonGroup();
     // 1. 分离自定义属性和原生 HTML 属性

@@ -4,7 +4,9 @@ import { type ButtonGroupProps } from "./setting";
 
 import { ButtonGroupContext } from "./setting";
 
-export const SeButtonGroup: ParentComponent<ButtonGroupProps> = (props) => {
+export const SeButtonGroup: ParentComponent<ButtonGroupProps> = (
+    props: ButtonGroupProps
+) => {
     const [local, others] = splitProps(props, [
         "size",
         "variant",

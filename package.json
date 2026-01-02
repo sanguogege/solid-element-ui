@@ -4,6 +4,7 @@
     "version": "0.0.0",
     "type": "module",
     "scripts": {
+        "gen": "node scripts/gen-component.ts",
         "dev": "vite --config vite.config.ui.ts",
         "test:ui": "vitest",
         "change": "bun changeset",
