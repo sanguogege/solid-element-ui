@@ -5,4 +5,5 @@ export { SeButton } from "@/components/button/src/button.tsx";
 export { SeButtonGroup } from "@/components/button/src/button-group.tsx";
 export { SeAffix } from "@/components/affix/src/affix.tsx";
 export { SeBreadcrumb } from "@/components/breadcrumb/src/breadcrumb.tsx";
+export { SeBreadcrumbItem } from "@/components/breadcrumb/src/breadcrumb-item.tsx";
 
