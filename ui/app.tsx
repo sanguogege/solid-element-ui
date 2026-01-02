@@ -1,6 +1,5 @@
 
-import { SeButton } from "../packages/solid-element-ui";
-
+import { SeButton ,SeButtonGroup} from "../packages/solid-element-ui";
 
 export default ()=>{
     return (
@@ -12,6 +11,13 @@ export default ()=>{
             <SeButton variant="text" outline={true} round={true}>
                 danger Button
             </SeButton>
+
+            <SeButtonGroup variant="primary">
+                <SeButton>Primary Button</SeButton>
+                <SeButton>danger Button</SeButton>
+                <SeButton>danger </SeButton>
+                <SeButton>danger Button</SeButton>
+            </SeButtonGroup>
         </div>
     );
 }

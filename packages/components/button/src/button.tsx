@@ -4,6 +4,10 @@ import { cn } from "@/utils/cn";
 // 定义组件的 Props 类型
 import {type ButtonProps } from "./setting";
 
+import {  useButtonGroup } from "./setting";
+
+
+
 const BASE_CLASS =
     "inline-flex items-center justify-center font-medium transition-all duration-200 cursor-pointer outline-none border";
 
@@ -58,12 +62,14 @@ const customAttributes = [
 const loadingStyle = "opacity-50 cursor-not-allowed pointer-events-none";
 
 export const SeButton =(props: ButtonProps)=> {
+    // 读取可能存在的父级配置
+    const groupConfig = useButtonGroup();
     // 1. 分离自定义属性和原生 HTML 属性
     const [local, others] = splitProps(props, customAttributes);
     // 2. 逻辑：计算基础样式类名 (记得带上  前缀)
     const buttonClasses = createMemo(() => {
-        const variant = local.variant || "primary";
-        const size = local.size || "md";
+        const variant = local.variant || groupConfig?.variant || "text";
+        const size = local.size || groupConfig?.size || "md";
         return cn(
             // 基础样式
             BASE_CLASS,
