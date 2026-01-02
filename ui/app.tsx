@@ -1,8 +1,6 @@
 
 
 import {
-    SeAnchor,
-    SeAnchorLink,
     SeDivider,
 } from "../packages/solid-element-ui";
 

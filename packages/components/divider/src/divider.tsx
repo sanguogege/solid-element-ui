@@ -20,7 +20,7 @@ const customAttributes = [
     "children",
 ] as const;
 
-export const SeDivider: ParentComponent<DividerProps> = (
+export const SeDivider = (
     props: DividerProps
 ) => {
     const [local, others] = splitProps(props, customAttributes);
