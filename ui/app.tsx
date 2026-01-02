@@ -3,33 +3,22 @@
 import {
     SeAnchor,
     SeAnchorLink,
+    SeDivider,
 } from "../packages/solid-element-ui";
 
 
 export default ()=>{
     return (
-        <div class="flex">
-            {/* 左侧锚点导航 */}
-            <div class="w-40 fixed">
-                <SeAnchor offset={70}>
-                    <SeAnchorLink href="#part1" title="第一部分" />
-                    <SeAnchorLink href="#part2" title="第二部分" />
-                    <SeAnchorLink href="#part3" title="第三部分" />
-                </SeAnchor>
-            </div>
-
-            {/* 右侧内容区 */}
-            <div class="ml-48">
-                <section id="part1" class="h-[800px]">
-                    内容 1
-                </section>
-                <section id="part2" class="h-[800px]">
-                    内容 2
-                </section>
-                <section id="part3" class="h-[800px]">
-                    内容 3
-                </section>
-            </div>
-        </div>
+        <>
+            <SeDivider />
+            // 2. 带文字的分割线
+            <SeDivider contentPosition="left" class="border-red-500">今日资讯</SeDivider>
+            // 3. 虚线模式
+            <SeDivider dashed />
+            // 4. 垂直分割
+            <span>插件</span>
+            <SeDivider direction="vertical" />
+            <span>设置</span>
+        </>
     );
 }

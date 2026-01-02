@@ -10,3 +10,5 @@ export { SeBreadcrumbItem } from "@/components/breadcrumb/src/breadcrumb-item.ts
 export { SeAnchor } from "@/components/anchor/src/anchor.tsx";
 export { SeAnchorLink } from "@/components/anchor/src/anchor-link.tsx";
 
+export { SeDivider } from "@/components/divider/src/divider.tsx";
+
