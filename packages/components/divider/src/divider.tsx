@@ -4,87 +4,85 @@ import { cn } from "@/utils/cn";
 
 // 1. 定义预设颜色映射（对应你 Tailwind v4 的主题配置）
 const COLOR_MAP: Record<string, string> = {
-    primary: "se-border-se-primary",
-    success: "se-border-green-500",
-    warning: "se-border-yellow-500",
-    danger: "se-border-red-500",
-    info: "se-border-gray-400",
+    primary: "border-primary text-primary",
+    success: "border-green-500 text-green-500",
+    warning: "border-yellow-500 text-yellow-500",
+    danger: "border-red-500 text-red-500",
+    info: "border-gray-400 text-gray-400",
 };
+
+const customAttributes = [
+    "direction",
+    "contentPosition",
+    "dashed",
+    "color",
+    "class",
+    "children",
+] as const;
 
 export const SeDivider: ParentComponent<DividerProps> = (
     props: DividerProps
 ) => {
-    const [local, others] = splitProps(props, [
-        "direction",
-        "contentPosition",
-        "dashed",
-        "color",
-        "class",
-        "children",
-    ]);
+    const [local, others] = splitProps(props, customAttributes);
 
-    // 2. 智能颜色判断
-    const colorClass = createMemo(() => {
-        if (!local.color) return "se-border-gray-200"; // 默认颜色
-        return COLOR_MAP[local.color] || ""; // 如果不在映射表里，说明可能是用户传的自定义 Class 或需要内联样式
+    const isVertical = () => local.direction === "vertical";
+    const contentPos = () => local.contentPosition || "center";
+
+    // 2. 核心判断逻辑
+    const isCustomColor = createMemo(() => local.color && !COLOR_MAP[local.color]);
+    const presetColorClass = createMemo(() => (local.color ? COLOR_MAP[local.color] : ""));
+
+    // 3. 动态样式处理
+    const resolveStyles = createMemo(() => {
+        if (!isCustomColor()) return others.style || {};
+        return {
+            "border-color": local.color,
+            "color": local.color,
+            ...(others.style as any)
+        };
     });
-
-    // 3. 处理十六进制颜色（如果用户传了 #ffffff）
-    const customStyle = () => {
-        if (local.color && !COLOR_MAP[local.color]) {
-            return { "border-color": local.color };
-        }
-        return {};
-    };
-    const direction = () => local.direction || "horizontal";
-    const contentPosition = () => local.contentPosition || "center";
+    
     return (
         <div
             {...others}
             role="separator"
-            style={{ ...customStyle(), ...(others.style as any) }}
+            style={resolveStyles()}
             class={cn(
-                "se-relative",
-                // 应用动态颜色类名
-                colorClass(),
+                "relative transition-colors duration-200",
+                // 如果没有颜色且没有文字，给一个默认边框色
+                !local.color && !local.children && "border-gray-200",
+                // 应用预设类名
+                presetColorClass(),
+                
+                !isVertical() ? [
+                    "flex items-center w-full my-6",
+                    // 关键：带文字时父容器不能有 border，否则会穿透文字
+                    local.children ? "border-none" : "border-t"
+                ] : "inline-block mx-2 h-[0.9em] align-middle border-l",
 
-                direction() === "horizontal" && [
-                    "se-flex se-items-center se-w-full se-my-6",
-                    local.children ? "se-border-0" : "se-border-t",
-                ],
-                direction() === "vertical" &&
-                    "se-inline-block se-mx-2 se-h-[0.9em] se-align-middle se-border-l",
-                local.dashed && "se-border-dashed",
+                local.dashed && "border-dashed",
                 local.class
             )}
         >
-            <Show when={direction() === "horizontal" && local.children}>
+            <Show when={!isVertical() && local.children}>
                 <div
                     class={cn(
-                        "se-flex se-items-center se-w-full",
-                        // 关键：通过 se-border-inherit 让伪元素线条继承父级的颜色
-                        "before:se-content-[''] before:se-flex-1 before:se-border-t before:se-border-inherit",
-                        "after:se-content-[''] after:se-flex-1 after:se-border-t after:se-border-inherit",
-                        local.dashed &&
-                            "before:se-border-dashed after:se-border-dashed",
-                        contentPosition() === "left" &&
-                            "before:se-max-w-[24px]",
-                        contentPosition() === "right" && "after:se-max-w-[24px]"
+                        "flex items-center w-full text-sm font-medium",
+                        // 必须包含 border-inherit，让 before/after 线条继承父级的预设类名颜色或内联样式颜色
+                        "before:content-[''] before:border-t before:border-inherit",
+                        "after:content-[''] after:border-t after:border-inherit",
+                        local.dashed && "before:border-dashed after:border-dashed",
+                        // 位置逻辑
+                        contentPos() === "center" && "before:flex-1 after:flex-1",
+                        contentPos() === "left" && "before:w-6 after:flex-1",
+                        contentPos() === "right" && "before:flex-1 after:w-6"
                     )}
                 >
-                    <span
-                        class="se-px-4 se-text-sm"
-                        style={{
-                            color:
-                                local.color && !COLOR_MAP[local.color]
-                                    ? local.color
-                                    : "",
-                        }}
-                    >
+                    <span class="px-4 whitespace-nowrap text-inherit">
                         {local.children}
                     </span>
                 </div>
             </Show>
         </div>
-    );
+    )
 };

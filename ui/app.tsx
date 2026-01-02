@@ -12,13 +12,18 @@ export default ()=>{
         <>
             <SeDivider />
             // 2. 带文字的分割线
-            <SeDivider contentPosition="left" class="border-red-500">今日资讯</SeDivider>
+            <SeDivider contentPosition="left" color="primary">
+                今日资讯
+            </SeDivider>
             // 3. 虚线模式
-            <SeDivider dashed />
+            <SeDivider dashed color="success" />
             // 4. 垂直分割
             <span>插件</span>
-            <SeDivider direction="vertical" />
-            <span>设置</span>
+            <SeDivider color="#ddd">危险警告</SeDivider>
+            <span>
+                设置 <SeDivider direction="vertical" />
+                撒旦
+            </span>
         </>
     );
 }
