@@ -18,7 +18,7 @@ export const SeAnchorLink: Component<AnchorLinkProps> = (props) => {
             href={props.href}
             onClick={handleClick}
             class={cn(
-                "block py-1 pl-4 text-sm transition-all border-l-2 -ml-[2px]",
+                "block py-1 pl-4 text-sm transition-all border-l-2 -ml-0.5",
                 isActive()
                     ? "text-blue-600 border-blue-600 font-medium"
                     : "text-gray-500 border-transparent hover:text-gray-900"

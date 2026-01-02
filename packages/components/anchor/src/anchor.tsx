@@ -41,7 +41,6 @@ export const SeAnchor: ParentComponent<AnchorProps> = (props) => {
     const scrollTo = (link: string) => {
         const el = document.querySelector(link);
         if (el) {
-            const target = local.target?.() || window;
             const offset = local.offset ?? 0;
             const elementPosition =
                 el.getBoundingClientRect().top + window.scrollY;
