@@ -129,7 +129,7 @@ export const SeAffix: ParentComponent<AffixProps> = (props: AffixProps) => {
             <div
                 {...others}
                 class={cn(
-                    isAffixed() ? "se-affix--fixed" : "",
+                    isAffixed() ? "affix--fixed" : "",
                     // 2026年 v4 建议通过类名微调过渡
                     "transition-[position,top,bottom,left,right] duration-300",
                     local.class
