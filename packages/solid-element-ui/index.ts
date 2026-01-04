@@ -21,3 +21,5 @@ export { SeDivider } from "@/components/divider/src/divider.tsx";
 
 export { SeAutocomplete } from "@/components/autocomplete/src/autocomplete.tsx";
 
+export { SeCascader } from "@/components/cascader/src/cascader.tsx";
+
