@@ -49,3 +49,6 @@ export { SeTransfer } from "@/components/transfer/src/transfer.tsx";
 export { SeTreeSelect } from "@/components/tree-select/src/tree-select.tsx";
 export { SeUpload } from "@/components/upload/src/upload.tsx";
 export { type UploadFile } from "@/components/upload/src/setting.ts";
+export { SeAvatar } from "@/components/avatar/src/avatar.tsx";
+export { SeBadge } from "@/components/badge/src/badge.tsx";
+export { SeCalendar } from "@/components/calendar/src/calendar.tsx";
