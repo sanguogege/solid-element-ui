@@ -45,3 +45,5 @@ export { SeSelect } from "@/components/select/src/select.tsx";
 export { SeSlider } from "@/components/slider/src/slider.tsx";
 export { SeSwitch } from "@/components/switch/src/switch.tsx";
 export { SeTimePicker } from "@/components/time-picker/src/time-picker";
+export { SeTransfer } from "@/components/transfer/src/transfer.tsx";
+export { SeTreeSelect } from "@/components/tree-select/src/tree-select.tsx";
