@@ -1,18 +1,21 @@
-import { createSignal } from "solid-js";
-import { SeCalendar } from "../packages/solid-element-ui";
+import { SePopover } from "../packages/solid-element-ui";
 
 export default function Demo() {
-    const [selected, setSelected] = createSignal(new Date());
-
     return (
-        <SeCalendar
-            value={selected()}
-            onChange={(date) => setSelected(date)}
-            dateCellRender={(date) =>
-                date.getDate() === 20 ? (
-                    <div class="text-[10px] text-blue-500">有会议</div>
-                ) : null
-            }
-        />
+        <div style="padding:300px;">
+            <SePopover
+                title={
+                    <span>
+                        <i class="icon" /> 提示
+                    </span>
+                }
+                content="这是 2026 年标准的气泡卡片，支持 JSX 标题。"
+                placement="top"
+            >
+                <button class="bg-blue-500 text-white px-4 py-2 rounded">
+                    悬停查看
+                </button>
+            </SePopover>
+        </div>
     );
 }
