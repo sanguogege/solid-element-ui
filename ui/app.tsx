@@ -1,52 +1,21 @@
+import { SeInputNumber } from "@/solid-element-ui";
 import { createSignal } from "solid-js";
-import { SeForm, SeFormItem } from "../packages/solid-element-ui";
-import { SeInput } from "../packages/solid-element-ui";
-import { SeButton } from "../packages/solid-element-ui";
+
 
 export default function FormDemo() {
-    const [email, setEmail] = createSignal("");
-    const [error, setError] = createSignal("");
+    const [val, setVal] = createSignal(10);
 
-    const handleSubmit = (e: Event) => {
-        e.preventDefault();
-        if (!email().includes("@")) {
-            setError("请输入有效的邮箱地址");
-        } else {
-            setError("");
-            console.log("提交成功:", email());
-        }
-    };
-
-    return (
-        <div class="p-10 max-w-2xl">
-            <SeForm
-                layout="horizontal"
-                labelCol={{ span: 4 }}
-                onSubmit={handleSubmit}
-            >
-                <SeFormItem label="用户名" required help="请输入你的真实姓名">
-                    <SeInput placeholder="例如: 张三" />
-                </SeFormItem>
-
-                <SeFormItem label="邮箱" required error={error()}>
-                    <SeInput
-                        value={email()}
-                        onInput={(e) => setEmail(e.currentTarget.value)}
-                        placeholder="example@mail.com"
-                    />
-                </SeFormItem>
-
-                <SeFormItem>
-                    <div class="flex gap-2">
-                        <SeButton variant="primary" type="submit">
-                            提交登记
-                        </SeButton>
-                        <SeButton variant="primary" type="reset">
-                            重置
-                        </SeButton>
-                    </div>
-                </SeFormItem>
-            </SeForm>
-        </div>
-    );
+  return (
+    <div class="p-10 space-y-4 max-w-xs">
+      <label class="text-sm">购买数量 (步进 0.5, 精度 1):</label>
+      <SeInputNumber 
+        value={val()} 
+        onChange={setVal} 
+        min={0} 
+        max={100} 
+        step={0.5} 
+        precision={1}
+      />
+      <div class="text-xs text-gray-500">当前数值: {val()}</div>
+    </div>)
 }
