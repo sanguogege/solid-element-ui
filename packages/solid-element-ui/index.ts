@@ -37,3 +37,9 @@ export { SeInput } from "@/components/input/src/Input.tsx";
 export { SeInputNumber } from "@/components/input-number/src/InputNumber.tsx";
 export { SeInputTag } from "@/components/input-tag/src/InputTag.tsx";
 export { SeMentions } from "@/components/Mentions/src/Mentions.tsx";
+
+export { SeRadio } from "@/components/radio/src/radio.tsx";
+export { SeRadioGroup } from "@/components/radio/src/radio-group.tsx";
+export { SeRate } from "@/components/rate/src/Rate.tsx";
+export { SeSelect } from "@/components/select/src/Select.tsx";
+export { SeSlider } from "@/components/slider/src/Slider.tsx";
