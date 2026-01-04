@@ -1,27 +1,26 @@
+import { createSignal } from "solid-js";
+import { SeAutocomplete, SeDivider } from "../packages/solid-element-ui";
 
+const [options] = createSignal([
+    { value: "Apple" },
+    { value: "Banana" },
+    { value: "Blueberry" },
+    { value: "Cherry" },
+]);
 
-import {
-    SeDivider,
-} from "../packages/solid-element-ui";
+const [value, setValue] = createSignal("");
 
-
-export default ()=>{
+export default () => {
     return (
         <>
-            <SeDivider />
-            // 2. 带文字的分割线
-            <SeDivider contentPosition="right" color="danger">
-                今日资讯
-            </SeDivider>
-            // 3. 虚线模式
-            <SeDivider dashed color="success" />
-            // 4. 垂直分割
-            <span>插件</span>
-            <SeDivider color="#ddd">危险警告</SeDivider>
-            <span>
-                设置 <SeDivider direction="vertical" />
-                撒旦
-            </span>
+            <div>{value()}</div>
+            <SeAutocomplete
+                options={options()}
+                onInputChange={(val) => setValue(val)}
+                placeholder="请输入水果名称..."
+                onSelect={(opt) => console.log("选中了:", opt)}
+                class="se-max-w-xs"
+            />
         </>
     );
-}
+};

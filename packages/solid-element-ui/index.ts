@@ -19,3 +19,5 @@ export { SeAnchorLink } from "@/components/anchor/src/anchor-link.tsx";
 
 export { SeDivider } from "@/components/divider/src/divider.tsx";
 
+export { SeAutocomplete } from "@/components/autocomplete/src/autocomplete.tsx";
+
