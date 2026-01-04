@@ -1,33 +1,41 @@
-import { SeMessage, SeButton } from "../packages/solid-element-ui";
+import {
+    SePopconfirm,
+    SeMessage,
+    SeButton,
+} from "../packages/solid-element-ui";
 
-export default function MessageDemo() {
-    const showSuccess = () => {
-        SeMessage.success("恭喜，操作已成功完成！");
+export default function PopconfirmDemo() {
+    const confirmDelete = () => {
+        SeMessage.success("删除成功！");
     };
 
-    const showLoading = () => {
-        const id = SeMessage.loading("正在处理数据...");
-        // 模拟异步操作
-        setTimeout(() => {
-            // 在 2026 年，你甚至可以手动清除或替换特定 ID 的消息
-            SeMessage.success("处理完成！");
-        }, 2000);
+    const cancelDelete = () => {
+        SeMessage.info("已取消操作");
     };
 
     return (
-        <div class="p-10 space-x-4">
-            <SeButton variant="primary" onClick={showSuccess}>
-                成功提示
-            </SeButton>
-
-            <SeButton
-                variant="success"
-                onClick={() => SeMessage.error("系统发生未知错误")}
+        <div class="p-20 flex gap-10">
+            {/* 基础用法 */}
+            <SePopconfirm
+                title="确定要删除这条记录吗？"
+                onConfirm={confirmDelete}
+                onCancel={cancelDelete}
+                placement="top"
             >
-                错误提示
-            </SeButton>
+                <SeButton variant="danger">删除记录</SeButton>
+            </SePopconfirm>
 
-            <SeButton onClick={showLoading}>异步加载</SeButton>
+            {/* 带描述的复杂用法 */}
+            <SePopconfirm
+                title="重置系统配置"
+                description="此操作将清空所有 2026 年度的自定义设置，且无法恢复。"
+                okText="立即重置"
+                cancelText="我再想想"
+                onConfirm={() => SeMessage.warning("配置已重置")}
+                placement="bottom"
+            >
+                <SeButton variant="success">系统重置</SeButton>
+            </SePopconfirm>
         </div>
     );
 }

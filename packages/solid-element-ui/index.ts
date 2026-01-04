@@ -75,3 +75,6 @@ export { type TreeData } from "@/components/tree/src/setting.ts";
 export { SeAlert } from "@/components/alert/src/alert.tsx";
 export { SeDrawer } from "@/components/drawer/src/drawer.tsx";
 export { SeMessage } from "@/components/message/src/message.tsx";
+export { SeModal } from "@/components/modal/src/modal.tsx";
+export { SeNotification } from "@/components/notification/src/notification.tsx";
+export { SePopconfirm } from "@/components/popconfirm/src/popconfirm.tsx";
