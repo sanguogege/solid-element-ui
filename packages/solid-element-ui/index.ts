@@ -23,3 +23,5 @@ export { SeAutocomplete } from "@/components/autocomplete/src/autocomplete.tsx";
 
 export { SeCascader } from "@/components/cascader/src/cascader.tsx";
 
+export { SeCheckbox } from "@/components/checkbox/src/checkbox.tsx";
+

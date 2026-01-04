@@ -1,5 +1,5 @@
 import { createSignal } from "solid-js";
-import { SeAutocomplete, SeDivider } from "../packages/solid-element-ui";
+import { SeAutocomplete, SeCheckbox, SeDivider } from "../packages/solid-element-ui";
 
 const [options] = createSignal([
     { value: "Apple" },
@@ -11,16 +11,16 @@ const [options] = createSignal([
 const [value, setValue] = createSignal("");
 
 export default () => {
+    const [checked, setChecked] = createSignal(false);
     return (
         <>
-            <div>{value()}</div>
-            <SeAutocomplete
-                options={options()}
-                onInputChange={(val) => setValue(val)}
-                placeholder="请输入水果名称..."
-                onSelect={(opt) => console.log("选中了:", opt)}
-                class="se-max-w-xs"
+            <SeCheckbox label="记住我" />
+            <SeCheckbox
+                checked={checked()}
+                onChange={(e) => setChecked(e.currentTarget.checked)}
+                label="接受协议"
             />
+            <SeCheckbox error label="必须同意条款" class="mt-4" />
         </>
     );
 };
