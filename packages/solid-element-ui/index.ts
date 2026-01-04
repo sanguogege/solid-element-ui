@@ -25,3 +25,5 @@ export { SeCascader } from "@/components/cascader/src/cascader.tsx";
 
 export { SeCheckbox } from "@/components/checkbox/src/checkbox.tsx";
 
+export { SeColorPicker } from "@/components/colorpicker/src/colorpicker.tsx";
+

@@ -1,26 +1,22 @@
 import { createSignal } from "solid-js";
-import { SeAutocomplete, SeCheckbox, SeDivider } from "../packages/solid-element-ui";
+import { SeColorPicker } from "../packages/solid-element-ui/index";
 
-const [options] = createSignal([
-    { value: "Apple" },
-    { value: "Banana" },
-    { value: "Blueberry" },
-    { value: "Cherry" },
-]);
+export default ()=> {
+    const [color, setColor] = createSignal("#3b82f6");
 
-const [value, setValue] = createSignal("");
-
-export default () => {
-    const [checked, setChecked] = createSignal(false);
     return (
-        <>
-            <SeCheckbox label="记住我" />
-            <SeCheckbox
-                checked={checked()}
-                onChange={(e) => setChecked(e.currentTarget.checked)}
-                label="接受协议"
+        <div class="p-10 space-y-4">
+            {/* 基础用法 */}
+            <SeColorPicker
+                value={color()}
+                onInput={(e) => setColor(e.currentTarget.value)}
+                label="主题色"
+                showValue
             />
-            <SeCheckbox error label="必须同意条款" class="mt-4" />
-        </>
+
+            {/* 不同尺寸 */}
+            <SeColorPicker size="sm" value="#ef4444" />
+            <SeColorPicker size="lg" value="#10b981" />
+        </div>
     );
-};
+}
