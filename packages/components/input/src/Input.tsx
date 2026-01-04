@@ -27,7 +27,7 @@ export const SeInput: Component<InputProps> = (props) => {
         <div
             class={cn(
                 // 容器外观：模拟 Ant Design 5.0 质感
-                "flex items-center w-full bg-white border border-[#d9d9d9] rounded-[6px] transition-all duration-200",
+                "flex items-center w-full bg-white border border-[#d9d9d9] rounded-md transition-all duration-200",
                 "hover:border-[#4096ff]",
                 // 利用 focus-within 让整个容器在 Input 聚焦时产生光晕
                 "focus-within:border-[#1677ff] focus-within:ring-[3px] focus-within:ring-[#1677ff]/10",
