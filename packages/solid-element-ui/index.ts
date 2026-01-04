@@ -78,3 +78,7 @@ export { SeMessage } from "@/components/message/src/message.tsx";
 export { SeModal } from "@/components/modal/src/modal.tsx";
 export { SeNotification } from "@/components/notification/src/notification.tsx";
 export { SePopconfirm } from "@/components/popconfirm/src/popconfirm.tsx";
+export { SeProgress } from "@/components/progress/src/progress.tsx";
+export { SeResult } from "@/components/result/src/result.tsx";
+export { SeSkeleton } from "@/components/skeleton/src/skeleton.tsx";
+export { SeSkeletonElement } from "@/components/skeleton/src/skeleton.tsx";
