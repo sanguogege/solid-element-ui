@@ -1,21 +1,33 @@
-import { SePopover } from "../packages/solid-element-ui";
+import { SeMessage, SeButton } from "../packages/solid-element-ui";
 
-export default function Demo() {
+export default function MessageDemo() {
+    const showSuccess = () => {
+        SeMessage.success("恭喜，操作已成功完成！");
+    };
+
+    const showLoading = () => {
+        const id = SeMessage.loading("正在处理数据...");
+        // 模拟异步操作
+        setTimeout(() => {
+            // 在 2026 年，你甚至可以手动清除或替换特定 ID 的消息
+            SeMessage.success("处理完成！");
+        }, 2000);
+    };
+
     return (
-        <div style="padding:300px;">
-            <SePopover
-                title={
-                    <span>
-                        <i class="icon" /> 提示
-                    </span>
-                }
-                content="这是 2026 年标准的气泡卡片，支持 JSX 标题。"
-                placement="top"
+        <div class="p-10 space-x-4">
+            <SeButton variant="primary" onClick={showSuccess}>
+                成功提示
+            </SeButton>
+
+            <SeButton
+                variant="success"
+                onClick={() => SeMessage.error("系统发生未知错误")}
             >
-                <button class="bg-blue-500 text-white px-4 py-2 rounded">
-                    悬停查看
-                </button>
-            </SePopover>
+                错误提示
+            </SeButton>
+
+            <SeButton onClick={showLoading}>异步加载</SeButton>
         </div>
     );
 }

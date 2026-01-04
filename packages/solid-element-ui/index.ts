@@ -61,3 +61,17 @@ export { SeDescriptionItem } from "@/components/description/src/description-item
 export { SeEmpty } from "@/components/empty/src/empty.tsx";
 export { SeImage } from "@/components/image/src/image.tsx";
 export { SePopover } from "@/components/popover/src/popover.tsx";
+export { SeSegmented } from "@/components/segmented/src/segmented.tsx";
+export { SeStatistic } from "@/components/statistic/src/statistic.tsx";
+export { SeTable } from "@/components/table/src/table.tsx";
+export { type ColumnType } from "@/components/table/src/setting.ts";
+export { SeTag } from "@/components/tag/src/tag.tsx";
+export { SeTimeline } from "@/components/timeline/src/timeline.tsx";
+export { SeTimelineItem } from "@/components/timeline/src/timeline-item.tsx";
+export { SeTooltip } from "@/components/tooltip/src/tooltip.tsx";
+export { SeTour } from "@/components/tour/src/tour.tsx";
+export { SeTree } from "@/components/tree/src/tree.tsx";
+export { type TreeData } from "@/components/tree/src/setting.ts";
+export { SeAlert } from "@/components/alert/src/alert.tsx";
+export { SeDrawer } from "@/components/drawer/src/drawer.tsx";
+export { SeMessage } from "@/components/message/src/message.tsx";

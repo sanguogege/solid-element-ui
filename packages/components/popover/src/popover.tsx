@@ -1,101 +1,154 @@
 import {
     splitProps,
-    type ParentComponent,
     createSignal,
     Show,
+    type ParentComponent,
     onCleanup,
+    onMount,
 } from "solid-js";
-import { cn } from "@/utils/cn";
+import { computePosition, flip, shift, offset, arrow } from "@floating-ui/dom";
 import { type PopoverProps } from "./setting";
 
 export const SePopover: ParentComponent<PopoverProps> = (props) => {
-    // 分离自定义属性与 HTML 属性
     const [local, others] = splitProps(props, [
-        "class",
-        "children",
-        "content",
         "title",
+        "content",
         "trigger",
         "placement",
+        "arrow",
+        "class",
+        "children",
     ]);
 
     const [visible, setVisible] = createSignal(false);
+    let triggerRef: HTMLDivElement | undefined;
+    let popoverRef: HTMLDivElement | undefined;
+    let arrowRef: HTMLDivElement | undefined;
     let timer: any;
 
-    const trigger = () => local.trigger || "hover";
-    const placement = () => local.placement || "top";
+    // 更新定位逻辑
+    const updatePosition = () => {
+        if (!triggerRef || !popoverRef) return;
 
-    // 处理气泡显示隐藏逻辑
-    const handleToggle = (val: boolean) => {
-        if (timer) clearTimeout(timer);
-        if (trigger() === "hover") {
-            // 增加防抖延迟，提升交互顺滑感
-            timer = setTimeout(() => setVisible(val), val ? 100 : 200);
-        } else {
-            setVisible(val);
+        computePosition(triggerRef, popoverRef, {
+            placement: local.placement || "bottom",
+            middleware: [
+                offset(12), // 留出一点空间给阴影和视觉呼吸感
+                flip(),
+                shift({ padding: 8 }),
+                ...(local.arrow ? [arrow({ element: arrowRef! })] : []),
+            ],
+        }).then(({ x, y, placement, middlewareData }) => {
+            Object.assign(popoverRef!.style, {
+                left: `${x}px`,
+                top: `${y}px`,
+            });
+
+            if (local.arrow && middlewareData.arrow) {
+                const { x: ax, y: ay } = middlewareData.arrow;
+                const staticSide = {
+                    top: "bottom",
+                    right: "left",
+                    bottom: "top",
+                    left: "right",
+                }[placement.split("-")[0]]!;
+
+                Object.assign(arrowRef!.style, {
+                    left: ax != null ? `${ax}px` : "",
+                    top: ay != null ? `${ay}px` : "",
+                    [staticSide]: "-4px",
+                });
+            }
+        });
+    };
+
+    // 交互逻辑处理
+    const open = () => {
+        clearTimeout(timer);
+        setVisible(true);
+        updatePosition();
+    };
+
+    const close = () => {
+        // hover 模式下增加一小段缓冲时间，方便鼠标移入浮层
+        timer = setTimeout(() => setVisible(false), 150);
+    };
+
+    const toggle = (e: MouseEvent) => {
+        if (local.trigger === "hover") return;
+        visible() ? setVisible(false) : open();
+    };
+
+    // 点击外部关闭逻辑
+    const clickOutside = (e: MouseEvent) => {
+        if (
+            visible() &&
+            !triggerRef?.contains(e.target as Node) &&
+            !popoverRef?.contains(e.target as Node)
+        ) {
+            setVisible(false);
         }
     };
 
-    onCleanup(() => clearTimeout(timer));
-
-    // 位置映射表
-    const placementClasses = {
-        top: "bottom-full left-1/2 -translate-x-1/2 mb-3 origin-bottom",
-        bottom: "top-full left-1/2 -translate-x-1/2 mt-3 origin-top",
-        left: "right-full top-1/2 -translate-y-1/2 mr-3 origin-right",
-        right: "left-full top-1/2 -translate-y-1/2 ml-3 origin-left",
-    };
-
-    // 小箭头样式
-    const arrowClasses = {
-        top: "bottom-[-5.5px] left-1/2 -translate-x-1/2 border-t-[#fff] border-l-transparent border-r-transparent border-b-transparent",
-        bottom: "top-[-5.5px] left-1/2 -translate-x-1/2 border-b-[#fff] border-l-transparent border-r-transparent border-t-transparent",
-        left: "right-[-5.5px] top-1/2 -translate-y-1/2 border-l-[#fff] border-t-transparent border-b-transparent border-r-transparent",
-        right: "left-[-5.5px] top-1/2 -translate-y-1/2 border-r-[#fff] border-t-transparent border-b-transparent border-l-transparent",
-    };
+    onMount(() => {
+        document.addEventListener("click", clickOutside);
+        onCleanup(() => {
+            document.removeEventListener("click", clickOutside);
+            clearTimeout(timer);
+        });
+    });
 
     return (
         <div
-            {...others}
-            class={cn("relative inline-block", local.class)}
-            onMouseEnter={() => trigger() === "hover" && handleToggle(true)}
-            onMouseLeave={() => trigger() === "hover" && handleToggle(false)}
-            onClick={() => trigger() === "click" && setVisible(!visible())}
+            class="inline-block"
+            onMouseLeave={() => local.trigger === "hover" && close()}
         >
-            {/* 触发点元素 */}
-            {local.children}
+            {/* 触发器 */}
+            <div
+                ref={triggerRef}
+                class="inline-block"
+                onMouseEnter={() => local.trigger === "hover" && open()}
+                onClick={toggle}
+            >
+                {local.children}
+            </div>
 
-            {/* 气泡面板 */}
+            {/* 浮层内容 */}
             <Show when={visible()}>
                 <div
-                    class={cn(
-                        "absolute z-50 min-w-[170px] bg-white rounded-lg",
-                        // AntD 5.0 三层扩散阴影
-                        "shadow-[0_6px_16px_0_rgba(0,0,0,0.08),0_3px_6px_-4px_rgba(0,0,0,0.12),0_9px_28px_8px_rgba(0,0,0,0.05)]",
-                        "animate-in zoom-in-95 fade-in duration-200",
-                        placementClasses[placement()]
-                    )}
-                    onClick={(e) => e.stopPropagation()}
+                    ref={popoverRef}
+                    onMouseEnter={() =>
+                        local.trigger === "hover" && clearTimeout(timer)
+                    }
+                    {...others}
+                    class={`absolute z-50 bg-white border border-gray-200 shadow-xl rounded-lg w-72 transition-opacity ${
+                        local.class || ""
+                    }`}
+                    style={{ top: 0, left: 0 }}
                 >
-                    {/* 气泡箭头 */}
-                    <div
-                        class={cn(
-                            "absolute w-0 h-0 border-[6px] drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)]",
-                            arrowClasses[placement()]
-                        )}
-                    />
-
-                    {/* 标题栏 */}
+                    {/* 标题区 */}
                     <Show when={local.title}>
-                        <div class="px-3 py-2 border-b border-[#f0f0f0] font-semibold text-[14px] text-[#000000d9]">
+                        <div class="px-4 py-2 border-b border-gray-100 font-semibold text-gray-900">
                             {local.title}
                         </div>
                     </Show>
 
                     {/* 内容区 */}
-                    <div class="px-3 py-3 text-[14px] text-[#000000a6] leading-relaxed">
+                    <div class="px-4 py-3 text-sm text-gray-600">
                         {local.content}
                     </div>
+
+                    {/* 箭头 */}
+                    <Show when={local.arrow}>
+                        <div
+                            ref={arrowRef}
+                            class="absolute w-2 h-2 bg-white border-t border-l border-gray-200 rotate-45"
+                            style={{
+                                "background-color": "inherit",
+                                "border-color": "inherit",
+                            }}
+                        />
+                    </Show>
                 </div>
             </Show>
         </div>
