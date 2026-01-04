@@ -36,7 +36,7 @@ export { SeFormItem } from "@/components/form/src/form-item.tsx";
 export { SeInput } from "@/components/input/src/input.tsx";
 export { SeInputNumber } from "@/components/input-number/src/inputNumber.tsx";
 export { SeInputTag } from "@/components/input-tag/src/inputTag.tsx";
-export { SeMentions } from "@/components/Mentions/src/mentions.tsx";
+export { SeMentions } from "@/components/mentions/src/mentions";
 
 export { SeRadio } from "@/components/radio/src/radio.tsx";
 export { SeRadioGroup } from "@/components/radio/src/radio-group.tsx";
