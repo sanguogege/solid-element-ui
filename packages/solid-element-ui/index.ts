@@ -36,3 +36,4 @@ export { SeFormItem } from "@/components/form/src/form-item.tsx";
 export { SeInput } from "@/components/input/src/Input.tsx";
 export { SeInputNumber } from "@/components/input-number/src/InputNumber.tsx";
 export { SeInputTag } from "@/components/input-tag/src/InputTag.tsx";
+export { SeMentions } from "@/components/Mentions/src/Mentions.tsx";
