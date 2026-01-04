@@ -1,4 +1,4 @@
-import { splitProps, type Component, Show, type JSX } from "solid-js";
+import { splitProps, type Component, Show } from "solid-js";
 import { cn } from "@/utils/cn";
 import { type CheckboxProps } from "./setting";
 

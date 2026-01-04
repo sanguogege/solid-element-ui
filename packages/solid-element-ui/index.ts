@@ -27,3 +27,5 @@ export { SeCheckbox } from "@/components/checkbox/src/checkbox.tsx";
 
 export { SeColorPicker } from "@/components/colorpicker/src/colorpicker.tsx";
 
+export { SeDatePicker } from "@/components/datepicker/src/datepicker.tsx";
+

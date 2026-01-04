@@ -23,7 +23,7 @@ export const SeColorPicker: Component<ColorPickerProps> = (props) => {
         <div class={cn("inline-flex items-center gap-2", local.class)}>
             <div
                 class={cn(
-                    "relative flex items-center justify-center rounded-[var(--radius,4px)] border border-gray-300 p-1 bg-white ring-offset-2 transition-shadow focus-within:ring-2 focus-within:ring-blue-500/50",
+                    "relative flex items-center justify-center rounded-(--radius,4px) border border-gray-300 p-1 bg-white ring-offset-2 transition-shadow focus-within:ring-2 focus-within:ring-blue-500/50",
                     local.size === "sm" ? "p-0.5" : "p-1"
                 )}
             >
