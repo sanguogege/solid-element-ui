@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@solidjs/testing-library";
-import { SeColorpicker } from "../src/colorpicker";
+import { SeColorpicker } from "../src/color-picker";
 
 describe("SeColorpicker", () => {
     it("should render correctly", () => {

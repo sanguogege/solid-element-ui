@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@solidjs/testing-library";
-import { SeDatepicker } from "../src/datepicker";
+import { SeDatepicker } from "../src/date-picker";
 
 describe("SeDatepicker", () => {
     it("should render correctly", () => {

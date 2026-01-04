@@ -25,7 +25,12 @@ export { SeCascader } from "@/components/cascader/src/cascader.tsx";
 
 export { SeCheckbox } from "@/components/checkbox/src/checkbox.tsx";
 
-export { SeColorPicker } from "@/components/colorpicker/src/colorpicker.tsx";
+export { SeColorPicker } from "@/components/color-picker/src/color-picker";
 
-export { SeDatePicker } from "@/components/datepicker/src/datepicker.tsx";
+export { SeDatePicker } from "@/components/date-picker/src/date-picker";
 
+export { SeForm } from "@/components/form/src/form.tsx";
+export { SeFormItem } from "@/components/form/src/form-item.tsx";
+
+
+export { SeInput } from "@/components/input/src/Input.tsx";
