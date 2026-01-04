@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@solidjs/testing-library";
-import { SeSlider } from "../src/Slider";
+import { SeSlider } from "../src/slider";
 
 describe("SeSlider", () => {
     it("should render correctly", () => {

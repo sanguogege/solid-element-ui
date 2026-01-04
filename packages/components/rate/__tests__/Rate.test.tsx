@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@solidjs/testing-library";
-import { SeRate } from "../src/Rate";
+import { SeRate } from "../src/rate";
 
 describe("SeRate", () => {
     it("should render correctly", () => {

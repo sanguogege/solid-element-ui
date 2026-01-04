@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@solidjs/testing-library";
-import { SeInput } from "../src/Input";
+import { SeInput } from "../src/input";
 
 describe("SeInput", () => {
     it("should render correctly", () => {

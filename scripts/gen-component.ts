@@ -27,11 +27,12 @@ const toPascalCase = (str: string) => {
 };
 
 // 格式化名称
-const formattedName = toPascalCase(componentName); // 例如: AaBb
-const exportName = `Se${formattedName}`; // 例如: SeAaBb
+const pascalName = toPascalCase(componentName); // 例如: CoolButton
+const exportName = `Se${pascalName}`; // 例如: SeCoolButton
+const propsName = `${pascalName}Props`; // 例如: CoolButtonProps
 
 // 定义路径
-// 文件夹保持原始命名 (packages/components/aa-bb)
+// 文件夹和文件名都使用原始的 componentName (kebab-case)
 const targetDir = path.resolve(
     __dirname,
     `../packages/components/${componentName}`
@@ -56,12 +57,12 @@ fs.mkdirSync(testDir, { recursive: true });
 
 // --- 生成模板内容 ---
 
-// 1. 组件主文件 (例如 AaBb.tsx)
+// 1. 组件主文件 (文件名: cool-button.tsx)
 const componentTemplate = `import { splitProps, type ParentComponent } from "solid-js";
 import { cn } from "@/utils/cn";
-import { type ${formattedName}Props } from "./setting";
+import { type ${propsName} } from "./setting";
 
-export const ${exportName}: ParentComponent<${formattedName}Props> = (props: ${formattedName}Props) => {
+export const ${exportName}: ParentComponent<${propsName}> = (props: ${propsName}) => {
     const [local, others] = splitProps(props, ["children", "class"]);
 
     return (
@@ -72,18 +73,18 @@ export const ${exportName}: ParentComponent<${formattedName}Props> = (props: ${f
 };
 `;
 
-// 2. setting.ts (类型定义)
+// 2. setting.ts
 const settingTemplate = `import { type JSX } from "solid-js";
 
-export interface ${formattedName}Props extends JSX.HTMLAttributes<HTMLDivElement> {
+export interface ${propsName} extends JSX.HTMLAttributes<HTMLDivElement> {
     // 可以在这里添加自定义属性
 }
 `;
 
-// 3. 测试文件 (例如 AaBb.test.tsx)
+// 3. 测试文件 (文件名: cool-button.test.tsx)
 const testTemplate = `import { describe, it, expect } from "vitest";
 import { render, screen } from "@solidjs/testing-library";
-import { ${exportName} } from "../src/${formattedName}";
+import { ${exportName} } from "../src/${componentName}";
 
 describe("${exportName}", () => {
     it("should render correctly", () => {
@@ -95,19 +96,18 @@ describe("${exportName}", () => {
 
 // --- 写入文件 ---
 
-// 写入主组件文件 (使用 PascalCase 命名文件: AaBb.tsx)
-fs.writeFileSync(path.join(srcDir, `${formattedName}.tsx`), componentTemplate);
+// 写入主组件文件 (使用 kebab-case 命名文件)
+fs.writeFileSync(path.join(srcDir, `${componentName}.tsx`), componentTemplate);
 
 // 写入 setting.ts
 fs.writeFileSync(path.join(srcDir, `setting.ts`), settingTemplate);
 
-// 写入测试文件
-fs.writeFileSync(path.join(testDir, `${formattedName}.test.tsx`), testTemplate);
+// 写入测试文件 (使用 kebab-case 命名文件)
+fs.writeFileSync(path.join(testDir, `${componentName}.test.tsx`), testTemplate);
 
-// 6. 关键步骤：自动追加 Export 到入口文件
+// 自动追加 Export 到入口文件
 if (fs.existsSync(entryFile)) {
-    // 这里的路径映射需根据你的 tsconfig paths 确定，此处匹配你原始代码逻辑
-    const exportStatement = `export { ${exportName} } from "@/components/${componentName}/src/${formattedName}.tsx";`;
+    const exportStatement = `export { ${exportName} } from "@/components/${componentName}/src/${componentName}.tsx";`;
 
     const currentContent = fs.readFileSync(entryFile, "utf-8");
     if (!currentContent.includes(exportStatement)) {
@@ -115,18 +115,16 @@ if (fs.existsSync(entryFile)) {
         fs.appendFileSync(entryFile, `${tailNewline}${exportStatement}\n`);
         console.log(`✅ 已同步导出到 solid-element-ui/index.ts`);
     }
-} else {
-    console.warn(`⚠️ 未找到入口文件: ${entryFile}，请手动配置导出`);
 }
 
 console.log(`
 ✅ 组件 ${componentName} 创建成功！
 📂 路径: packages/components/${componentName}
-✨ 导出组件: ${exportName}
-📝 接口名称: ${formattedName}Props
+✨ 导出组件名: ${exportName}
+📝 接口名称: ${propsName}
 
 已生成文件:
-- src/${formattedName}.tsx
+- src/${componentName}.tsx
 - src/setting.ts
-- __tests__/${formattedName}.test.tsx
+- __tests__/${componentName}.test.tsx
 `);

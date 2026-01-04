@@ -33,13 +33,15 @@ export { SeForm } from "@/components/form/src/form.tsx";
 export { SeFormItem } from "@/components/form/src/form-item.tsx";
 
 
-export { SeInput } from "@/components/input/src/Input.tsx";
-export { SeInputNumber } from "@/components/input-number/src/InputNumber.tsx";
-export { SeInputTag } from "@/components/input-tag/src/InputTag.tsx";
-export { SeMentions } from "@/components/Mentions/src/Mentions.tsx";
+export { SeInput } from "@/components/input/src/input.tsx";
+export { SeInputNumber } from "@/components/input-number/src/inputNumber.tsx";
+export { SeInputTag } from "@/components/input-tag/src/inputTag.tsx";
+export { SeMentions } from "@/components/Mentions/src/mentions.tsx";
 
 export { SeRadio } from "@/components/radio/src/radio.tsx";
 export { SeRadioGroup } from "@/components/radio/src/radio-group.tsx";
-export { SeRate } from "@/components/rate/src/Rate.tsx";
-export { SeSelect } from "@/components/select/src/Select.tsx";
-export { SeSlider } from "@/components/slider/src/Slider.tsx";
+export { SeRate } from "@/components/rate/src/rate.tsx";
+export { SeSelect } from "@/components/select/src/select.tsx";
+export { SeSlider } from "@/components/slider/src/slider.tsx";
+export { SeSwitch } from "@/components/switch/src/switch.tsx";
+export { SeTimePicker } from "@/components/time-picker/src/time-picker";
