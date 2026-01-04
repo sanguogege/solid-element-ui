@@ -1,21 +1,23 @@
-import { SeInputNumber } from "@/solid-element-ui";
 import { createSignal } from "solid-js";
+import { SeInputTag } from "../packages/solid-element-ui";
 
+export default function Demo() {
+    const [tags, setTags] = createSignal(["Solid.js", "Tailwind"]);
 
-export default function FormDemo() {
-    const [val, setVal] = createSignal(10);
-
-  return (
-    <div class="p-10 space-y-4 max-w-xs">
-      <label class="text-sm">购买数量 (步进 0.5, 精度 1):</label>
-      <SeInputNumber 
-        value={val()} 
-        onChange={setVal} 
-        min={0} 
-        max={100} 
-        step={0.5} 
-        precision={1}
-      />
-      <div class="text-xs text-gray-500">当前数值: {val()}</div>
-    </div>)
+    return (
+        <div class="p-10 max-w-md">
+            <label class="block text-sm font-medium mb-2">
+                技能标签 (按回车添加):
+            </label>
+            <SeInputTag
+                value={tags()}
+                onChange={setTags}
+                placeholder="输入后按回车..."
+                size="md"
+            />
+            <div class="mt-4 text-xs text-gray-400">
+                已选数据: {JSON.stringify(tags())}
+            </div>
+        </div>
+    );
 }
