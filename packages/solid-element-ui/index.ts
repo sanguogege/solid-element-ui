@@ -6,6 +6,7 @@
 // TODO 单元测试
 // TODO CI/CD 流水线搭建
 // TODO 专属css
+// TODO 格栅布局，flex布局，space看情况再说添加不添加
 
 import "../css/index.css";
 export { SeButton } from "@/components/button/src/button.tsx";
@@ -82,3 +83,12 @@ export { SeProgress } from "@/components/progress/src/progress.tsx";
 export { SeResult } from "@/components/result/src/result.tsx";
 export { SeSkeleton } from "@/components/skeleton/src/skeleton.tsx";
 export { SeSkeletonElement } from "@/components/skeleton/src/skeleton.tsx";
+export { SeSpin } from "@/components/spin/src/spin.tsx";
+export { SeWatermark } from "@/components/watermark/src/watermark.tsx";
+export { SeDropdown } from "@/components/dropdown/src/dropdown.tsx";
+export { SeMenu } from "@/components/menu/src/menu.tsx";
+export { type MenuItemType } from "@/components/menu/src/setting.ts";
+export { SePagination } from "@/components/pagination/src/pagination.tsx";
+export { SeSteps } from "@/components/steps/src/steps.tsx";
+export { SeTabs } from "@/components/tabs/src/tabs.tsx";
+export { SeMasonry } from "@/components/masonry/src/masonry.tsx";

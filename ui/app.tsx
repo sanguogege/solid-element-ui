@@ -1,58 +1,65 @@
-import { createSignal, onMount } from "solid-js";
-import {
-    SeSkeleton,
-    SeSkeletonElement,
-    SeButton,
-} from "../packages/solid-element-ui";
+import { SeMasonry } from "../packages/solid-element-ui";
 
-export default function SkeletonDemo() {
-    const [loading, setLoading] = createSignal(true);
+export default function MasonryDemo() {
+    // 模拟具有不同高度的数据
+    const data = [
+        {
+            id: 1,
+            title: "探索 2026 科技趋势",
+            height: "h-48",
+            color: "bg-blue-100",
+        },
+        {
+            id: 2,
+            title: "Solid.js 性能优化指南",
+            height: "h-64",
+            color: "bg-green-100",
+        },
+        {
+            id: 3,
+            title: "Tailwind v4.0 抢先看",
+            height: "h-32",
+            color: "bg-purple-100",
+        },
+        {
+            id: 4,
+            title: "响应式设计新方案",
+            height: "h-56",
+            color: "bg-amber-100",
+        },
+        {
+            id: 5,
+            title: "Web 标准化进程",
+            height: "h-40",
+            color: "bg-rose-100",
+        },
+        {
+            id: 6,
+            title: "瀑布流布局的最佳实践",
+            height: "h-72",
+            color: "bg-indigo-100",
+        },
+    ];
 
     return (
-        <div class="p-10 max-w-2xl space-y-10">
-            {/* 1. 组合型用法（最常用） */}
-            <section class="space-y-4">
-                <h3 class="text-sm font-bold text-gray-400">文章列表加载</h3>
-                <SeSkeleton loading={loading()} avatar active>
-                    <div class="flex gap-4">
-                        <div class="w-10 h-10 bg-blue-500 rounded-full text-white flex items-center justify-center">
-                            A
-                        </div>
-                        <div>
-                            <h4 class="font-bold">2026 年度技术展望</h4>
-                            <p class="text-sm text-gray-600">
-                                这是已经加载完成的真实内容，展示了 Solid
-                                的强大性能。
-                            </p>
-                        </div>
+        <div class="p-8 bg-gray-50 min-h-screen">
+            <h2 class="text-2xl font-bold mb-8 text-gray-800 text-center">
+                瀑布流展示
+            </h2>
+
+            <SeMasonry
+                items={data}
+                columns={3}
+                gap={6}
+                renderItem={(item) => (
+                    <div
+                        class={`${item.color} rounded-2xl p-6 border border-white shadow-sm flex flex-col justify-end ${item.height}`}
+                    >
+                        <h3 class="font-bold text-gray-900">{item.title}</h3>
+                        <p class="text-xs text-gray-500 mt-2">ID: {item.id}</p>
                     </div>
-                </SeSkeleton>
-            </section>
-
-            {/* 2. 自由组合用法 */}
-            <section class="space-y-4">
-                <h3 class="text-sm font-bold text-gray-400">自定义布局</h3>
-                <div class="flex items-center gap-2">
-                    <SeSkeletonElement
-                        shape="circle"
-                        width={20}
-                        height={20}
-                        active
-                    />
-                    <SeSkeletonElement
-                        shape="rect"
-                        width={100}
-                        height={20}
-                        active
-                    />
-                    <SeSkeletonElement shape="button" active />
-                </div>
-                <SeSkeletonElement shape="input" active />
-            </section>
-
-            <SeButton onClick={() => setLoading(!loading())}>
-                切换加载状态: {loading() ? "ON" : "OFF"}
-            </SeButton>
+                )}
+            />
         </div>
     );
 }
