@@ -47,3 +47,5 @@ export { SeSwitch } from "@/components/switch/src/switch.tsx";
 export { SeTimePicker } from "@/components/time-picker/src/time-picker";
 export { SeTransfer } from "@/components/transfer/src/transfer.tsx";
 export { SeTreeSelect } from "@/components/tree-select/src/tree-select.tsx";
+export { SeUpload } from "@/components/upload/src/upload.tsx";
+export { type UploadFile } from "@/components/upload/src/setting.ts";
