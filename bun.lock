@@ -30,21 +30,21 @@
     },
     "packages/components": {
       "name": "solid-element-ui/components",
-      "version": "0.0.4",
+      "version": "0.0.6",
       "dependencies": {
         "solid-element-ui/utils": "workspace:*",
       },
     },
     "packages/solid-element-ui": {
       "name": "solid-element-ui",
-      "version": "0.1.5",
+      "version": "0.1.7",
       "dependencies": {
         "solid-element-ui/components": "workspace:*",
       },
     },
     "packages/utils": {
       "name": "solid-element-ui/utils",
-      "version": "0.0.4",
+      "version": "0.0.6",
     },
   },
   "packages": {
