@@ -1,5 +1,13 @@
 # solid-element-ui/components
 
+## 0.0.5
+
+### Patch Changes
+
+- a new change
+- Updated dependencies
+  - solid-element-ui/utils@0.0.5
+
 ## 0.0.4
 
 ### Patch Changes

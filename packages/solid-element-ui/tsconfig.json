@@ -23,7 +23,5 @@
             "solid-element-ui/utils/*": ["../utils/*"]
         }
     },
-    "include": [
-        "."
-    ]
+    "include": [ "index.tsx", "../components/**/*","../utils/*"]
 }
