@@ -10,18 +10,20 @@ import { isServer } from "solid-js/web";
 import { type AffixProps } from "./setting";
 import { cn } from "@/utils/cn";
 
+const customAttributes = [
+    "offsetTop",
+    "offsetBottom",
+    "offsetLeft",
+    "offsetRight",
+    "target",
+    "zIndex",
+    "class",
+    "children",
+] as const;
+
 export const SeAffix: ParentComponent<AffixProps> = (props: AffixProps) => {
     // 1. 分离自定义属性
-    const [local, others] = splitProps(props, [
-        "offsetTop",
-        "offsetBottom",
-        "offsetLeft",
-        "offsetRight",
-        "target",
-        "zIndex",
-        "class",
-        "children",
-    ]);
+    const [local, others] = splitProps(props, customAttributes);
 
     // 状态信号
     const [isAffixed, setIsAffixed] = createSignal(false);
