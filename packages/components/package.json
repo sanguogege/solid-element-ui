@@ -1,5 +1,5 @@
 {
-    "name": "@solid-element-ui/components",
+    "name": "solid-element-ui/components",
     "version": "0.0.1",
     "description": "all components are settled here",
     "main": "index.ts",

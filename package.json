@@ -1,5 +1,5 @@
 {
-    "name": "@sanguogege/solid-element-ui",
+    "name": "solid-element-ui-repo",
     "private": true,
     "version": "0.0.0",
     "type": "module",
@@ -38,7 +38,7 @@
     },
     "workspaces": [
         "packages/*",
-        "docs/*",
+        "docs",
         "ui/*"
     ]
 }

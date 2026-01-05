@@ -1,15 +1,2 @@
 @import "tailwindcss";
 
-/* 1. 关键：告诉 Tailwind v4 去哪里扫描类名 */
-/* v4 不再看 tailwind.config.ts，必须在这里指定路径 */
-@source "../components/**/*.{ts,tsx}";
-@source "../solid-element-ui/**/*.{ts,tsx}";
-
-@theme {
-  /* 2. 定义你的主题变量 */
-  --color-se-primary: #3b82f6; /* 这会自动生成 se-bg-se-primary 类名 */
-  --radius-se-default: 4px;
-}
-
-/* 3. 如果你需要特定的前缀，v4 的处理方式如下 */
-/* 注意：v4 建议通过 CSS 命名空间处理，而非全局 
