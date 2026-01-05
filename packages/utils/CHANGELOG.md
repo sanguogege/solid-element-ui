@@ -1,5 +1,11 @@
 # solid-element-ui/utils
 
+## 0.0.6
+
+### Patch Changes
+
+- 啊啊啊
+
 ## 0.0.5
 
 ### Patch Changes
