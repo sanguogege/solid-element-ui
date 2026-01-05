@@ -35,8 +35,8 @@ export { SeFormItem } from "solid-element-ui/components/form/src/form-item";
 
 
 export { SeInput } from "solid-element-ui/components/input/src/input";
-export { SeInputNumber } from "solid-element-ui/components/input-number/src/inputNumber";
-export { SeInputTag } from "solid-element-ui/components/input-tag/src/inputTag";
+export { SeInputNumber } from "solid-element-ui/components/input-number/src/input-number";
+export { SeInputTag } from "solid-element-ui/components/input-tag/src/input-tag";
 export { SeMentions } from "solid-element-ui/components/mentions/src/mentions";
 
 export { SeRadio } from "solid-element-ui/components/radio/src/radio";

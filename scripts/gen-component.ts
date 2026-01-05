@@ -81,18 +81,6 @@ export interface ${propsName} extends JSX.HTMLAttributes<HTMLDivElement> {
 }
 `;
 
-// 3. 测试文件 (文件名: cool-button.test.tsx)
-const testTemplate = `import { describe, it, expect } from "vitest";
-import { render, screen } from "@solidjs/testing-library";
-import { ${exportName} } from "../src/${componentName}";
-
-describe("${exportName}", () => {
-    it("should render correctly", () => {
-        render(() => <${exportName}>${exportName}</${exportName}>);
-        expect(screen.getByText("${exportName}")).toBeInTheDocument();
-    });
-});
-`;
 
 // --- 写入文件 ---
 
@@ -103,7 +91,6 @@ fs.writeFileSync(path.join(srcDir, `${componentName}.tsx`), componentTemplate);
 fs.writeFileSync(path.join(srcDir, `setting.ts`), settingTemplate);
 
 // 写入测试文件 (使用 kebab-case 命名文件)
-fs.writeFileSync(path.join(testDir, `${componentName}.test.tsx`), testTemplate);
 
 // 自动追加 Export 到入口文件
 if (fs.existsSync(entryFile)) {
