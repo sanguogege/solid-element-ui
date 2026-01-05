@@ -1,6 +1,6 @@
 {
     "name": "solid-element-ui",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "license": "MIT",
     "author": "sanguogege",
     "type": "module",
@@ -13,7 +13,7 @@
     "exports": {
         ".": {
             "development": "./index.ts",
-            "import": "./dist/index.js",     
+            "import": "./dist/index.js",
             "types": "./dist/index.d.ts"
         }
     },
