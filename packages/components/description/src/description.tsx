@@ -1,5 +1,5 @@
 import { splitProps, type ParentComponent, Show, useContext } from "solid-js";
-import { cn } from "@/utils/cn";
+import { cn } from "solid-element-ui/utils/cn";
 import {
     DescriptionContext,
     type DescriptionProps,

@@ -1,5 +1,5 @@
 import { splitProps, type Component, Show, createMemo } from "solid-js";
-import { type ResultProps, type ResultStatus } from "./setting";
+import { type ResultProps } from "./setting";
 
 export const SeResult: Component<ResultProps> = (props) => {
     const [local, others] = splitProps(props, [

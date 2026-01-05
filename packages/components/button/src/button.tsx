@@ -1,6 +1,6 @@
 import { splitProps, createMemo, type ParentComponent } from "solid-js";
 
-import { cn } from "@/utils/cn";
+import { cn } from "solid-element-ui/utils/cn";
 // 定义组件的 Props 类型
 import {type ButtonProps } from "./setting";
 

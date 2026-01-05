@@ -5,7 +5,7 @@ import {
     type ParentComponent,
 } from "solid-js";
 import { type BreadcrumbProps } from "./setting";
-import { cn } from "@/utils/cn";
+import { cn } from "solid-element-ui/utils/cn";
 
 export const SeBreadcrumb: ParentComponent<BreadcrumbProps> = (props) => {
     const [local, others] = splitProps(props, [

@@ -2,8 +2,7 @@ import {
     splitProps,
     type Component,
     Show,
-    createSignal,
-    type JSX,
+    createSignal
 } from "solid-js";
 import { type AlertProps } from "./setting";
 

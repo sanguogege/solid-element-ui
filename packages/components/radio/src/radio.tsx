@@ -1,5 +1,5 @@
 import { splitProps, type Component, Show, useContext } from "solid-js";
-import { cn } from "@/utils/cn";
+import { cn } from "solid-element-ui/utils/cn";
 import { RadioGroupContext, type RadioProps } from "./setting";
 
 export const SeRadio: Component<RadioProps> = (props) => {

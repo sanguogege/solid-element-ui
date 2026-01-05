@@ -4,7 +4,6 @@ import {
     For,
     Show,
     type Component,
-    createMemo,
     type JSX,
 } from "solid-js";
 import { type TreeProps, type TreeData } from "./setting";

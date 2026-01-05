@@ -74,7 +74,7 @@ export const SePopover: ParentComponent<PopoverProps> = (props) => {
         timer = setTimeout(() => setVisible(false), 150);
     };
 
-    const toggle = (e: MouseEvent) => {
+    const toggle = () => {
         if (local.trigger === "hover") return;
         visible() ? setVisible(false) : open();
     };

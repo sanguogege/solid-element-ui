@@ -8,7 +8,7 @@ import { computePosition, flip, shift, offset, arrow } from "@floating-ui/dom";
 import { type TooltipProps } from "./setting";
 
 export const SeTooltip: ParentComponent<TooltipProps> = (props) => {
-    const [local, others] = splitProps(props, [
+    const [local] = splitProps(props, [
         "content",
         "trigger",
         "placement",

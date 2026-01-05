@@ -1,6 +1,6 @@
 import { splitProps, Show, type ParentComponent, createMemo } from "solid-js";
 import { type DividerProps } from "./setting";
-import { cn } from "@/utils/cn";
+import { cn } from "solid-element-ui/utils/cn";
 
 // 1. 定义预设颜色映射（对应你 Tailwind v4 的主题配置）
 const COLOR_MAP: Record<string, string> = {

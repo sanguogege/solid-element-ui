@@ -6,7 +6,7 @@ import {
     onCleanup,
     splitProps,
 } from "solid-js";
-import { cn } from "@/utils/cn";
+import { cn } from "solid-element-ui/utils/cn";
 import { type DatePickerProps } from "./setting";
 
 // TOTO 美化样式和

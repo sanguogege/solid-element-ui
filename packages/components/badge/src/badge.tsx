@@ -1,5 +1,5 @@
 import { splitProps, type ParentComponent, Show, createMemo } from "solid-js";
-import { cn } from "@/utils/cn";
+import { cn } from "solid-element-ui/utils/cn";
 import { type BadgeProps } from "./setting";
 
 export const SeBadge: ParentComponent<BadgeProps> = (props) => {

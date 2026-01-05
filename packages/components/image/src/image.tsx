@@ -1,5 +1,5 @@
 import { splitProps, type Component, createSignal, Show } from "solid-js";
-import { cn } from "@/utils/cn";
+import { cn } from "solid-element-ui/utils/cn";
 import { type ImageProps } from "./setting";
 
 export const SeImage: Component<ImageProps> = (props) => {

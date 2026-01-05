@@ -4,10 +4,9 @@ import {
     For,
     createSignal,
     createMemo,
-    onMount,
 } from "solid-js";
-import { cn } from "@/utils/cn";
-import { type SegmentedProps, type SegmentedOption } from "./setting";
+import { cn } from "solid-element-ui/utils/cn";
+import { type SegmentedProps } from "./setting";
 
 export const SeSegmented: Component<SegmentedProps> = (props) => {
     const [local, others] = splitProps(props, [

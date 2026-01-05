@@ -9,13 +9,18 @@
     ],
     "main": "./dist/index.js",
     "module": "./dist/index.js",
+    "sideEffects": false,
     "types": "./dist/index.d.ts",
     "exports": {
         ".": {
-            "development": "./index.ts",
+            "types": "./dist/index.d.ts",
             "import": "./dist/index.js",
-            "types": "./dist/index.d.ts"
-        }
+            "development": "./index.ts"
+        },
+        "./*": "./*"
+    },
+    "dependencies": {
+        "solid-element-ui/components": "workspace:*"
     },
     "scripts": {
         "dev": "vite",

@@ -1,5 +1,5 @@
 import { Show, splitProps, type ParentComponent } from "solid-js";
-import { cn } from "@/utils/cn";
+import { cn } from "solid-element-ui/utils/cn";
 import { useFormContext } from "./form";
 import { type FormItemProps } from "./setting";
 

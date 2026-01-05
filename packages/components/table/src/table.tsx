@@ -1,5 +1,5 @@
 import { splitProps, type Component, For, Show } from "solid-js";
-import { cn } from "@/utils/cn";
+import { cn } from "solid-element-ui/utils/cn";
 import { type TableProps } from "./setting";
 
 export const SeTable: Component<TableProps> = (props) => {
@@ -16,12 +16,6 @@ export const SeTable: Component<TableProps> = (props) => {
         sm: "px-2 py-2 text-sm",
         md: "px-4 py-3 text-sm",
         lg: "px-4 py-4 text-base",
-    };
-
-    const getRowKey = (record: any, index: number) => {
-        return (
-            local.rowKey ? record[local.rowKey as string] : index
-        ) as string;
     };
 
     return (

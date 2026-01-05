@@ -1,5 +1,5 @@
 import { splitProps, type Component, Show } from "solid-js";
-import { cn } from "@/utils/cn";
+import { cn } from "solid-element-ui/utils/cn";
 import { type ColorPickerProps } from "./setting";
 
 // TODO 十六进制的颜色设置

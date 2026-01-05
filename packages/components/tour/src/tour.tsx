@@ -4,8 +4,7 @@ import {
     Show,
     type Component,
     createEffect,
-    onCleanup,
-    onMount,
+    onCleanup
 } from "solid-js";
 import { computePosition, flip, shift, offset, arrow } from "@floating-ui/dom";
 import { type TourProps } from "./setting";

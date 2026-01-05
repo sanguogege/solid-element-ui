@@ -7,7 +7,7 @@ import {
     onCleanup,
     createMemo,
 } from "solid-js";
-import { cn } from "@/utils/cn";
+import { cn } from "solid-element-ui/utils/cn";
 import { type TimePickerProps } from "./setting";
 
 export const SeTimePicker: Component<TimePickerProps> = (props) => {
@@ -90,7 +90,7 @@ export const SeTimePicker: Component<TimePickerProps> = (props) => {
             <div
                 onClick={() => !local.disabled && setIsOpen(!isOpen())}
                 class={cn(
-                    "flex items-center justify-between bg-white border border-[#d9d9d9] rounded-[6px] transition-all duration-200 cursor-pointer",
+                    "flex items-center justify-between bg-white border border-[#d9d9d9] rounded-md transition-all duration-200 cursor-pointer",
                     "hover:border-[#4096ff]",
                     isOpen() &&
                         "border-[#1677ff] ring-[3px] ring-[#1677ff]/10 shadow-sm",

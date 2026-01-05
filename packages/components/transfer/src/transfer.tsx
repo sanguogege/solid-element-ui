@@ -1,5 +1,5 @@
-import { splitProps, type Component, createSignal, For, Show } from "solid-js";
-import { cn } from "@/utils/cn";
+import { splitProps, type Component, createSignal, For } from "solid-js";
+import { cn } from "solid-element-ui/utils/cn";
 import { type TransferProps, type TransferItem } from "./setting";
 import { SeCheckbox } from "../../checkbox/src/checkbox"; // 复用之前写的复选框
 import { SeButton } from "../../button/src/button"; // 复用之前写的按钮
@@ -45,7 +45,7 @@ export const SeTransfer: Component<TransferProps> = (props) => {
         checked: string[];
         onCheck: (keys: string[]) => void;
     }) => (
-        <div class="flex flex-col w-[200px] h-[300px] bg-white border border-[#d9d9d9] rounded-lg overflow-hidden">
+        <div class="flex flex-col w-50 h-75 bg-white border border-[#d9d9d9] rounded-lg overflow-hidden">
             <div class="px-3 py-2 border-b border-[#f0f0f0] bg-[#fafafa] flex items-center justify-between">
                 <span class="text-[14px] font-medium text-[#000000d9]">
                     {p.title}

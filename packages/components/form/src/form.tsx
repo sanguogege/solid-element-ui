@@ -4,7 +4,7 @@ import {
     splitProps,
     type ParentComponent,
 } from "solid-js";
-import { cn } from "@/utils/cn";
+import { cn } from "solid-element-ui/utils/cn";
 import { type FormProps, type FormContextValue } from "./setting";
 
 const FormContext = createContext<FormContextValue>();

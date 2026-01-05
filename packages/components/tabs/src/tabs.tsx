@@ -3,8 +3,7 @@ import {
     createSignal,
     For,
     Show,
-    type Component,
-    createMemo,
+    type Component
 } from "solid-js";
 import { type TabsProps, type TabItem } from "./setting";
 

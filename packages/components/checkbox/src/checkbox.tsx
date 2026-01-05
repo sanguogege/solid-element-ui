@@ -1,5 +1,5 @@
 import { splitProps, type Component, Show } from "solid-js";
-import { cn } from "@/utils/cn";
+import { cn } from "solid-element-ui/utils/cn";
 import { type CheckboxProps } from "./setting";
 
 

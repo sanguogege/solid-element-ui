@@ -2,12 +2,11 @@ import {
     createSignal,
     onMount,
     onCleanup,
-    createMemo,
     splitProps,
     type ParentComponent,
 } from "solid-js";
 import { type AnchorProps, AnchorContext } from "./setting";
-import { cn } from "@/utils/cn";
+import { cn } from "solid-element-ui/utils/cn";
 
 export const SeAnchor: ParentComponent<AnchorProps> = (props) => {
     const [local, others] = splitProps(props, [

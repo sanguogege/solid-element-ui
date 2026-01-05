@@ -1,5 +1,5 @@
 import { splitProps, type Component, createSignal, For, Show } from "solid-js";
-import { cn } from "@/utils/cn";
+import { cn } from "solid-element-ui/utils/cn";
 import { type RateProps } from "./setting";
 
 // 默认星星图标

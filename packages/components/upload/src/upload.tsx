@@ -4,7 +4,7 @@ import {
     createSignal,
     For,
 } from "solid-js";
-import { cn } from "@/utils/cn";
+import { cn } from "solid-element-ui/utils/cn";
 import { type UploadProps, type UploadFile } from "./setting";
 
 //  TODO 多添加几个upload样式
