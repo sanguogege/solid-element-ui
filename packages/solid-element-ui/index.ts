@@ -92,3 +92,11 @@ export { SePagination } from "@/components/pagination/src/pagination.tsx";
 export { SeSteps } from "@/components/steps/src/steps.tsx";
 export { SeTabs } from "@/components/tabs/src/tabs.tsx";
 export { SeMasonry } from "@/components/masonry/src/masonry.tsx";
+
+
+const justForTest = () => {
+  console.log("just for test");
+}
+
+
+export default justForTest;
