@@ -1,5 +1,5 @@
 import { splitProps, type Component, Show } from "solid-js";
-import { cn } from "solid-element-ui/utils/cn";
+import { cn } from "@solid-element-ui/utils/cn";
 import { type SwitchProps } from "./setting";
 
 export const SeSwitch: Component<SwitchProps> = (props) => {

@@ -1,12 +1,10 @@
 import { splitProps, createMemo, type ParentComponent } from "solid-js";
 
-import { cn } from "solid-element-ui/utils/cn";
+import { cn } from "@solid-element-ui/utils/cn";
 // 定义组件的 Props 类型
-import {type ButtonProps } from "./setting";
+import { type ButtonProps } from "./setting";
 
-import {  useButtonGroup } from "./setting";
-
-
+import { useButtonGroup } from "./setting";
 
 const BASE_CLASS =
     "inline-flex items-center justify-center font-medium transition-all duration-200 cursor-pointer outline-none border";

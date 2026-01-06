@@ -9,7 +9,7 @@ import {
     type Component,
 } from "solid-js";
 import { type AutocompleteProps, type AutocompleteOption } from "./setting";
-import { cn } from "solid-element-ui/utils/cn";
+import { cn } from "@solid-element-ui/utils/cn";
 
 const customAttributes = [
     "options",

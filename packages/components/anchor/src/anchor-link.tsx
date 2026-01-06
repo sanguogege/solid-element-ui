@@ -1,6 +1,6 @@
 import { useContext, type Component } from "solid-js";
 import { type AnchorLinkProps, AnchorContext } from "./setting";
-import { cn } from "solid-element-ui/utils/cn";
+import { cn } from "@solid-element-ui/utils/cn";
 
 export const SeAnchorLink: Component<AnchorLinkProps> = (props) => {
     const ctx = useContext(AnchorContext);

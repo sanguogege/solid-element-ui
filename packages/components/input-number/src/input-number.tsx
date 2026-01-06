@@ -1,9 +1,5 @@
-import {
-    splitProps,
-    type Component,
-    createSignal,
-} from "solid-js";
-import { cn } from "solid-element-ui/utils/cn";
+import { splitProps, type Component, createSignal } from "solid-js";
+import { cn } from "@solid-element-ui/utils/cn";
 import { type InputNumberProps } from "./setting";
 
 export const SeInputNumber: Component<InputNumberProps> = (props) => {

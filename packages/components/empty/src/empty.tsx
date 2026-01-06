@@ -1,5 +1,5 @@
 import { splitProps, type ParentComponent, Show } from "solid-js";
-import { cn } from "solid-element-ui/utils/cn";
+import { cn } from "@solid-element-ui/utils/cn";
 import { type EmptyProps } from "./setting";
 
 export const SeEmpty: ParentComponent<EmptyProps> = (props) => {

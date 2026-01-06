@@ -1,5 +1,5 @@
 import { splitProps, type ParentComponent, useContext, Show } from "solid-js";
-import { cn } from "solid-element-ui/utils/cn";
+import { cn } from "@solid-element-ui/utils/cn";
 import { CollapseContext, type CollapsePanelProps } from "./setting";
 
 export const SeCollapsePanel: ParentComponent<CollapsePanelProps> = (props) => {

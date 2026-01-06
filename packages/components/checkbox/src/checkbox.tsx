@@ -1,7 +1,6 @@
 import { splitProps, type Component, Show } from "solid-js";
-import { cn } from "solid-element-ui/utils/cn";
+import { cn } from "@solid-element-ui/utils/cn";
 import { type CheckboxProps } from "./setting";
-
 
 // TODO 解决 没有勾的问题
 export const SeCheckbox: Component<CheckboxProps> = (props) => {

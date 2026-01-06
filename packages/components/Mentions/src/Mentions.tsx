@@ -6,7 +6,7 @@ import {
     Show,
     onCleanup,
 } from "solid-js";
-import { cn } from "solid-element-ui/utils/cn";
+import { cn } from "@solid-element-ui/utils/cn";
 import { type MentionsProps, type MentionOption } from "./setting";
 
 export const SeMentions: Component<MentionsProps> = (props) => {
