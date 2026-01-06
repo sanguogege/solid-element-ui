@@ -1,6 +1,6 @@
 {
     "name": "solid-element-ui",
-    "version": "0.1.16",
+    "version": "0.1.17",
     "description": "A Component Library for solidjs",
     "type": "module",
     "files": [
@@ -25,7 +25,7 @@
         "preview": "vite preview"
     },
     "peerDependencies": {
-        "solid-js": ">=1.9.10"
+        "solid-js": ">=1.9.5"
     },
     "devDependencies": {
         "@solid-element-ui/components": "workspace:*",
