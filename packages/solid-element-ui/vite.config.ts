@@ -8,6 +8,10 @@ export default defineConfig({
     plugins: [
         solid({
             ssr: true,
+            solid: {
+                generate: "ssr",
+                hydratable: true,
+            },
         }),
         dts({
             outDir: "dist",
@@ -32,6 +36,7 @@ export default defineConfig({
                 "solid-js/store",
                 "@solidjs/router",
                 "@solidjs/meta",
+                "../css/index.css",
             ],
             output: {
                 preserveModules: false,

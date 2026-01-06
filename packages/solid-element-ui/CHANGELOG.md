@@ -1,5 +1,11 @@
 # solid-element-ui
 
+## 0.1.15
+
+### Patch Changes
+
+- remove style
+
 ## 0.1.14
 
 ### Patch Changes
