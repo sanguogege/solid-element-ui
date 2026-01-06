@@ -3,6 +3,18 @@
     "version": "0.1.8",
     "license": "MIT",
     "author": "sanguogege",
+    "description": "A Component Library for solidjs",
+    "keywords": [
+        "solid-element-ui",
+        "element",
+        "component library",
+        "ui",
+        "solidjs"
+    ],
+    "homepage": "https://github.com/sanguogege/solid-element-ui",
+    "bugs": {
+        "url": "https://github.com/sanguogege/solid-element-ui/issues"
+    },
     "type": "module",
     "files": [
         "dist"
