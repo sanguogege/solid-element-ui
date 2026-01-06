@@ -2,11 +2,20 @@
 import { defineConfig } from "vite";
 import solid from "vite-plugin-solid";
 import path from "node:path";
+import dts from "vite-plugin-dts";
 
 export default defineConfig({
     plugins: [
         solid({
             ssr: true,
+        }),
+        dts({
+            outDir: "dist",
+            staticImport: true,
+            insertTypesEntry: true, // 自动在 package.json 对应的位置生成类型入口
+            cleanVueFileName: false, // Solid 项目不涉及
+            // 确保只处理源码
+            include: ["src/**/*.ts", "src/**/*.tsx", "index.tsx"],
         }),
     ],
     build: {

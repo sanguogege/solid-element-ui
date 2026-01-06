@@ -1,5 +1,11 @@
 # solid-element-ui
 
+## 0.1.14
+
+### Patch Changes
+
+- add style he dts
+
 ## 0.1.13
 
 ### Patch Changes
