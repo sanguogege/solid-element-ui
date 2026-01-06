@@ -25,7 +25,7 @@
         "preview": "vite preview"
     },
     "peerDependencies": {
-        "solid-js": ">=1.9.5"
+        "solid-js": ">=1.9.10"
     },
     "devDependencies": {
         "@solid-element-ui/components": "workspace:*",
