@@ -1,5 +1,11 @@
 # solid-element-ui
 
+## 0.1.16
+
+### Patch Changes
+
+- for ssr
+
 ## 0.1.15
 
 ### Patch Changes

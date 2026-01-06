@@ -7,40 +7,48 @@ import dts from "vite-plugin-dts";
 export default defineConfig({
     plugins: [
         solid({
+            // 💡 只需要开启 ssr: true。
+            // 插件会自动为浏览器打包 dom 版，为服务器打包 ssr 版（如果配置了双分发）。
+            // 在库模式下，不写 generate 反而是最安全的，它会保持 JSX 的通用性。
             ssr: true,
-            solid: {
-                generate: "ssr",
-                hydratable: true,
-            },
         }),
         dts({
             outDir: "dist",
             staticImport: true,
-            insertTypesEntry: true, // 自动在 package.json 对应的位置生成类型入口
-            cleanVueFileName: false, // Solid 项目不涉及
-            // 确保只处理源码
+            insertTypesEntry: true,
             include: ["src/**/*.ts", "src/**/*.tsx", "index.tsx"],
         }),
+        // 💡 建议加上之前讨论的“抹除 CSS 引入”插件，防止报错
+        {
+            name: "remove-css-import",
+            transform(code, id) {
+                if (id.includes("index.tsx") || id.includes("src")) {
+                    return {
+                        code: code.replace(
+                            /import\s+['"]\.\.\/css\/index\.css['"];?/g,
+                            ""
+                        ),
+                        map: null,
+                    };
+                }
+            },
+        },
     ],
     build: {
         lib: {
             entry: path.resolve(__dirname, "index.tsx"),
-            formats: ["es"], // 现代 Solid 开发通常只需要 es
+            formats: ["es"],
             fileName: "index",
         },
         rollupOptions: {
-            // 核心：库本身不应该包含框架代码
             external: [
                 "solid-js",
                 "solid-js/web",
                 "solid-js/store",
                 "@solidjs/router",
                 "@solidjs/meta",
-                "../css/index.css",
+                "../css/index.css", // 保持排除
             ],
-            output: {
-                preserveModules: false,
-            },
         },
         target: "esnext",
     },
