@@ -1,5 +1,5 @@
 import { splitProps, type Component, createSignal, For, Show } from "solid-js";
-import { cn } from "solid-element-ui/utils/cn";
+import { cn } from "@solid-element-ui/utils/cn";
 import { type RateProps } from "./setting";
 
 // 默认星星图标
@@ -44,8 +44,6 @@ export const SeRate: Component<RateProps> = (props) => {
         const finalValue = local.allowClear && local.value === val ? 0 : val;
         local.onChange?.(finalValue);
     };
-
-  
 
     return (
         <div

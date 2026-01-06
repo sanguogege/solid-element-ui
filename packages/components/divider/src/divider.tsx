@@ -1,6 +1,6 @@
 import { splitProps, Show, type ParentComponent, createMemo } from "solid-js";
 import { type DividerProps } from "./setting";
-import { cn } from "solid-element-ui/utils/cn";
+import { cn } from "@solid-element-ui/utils/cn";
 
 // 1. 定义预设颜色映射（对应你 Tailwind v4 的主题配置）
 const COLOR_MAP: Record<string, string> = {
@@ -29,19 +29,23 @@ export const SeDivider: ParentComponent<DividerProps> = (
     const contentPos = () => local.contentPosition || "center";
 
     // 2. 核心判断逻辑
-    const isCustomColor = createMemo(() => local.color && !COLOR_MAP[local.color]);
-    const presetColorClass = createMemo(() => (local.color ? COLOR_MAP[local.color] : ""));
+    const isCustomColor = createMemo(
+        () => local.color && !COLOR_MAP[local.color]
+    );
+    const presetColorClass = createMemo(() =>
+        local.color ? COLOR_MAP[local.color] : ""
+    );
 
     // 3. 动态样式处理
     const resolveStyles = createMemo(() => {
         if (!isCustomColor()) return others.style || {};
         return {
             "border-color": local.color,
-            "color": local.color,
-            ...(others.style as any)
+            color: local.color,
+            ...(others.style as any),
         };
     });
-    
+
     return (
         <div
             {...others}
@@ -53,12 +57,14 @@ export const SeDivider: ParentComponent<DividerProps> = (
                 !local.color && !local.children && "border-gray-200",
                 // 应用预设类名
                 presetColorClass(),
-                
-                !isVertical() ? [
-                    "flex items-center w-full my-6",
-                    // 关键：带文字时父容器不能有 border，否则会穿透文字
-                    local.children ? "border-none" : "border-t"
-                ] : "inline-block mx-2 h-[0.9em] align-middle border-l",
+
+                !isVertical()
+                    ? [
+                          "flex items-center w-full my-6",
+                          // 关键：带文字时父容器不能有 border，否则会穿透文字
+                          local.children ? "border-none" : "border-t",
+                      ]
+                    : "inline-block mx-2 h-[0.9em] align-middle border-l",
 
                 local.dashed && "border-dashed",
                 local.class
@@ -71,9 +77,11 @@ export const SeDivider: ParentComponent<DividerProps> = (
                         // 必须包含 border-inherit，让 before/after 线条继承父级的预设类名颜色或内联样式颜色
                         "before:content-[''] before:border-t before:border-inherit",
                         "after:content-[''] after:border-t after:border-inherit",
-                        local.dashed && "before:border-dashed after:border-dashed",
+                        local.dashed &&
+                            "before:border-dashed after:border-dashed",
                         // 位置逻辑
-                        contentPos() === "center" && "before:flex-1 after:flex-1",
+                        contentPos() === "center" &&
+                            "before:flex-1 after:flex-1",
                         contentPos() === "left" && "before:w-6 after:flex-1",
                         contentPos() === "right" && "before:flex-1 after:w-6"
                     )}
@@ -84,5 +92,5 @@ export const SeDivider: ParentComponent<DividerProps> = (
                 </div>
             </Show>
         </div>
-    )
+    );
 };

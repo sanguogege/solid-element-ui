@@ -59,7 +59,7 @@ fs.mkdirSync(testDir, { recursive: true });
 
 // 1. 组件主文件 (文件名: cool-button.tsx)
 const componentTemplate = `import { splitProps, type ParentComponent } from "solid-js";
-import { cn } from "solid-element-ui/utils/cn";
+import { cn } from "@solid-element-ui/utils/cn";
 import { type ${propsName} } from "./setting";
 
 export const ${exportName}: ParentComponent<${propsName}> = (props: ${propsName}) => {
@@ -80,7 +80,6 @@ export interface ${propsName} extends JSX.HTMLAttributes<HTMLDivElement> {
     // 可以在这里添加自定义属性
 }
 `;
-
 
 // --- 写入文件 ---
 

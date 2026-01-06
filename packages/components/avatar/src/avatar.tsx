@@ -5,7 +5,7 @@ import {
     Show,
     createMemo,
 } from "solid-js";
-import { cn } from "solid-element-ui/utils/cn";
+import { cn } from "@solid-element-ui/utils/cn";
 import { type AvatarProps } from "./setting";
 
 export const SeAvatar: Component<AvatarProps> = (props) => {

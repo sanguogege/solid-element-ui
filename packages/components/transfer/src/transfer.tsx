@@ -1,5 +1,5 @@
 import { splitProps, type Component, createSignal, For } from "solid-js";
-import { cn } from "solid-element-ui/utils/cn";
+import { cn } from "@solid-element-ui/utils/cn";
 import { type TransferProps, type TransferItem } from "./setting";
 import { SeCheckbox } from "../../checkbox/src/checkbox"; // 复用之前写的复选框
 import { SeButton } from "../../button/src/button"; // 复用之前写的按钮

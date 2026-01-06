@@ -4,9 +4,9 @@ import {
     createSignal,
     For,
     Show,
-    onCleanup
+    onCleanup,
 } from "solid-js";
-import { cn } from "solid-element-ui/utils/cn";
+import { cn } from "@solid-element-ui/utils/cn";
 import { type TreeSelectProps, type TreeOption } from "./setting";
 
 // 递归项组件

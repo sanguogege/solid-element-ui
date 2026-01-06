@@ -1,5 +1,5 @@
 import { splitProps, type Component, For, Show } from "solid-js";
-import { cn } from "solid-element-ui/utils/cn";
+import { cn } from "@solid-element-ui/utils/cn";
 import { type TableProps } from "./setting";
 
 export const SeTable: Component<TableProps> = (props) => {

@@ -1,5 +1,5 @@
 import { splitProps, type Component, Show, createMemo } from "solid-js";
-import { cn } from "solid-element-ui/utils/cn"; // 确保你的路径别名配置正确
+import { cn } from "@solid-element-ui/utils/cn"; // 确保你的路径别名配置正确
 import { type StatisticProps } from "./setting";
 
 export const SeStatistic: Component<StatisticProps> = (props) => {

@@ -6,7 +6,7 @@ import {
     Show,
     onCleanup,
 } from "solid-js";
-import { cn } from "solid-element-ui/utils/cn";
+import { cn } from "@solid-element-ui/utils/cn";
 import { type SelectProps, type SelectOption } from "./setting";
 
 export const SeSelect: Component<SelectProps> = (props) => {

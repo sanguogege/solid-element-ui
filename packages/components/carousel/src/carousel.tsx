@@ -8,7 +8,7 @@ import {
     For,
     Show,
 } from "solid-js";
-import { cn } from "solid-element-ui/utils/cn";
+import { cn } from "@solid-element-ui/utils/cn";
 import { type CarouselProps } from "./setting";
 
 export const SeCarousel: ParentComponent<CarouselProps> = (props) => {

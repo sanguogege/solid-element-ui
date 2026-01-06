@@ -1,5 +1,5 @@
 import { splitProps, type ParentComponent } from "solid-js";
-import { cn } from "solid-element-ui/utils/cn";
+import { cn } from "@solid-element-ui/utils/cn";
 import { type ButtonGroupProps } from "./setting";
 import { ButtonGroupContext } from "./setting";
 

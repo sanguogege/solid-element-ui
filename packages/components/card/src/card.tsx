@@ -1,5 +1,5 @@
 import { splitProps, type ParentComponent, Show, For } from "solid-js";
-import { cn } from "solid-element-ui/utils/cn";
+import { cn } from "@solid-element-ui/utils/cn";
 import { type CardProps } from "./setting";
 
 export const SeCard: ParentComponent<CardProps> = (props) => {

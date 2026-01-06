@@ -7,7 +7,7 @@ import {
     onCleanup,
     createMemo,
 } from "solid-js";
-import { cn } from "solid-element-ui/utils/cn";
+import { cn } from "@solid-element-ui/utils/cn";
 import { type TimePickerProps } from "./setting";
 
 export const SeTimePicker: Component<TimePickerProps> = (props) => {
