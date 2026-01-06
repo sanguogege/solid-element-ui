@@ -1,5 +1,11 @@
 # solid-element-ui
 
+## 0.1.9
+
+### Patch Changes
+
+- fix:bug
+
 ## 0.1.8
 
 ### Patch Changes
