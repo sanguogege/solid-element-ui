@@ -1,5 +1,11 @@
 # solid-element-ui
 
+## 0.1.13
+
+### Patch Changes
+
+- change peerDependencies
+
 ## 0.1.12
 
 ### Patch Changes
