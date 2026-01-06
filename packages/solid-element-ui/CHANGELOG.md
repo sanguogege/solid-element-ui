@@ -1,5 +1,11 @@
 # solid-element-ui
 
+## 0.1.11
+
+### Patch Changes
+
+- reomve docs
+
 ## 0.1.10
 
 ### Patch Changes
