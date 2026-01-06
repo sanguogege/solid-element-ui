@@ -30,7 +30,7 @@
     "peerDependencies": {
         "solid-js": "^1.0.0"
     },
-    "dependencies": {
+    "devDependencies": {
         "@solid-element-ui/components": "workspace:*",
         "@solid-element-ui/utils": "workspace:*"
     },
