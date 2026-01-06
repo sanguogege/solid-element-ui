@@ -4,26 +4,30 @@ import solid from "vite-plugin-solid";
 import path from "node:path";
 
 export default defineConfig({
-    plugins: [solid()],
+    plugins: [
+        solid({
+            ssr: true,
+        }),
+    ],
     build: {
         lib: {
             entry: path.resolve(__dirname, "index.tsx"),
-            formats: ["es"],
+            formats: ["es"], // 现代 Solid 开发通常只需要 es
             fileName: "index",
         },
         rollupOptions: {
-            // 将所有同系列的包排除在打包之外
-            external: ["solid-js", "solid-js/web"],
+            // 核心：库本身不应该包含框架代码
+            external: [
+                "solid-js",
+                "solid-js/web",
+                "solid-js/store",
+                "@solidjs/router",
+                "@solidjs/meta",
+            ],
+            output: {
+                preserveModules: false,
+            },
         },
-    },
-    resolve: {
-        alias: {
-            // 显式映射，防止 Vite 去寻找 package.json 的 exports
-            "solid-element-ui/components": path.resolve(
-                __dirname,
-                "../components"
-            ),
-            "solid-element-ui/utils": path.resolve(__dirname, "../utils"),
-        },
+        target: "esnext",
     },
 });
