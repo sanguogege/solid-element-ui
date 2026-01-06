@@ -1,0 +1,19 @@
+{
+    "extends": "astro/tsconfigs/strict",
+    "include": [
+        ".astro/types.d.ts",
+        "**/*",
+        "../packages/**/*.ts",
+        "../packages/**/*.tsx"
+    ],
+    "exclude": ["dist"],
+    "compilerOptions": {
+        "jsx": "preserve",
+        "jsxImportSource": "solid-js",
+        "baseUrl": ".",
+        "paths": {
+            "solid-element-ui": ["../packages/solid-element-ui/index.tsx"],
+            "solid-element-ui/*": ["../packages/solid-element-ui/*"]
+        }
+    }
+}
