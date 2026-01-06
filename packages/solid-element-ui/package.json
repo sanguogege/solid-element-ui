@@ -20,7 +20,8 @@
         "./*": "./*"
     },
     "dependencies": {
-        "solid-element-ui/components": "workspace:*"
+        "@solid-element-ui/components": "workspace:*",
+        "@solid-element-ui/utils": "workspace:*"
     },
     "scripts": {
         "dev": "vite",
