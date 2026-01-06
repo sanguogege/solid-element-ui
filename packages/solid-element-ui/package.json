@@ -16,8 +16,7 @@
             "types": "./dist/index.d.ts",
             "import": "./dist/index.js",
             "development": "./index.ts"
-        },
-        "./*": "./*"
+        }
     },
     "dependencies": {
         "@solid-element-ui/components": "workspace:*",

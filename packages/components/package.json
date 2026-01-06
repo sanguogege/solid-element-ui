@@ -5,6 +5,6 @@
     "license": "MIT",
     "description": "all components are settled here",
     "dependencies": {
-        "solid-element-ui/utils": "workspace:*"
+        "@solid-element-ui/utils": "workspace:*"
     }
 }
