@@ -1,11 +1,39 @@
 ## Usage
 
+
+### This is a trial version.
+
+### it dependence on tailwindcss 
+
+### you must to install tailwindcss
+
 ```bash
-$ npm install # or pnpm install or yarn install
+    bun add tailwindcss @tailwindcss/vite
+
+    bun add solid-element-ui
 ```
 
-### In infrastructure construction
 
-### The vast majority of components have been completed, and what remains is optimization
+```css
+    @import "tailwindcss";
+
+    @source "../node_modules/solid-element-ui/dist/**/*.js";
+```
+
+
+### it has a preset style. you can change with class in tailwindcss,or style
+
+```tsx
+
+    import {SeButton} from "solid-element-ui"
+
+    <SeButton variant="success" style="color:red;" class="text-black-700 bg-amber-500 border-b-blue-950">
+        Hello tailwind!
+    </SeButton>
+
+```
+
+
+now it also has some problem , it can use in ssr , so wait it.
 
 

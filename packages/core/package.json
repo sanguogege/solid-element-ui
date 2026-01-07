@@ -1,6 +1,6 @@
 {
     "name": "solid-element-ui",
-    "version": "0.1.11",
+    "version": "0.1.17",
     "description": "A Component Library for solidjs",
     "type": "module",
     "files": [
@@ -12,14 +12,11 @@
     "main": "./dist/index.js",
     "module": "./dist/index.js",
     "types": "./dist/index.d.ts",
-    "source": "./index.tsx",
     "exports": {
         ".": {
             "types": "./dist/index.d.ts",
             "import": "./dist/index.js",
-            "browser": "./dist/index.js",
-            "development": "./index.tsx",
-            "default": "./dist/index.js"
+            "browser": "./dist/index.js"
         }
     },
     "scripts": {
@@ -28,7 +25,7 @@
         "preview": "vite preview"
     },
     "peerDependencies": {
-        "solid-js": "^1.0.0"
+        "solid-js": ">=1.9.10"
     },
     "devDependencies": {
         "@solid-element-ui/components": "workspace:*",

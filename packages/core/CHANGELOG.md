@@ -1,5 +1,41 @@
 # solid-element-ui
 
+## 0.1.17
+
+### Patch Changes
+
+- change version
+
+## 0.1.16
+
+### Patch Changes
+
+- for ssr
+
+## 0.1.15
+
+### Patch Changes
+
+- remove style
+
+## 0.1.14
+
+### Patch Changes
+
+- add style he dts
+
+## 0.1.13
+
+### Patch Changes
+
+- change peerDependencies
+
+## 0.1.12
+
+### Patch Changes
+
+- add
+
 ## 0.1.11
 
 ### Patch Changes

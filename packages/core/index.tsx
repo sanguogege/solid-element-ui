@@ -7,6 +7,8 @@
 // TODO 专属css
 // TODO 格栅布局，flex布局，space看情况再说添加不添加
 
+// TODO 使用cva+cn 重新编写组件
+
 import "../css/index.css";
 export { SeButton } from "@solid-element-ui/components/button/src/button.tsx";
 export { SeButtonGroup } from "@solid-element-ui/components/button/src/button-group.tsx";
