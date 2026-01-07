@@ -3,5 +3,8 @@
     "version": "0.0.8",
     "private": true,
     "license": "MIT",
-    "description": "all utils are settled here"
+    "description": "all utils are settled here",
+    "devDependencies": {
+        "clsx": "^2.1.1"
+    }
 }

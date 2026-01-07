@@ -9,18 +9,11 @@
         "version": "bun changeset version",
         "status": "bun changeset status",
         "gen": "node scripts/gen-component.ts",
+        "clean": "turbo run clean && rm -rf node_modules",
         "lint": "turbo lint",
         "release": "turbo build lint && changeset publish"
     },
     "packageManager": "bun@1.3.5",
-    "dependencies": {
-        "@floating-ui/dom": "^1.7.4",
-        "@tailwindcss/vite": "^4.1.18",
-        "clsx": "^2.1.1",
-        "solid-js": "^1.9.10",
-        "tailwind-merge": "^3.4.0",
-        "tailwindcss": "^4.1.18"
-    },
     "devDependencies": {
         "@changesets/cli": "^2.29.8",
         "@solidjs/testing-library": "^0.8.10",

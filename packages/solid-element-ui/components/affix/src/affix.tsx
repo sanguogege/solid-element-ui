@@ -4,11 +4,15 @@ import {
     onCleanup,
     createMemo,
     splitProps,
-    type ParentComponent,
+    type Component,
 } from "solid-js";
 import { isServer } from "solid-js/web";
-import { type AffixProps } from "./setting";
-import { cn } from "@solid-element-ui/utils/cn";
+import { cn } from "@solid-element-ui/utils/cn"; // 你的工具类
+import { type AffixProps } from "./variants";
+import { affixVariants, type AffixVariants } from "./variants";
+
+// 扩展 Props 以包含 CVA 变体
+export interface SeAffixProps extends AffixProps, AffixVariants {}
 
 const customAttributes = [
     "offsetTop",
@@ -19,15 +23,15 @@ const customAttributes = [
     "zIndex",
     "class",
     "children",
+    "shadow", // CVA 属性
+    "speed", // CVA 属性
 ] as const;
 
-export const SeAffix: ParentComponent<AffixProps> = (props: AffixProps) => {
-    // 1. 分离自定义属性
+export const SeAffix: Component<SeAffixProps> = (props) => {
+    // 1. 分离：local(自定义+CVA), others(原生HTML属性)
     const [local, others] = splitProps(props, customAttributes);
 
-    // 状态信号
     const [isAffixed, setIsAffixed] = createSignal(false);
-    // 存储占位符的实时位置和尺寸
     const [rect, setRect] = createSignal({
         top: 0,
         bottom: 0,
@@ -39,10 +43,9 @@ export const SeAffix: ParentComponent<AffixProps> = (props: AffixProps) => {
 
     let placeholderRef: HTMLDivElement | undefined;
 
-    // 2. 声明式计算样式：利用 createMemo 优化性能
+    // 2. 样式计算 (保持原有逻辑，注入 zIndex)
     const affixStyles = createMemo(() => {
         if (!isAffixed()) return {};
-
         const styles: any = {
             position: "fixed",
             width: `${rect().width}px`,
@@ -50,34 +53,25 @@ export const SeAffix: ParentComponent<AffixProps> = (props: AffixProps) => {
             "z-index": local.zIndex ?? 1000,
         };
 
-        // 垂直定位逻辑
         if (local.offsetBottom !== undefined) {
             styles.bottom = `${local.offsetBottom}px`;
         } else {
-            // 默认为吸顶逻辑，offsetTop 缺省为 0
             styles.top = `${local.offsetTop ?? 0}px`;
         }
 
-        // 水平定位逻辑：如果用户没传，则锁定在占位符原始水平位置
-        if (local.offsetLeft !== undefined) {
+        // 水平锁定
+        if (local.offsetLeft !== undefined)
             styles.left = `${local.offsetLeft}px`;
-        } else if (local.offsetRight !== undefined) {
+        else if (local.offsetRight !== undefined)
             styles.right = `${local.offsetRight}px`;
-        } else {
-            styles.left = `${rect().left}px`;
-        }
+        else styles.left = `${rect().left}px`;
 
         return styles;
     });
 
-    // 3. 核心位置计算逻辑
     const updatePosition = () => {
         if (!placeholderRef || isServer) return;
-
         const currentRect = placeholderRef.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-
-        // 更新位置快照
         setRect({
             top: currentRect.top,
             bottom: currentRect.bottom,
@@ -87,28 +81,20 @@ export const SeAffix: ParentComponent<AffixProps> = (props: AffixProps) => {
             height: currentRect.height,
         });
 
-        // 判断触发条件
         if (local.offsetBottom !== undefined) {
-            // 吸底逻辑：视口高度 - 元素底部距离 <= 偏移量
             setIsAffixed(
-                windowHeight - currentRect.bottom <= local.offsetBottom
+                window.innerHeight - currentRect.bottom <= local.offsetBottom
             );
         } else {
-            // 吸顶逻辑：元素顶部距离 <= 偏移量
             setIsAffixed(currentRect.top <= (local.offsetTop ?? 0));
         }
     };
 
-    // 4. 事件监听与生命周期
     onMount(() => {
         const scrollTarget = local.target?.() || window;
-
         scrollTarget.addEventListener("scroll", updatePosition);
         window.addEventListener("resize", updatePosition);
-
-        // 初始执行一次
         updatePosition();
-
         onCleanup(() => {
             scrollTarget.removeEventListener("scroll", updatePosition);
             window.removeEventListener("resize", updatePosition);
@@ -118,7 +104,6 @@ export const SeAffix: ParentComponent<AffixProps> = (props: AffixProps) => {
     return (
         <div
             ref={placeholderRef}
-            // 当固定时，外层占位符必须保持高度，防止下方内容塌陷
             style={
                 isAffixed()
                     ? {
@@ -130,10 +115,13 @@ export const SeAffix: ParentComponent<AffixProps> = (props: AffixProps) => {
         >
             <div
                 {...others}
+                // 3. 使用 CVA 函数生成类名，并与用户自定义的 local.class 融合
                 class={cn(
-                    isAffixed() ? "affix--fixed" : "",
-                    // 2026年 v4 建议通过类名微调过渡
-                    "transition-[position,top,bottom,left,right] duration-300",
+                    affixVariants({
+                        shadow: local.shadow,
+                        speed: local.speed,
+                    }),
+                    isAffixed() ? "affix--fixed" : "relative",
                     local.class
                 )}
                 style={affixStyles()}

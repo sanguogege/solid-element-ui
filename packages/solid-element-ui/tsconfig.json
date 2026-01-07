@@ -22,9 +22,7 @@
         "jsx": "preserve",
         "jsxImportSource": "solid-js",
         "paths": {
-            "@solid-element-ui/components/*": ["../components/*"],
             "@solid-element-ui/utils/*": ["../utils/*"]
         }
-    },
-    "include": ["index.tsx", "../components/**/*", "../utils/*"]
+    }
 }
