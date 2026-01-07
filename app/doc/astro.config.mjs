@@ -4,6 +4,8 @@ import starlight from '@astrojs/starlight';
 import mdx from "@astrojs/mdx";
 import solidJs from "@astrojs/solid-js";
 import tailwindcss from "@tailwindcss/vite";
+
+import starlightThemeRapide from "starlight-theme-rapide";
 // https://astro.build/config
 export default defineConfig({
     integrations: [
@@ -29,6 +31,8 @@ export default defineConfig({
                     autogenerate: { directory: "components" },
                 },
             ],
+            customCss: ["./src/styles/global.css"],
+            plugins: [starlightThemeRapide()],
         }),
         mdx(),
         solidJs(),
@@ -46,6 +50,6 @@ export default defineConfig({
             // 确保服务端和客户端都使用相同的条件名
             conditions: ["solid", "development", "browser", "import"],
         },
-        plugins: [tailwindcss()],
+        plugins: [/** @type {any} */ (tailwindcss())],
     },
 });

@@ -1,21 +1,24 @@
 {
-    "name": "vite-template-solid",
-    "version": "0.0.0",
-    "description": "",
+    "name": "example-with-mdx",
     "type": "module",
     "scripts": {
-        "start": "vite",
-        "dev": "vite",
-        "build": "vite build",
-        "serve": "vite preview"
+        "dev": "vinxi dev",
+        "build": "vinxi build",
+        "start": "vinxi start"
     },
-    "license": "MIT",
-    "peerDependencies": {
-        "solid-js": "^1.9.10"
-    },
-    "devDependencies": {
-        "solid-devtools": "^0.34.3",
+    "dependencies": {
+        "@mdx-js/mdx": "^2.3.0",
+        "@solidjs/meta": "^0.29.4",
+        "@solidjs/router": "^0.15.0",
+        "@solidjs/start": "^1.1.0",
         "@tailwindcss/vite": "*",
-        "solid-element-ui": "workspace:*"
+        "@vinxi/plugin-mdx": "^3.7.1",
+        "solid-element-ui": "workspace:*",
+        "solid-js": "^1.9.5",
+        "solid-mdx": "^0.0.7",
+        "vinxi": "^0.5.7"
+    },
+    "engines": {
+        "node": ">=22"
     }
 }

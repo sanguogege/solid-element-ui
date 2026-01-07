@@ -1,10 +1,20 @@
-import type { Component } from 'solid-js';
-import {SeButton} from "solid-element-ui"
+import { Router } from "@solidjs/router";
+import { FileRoutes } from "@solidjs/start/router";
+import { Suspense } from "solid-js";
+import "./app.css";
 
-const App: Component = () => {
+import Layout from "./layout";
+
+export default function App() {
   return (
-    <SeButton >Hello tailwind!</SeButton>
+    <Router
+      root={props => (
+        <Layout>
+          <Suspense>{props.children}</Suspense>
+        </Layout>
+      )}
+    >
+      <FileRoutes />
+    </Router>
   );
-};
-
-export default App;
+}
