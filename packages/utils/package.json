@@ -5,6 +5,7 @@
     "license": "MIT",
     "description": "all utils are settled here",
     "devDependencies": {
-        "clsx": "^2.1.1"
+        "clsx": "^2.1.1",
+         "tailwind-merge": "^3.4.0"
     }
 }

@@ -32,7 +32,6 @@
         "@floating-ui/dom": "^1.7.4",
         "class-variance-authority": "^0.7.1",
         "solid-js": "^1.9.10",
-        "tailwind-merge": "^3.4.0",
         "tailwindcss": "^4.1.18",
       },
       "devDependencies": {
@@ -48,6 +47,7 @@
       "version": "0.0.8",
       "devDependencies": {
         "clsx": "^2.1.1",
+        "tailwind-merge": "^3.4.0",
       },
     },
   },

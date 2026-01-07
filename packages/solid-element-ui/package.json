@@ -30,7 +30,7 @@
     "dependencies": {
         "class-variance-authority": "^0.7.1",
         "@floating-ui/dom": "^1.7.4",
-        "tailwind-merge": "^3.4.0",
+       
         "tailwindcss": "^4.1.18",
         "solid-js": "^1.9.10"
     },
