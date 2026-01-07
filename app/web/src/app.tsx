@@ -1,4 +1,4 @@
-import { SeMasonry } from "../packages/solid-element-ui";
+import { SeMasonry } from "solid-element-ui";
 
 export default function MasonryDemo() {
     // 模拟具有不同高度的数据
