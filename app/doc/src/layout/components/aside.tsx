@@ -12,8 +12,13 @@ import {  useNavigate } from "@solidjs/router";
 
 const menu: MenuItemType[] = [
     {
-        key: "button",
+        key: "",
         label: "通用",
+        children: [{ key: "button", label: "button" }],
+    },
+    {
+        key: "",
+        label: "布局",
         children: [{ key: "button", label: "button" }],
     },
 ];
