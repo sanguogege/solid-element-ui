@@ -9,7 +9,7 @@
 
 // TODO 使用cva+cn 重新编写组件
 
-import "../css/index.css";
+import "./css/index.css";
 export { SeButton } from "./components/button/src/button.tsx";
 export { SeButtonGroup } from "./components/button/src/button-group.tsx";
 export { SeAffix } from "./components/affix/src/affix.tsx";
