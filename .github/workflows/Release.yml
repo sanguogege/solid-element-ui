@@ -5,7 +5,7 @@ on:
         branches:
             - main
         # 建议扩大监控范围，否则你只改代码不改 package.json 时不会触发
-        paths: 
+        paths:
             - "packages/**"
             - ".changeset/*.md"
 
@@ -38,7 +38,7 @@ jobs:
               uses: changesets/action@v1
               with:
                   # 修正点 1: 必须使用 publish 关键字
-                  publish: bun run publish 
+                  publish: bun run release
                   # 修正点 2: 确认你的脚本名是 version
                   version: bun run version
                   createGithubReleases: true

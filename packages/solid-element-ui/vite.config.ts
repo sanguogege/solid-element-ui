@@ -7,9 +7,6 @@ import dts from "vite-plugin-dts";
 export default defineConfig({
     plugins: [
         solid({
-            // 💡 只需要开启 ssr: true。
-            // 插件会自动为浏览器打包 dom 版，为服务器打包 ssr 版（如果配置了双分发）。
-            // 在库模式下，不写 generate 反而是最安全的，它会保持 JSX 的通用性。
             ssr: true,
         }),
         dts({

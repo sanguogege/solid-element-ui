@@ -16,20 +16,27 @@
         ".": {
             "types": "./dist/index.d.ts",
             "import": "./dist/index.js",
+            "solid": "./dist/index.tsx",
             "browser": "./dist/index.js"
         }
     },
     "scripts": {
         "dev": "vite",
-        "build": "tsc -b && vite build",
-        "preview": "vite preview"
+        "build": "tsc -b && vite build"
     },
     "peerDependencies": {
-        "solid-js": ">=1.9.10"
+        "solid-js": "^1.9.10"
+    },
+    "dependencies": {
+        "class-variance-authority": "^0.7.1",
+        "@floating-ui/dom": "^1.7.4",
+       
+        "tailwindcss": "^4.1.18",
+        "solid-js": "^1.9.10"
     },
     "devDependencies": {
-        "@solid-element-ui/components": "workspace:*",
-        "@solid-element-ui/utils": "workspace:*"
+        "@solid-element-ui/utils": "workspace:*",
+        "@tailwindcss/vite": "^4.1.18"
     },
     "license": "MIT",
     "author": "sanguogege",
@@ -52,5 +59,9 @@
     "bugs": {
         "url": "https://github.com/sanguogege/solid-element-ui/issues"
     },
-    "sideEffects": false
+    "sideEffects": false,
+    "include": [
+        "index.tsx",
+        "**/*"
+    ]
 }
