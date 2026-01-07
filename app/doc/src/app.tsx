@@ -3,15 +3,15 @@ import { FileRoutes } from "@solidjs/start/router";
 import { Suspense } from "solid-js";
 import "./app.css";
 
+import Layout from "./layout";
+
 export default function App() {
   return (
     <Router
       root={props => (
-        <main>
-          <a href="/">Index</a>
-          <a href="/about">About</a>
+        <Layout>
           <Suspense>{props.children}</Suspense>
-        </main>
+        </Layout>
       )}
     >
       <FileRoutes />
