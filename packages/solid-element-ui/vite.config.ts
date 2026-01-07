@@ -3,12 +3,14 @@ import { defineConfig } from "vite";
 import solid from "vite-plugin-solid";
 import path from "node:path";
 import dts from "vite-plugin-dts";
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
     plugins: [
         solid({
             ssr: true,
         }),
+        tailwindcss(),
         dts({
             outDir: "dist",
             staticImport: true,

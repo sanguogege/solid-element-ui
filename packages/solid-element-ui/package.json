@@ -14,10 +14,12 @@
     "types": "./dist/index.d.ts",
     "exports": {
         ".": {
+            "development": "./index.tsx",
+            "solid": "./index.tsx",
             "types": "./dist/index.d.ts",
-            "import": "./dist/index.js",
-            "solid": "./dist/index.tsx",
-            "browser": "./dist/index.js"
+            "browser": "./dist/index.js",
+            "default": "./index.tsx",
+            "import": "./dist/index.js"
         }
     },
     "scripts": {
@@ -29,14 +31,11 @@
     },
     "dependencies": {
         "class-variance-authority": "^0.7.1",
-        "@floating-ui/dom": "^1.7.4",
-       
-        "tailwindcss": "^4.1.18",
-        "solid-js": "^1.9.10"
+        "@floating-ui/dom": "^1.7.4"
     },
     "devDependencies": {
         "@solid-element-ui/utils": "workspace:*",
-        "@tailwindcss/vite": "^4.1.18"
+        "@tailwindcss/vite": "*"
     },
     "license": "MIT",
     "author": "sanguogege",

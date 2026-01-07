@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+/* v4 需要明确指定源 */
+
+@source "../../node_modules/solid-element-ui/**/*.{tsx,ts}";
+@source "../../../packages/solid-element-ui/index.tsx";
+
+@source "../**/*.{md,mdx,astro,js,ts}"; 
+@plugin '@tailwindcss/typography';

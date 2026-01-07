@@ -21,8 +21,10 @@
         "noFallthroughCasesInSwitch": true,
         "jsx": "preserve",
         "jsxImportSource": "solid-js",
+        "baseUrl": ".",
         "paths": {
-            "@solid-element-ui/utils/*": ["../utils/*"]
+            "solid-element-ui": ["packages/solid-element-ui/index.tsx"],
+            "@solid-element-ui/utils": ["packages/utils/*"]
         }
     }
 }

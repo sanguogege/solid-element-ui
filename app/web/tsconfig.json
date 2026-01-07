@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+      // General
+      "jsx": "preserve",
+      "jsxImportSource": "solid-js",
+      "target": "ESNext",
+
+      // Modules
+      "allowSyntheticDefaultImports": true,
+      "esModuleInterop": true,
+      "isolatedModules": true,
+      "module": "ESNext",
+      "moduleResolution": "bundler",
+      "noEmit": true,
+
+      // Type Checking & Safety
+      "strict": true,
+      "types": ["vite/client"],
+      "baseUrl": ".",
+      "paths": {
+          "solid-element-ui": ["packages/solid-element-ui/index.tsx"],
+          "@solid-element-ui/utils": ["packages/utils/*"]
+      }
+  }
+}
