@@ -34,6 +34,3 @@
 ```
 
 
-now it also has some problem , it can use in ssr , so wait it.
-
-

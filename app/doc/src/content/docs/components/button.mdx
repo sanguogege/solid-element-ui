@@ -1,14 +1,28 @@
 ---
-title: button Reference
+title: Button
 description: A reference page in my new Starlight docs site.
 ---
 
-import {SeButton} from "solid-element-ui"
+import { Button } from "solid-element-ui";
 
-button
+<div>
+    <Button variant="default">default</Button>
+</div>
+<div>
+    <Button variant="primary">primary</Button>
+</div>
+<div>
+    <Button variant="dashed">dashed</Button>
+</div>
+<div>
+    <Button variant="text">text</Button>
+</div>
+<div>
+    <Button variant="link">link</Button>
+</div>
 
-
-
-<div class="prose">
-  <SeButton variant="success"  >1111</SeButton>
+<div>
+    <Button variant="primary" class="bg-amber-600">
+        自定义
+    </Button>
 </div>
