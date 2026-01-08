@@ -1,9 +1,8 @@
 ## Usage
 
-
 ### This is a trial version.
 
-### it dependence on tailwindcss 
+### it dependence on tailwindcss
 
 ### you must to install tailwindcss
 
@@ -13,24 +12,22 @@
     bun add solid-element-ui
 ```
 
-
 ```css
-    @import "tailwindcss";
+@import "tailwindcss";
 
-    @source "../node_modules/solid-element-ui/dist/**/*.js";
+@source "../node_modules/solid-element-ui/dist/**/*.js";
 ```
-
 
 ### it has a preset style. you can change with class in tailwindcss,or style
 
 ```tsx
+import { Button } from "solid-element-ui";
 
-    import {SeButton} from "solid-element-ui"
-
-    <SeButton variant="success" style="color:red;" class="text-black-700 bg-amber-500 border-b-blue-950">
-        Hello tailwind!
-    </SeButton>
-
+<Button
+    variant="success"
+    style="color:red;"
+    class="text-black-700 bg-amber-500 border-b-blue-950"
+>
+    Hello tailwind!
+</Button>;
 ```
-
-

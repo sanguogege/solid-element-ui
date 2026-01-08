@@ -21,9 +21,9 @@ export const buttonVariants = cva(
                 link: "bg-transparent text-blue-600 hover:text-[#4096ff]",
             },
             size: {
-                small: "h-6 px-2 text-xs",
-                middle: "h-8 px-4 text-sm",
-                large: "h-10 px-6 text-base",
+                sm: "h-6 px-2 text-xs",
+                md: "h-8 px-4 text-sm",
+                lg: "h-10 px-6 text-base",
             },
             danger: {
                 true: "",
@@ -34,7 +34,7 @@ export const buttonVariants = cva(
         },
         defaultVariants: {
             variant: "default",
-            size: "middle",
+            size: "md",
         },
     }
 );

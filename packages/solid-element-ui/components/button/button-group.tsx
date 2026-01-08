@@ -3,7 +3,7 @@ import { cn } from "@solid-element-ui/utils/cn";
 import { type ButtonGroupProps } from "./setting";
 import { ButtonGroupContext } from "./setting";
 
-export const SeButtonGroup: ParentComponent<ButtonGroupProps> = (
+export const ButtonGroup: ParentComponent<ButtonGroupProps> = (
     props: ButtonGroupProps
 ) => {
     const [local, others] = splitProps(props, [

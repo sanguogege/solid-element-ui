@@ -6,7 +6,7 @@ import {
     onCleanup,
 } from "solid-js";
 import { Portal } from "solid-js/web";
-import { SeButton } from "../../button/src/button"; // 假设已存在 Button 组件
+import { Button } from "../button/button"; // 假设已存在 Button 组件
 import { type ModalProps } from "./setting";
 
 export const SeModal: ParentComponent<ModalProps> = (props) => {
@@ -120,21 +120,21 @@ export const SeModal: ParentComponent<ModalProps> = (props) => {
                                         when={local.footer}
                                         fallback={
                                             <>
-                                                <SeButton
+                                                <Button
                                                     onClick={() =>
                                                         local.onCancel?.()
                                                     }
                                                 >
                                                     {local.cancelText || "取消"}
-                                                </SeButton>
-                                                <SeButton
+                                                </Button>
+                                                <Button
                                                     variant="primary"
                                                     onClick={() =>
                                                         local.onOk?.()
                                                     }
                                                 >
                                                     {local.okText || "确定"}
-                                                </SeButton>
+                                                </Button>
                                             </>
                                         }
                                     >

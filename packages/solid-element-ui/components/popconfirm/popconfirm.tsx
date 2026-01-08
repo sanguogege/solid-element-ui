@@ -1,6 +1,6 @@
 import { splitProps, type ParentComponent, createSignal, Show } from "solid-js";
-import { SePopover } from "../../popover/src/popover";
-import { SeButton } from "../../button/src/button";
+import { SePopover } from "../popover/popover";
+import { Button } from "../button/button";
 import { type PopconfirmProps } from "./setting";
 
 // SePopover没有open 这个属性，需要处理一下，不然无法关闭
@@ -20,7 +20,7 @@ export const SePopconfirm: ParentComponent<PopconfirmProps> = (props) => {
 
     const [visible, setVisible] = createSignal(false);
 
-    // 内部处理函数：因为 SeButton 的 onClick 传递的是 MouseEvent
+    // 内部处理函数：因为 Button 的 onClick 传递的是 MouseEvent
     const handleConfirm = (e: MouseEvent) => {
         local.onConfirm?.(e);
         setVisible(false);
@@ -67,12 +67,12 @@ export const SePopconfirm: ParentComponent<PopconfirmProps> = (props) => {
             </div>
 
             <div class="mt-4 flex justify-end gap-2">
-                <SeButton size="sm" onClick={handleCancel}>
+                <Button size="sm" onClick={handleCancel}>
                     {local.cancelText || "取消"}
-                </SeButton>
-                <SeButton size="sm" variant="primary" onClick={handleConfirm}>
+                </Button>
+                <Button size="sm" variant="primary" onClick={handleConfirm}>
                     {local.okText || "确定"}
-                </SeButton>
+                </Button>
             </div>
         </div>
     );

@@ -11,7 +11,7 @@
 
 import "./css/index.css";
 export { Button } from "./components/button/button.tsx";
-export { SeButtonGroup } from "./components/button/button-group.tsx";
+export { ButtonGroup } from "./components/button/button-group.tsx";
 export { Affix } from "./components/affix/affix.tsx";
 export { SeBreadcrumb } from "./components/breadcrumb/breadcrumb.tsx";
 export { SeBreadcrumbItem } from "./components/breadcrumb/breadcrumb-item.tsx";

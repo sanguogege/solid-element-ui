@@ -1,4 +1,4 @@
-import {SeButton} from "solid-element-ui";
+import { Button } from "solid-element-ui";
 
 # Button 按钮
 
@@ -6,45 +6,29 @@ import {SeButton} from "solid-element-ui";
 
 在 Ant Design 中我们提供了五种按钮。
 
-- 🔵 主按钮：用于主行动点，一个操作区域只能有一个主按钮。
-- ⚪️ 默认按钮：用于没有主次之分的一组行动点。
-- 😶 虚线按钮：常用于添加操作。
-- 🔤 文本按钮：用于最次级的行动点。
-- 🔗 链接按钮：一般用于链接，即导航至某位置。
+-   🔵 主按钮：用于主行动点，一个操作区域只能有一个主按钮。
+-   ⚪️ 默认按钮：用于没有主次之分的一组行动点。
+-   😶 虚线按钮：常用于添加操作。
+-   🔤 文本按钮：用于最次级的行动点。
+-   🔗 链接按钮：一般用于链接，即导航至某位置。
 
 以及四种状态属性与上面配合使用。
 
-- ⚠️ 危险：删除/移动/修改权限等危险操作，一般需要二次确认。
-- 👻 幽灵：用于背景色比较复杂的地方，常用在首页/产品页等展示场景。
-- 🚫 禁用：行动点不可用的时候，一般需要文案解释。
-- 🔃 加载中：用于异步操作等待反馈的时候，也可以避免多次提交。
+-   ⚠️ 危险：删除/移动/修改权限等危险操作，一般需要二次确认。
+-   👻 幽灵：用于背景色比较复杂的地方，常用在首页/产品页等展示场景。
+-   🚫 禁用：行动点不可用的时候，一般需要文案解释。
+-   🔃 加载中：用于异步操作等待反馈的时候，也可以避免多次提交。
 
-<SeButton variant="primary">button</SeButton>API
-Button
-参数	说明	类型	默认值
-variant	设置按钮类型	'primary' | 'success' | 'warning' | 'danger' | 'info' | 'text'	text
-size	设置按钮尺寸	'sm' | 'md' | 'lg'	md
-outline	是否为描边模式	boolean	false
-loading	设置按钮载入状态	boolean	false
-disabled	按钮失效状态	boolean	false
-round	是否为全圆角	boolean	false
-class	自定义样式类名	string	-
-children	按钮内容	JSX.Element	-
-ButtonGroup
-通过 ButtonGroup 组件包裹，可以统一设置内部按钮的尺寸和变体。
-参数	说明	类型	默认值
-variant	统一定义组内按钮的类型	ButtonProps['variant']	-
-size	统一定义组内按钮的尺寸	'sm' | 'md' | 'lg'	-
-主题定制
-组件支持通过 CSS 变量在全局或局部覆盖样式：
-变量名	说明	默认值
---radius	按钮的圆角大小（在非 round 模式下生效）	4px
-示例
-css
-/* 修改全局圆角 */
+<Button variant="primary">button</Button>API Button 参数 说明 类型 默认值
+variant 设置按钮类型 'primary' | 'success' | 'warning' | 'danger' | 'info' |
+'text' text size 设置按钮尺寸 'sm' | 'md' | 'lg' md outline 是否为描边模式
+boolean false loading 设置按钮载入状态 boolean false disabled 按钮失效状态
+boolean false round 是否为全圆角 boolean false class 自定义样式类名 string -
+children 按钮内容 JSX.Element - ButtonGroup 通过 ButtonGroup
+组件包裹，可以统一设置内部按钮的尺寸和变体。 参数 说明 类型 默认值 variant
+统一定义组内按钮的类型 ButtonProps['variant'] - size 统一定义组内按钮的尺寸 'sm'
+| 'md' | 'lg' - 主题定制 组件支持通过 CSS 变量在全局或局部覆盖样式： 变量名 说明
+默认值 --radius 按钮的圆角大小（在非 round 模式下生效） 4px 示例 css /*
+修改全局圆角 */
 
 请谨慎使用此类代码。
-
-
-
-
