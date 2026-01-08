@@ -27,8 +27,12 @@ export default defineConfig({
                     ],
                 },
                 {
-                    label: "components",
+                    label: "通用",
                     autogenerate: { directory: "components" },
+                },
+                {
+                    label: "布局",
+                    autogenerate: { directory: "layout" },
                 },
             ],
             customCss: ["./src/styles/global.css"],

@@ -1,37 +1,32 @@
-import { splitProps, JSX } from "solid-js";
-import {
-    buttonVariants,
-    ButtonProps,
-} from "./setting";
-
-// 扩展 Props
-
+import { splitProps, createMemo } from "solid-js";
+import { buttonVariants, type ButtonProps } from "./setting";
 
 export const Button = (props: ButtonProps) => {
     // 1. 拆分参数
+    // local: 内部使用的属性
+    // variantProps: 传给 TV 生成样式的属性
+    // others: 传给原生 button 标签的属性 (如 type, onClick, disabled 等)
     const [local, variantProps, others] = splitProps(
         props,
         ["class", "style", "children", "loading"],
-        ["variant","color", "size"]
+        ["variant", "color", "size"]
     );
 
-    // 2. 调用 TV (传入 variant 和自定义 class)
-    // TV 会自动把 local.class 合并到 base 槽位
-    const styles = () =>
+    // 2. 使用 createMemo 保证响应式
+    // 注意：TV 的多插槽(slots)模式下，调用 styles() 会返回一个包含各个 slot 函数的对象
+    const styles = createMemo(() =>
         buttonVariants({
             ...variantProps,
             loading: local.loading,
-            class: local.class,
-        });
+        })
+    );
 
-        console.log("local",local);
-        console.log("variantProps", variantProps);
-        console.log("others", others);
-        console.log(styles().base());
     return (
         <button
-            class={styles().base()} // 使用 base 槽位生成的类名
+            // styles().base({ class: ... }) 会自动合并外部传入的 class 到 base 槽位
+            class={styles().base({ class: local.class })}
             style={local.style}
+            // 只要是 loading 状态或外部传入了 disabled，按钮就禁用
             disabled={local.loading || others.disabled}
             {...others}
         >

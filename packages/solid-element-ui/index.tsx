@@ -18,7 +18,7 @@ export { SeBreadcrumbItem } from "./components/breadcrumb/breadcrumb-item.tsx";
 export { SeAnchor } from "./components/anchor/anchor.tsx";
 export { SeAnchorLink } from "./components/anchor/anchor-link.tsx";
 
-export { SeDivider } from "./components/divider/divider.tsx";
+export { Divider } from "./components/divider/divider.tsx";
 
 export { SeAutocomplete } from "./components/autocomplete/autocomplete.tsx";
 

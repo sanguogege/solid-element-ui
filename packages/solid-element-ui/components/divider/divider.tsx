@@ -1,94 +1,67 @@
-import { splitProps, Show, type ParentComponent, createMemo } from "solid-js";
-import { type DividerProps } from "./setting";
-import { cn } from "@solid-element-ui/utils/cn";
+import { splitProps, Show, createMemo } from "solid-js";
+import { dividerVariants, type DividerProps } from "./setting";
 
-// 1. 定义预设颜色映射（对应你 Tailwind v4 的主题配置）
-const COLOR_MAP: Record<string, string> = {
-    primary: "border-primary text-primary",
-    success: "border-green-500 text-green-500",
-    warning: "border-yellow-500 text-yellow-500",
-    danger: "border-red-500 text-red-500",
-    info: "border-gray-400 text-gray-400",
-};
+// 对应 Tailwind 主题配置的预设名
+const PRESET_COLORS = ["primary", "success", "warning", "danger", "info"];
 
-const customAttributes = [
-    "direction",
-    "contentPosition",
-    "dashed",
-    "color",
-    "class",
-    "children",
-] as const;
+export const Divider = (props: DividerProps) => {
+    // 1. 拆分参数：style 必须分到 local 中以修复 TS2339
+    const [local, variantProps, others] = splitProps(
+        props,
+        ["class", "style", "children", "color"],
+        ["direction", "contentPosition", "dashed"]
+    );
 
-export const SeDivider: ParentComponent<DividerProps> = (
-    props: DividerProps
-) => {
-    const [local, others] = splitProps(props, customAttributes);
+    const isVertical = () => variantProps.direction === "vertical";
 
-    const isVertical = () => local.direction === "vertical";
-    const contentPos = () => local.contentPosition || "center";
-
-    // 2. 核心判断逻辑
+    // 2. 判断是否为自定义颜色（如 #fff, rgb...）
     const isCustomColor = createMemo(
-        () => local.color && !COLOR_MAP[local.color]
-    );
-    const presetColorClass = createMemo(() =>
-        local.color ? COLOR_MAP[local.color] : ""
+        () => local.color && !PRESET_COLORS.includes(local.color)
     );
 
-    // 3. 动态样式处理
+    // 3. 生成 TV 样式类
+    const styles = createMemo(() =>
+        dividerVariants({
+            ...variantProps,
+            // 如果是预设色，传给 TV；如果是自定义色，TV 不处理
+            color: !isCustomColor() ? (local.color as any) : undefined,
+            hasChildren: !!local.children && !isVertical(),
+        })
+    );
+
+    // 4. 处理 Style 逻辑：合并自定义颜色
     const resolveStyles = createMemo(() => {
-        if (!isCustomColor()) return others.style || {};
-        return {
-            "border-color": local.color,
-            color: local.color,
-            ...(others.style as any),
-        };
+        const baseStyle = typeof local.style === "object" ? local.style : {};
+
+        if (isCustomColor()) {
+            return {
+                "border-color": local.color,
+                color: local.color, // 让 text-inherit 和 border-inherit 生效
+                ...baseStyle,
+            };
+        }
+
+        // 无颜色且无文字时的默认兜底色（Tailwind v4 默认透明，需指定）
+        if (!local.color && !local.children) {
+            return {
+                "border-color": "var(--color-gray-200, #e5e7eb)",
+                ...baseStyle,
+            };
+        }
+
+        return baseStyle;
     });
 
     return (
         <div
             {...others}
             role="separator"
-            style={resolveStyles()}
-            class={cn(
-                "relative transition-colors duration-200",
-                // 如果没有颜色且没有文字，给一个默认边框色
-                !local.color && !local.children && "border-gray-200",
-                // 应用预设类名
-                presetColorClass(),
-
-                !isVertical()
-                    ? [
-                          "flex items-center w-full my-6",
-                          // 关键：带文字时父容器不能有 border，否则会穿透文字
-                          local.children ? "border-none" : "border-t",
-                      ]
-                    : "inline-block mx-2 h-[0.9em] align-middle border-l",
-
-                local.dashed && "border-dashed",
-                local.class
-            )}
+            style={resolveStyles() as any}
+            class={styles().base({ class: local.class })}
         >
             <Show when={!isVertical() && local.children}>
-                <div
-                    class={cn(
-                        "flex items-center w-full text-sm font-medium",
-                        // 必须包含 border-inherit，让 before/after 线条继承父级的预设类名颜色或内联样式颜色
-                        "before:content-[''] before:border-t before:border-inherit",
-                        "after:content-[''] after:border-t after:border-inherit",
-                        local.dashed &&
-                            "before:border-dashed after:border-dashed",
-                        // 位置逻辑
-                        contentPos() === "center" &&
-                            "before:flex-1 after:flex-1",
-                        contentPos() === "left" && "before:w-6 after:flex-1",
-                        contentPos() === "right" && "before:flex-1 after:w-6"
-                    )}
-                >
-                    <span class="px-4 whitespace-nowrap text-inherit">
-                        {local.children}
-                    </span>
+                <div class={styles().container()}>
+                    <span class={styles().text()}>{local.children}</span>
                 </div>
             </Show>
         </div>
