@@ -59,7 +59,7 @@ export const SeInputTag: Component<InputTagProps> = (props) => {
             onClick={() => inputRef?.focus()}
             class={cn(
                 // 容器样式：模拟 AntD Input
-                "flex flex-wrap items-center gap-1.5 w-full bg-white border border-[#d9d9d9] rounded-[6px] transition-all duration-200 cursor-text",
+                "flex flex-wrap items-center gap-1.5 w-full bg-white border border-[#d9d9d9] rounded-md transition-all duration-200 cursor-text",
                 "hover:border-[#4096ff]",
                 "focus-within:border-[#1677ff] focus-within:ring-[3px] focus-within:ring-[#1677ff]/10",
                 local.error &&

@@ -1,14 +1,38 @@
 ---
-title: button Reference
+title: Button
 description: A reference page in my new Starlight docs site.
 ---
 
-import {SeButton} from "solid-element-ui"
+在 Solid Element UI 中我们提供了五种按钮。
 
-button
+-   🔵 主要按钮："primary","default","success","warning","danger"。
 
+-   😶 outline 按钮："solid","dashed"。
 
+-   🔤 文本按钮：用于最次级的行动点。
 
-<div class="prose">
-  <SeButton variant="success"  >1111</SeButton>
+-   🔗 链接按钮：一般用于链接，即导航至某位置。
+
+import { Button } from "solid-element-ui";
+
+<div>
+    <Button variant="default">default</Button>
+</div>
+<div>
+    <Button variant="primary">primary</Button>
+</div>
+<div>
+    <Button variant="dashed">dashed</Button>
+</div>
+<div>
+    <Button variant="text">text</Button>
+</div>
+<div>
+    <Button variant="link">link</Button>
+</div>
+
+<div>
+    <Button variant="primary" class="bg-amber-600">
+        自定义
+    </Button>
 </div>
