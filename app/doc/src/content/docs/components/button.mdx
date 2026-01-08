@@ -3,36 +3,65 @@ title: Button
 description: A reference page in my new Starlight docs site.
 ---
 
-在 Solid Element UI 中我们提供了五种按钮。
+在 Solid Element UI 中我们提供了。
 
--   🔵 主要按钮："primary","default","success","warning","danger"。
+五种 variant 按钮
 
--   😶 outline 按钮："solid","dashed"。
+- default、outline、dashed、filled、text、link
 
--   🔤 文本按钮：用于最次级的行动点。
 
--   🔗 链接按钮：一般用于链接，即导航至某位置。
+四种 颜色 按钮
+
+- primary、success、 warning、error
+
+
 
 import { Button } from "solid-element-ui";
 
-<div>
+<div class="display-flex">
     <Button variant="default">default</Button>
-</div>
-<div>
-    <Button variant="primary">primary</Button>
-</div>
-<div>
+    <Button variant="outline">outline</Button>
     <Button variant="dashed">dashed</Button>
-</div>
-<div>
+    <Button variant="filled">filled</Button>
     <Button variant="text">text</Button>
-</div>
-<div>
     <Button variant="link">link</Button>
 </div>
-
-<div>
-    <Button variant="primary" class="bg-amber-600">
-        自定义
-    </Button>
+<div class="display-flex">
+    <Button color="primary">primary</Button>
+    <Button variant="outline" color="primary">primary</Button>
+    <Button variant="dashed" color="primary">primary</Button>
+    <Button variant="filled" color="primary">primary</Button>
+    <Button variant="text" color="primary">primary</Button>
+    <Button variant="link" color="primary">primary</Button>
+   
 </div>
+<div class="display-flex">
+    <Button color="success">success</Button>
+    <Button variant="outline" color="success">primary</Button>
+    <Button variant="dashed" color="success">primary</Button>
+    <Button variant="filled" color="success">primary</Button>
+    <Button variant="text" color="success">primary</Button>
+    <Button variant="link" color="success">primary</Button>
+    
+</div>
+<div class="display-flex">
+    <Button color="warning">warning</Button>
+    <Button variant="outline" color="warning">primary</Button>
+    <Button variant="dashed" color="warning">primary</Button>
+    <Button variant="filled" color="warning">primary</Button>
+    <Button variant="text" color="warning">primary</Button>
+    <Button variant="link" color="warning">primary</Button>
+</div>
+<div class="display-flex">
+    <Button color="error">error</Button>
+    <Button variant="outline" color="error">primary</Button>
+    <Button variant="dashed" color="error">primary</Button>
+    <Button variant="filled" color="error">primary</Button>
+    <Button variant="text" color="error">primary</Button>
+    <Button variant="link" color="error">primary</Button>
+</div>
+
+
+ <Button >error</Button>
+
+

@@ -1,35 +1,42 @@
-// src/components/button/Button.tsx
-import { splitProps } from "solid-js";
-import { buttonVariants, type ButtonProps } from "./setting";
-import { cn } from "@solid-element-ui/utils/cn"; // 引入 twMerge + clsx 的工具函数
+import { splitProps, JSX } from "solid-js";
+import {
+    buttonVariants,
+    ButtonProps,
+} from "./setting";
+
+// 扩展 Props
+
 
 export const Button = (props: ButtonProps) => {
-    /**
-     * splitProps 是 SolidJS 处理自定义组件的关键：
-     * 1. local: 包含手动处理的样式、子元素等
-     * 2. variant: 包含传给 CVA 的变体属性 (variants, size, danger)
-     * 3. others: 包含所有原生的 HTML 属性 (type, onClick, id 等)
-     */
-    const [local, variant, others] = splitProps(
+    // 1. 拆分参数
+    const [local, variantProps, others] = splitProps(
         props,
         ["class", "style", "children", "loading"],
-        ["variant", "size", "danger"]
+        ["variant","color", "size"]
     );
 
+    // 2. 调用 TV (传入 variant 和自定义 class)
+    // TV 会自动把 local.class 合并到 base 槽位
+    const styles = () =>
+        buttonVariants({
+            ...variantProps,
+            loading: local.loading,
+            class: local.class,
+        });
+
+        console.log("local",local);
+        console.log("variantProps", variantProps);
+        console.log("others", others);
+        console.log(styles().base());
     return (
         <button
-            // 通过 cn 函数将 CVA 生成的类名与用户自定义的 class 合并
-            class={cn(buttonVariants(variant), local.class)}
+            class={styles().base()} // 使用 base 槽位生成的类名
             style={local.style}
-            disabled={local.loading}
+            disabled={local.loading || others.disabled}
             {...others}
         >
             {local.loading && (
-                <svg
-                    class="animate-spin -ml-1 mr-2 h-4 w-4 text-current"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                >
+                <svg class={styles().icon()} fill="none" viewBox="0 0 24 24">
                     <circle
                         class="opacity-25"
                         cx="12"
