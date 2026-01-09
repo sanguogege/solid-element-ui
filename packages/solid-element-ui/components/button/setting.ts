@@ -1,11 +1,11 @@
-import { JSX } from "solid-js";
+import { createContext, JSX, useContext } from "solid-js";
 import { tv, type VariantProps } from "tailwind-variants";
 
 export const buttonVariants = tv(
     {
         slots: {
             base: "inline-flex items-center cursor-pointer justify-center rounded-sm text-sm font-medium transition-all duration-200 active:scale-[0.98] focus:outline-none disabled:opacity-50 disabled:pointer-events-none",
-            icon: "animate-spin -ml-1 mr-2 h-4 w-4 text-current", 
+            icon: "animate-spin -ml-1 mr-2 h-4 w-4 text-current",
         },
         variants: {
             size: {
@@ -212,6 +212,33 @@ export const buttonVariants = tv(
     }
 );
 
+export const buttonGroupVariants = tv({
+    base: [
+        "inline-flex items-center shadow-sm rounded-sm",
+        // 1. 处理圆角：让子按钮在组内正确衔接
+        "[&>button:first-child]:rounded-r-none",
+        "[&>button:not(:first-child):not(:last-child)]:rounded-none",
+        "[&>button:last-child]:rounded-l-none",
+        // 2. 边框合并逻辑：非首个按钮左移 1px 覆盖重叠边框
+        "[&>button:not(:first-child)]:-ml-px",
+        // 3. 层级优化：悬停或获取焦点时边框置顶
+        "[&>button]:relative hover:[&>button]:z-10 focus-visible:[&>button]:z-10",
+    ],
+    variants: {
+        // 这里可以定义 Group 级别的整体样式（如是否垂直布局等）
+        vertical: {
+            true: "flex-col [&>button]:w-full [&>button:not(:first-child)]:-ml-0 [&>button:not(:first-child)]:-mt-px [&>button:first-child]:rounded-b-none [&>button:last-child]:rounded-t-none",
+        },
+    },
+});
+
+// 定义 Context 类型，确保子组件 Button 可以获取
+export interface ButtonGroupContextValue {
+    size?: "sm" | "md" | "lg";
+    variant?: "default" | "outline" | "dashed" | "filled" | "text" | "link";
+    color?: "primary" | "success" | "warning" | "error";
+}
+
 export type ButtonVariantProps = VariantProps<typeof buttonVariants>;
 
 export interface ButtonProps
@@ -219,5 +246,18 @@ export interface ButtonProps
         ButtonVariantProps {
     class?: string;
     style?: JSX.CSSProperties;
+    children?: JSX.Element;
+}
+
+export const ButtonGroupContext = createContext<ButtonGroupContextValue>();
+export const useButtonGroup = () => useContext(ButtonGroupContext);
+
+export type ButtonGroupVariantProps = VariantProps<typeof buttonGroupVariants>;
+export interface ButtonGroupProps
+    extends JSX.HTMLAttributes<HTMLDivElement>,
+        ButtonGroupVariantProps {
+    size?: ButtonGroupContextValue["size"];
+    variant?: ButtonGroupContextValue["variant"];
+    color?: ButtonGroupContextValue["color"];
     children?: JSX.Element;
 }

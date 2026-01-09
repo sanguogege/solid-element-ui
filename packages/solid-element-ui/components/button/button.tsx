@@ -1,11 +1,10 @@
 import { splitProps, createMemo } from "solid-js";
-import { buttonVariants, type ButtonProps } from "./setting";
+import { buttonVariants, useButtonGroup, type ButtonProps } from "./setting";
 
 export const Button = (props: ButtonProps) => {
+    const group = useButtonGroup();
+
     // 1. 拆分参数
-    // local: 内部使用的属性
-    // variantProps: 传给 TV 生成样式的属性
-    // others: 传给原生 button 标签的属性 (如 type, onClick, disabled 等)
     const [local, variantProps, others] = splitProps(
         props,
         ["class", "style", "children", "loading"],
@@ -16,7 +15,9 @@ export const Button = (props: ButtonProps) => {
     // 注意：TV 的多插槽(slots)模式下，调用 styles() 会返回一个包含各个 slot 函数的对象
     const styles = createMemo(() =>
         buttonVariants({
-            ...variantProps,
+            variant: variantProps.variant || group?.variant,
+            size: variantProps.size || group?.size,
+            color: variantProps.color || group?.color,
             loading: local.loading,
         })
     );
