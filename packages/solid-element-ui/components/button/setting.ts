@@ -214,7 +214,7 @@ export const buttonVariants = tv(
 
 export const buttonGroupVariants = tv({
     base: [
-        "inline-flex items-center shadow-sm rounded-sm",
+        "display-flex items-center shadow-sm rounded-sm",
         // 1. 处理圆角：让子按钮在组内正确衔接
         "[&>button:first-child]:rounded-r-none",
         "[&>button:not(:first-child):not(:last-child)]:rounded-none",
