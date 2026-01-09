@@ -3,12 +3,17 @@ import {
     onMount,
     onCleanup,
     splitProps,
-    type ParentComponent,
+    createMemo,
 } from "solid-js";
-import { type AnchorProps, AnchorContext } from "./setting";
-import { cn } from "@solid-element-ui/utils/cn";
+import { isServer } from "solid-js/web";
+import {
+    type AnchorProps,
+    type AnchorContextValue, // 这里引用了接口
+    AnchorContext,
+    anchorVariants,
+} from "./setting";
 
-export const SeAnchor: ParentComponent<AnchorProps> = (props) => {
+export const Anchor = (props: AnchorProps) => {
     const [local, others] = splitProps(props, [
         "target",
         "offset",
@@ -16,62 +21,59 @@ export const SeAnchor: ParentComponent<AnchorProps> = (props) => {
         "children",
     ]);
     const [activeLink, setActiveLink] = createSignal("");
+    const [links, setLinks] = createSignal<string[]>([]);
 
-    // 收集所有链接
-    const links: string[] = [];
+    const styles = createMemo(() => anchorVariants());
 
     const handleScroll = () => {
+        if (isServer) return;
         const offset = local.offset ?? 0;
         let currentActive = "";
-
-        for (const link of links) {
-            const el = document.querySelector(link);
-            if (el) {
-                const rect = el.getBoundingClientRect();
-                // 如果元素顶部达到了 offset 阈值
-                if (rect.top <= offset + 10) {
-                    currentActive = link;
+        for (const link of links()) {
+            try {
+                const el = document.querySelector(link);
+                if (el instanceof HTMLElement) {
+                    if (el.getBoundingClientRect().top <= offset + 20) {
+                        currentActive = link;
+                    }
                 }
-            }
+            } catch (e) {}
         }
         setActiveLink(currentActive);
     };
 
     const scrollTo = (link: string) => {
+        if (isServer) return;
         const el = document.querySelector(link);
-        if (el) {
+        if (el instanceof HTMLElement) {
             const offset = local.offset ?? 0;
-            const elementPosition =
-                el.getBoundingClientRect().top + window.scrollY;
-
-            window.scrollTo({
-                top: elementPosition - offset,
-                behavior: "smooth",
-            });
+            const scrollTarget = local.target?.() || window;
+            const top =
+                el.getBoundingClientRect().top + window.scrollY - offset;
+            scrollTarget.scrollTo({ top, behavior: "smooth" });
+            setActiveLink(link);
         }
     };
 
     onMount(() => {
-        const scrollTarget = local.target?.() || window;
-        scrollTarget.addEventListener("scroll", handleScroll);
-        // 初始化计算
+        const target = local.target?.() || window;
+        target.addEventListener("scroll", handleScroll, { passive: true });
         handleScroll();
-        onCleanup(() =>
-            scrollTarget.removeEventListener("scroll", handleScroll)
-        );
+        onCleanup(() => target.removeEventListener("scroll", handleScroll));
     });
 
+    // 显式标注类型以确保匹配
+    const contextValue: AnchorContextValue = {
+        activeLink,
+        scrollTo,
+        registerLink: (link) => setLinks((p) => [...new Set([...p, link])]),
+        unregisterLink: (link) => setLinks((p) => p.filter((l) => l !== link)),
+    };
+
     return (
-        <AnchorContext.Provider value={{ activeLink, scrollTo }}>
-            <div
-                class={cn(
-                    "anchor-wrapper relative border-l-2 border-gray-200",
-                    local.class
-                )}
-                {...others}
-            >
-                {/* 动态指示条 */}
-                <div class="flex flex-col">{local.children}</div>
+        <AnchorContext.Provider value={contextValue}>
+            <div {...others} class={styles().base({ class: local.class })}>
+                <div class={styles().list()}>{local.children}</div>
             </div>
         </AnchorContext.Provider>
     );

@@ -1,0 +1,25 @@
+---
+title: Anchor
+description: A reference page in my new Starlight docs site.
+---
+
+import { Anchor, AnchorLink } from "solid-element-ui";
+
+<div class="flex p-10 gap-10">
+    <div class="p-20">
+        <Anchor client:load class="w-40">
+            <AnchorLink href="#test" title="测试链接 1" />
+            <AnchorLink href="#test2" title="测试链接 2" />
+        </Anchor>
+
+    </div>
+    <div  class="h-screen">
+           <div id="test" class="h-screen">
+            内容1
+        </div>
+        <div id="test2" class="h-screen">
+            内容2
+        </div>
+    </div>
+
+</div>

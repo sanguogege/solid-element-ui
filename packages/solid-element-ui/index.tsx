@@ -15,8 +15,8 @@ export { ButtonGroup } from "./components/button/button-group.tsx";
 export { Affix } from "./components/affix/affix.tsx";
 export { SeBreadcrumb } from "./components/breadcrumb/breadcrumb.tsx";
 export { SeBreadcrumbItem } from "./components/breadcrumb/breadcrumb-item.tsx";
-export { SeAnchor } from "./components/anchor/anchor.tsx";
-export { SeAnchorLink } from "./components/anchor/anchor-link.tsx";
+export { Anchor } from "./components/anchor/anchor.tsx";
+export { AnchorLink } from "./components/anchor/anchor-link.tsx";
 
 export { Divider } from "./components/divider/divider.tsx";
 

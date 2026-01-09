@@ -1,6 +1,6 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-import starlight from '@astrojs/starlight';
+import { defineConfig } from "astro/config";
+import starlight from "@astrojs/starlight";
 import mdx from "@astrojs/mdx";
 import solidJs from "@astrojs/solid-js";
 import tailwindcss from "@tailwindcss/vite";
@@ -33,6 +33,10 @@ export default defineConfig({
                 {
                     label: "布局",
                     autogenerate: { directory: "layout" },
+                },
+                {
+                    label: "导航",
+                    autogenerate: { directory: "navigation" },
                 },
             ],
             customCss: ["./src/styles/global.css"],
