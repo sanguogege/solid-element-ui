@@ -1,0 +1,31 @@
+{
+    "name": "solid-element-ui-monorepo",
+    "version": "0.0.0",
+    "private": true,
+    "devDependencies": {
+        "@changesets/cli": "^2.29.8",
+        "@types/node": "^24.10.1",
+        "solid-js": "^1.9.10",
+        "turbo": "^2.7.3",
+        "typescript": "~5.9.3",
+        "vite": "^7.2.4",
+        "vite-plugin-solid": "^2.11.10"
+    },
+    "packageManager": "bun@1.3.5",
+    "scripts": {
+        "dev": "turbo dev",
+        "build": "turbo build",
+        "test:ui": "vitest",
+        "change": "bun changeset",
+        "version": "bun changeset version",
+        "status": "bun changeset status",
+        "gen": "node scripts/gen-component.ts",
+        "clean": "turbo run clean && rm -rf node_modules",
+        "lint": "turbo lint",
+        "release": "turbo build --filter=solid-element-ui && turbo lint && changeset publish"
+    },
+    "workspaces": [
+        "apps/*",
+        "packages/*"
+    ]
+}
