@@ -1,26 +1,9 @@
 {
+    "extends": "astro/tsconfigs/strict",
+    "include": [".astro/types.d.ts", "**/*"],
+    "exclude": ["dist"],
     "compilerOptions": {
-        "composite": true,
-        "incremental": true,
-        "target": "ES2022",
-        "useDefineForClassFields": true,
-        "module": "ESNext",
-        "lib": ["ES2022", "DOM", "DOM.Iterable"],
-        "skipLibCheck": true,
-        "moduleResolution": "bundler",
-        "allowImportingTsExtensions": true,
-        "resolveJsonModule": true,
-        "isolatedModules": true,
-        "noEmit": true,
-        "strict": true,
-        "declaration": true,
-        "emitDeclarationOnly": true,
-        "noUnusedLocals": false,
-        "noUnusedParameters": false,
-        "noFallthroughCasesInSwitch": true,
         "jsx": "preserve",
-        "jsxImportSource": "solid-js",
-        
-    },
-    "include": [ "**/*"]
+        "jsxImportSource": "solid-js"
+    }
 }

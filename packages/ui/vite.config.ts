@@ -2,11 +2,13 @@ import { defineConfig } from "vite";
 import solidPlugin from "vite-plugin-solid";
 import { resolve } from "path";
 import dts from "vite-plugin-dts";
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
     plugins: [
         solidPlugin(),
         dts({ include: ["src"] }),
+        tailwindcss(),
     ],
     build: {
         lib: {

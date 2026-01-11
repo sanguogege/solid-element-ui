@@ -29,5 +29,5 @@
             "solid-element-ui": ["packages/ui/src/index.tsx"]
         }
     },
-    "include": ["src/*","src/index.tsx"]
+    "include": ["./src/*","src/index.tsx","globals.d.ts"]
 }

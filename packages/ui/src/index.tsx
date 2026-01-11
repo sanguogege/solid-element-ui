@@ -1,1 +1,3 @@
-export * as Accordion from "./accordion/accordion";
+import "./style/index.css";
+
+export { Accordion } from "./accordion/accordion";
