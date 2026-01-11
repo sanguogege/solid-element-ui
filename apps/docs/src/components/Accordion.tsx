@@ -1,20 +1,25 @@
-
 import { Accordion } from "solid-element-ui";
 
-
-const data = [
-    { value: "1", title: "第一项", content: "这里是内容..." },
-    { value: "2", title: "第二项", content: "这里支持 JSX <b>内容</b>" },
+const items = [
+    {
+        title: "Section 1",
+        content: "Content for section 1.",
+    },
+    {
+        title: "Section 2",
+        content: "Content for section 2.",      
+    },
+    {
+        title: "Section 3",
+        content: "Content for section 3.",
+    },
 ];
 
 
-export const AccordionDemo = () => {
+const AccordionDemo = () => {
     return (
-        <div>
-            <Accordion  />
-            <br />
-            <Accordion
-            />
-        </div>
+        <Accordion items={items} />
     );
-}
+};
+
+export{ AccordionDemo };

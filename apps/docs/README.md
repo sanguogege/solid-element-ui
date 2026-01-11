@@ -1,49 +1,32 @@
-# Starlight Starter Kit: Basics
+# SolidStart
 
-[![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
+Everything you need to build a Solid project, powered by [`solid-start`](https://start.solidjs.com);
 
-```
-bun create astro@latest -- --template starlight
-```
+## Creating a project
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+```bash
+# create a new project in the current directory
+npm init solid@latest
 
-## 🚀 Project Structure
-
-Inside of your Astro + Starlight project, you'll see the following folders and files:
-
-```
-.
-├── public/
-├── src/
-│   ├── assets/
-│   ├── content/
-│   │   └── docs/
-│   └── content.config.ts
-├── astro.config.mjs
-├── package.json
-└── tsconfig.json
+# create a new project in my-app
+npm init solid@latest my-app
 ```
 
-Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
+## Developing
 
-Images can be added to `src/assets/` and embedded in Markdown with a relative link.
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
-Static assets, like favicons, can be placed in the `public/` directory.
+```bash
+npm run dev
 
-## 🧞 Commands
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
+```
 
-All commands are run from the root of the project, from a terminal:
+## Building
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
+Solid apps are built with _presets_, which optimise your project for deployment to different environments.
 
-## 👀 Want to learn more?
+By default, `npm run build` will generate a Node app that you can run with `npm start`. To use a different preset, add it to the `devDependencies` in `package.json` and specify in your `app.config.js`.
 
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
+## This project was created with the [Solid CLI](https://github.com/solidjs-community/solid-cli)
