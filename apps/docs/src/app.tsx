@@ -11,14 +11,17 @@ export default function App() {
                 const isHome = () => location.pathname === "/";
 
                 return (
-                    <Show
-                        when={!isHome()}
-                        fallback={<Suspense>{props.children}</Suspense>} // 首页直接渲染内容，不带 Layout
-                    >
-                        <Layout>
-                            <Suspense>{props.children}</Suspense>
-                        </Layout>
-                    </Show>
+                    // <Show
+                    //     when={!isHome()}
+                    //     fallback={<Suspense>{props.children}</Suspense>} // 首页直接渲染内容，不带 Layout
+                    // >
+                    //     <Layout>
+                    //         <Suspense>{props.children}</Suspense>
+                    //     </Layout>
+                    // </Show>
+                    <Layout>
+                        <Suspense>{props.children}</Suspense>
+                    </Layout>
                 );
             }}
         >

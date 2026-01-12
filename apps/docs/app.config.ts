@@ -5,7 +5,6 @@ import tailwindcss from "@tailwindcss/vite";
 import { resolve } from "path";
 import { fileURLToPath } from "node:url";
 import { dirname } from "node:path";
-import Icons from "unplugin-icons/vite";
 
 
 const __filename = fileURLToPath(import.meta.url);
@@ -21,10 +20,6 @@ export default defineConfig({
                 providerImportSource: "solid-mdx",
             }),
             tailwindcss(),
-            Icons({
-                compiler: "solid",
-                autoInstall: true,
-            }),
         ],
         resolve: {
             alias: {
@@ -32,7 +27,7 @@ export default defineConfig({
             },
         },
         ssr: {
-            noExternal: ["solid-mdx", "@kobalte/core", "tailwind-variants"],
+            noExternal: ["solid-mdx", "@kobalte/core", "tailwind-variants", "lucide-solid"],
         },
     },
 });

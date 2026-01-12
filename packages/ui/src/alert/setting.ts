@@ -1,21 +1,20 @@
 import { tv } from "tailwind-variants";
 
 export const alertVariants = tv({
-    base: "relative w-full rounded-lg border p-4 flex gap-3 transition-all",
+    base: "relative w-full rounded-lg border p-4 [&>svg~*]:pl-7 [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-zinc-950 dark:[&>svg]:text-zinc-50",
     variants: {
-        intent: {
-            info: "bg-blue-50 border-blue-200 text-blue-800",
-            success: "bg-green-50 border-green-200 text-green-800",
-            warning: "bg-amber-50 border-amber-200 text-amber-800",
-            danger: "bg-red-50 border-red-200 text-red-800",
-        },
-        size: {
-            sm: "p-3 text-sm",
-            md: "p-4 text-base",
+        variant: {
+            default:
+                "bg-white text-zinc-950 dark:bg-zinc-950 dark:text-zinc-50 border-zinc-200 dark:border-zinc-800",
+            destructive:
+                "border-red-500/50 text-red-500 dark:border-red-500 [&>svg]:text-red-500 dark:text-red-900 dark:dark:border-red-900 dark:[&>svg]:text-red-900",
+            success:
+                "border-green-500/50 text-green-600 dark:border-green-500 [&>svg]:text-green-600 dark:text-green-400",
+            warning:
+                "border-yellow-500/50 text-yellow-700 dark:border-yellow-500 [&>svg]:text-yellow-700 dark:text-yellow-500",
         },
     },
     defaultVariants: {
-        intent: "info",
-        size: "md",
+        variant: "default",
     },
 });

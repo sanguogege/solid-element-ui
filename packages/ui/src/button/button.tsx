@@ -1,39 +1,35 @@
-import { Button as BT} from "@kobalte/core/button";
-import { splitProps, createMemo } from "solid-js";
-import { buttonVariants, useButtonGroup, type ButtonProps } from "./setting";
+import { Button as KButton } from "@kobalte/core/button";
+import { splitProps, type ComponentProps } from "solid-js";
+import { buttonVariants } from "./setting";
+import type { VariantProps } from "tailwind-variants";
+
+export interface ButtonProps
+    extends ComponentProps<typeof KButton>,
+        VariantProps<typeof buttonVariants> {
+    loading?: boolean;
+}
 
 export const Button = (props: ButtonProps) => {
-    const group = useButtonGroup();
-
-    // 1. 拆分参数
-    const [local, variantProps, others] = splitProps(
-        props,
-        ["class", "style", "children", "loading"],
-        ["variant", "color", "size"]
-    );
-
-    // 2. 使用 createMemo 保证响应式
-    // 注意：TV 的多插槽(slots)模式下，调用 styles() 会返回一个包含各个 slot 函数的对象
-    const styles = createMemo(() =>
-        buttonVariants({
-            variant: variantProps.variant || group?.variant,
-            size: variantProps.size || group?.size,
-            color: variantProps.color || group?.color,
-            loading: local.loading,
-        })
-    );
+    const [local, others] = splitProps(props, [
+        "class",
+        "variant",
+        "size",
+        "loading",
+        "children",
+    ]);
 
     return (
-        <BT
-            // styles().base({ class: ... }) 会自动合并外部传入的 class 到 base 槽位
-            class={styles().base({ class: local.class })}
-            style={local.style}
-            // 只要是 loading 状态或外部传入了 disabled，按钮就禁用
+        <KButton
+            class={buttonVariants({
+                variant: local.variant,
+                size: local.size,
+                class: local.class,
+            })}
             disabled={local.loading || others.disabled}
             {...others}
         >
             {local.loading && (
-                <svg class={styles().icon()} fill="none" viewBox="0 0 24 24">
+                <svg class="mr-2 h-4 w-4 animate-spin" viewBox="0 0 24 24">
                     <circle
                         class="opacity-25"
                         cx="12"
@@ -41,6 +37,7 @@ export const Button = (props: ButtonProps) => {
                         r="10"
                         stroke="currentColor"
                         stroke-width="4"
+                        fill="none"
                     />
                     <path
                         class="opacity-75"
@@ -50,6 +47,9 @@ export const Button = (props: ButtonProps) => {
                 </svg>
             )}
             {local.children}
-        </BT>
+        </KButton>
     );
 };
+
+// --- 聚合导出 ---
+export const ButtonRoot = Button;

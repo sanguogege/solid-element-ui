@@ -1,23 +1,15 @@
 import { tv } from "tailwind-variants";
 
-export const accordionStyles = tv({
+export const accordionVariants = tv({
     slots: {
-        root: "w-full border border-slate-200 rounded-lg",
-        item: "border-b border-slate-200 last:border-none",
+        root: "w-full border-t border-zinc-200 dark:border-zinc-800",
+        item: "border-b border-zinc-200 dark:border-zinc-800",
         header: "flex",
         trigger:
-            "flex flex-1 items-center justify-between p-4 font-medium transition-all hover:bg-slate-50 group",
+            "flex flex-1 items-center justify-between py-4 text-sm font-medium transition-all hover:underline data-[opened]:text-zinc-950 dark:data-[opened]:text-zinc-50 [&[data-opened]>svg]:rotate-180",
         content:
-            "overflow-hidden text-sm transition-all data-[expanded]:animate-accordion-down data-[closed]:animate-accordion-up",
-        contentText: "p-4 pt-0 text-slate-600",
-        icon: "transition-transform duration-200 group-data-[expanded]:rotate-45", // 旋转 X 图标
-    },
-    // 可以在这里添加变体，例如 size: { sm, lg }
-    variants: {
-        borderless: {
-            true: {
-                root: "border-none shadow-none",
-            },
-        },
+            "overflow-hidden text-sm transition-all data-[opened]:animate-accordion-down data-[closed]:animate-accordion-up",
+        contentInner: "pb-4 pt-0",
+        icon: "h-4 w-4 shrink-0 transition-transform duration-200 text-zinc-500",
     },
 });

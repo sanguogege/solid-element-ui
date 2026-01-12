@@ -1,44 +1,77 @@
-import { Accordion as K } from "@kobalte/core/accordion";
-import { For, splitProps } from "solid-js"; // 引入 splitProps
-import { accordionStyles } from "./setting";
-import HeroiconsChevronDownSolid from "~icons/heroicons/chevron-down-solid";
+import { Accordion as KAccordion } from "@kobalte/core/accordion";
+import { splitProps, type ComponentProps } from "solid-js";
+import { accordionVariants } from "./setting";
+import { ChevronDown } from "lucide-solid";
 
-export const Accordion = (props: any) => {
-    const [local, rest] = splitProps(props, [
-        "items",
-        "borderless",
-        "class", // 提取外部传入的 class 以便后续合并
-    ]);
+const styles = accordionVariants();
 
-    // 2. 生成样式槽位
-    // 将 local.borderless 传给样式生成器
-    const { root, item, header, trigger, content, contentText, icon } =
-        accordionStyles({
-            borderless: local.borderless,
-        });
+// --- 扁平化组件定义 ---
 
+export const AccordionRoot = (props: ComponentProps<typeof KAccordion>) => {
+    const [local, others] = splitProps(props, ["class"]);
     return (
-        // 3. 将 rest 透传给底层组件 K.Root
-        // 使用 root() 生成基础类名，并与外部传入的 local.class 合并
-        <K {...rest} class={root({ class: local.class })}>
-            <For each={local.items}>
-                {(itemData, index) => (
-                    <K.Item
-                        class={item()}
-                        value={itemData.value || `item-${index()}`}
-                    >
-                        <K.Header class={header()}>
-                            <K.Trigger class={trigger()}>
-                                <span>{itemData.title}</span>
-                                <HeroiconsChevronDownSolid class={icon()} />
-                            </K.Trigger>
-                        </K.Header>
-                        <K.Content class={content()}>
-                            <div class={contentText()}>{itemData.content}</div>
-                        </K.Content>
-                    </K.Item>
-                )}
-            </For>
-        </K>
+        <KAccordion class={styles.root({ class: local.class })} {...others} />
     );
 };
+
+export const AccordionItem = (
+    props: ComponentProps<typeof KAccordion.Item>
+) => {
+    const [local, others] = splitProps(props, ["class"]);
+    return (
+        <KAccordion.Item
+            class={styles.item({ class: local.class })}
+            {...others}
+        />
+    );
+};
+
+export const AccordionHeader = (
+    props: ComponentProps<typeof KAccordion.Header>
+) => {
+    const [local, others] = splitProps(props, ["class"]);
+    return (
+        <KAccordion.Header
+            class={styles.header({ class: local.class })}
+            {...others}
+        />
+    );
+};
+
+export const AccordionTrigger = (
+    props: ComponentProps<typeof KAccordion.Trigger>
+) => {
+    const [local, others] = splitProps(props, ["class", "children"]);
+    return (
+        <KAccordion.Trigger
+            class={styles.trigger({ class: local.class })}
+            {...others}
+        >
+            {local.children}
+            <ChevronDown class={styles.icon()} />
+        </KAccordion.Trigger>
+    );
+};
+
+export const AccordionContent = (
+    props: ComponentProps<typeof KAccordion.Content>
+) => {
+    const [local, others] = splitProps(props, ["class", "children"]);
+    return (
+        <KAccordion.Content
+            class={styles.content({ class: local.class })}
+            {...others}
+        >
+            <div class={styles.contentInner()}>{local.children}</div>
+        </KAccordion.Content>
+    );
+};
+
+// --- 聚合导出 (Namespace) ---
+
+export const Accordion = Object.assign(AccordionRoot, {
+    Item: AccordionItem,
+    Header: AccordionHeader,
+    Trigger: AccordionTrigger,
+    Content: AccordionContent,
+});

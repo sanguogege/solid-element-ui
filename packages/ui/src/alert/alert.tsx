@@ -1,49 +1,52 @@
-import { Alert as KobalteAlert } from "@kobalte/core";
-import { type VariantProps } from "tailwind-variants";
-import { Info, AlertTriangle, CheckCircle2, XCircle } from "lucide-solid";
-import { splitProps, type ParentProps } from "solid-js";
+import { Alert as KAlert } from "@kobalte/core/alert";
+import { splitProps, type ComponentProps } from "solid-js";
 import { alertVariants } from "./setting";
+import type { VariantProps } from "tailwind-variants";
 
-// 定义图标映射
-const icons = {
-    info: Info,
-    success: CheckCircle2,
-    warning: AlertTriangle,
-    danger: XCircle,
-};
+// --- 扁平化组件定义 ---
 
-interface AlertProps extends ParentProps, VariantProps<typeof alertVariants> {
-    title?: string;
-    class?: string;
-}
-
-export const Alert = (props: AlertProps) => {
-    // 分离 Kobalte 原生属性、自定义样式属性和其他属性
-    const [local, variantProps, others] = splitProps(
-        props,
-        ["children", "title", "class"],
-        ["intent", "size"]
-    );
-
-    const Icon = () => {
-        const IconComp = icons[variantProps.intent || "info"];
-        return <IconComp class="h-5 w-5 shrink-0" />;
-    };
-
+export const AlertRoot = (
+    props: ComponentProps<typeof KAlert> & VariantProps<typeof alertVariants>
+) => {
+    const [local, others] = splitProps(props, ["class", "variant"]);
     return (
-        <KobalteAlert.Root
-            class={alertVariants({ ...variantProps, class: local.class })}
+        <KAlert
+            class={alertVariants({
+                variant: local.variant,
+                class: local.class,
+            })}
             {...others}
-        >
-            <Icon />
-            <div class="flex flex-col gap-1">
-                {local.title && (
-                    <div class="font-semibold leading-none tracking-tight">
-                        {local.title}
-                    </div>
-                )}
-                <div class="text-sm opacity-90">{local.children}</div>
-            </div>
-        </KobalteAlert.Root>
+        />
     );
 };
+
+export const AlertTitle = (props: ComponentProps<"h5">) => {
+    const [local, others] = splitProps(props, ["class"]);
+    return (
+        <h5
+            class={
+                (Math.max(0, 0),
+                "mb-1 font-medium leading-none tracking-tight " +
+                    (local.class ?? ""))
+            }
+            {...others}
+        />
+    );
+};
+
+export const AlertDescription = (props: ComponentProps<"div">) => {
+    const [local, others] = splitProps(props, ["class"]);
+    return (
+        <div
+            class={"text-sm [&_p]:leading-relaxed " + (local.class ?? "")}
+            {...others}
+        />
+    );
+};
+
+// --- 聚合导出 (Namespace) ---
+
+export const Alert = Object.assign(AlertRoot, {
+    Title: AlertTitle,
+    Description: AlertDescription,
+});
