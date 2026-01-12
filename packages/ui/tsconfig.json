@@ -16,7 +16,7 @@
         "jsxImportSource": "solid-js",
         "declaration": true,
         "declarationDir": "dist",
-        "types": ["unplugin-icons/types/solid","solid-js"],
+        "types": ["solid-js"],
         /* Linting */
         "strict": true,
         "noUnusedLocals": true,
