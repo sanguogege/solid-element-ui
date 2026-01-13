@@ -1,7 +1,4 @@
-import { Button } from "solid-element-ui";
 import { createSignal } from "solid-js";
-
-
 
 export default (props: any) => {
 
@@ -25,9 +22,7 @@ export default (props: any) => {
                 </ul>
             </nav>
             <div>
-                <Button onclick={switchTheme} variant="text">
-                    {/* {isDarkMode() ? <HeroiconsMoon /> : <HeroiconsSun />} */}
-                </Button>
+                
             </div>
         </div>
     );

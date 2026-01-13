@@ -4,6 +4,7 @@ import Nav from "./components/nav";
 import Aside from "./components/aside";
 
 export default (props: any) => {
+    console.log("layouts props", props);
     return (
         <div class="min-h-dvh flex flex-col">
             <Nav />
