@@ -1,0 +1,95 @@
+# Dialog 对话框
+
+一个叠加在主内容之上的窗口，用于展示重要信息或捕获用户输入。基于 Kobalte 的 Dialog 核心构建，支持焦点陷阱（Focus Trap）、滚动锁定（Scroll Lock）和完善的无障碍交互。
+
+## 引入
+
+import { Dialog } from "solid-element-ui";
+
+## 代码演示
+
+### 1. 基础用法
+
+点击触发器打开对话框，点击遮罩层或关闭按钮可将其关闭。
+
+<Dialog>
+    <Dialog.Trigger>编辑个人资料</Dialog.Trigger>
+    <Dialog.Portal>
+        <Dialog.Overlay />
+        <Dialog.Content>
+            <Dialog.Title>编辑资料</Dialog.Title>
+            <Dialog.Description>
+                在这里修改你的个人信息。完成后点击保存。
+            </Dialog.Description>
+            <div class="mt-4 flex flex-col gap-3">{/* 输入框组件等内容 */}</div>
+            <div class="mt-6 flex justify-end gap-2">
+                <Dialog.Close variant="outline">取消</Dialog.Close>
+                <Dialog.Close variant="default">保存修改</Dialog.Close>
+            </div>
+        </Dialog.Content>
+    </Dialog.Portal>
+</Dialog>
+
+### 2. 受控状态
+
+通过 isOpen 属性受控管理对话框。
+
+<Dialog isOpen={show()} onOpenChange={setShow}>
+    <Dialog.Portal>
+        <Dialog.Overlay />
+        <Dialog.Content>
+            <Dialog.Title>系统确认</Dialog.Title>
+            <Dialog.Description>数据已成功同步。</Dialog.Description>
+        </Dialog.Content>
+    </Dialog.Portal>
+</Dialog>
+
+### 3. 自定义布局
+
+你可以通过类名完全控制 Dialog.Content 的大小和动画。
+
+<Dialog>
+    <Dialog.Portal>
+        <Dialog.Overlay class="bg-black/50 backdrop-blur-sm" />
+        <Dialog.Content class="max-w-2xl overflow-hidden rounded-2xl p-0">
+            <div class="h-40 bg-gradient-to-r from-blue-500 to-purple-500" />
+            <div class="p-6">
+                <Dialog.Title>高级设置</Dialog.Title>
+                <p>详细配置内容...</p>
+            </div>
+        </Dialog.Content>
+    </Dialog.Portal>
+</Dialog>
+
+## API 参考
+
+### Dialog (Root)
+
+| 属性         | 说明                       | 类型                    | 默认值 |
+| :----------- | :------------------------- | :---------------------- | :----- |
+| isOpen       | 是否打开（受控）           | boolean                 | -      |
+| defaultOpen  | 默认是否打开               | boolean                 | false  |
+| onOpenChange | 打开状态改变时的回调       | (open: boolean) => void | -      |
+| modal        | 是否为模态（禁用背景交互） | boolean                 | true   |
+
+### Dialog.Content
+
+| 属性                 | 说明                 | 类型               | 默认值 |
+| :------------------- | :------------------- | :----------------- | :----- |
+| onEscapeKeyDown      | 按下 Esc 键时的回调  | (e: Event) => void | -      |
+| onPointerDownOutside | 点击外部区域时的回调 | (e: Event) => void | -      |
+| class                | 内容容器的样式类名   | string             | -      |
+
+### Dialog.Overlay
+
+| 属性  | 说明             | 类型   | 默认值 |
+| :---- | :--------------- | :----- | :----- |
+| class | 遮罩层的样式类名 | string | -      |
+
+## 无障碍 (Accessibility)
+
+-   焦点管理: 打开时自动聚焦于第一个可聚焦元素（或容器），关闭时焦点返回触发器。
+-   焦点陷阱: 当模态框打开时，Tab 键循环仅限于对话框内部。
+-   语义关联: Title 和 Description 自动通过 aria-labelledby 和 aria-describedby 与 Content 关联。
+-   交互行为: 支持按下 Esc 键关闭，支持点击遮罩层关闭。
+-   滚动锁定: 打开对话框时会自动锁定主体页面的滚动，防止背景内容偏移。

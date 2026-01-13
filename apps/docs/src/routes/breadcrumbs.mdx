@@ -1,0 +1,97 @@
+# Breadcrumb 面包屑
+
+显示当前页面在层级结构中的位置，并允许用户向上级页面回溯。基于 Kobalte 的 Breadcrumbs 核心构建，具备完善的键盘导航和路径压缩支持。
+
+## 引入
+
+import { Breadcrumb } from "solid-element-ui";
+
+## 代码演示
+
+### 1. 基础用法
+标准的路径导航。
+
+
+
+<Breadcrumb>
+  <Breadcrumb.List>
+    <Breadcrumb.Item>
+      <Breadcrumb.Link href="/">首页</Breadcrumb.Link>
+    </Breadcrumb.Item>
+    <Breadcrumb.Separator />
+    <Breadcrumb.Item>
+      <Breadcrumb.Link href="/components">组件</Breadcrumb.Link>
+    </Breadcrumb.Item>
+    <Breadcrumb.Separator />
+    <Breadcrumb.Item>
+      <Breadcrumb.Page>面包屑</Breadcrumb.Page>
+    </Breadcrumb.Item>
+  </Breadcrumb.List>
+</Breadcrumb>
+
+### 2. 自定义分隔符
+使用图标或其他字符作为路径之间的分隔。
+
+<Breadcrumb>
+  <Breadcrumb.List>
+    <Breadcrumb.Item>
+      <Breadcrumb.Link href="/">首页</Breadcrumb.Link>
+    </Breadcrumb.Item>
+    <Breadcrumb.Separator>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="m9 18 6-6-6-6" />
+      </svg>
+    </Breadcrumb.Separator>
+    <Breadcrumb.Item>
+      <Breadcrumb.Page>当前页</Breadcrumb.Page>
+    </Breadcrumb.Item>
+  </Breadcrumb.List>
+</Breadcrumb>
+
+### 3. 路径压缩 (Ellipsis)
+当路径过长时，可以使用省略号表示隐藏的层级。
+
+<Breadcrumb>
+  <Breadcrumb.List>
+    <Breadcrumb.Item>
+      <Breadcrumb.Link href="/">首页</Breadcrumb.Link>
+    </Breadcrumb.Item>
+    <Breadcrumb.Separator />
+    <Breadcrumb.Item>
+      <Breadcrumb.Ellipsis />
+    </Breadcrumb.Item>
+    <Breadcrumb.Separator />
+    <Breadcrumb.Item>
+      <Breadcrumb.Page>当前页</Breadcrumb.Page>
+    </Breadcrumb.Item>
+  </Breadcrumb.List>
+</Breadcrumb>
+
+## API 参考
+
+### Breadcrumb (Root)
+
+| 属性 | 说明 | 类型 | 默认值 |
+| :--- | :--- | :--- | :--- |
+| separator | 全局定义的分隔符内容 | JSX.Element | '/' |
+| class | 容器自定义类名 | string | - |
+
+### Breadcrumb.Link
+
+| 属性 | 说明 | 类型 | 默认值 |
+| :--- | :--- | :--- | :--- |
+| href | 跳转链接地址 | string | - |
+| as | 渲染的标签 | ValidComponent | 'a' |
+
+### Breadcrumb.Page
+
+| 属性 | 说明 | 类型 | 默认值 |
+| :--- | :--- | :--- | :--- |
+| class | 当前页面的样式类名 | string | - |
+
+## 无障碍 (Accessibility)
+
+- 导航角色: 根容器自动标记为 role="navigation" 并带有 aria-label="breadcrumb"。
+- 层次结构: 使用 ol 和 li 列表结构，确保辅助技术能识别路径层级。
+- 状态识别: 最后一项（当前页）自动设置 aria-current="page"，使其在视觉和语音上都有别于可点击的链接。
+- 分隔符隐藏: 分隔符会自动设置 aria-hidden="true"，防止屏幕阅读器重复播报。

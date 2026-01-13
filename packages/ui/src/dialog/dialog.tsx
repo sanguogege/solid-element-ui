@@ -1,5 +1,5 @@
 import { Dialog as KDialog } from "@kobalte/core/dialog";
-import { splitProps, type ComponentProps, JSX } from "solid-js";
+import { splitProps, type ComponentProps, type JSX } from "solid-js";
 import { dialogVariants } from "./setting";
 import { X } from "lucide-solid";
 

@@ -1,0 +1,90 @@
+# Number Field 数字输入框
+
+允许用户通过输入或步进控制来输入数值。基于 Kobalte 的 NumberField 核心构建，内置了数值校验、步进逻辑以及对原始输入的精准控制。
+
+---
+
+## 引入
+
+import { NumberField } from "solid-element-ui";
+
+---
+
+## 代码演示
+
+### 1. 基础用法
+
+包含标签、增量和减量按钮的基础数字输入。
+
+<NumberField defaultValue={10} minValue={0} maxValue={100}>
+    <NumberField.Label>数量</NumberField.Label>
+    <div class="relative flex items-center border rounded-md overflow-hidden">
+        <NumberField.Input class="w-full px-3 py-2 outline-none" />
+        <div class="flex flex-col border-l">
+            <NumberField.IncrementTrigger class="px-2 py-1 hover:bg-zinc-100">
+                +
+            </NumberField.IncrementTrigger>
+            <NumberField.DecrementTrigger class="px-2 py-1 hover:bg-zinc-100 border-t">
+                -
+            </NumberField.DecrementTrigger>
+        </div>
+    </div>
+</NumberField>
+
+### 2. 设置步长 (Step)
+
+通过 step 属性控制每次增减的数值跨度。
+
+<NumberField step={0.5} defaultValue={1.5}>
+    <NumberField.Label>比例因子</NumberField.Label>
+    <NumberField.Input />
+    <NumberField.IncrementTrigger />
+    <NumberField.DecrementTrigger />
+</NumberField>
+
+### 3. 受控模式
+
+使用 value 和 onValueChange 进行状态管理。
+
+<NumberField value={count()} onValueChange={setCount}>
+    <NumberField.Label>受控值</NumberField.Label>
+    <NumberField.Input />
+</NumberField>
+
+---
+
+## API 参考
+
+### NumberField (Root)
+
+| 属性          | 说明               | 类型                    | 默认值    |
+| :------------ | :----------------- | :---------------------- | :-------- |
+| value         | 当前数值 (受控)    | number                  | -         |
+| defaultValue  | 默认数值           | number                  | -         |
+| onValueChange | 数值改变时的回调   | (value: number) => void | -         |
+| minValue      | 允许输入的最小值   | number                  | -Infinity |
+| maxValue      | 允许输入的最大值   | number                  | Infinity  |
+| step          | 步进跨度           | number                  | 1         |
+| format        | 是否格式化显示内容 | boolean                 | true      |
+| disabled      | 是否禁用           | boolean                 | false     |
+| readOnly      | 是否只读           | boolean                 | false     |
+
+### NumberField.Input
+
+| 属性        | 说明           | 类型   | 默认值 |
+| :---------- | :------------- | :----- | :----- |
+| class       | 输入框样式类名 | string | -      |
+| placeholder | 占位符内容     | string | -      |
+
+---
+
+## 无障碍 (Accessibility)
+
+-   **角色定义**：输入框自动分配 `role="spinbutton"`。
+-   **状态同步**：自动管理 `aria-valuenow`、`aria-valuemin`、`aria-valuemax` 以及 `aria-disabled`。
+-   **键盘支持**：
+    -   使用 `ArrowUp` 键增加数值。
+    -   使用 `ArrowDown` 键减少数值。
+    -   使用 `Home` 键跳转至最小值，`End` 键跳转至最大值。
+    -   使用 `PageUp` / `PageDown` 按照较大的跨度进行步进。
+-   **输入过滤**：自动拦截非数字字符的输入（根据所选区域设置），并确保最终提交的值在指定的范围内。

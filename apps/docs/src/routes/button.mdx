@@ -1,5 +1,84 @@
-import {ButtonDemo } from "@/components/button";
+# Button 按钮
 
-这是Accordion 组件
+用于触发特定操作或交互的基础组件。基于 Kobalte 核心构建，原生支持多态渲染、完善的无障碍交互以及自定义视觉变体。
 
-<ButtonDemo/>
+## 引入
+
+import { Button } from "solid-element-ui";
+
+## 代码演示
+
+### 1. 基础变体
+
+通过 variant 属性快速切换按钮的视觉风格，适应不同的 UI 上下文。
+
+<div class="flex flex-wrap gap-4">
+    <Button variant="default">主要按钮</Button>
+    <Button variant="secondary">次要按钮</Button>
+    <Button variant="outline">边框按钮</Button>
+    <Button variant="destructive">危险操作</Button>
+    <Button variant="ghost">幽灵按钮</Button>
+    <Button variant="link">链接文本</Button>
+</div>
+
+### 2. 尺寸规格
+
+提供四种标准尺寸，包括专门为图标设计的 icon 规格。
+
+<div class="flex items-center gap-4">
+    <Button size="sm">小尺寸</Button>
+    <Button size="default">默认</Button>
+    <Button size="lg">大尺寸</Button>
+    <Button size="icon" variant="outline">
+        <svg
+            xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)"
+            class="h-4 w-4"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+        >
+            <path d="M12 5v14M5 12h14" />
+        </svg>
+    </Button>
+</div>
+
+### 3. 加载与禁用
+
+loading 状态会自动禁用交互并注入一个动画 Spinner。
+
+<div class="flex gap-4">
+    <Button loading>提交中</Button>
+    <Button disabled variant="secondary">
+        已禁用
+    </Button>
+</div>
+
+### 4. 多态性 (As)
+
+支持渲染为任何有效的 HTML 元素或组件（如 a 标签），同时保持按钮的交互逻辑。
+
+<Button as="a" href="[https://github.com](https://github.com)" target="_blank">
+    GitHub 仓库
+</Button>
+
+## API 参考
+
+### Button Props
+
+| 属性     | 说明                 | 类型                        | 默认值        |
+| :------- | :------------------- | :-------------------------- | :------------ | --------- | ----------- | --------- | ------ | --------- |
+| variant  | 视觉变体风格         | 'default'                   | 'destructive' | 'outline' | 'secondary' | 'ghost'   | 'link' | 'default' |
+| size     | 尺寸大小             | 'default'                   | 'sm'          | 'lg'      | 'icon'      | 'default' |
+| loading  | 是否为加载状态       | boolean                     | false         |
+| disabled | 是否禁用             | boolean                     | false         |
+| as       | 底层渲染的元素或组件 | ValidComponent              | 'button'      |
+| class    | 自定义 CSS 类名      | string                      | -             |
+| onClick  | 点击事件处理函数     | (event: MouseEvent) => void | -             |
+
+## 无障碍 (Accessibility)
+
+-   WAI-ARIA: 遵循按钮交互设计规范。
+-   键盘控制: 自动处理 Enter 和 Space 键的激活逻辑。
+-   状态感知: 自动关联 aria-disabled 属性，确保屏幕阅读器能正确传达按钮的可用性状态。
+-   焦点管理: 处理了点击后的焦点恢复及 Tab 键导航流。

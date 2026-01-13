@@ -1,0 +1,80 @@
+# ColorSlider 颜色滑块
+
+允许用户通过滑动轨道来调整颜色对象中的单个通道（如色相、饱和度、亮度或透明度）。基于 Kobalte 的 ColorSlider 核心构建，支持原生触摸交互和精细的键盘微调。
+
+## 引入
+
+import { ColorSlider } from "solid-element-ui";
+
+## 代码演示
+
+### 1. 基础用法
+调整特定颜色通道（例如色相 "hue"）。
+
+
+
+<ColorSlider value={color()} onChange={setColor} channel="hue">
+  <ColorSlider.Label>色相</ColorSlider.Label>
+  <ColorSlider.Track>
+    <ColorSlider.Thumb />
+  </ColorSlider.Track>
+</ColorSlider>
+
+### 2. 透明度调整
+使用 "alpha" 通道配合背景方格纹理展示透明度变化。
+
+<ColorSlider channel="alpha" value={color()} onChange={setColor}>
+  <ColorSlider.Label>不透明度</ColorSlider.Label>
+  <ColorSlider.Track class="h-4 w-full rounded-full bg-[url('/checkboard.png')]">
+    <ColorSlider.Thumb />
+  </ColorSlider.Track>
+  <ColorSlider.ValueLabel />
+</ColorSlider>
+
+### 3. 禁用状态
+禁用后，滑块轨道变灰且滑块无法拖动。
+
+<ColorSlider channel="brightness" disabled>
+  <ColorSlider.Label>亮度</ColorSlider.Label>
+  <ColorSlider.Track>
+    <ColorSlider.Thumb />
+  </ColorSlider.Track>
+</ColorSlider>
+
+## API 参考
+
+### ColorSlider (Root)
+
+| 属性 | 说明 | 类型 | 默认值 |
+| :--- | :--- | :--- | :--- |
+| value | 当前颜色值 (受控) | Color | - |
+| defaultValue | 默认颜色值 | Color | - |
+| onChange | 颜色变化时的回调 | (value: Color) => void | - |
+| channel | 要编辑的颜色通道 | ColorChannel | - |
+| orientation | 滑块方向 | 'horizontal' | 'vertical' | 'horizontal' |
+| disabled | 是否禁用 | boolean | false |
+
+### ColorSlider.Track
+
+| 属性 | 说明 | 类型 | 默认值 |
+| :--- | :--- | :--- | :--- |
+| class | 滑动轨道的样式类名 | string | - |
+
+### ColorSlider.Thumb
+
+| 属性 | 说明 | 类型 | 默认值 |
+| :--- | :--- | :--- | :--- |
+| class | 滑块（抓取点）的样式类名 | string | - |
+
+### ColorSlider.ValueLabel
+
+| 属性 | 说明 | 类型 | 默认值 |
+| :--- | :--- | :--- | :--- |
+| class | 当前数值文本的样式类名 | string | - |
+
+## 无障碍 (Accessibility)
+
+- 键盘交互: 使用箭头键（Left/Right 或 Up/Down）以 1% 或 1° 为步长调整；配合 Shift 键进行大跨度调整；Home/End 直接跳至边界值。
+- 文本关联: Label 和 ValueLabel 自动与滑块关联，确保屏幕阅读器能读出通道名称及其当前值。
+- 语义化: 内部自动映射为具有 range 角色的 input 元素。
+- 方向支持: 自动根据 orientation 属性调整箭头键的逻辑方向。

@@ -1,0 +1,79 @@
+# Hover Card 悬停卡片
+
+用于让高阶用户在鼠标悬停在链接或特定元素上时，预览更多详细内容。基于 Kobalte 的 HoverCard 核心构建，优化了开启/关闭的延迟逻辑，确保流畅的交互体验。
+
+## 引入
+
+import { HoverCard } from "solid-element-ui";
+
+## 代码演示
+
+### 1. 基础用法
+
+当鼠标指针悬停在触发器上时，经过短暂延迟会显示卡片内容。
+
+<HoverCard>
+    <HoverCard.Trigger href="https://github.com/solidjs">
+        @SolidJS
+    </HoverCard.Trigger>
+    <HoverCard.Portal>
+        <HoverCard.Content>
+            <div class="flex flex-col gap-2">
+                <h4 class="font-bold">SolidJS</h4>
+                <p>
+                    Simple and performant reactivity for building user
+                    interfaces.
+                </p>
+                <div class="flex gap-4 text-sm text-zinc-500">
+                    <span>28.5k Stars</span>
+                    <span>1.2k Forks</span>
+                </div>
+            </div>
+        </HoverCard.Content>
+    </HoverCard.Portal>
+</HoverCard>
+
+### 2. 自定义延迟 (Delay)
+
+通过配置 openDelay 和 closeDelay 来调整响应速度，防止非故意的划过导致频繁弹出。
+
+<HoverCard openDelay={700} closeDelay={300}>
+    <HoverCard.Trigger>慢速响应</HoverCard.Trigger>
+    <HoverCard.Portal>
+        <HoverCard.Content>内容将在悬停 700ms 后显示。</HoverCard.Content>
+    </HoverCard.Portal>
+</HoverCard>
+
+## API 参考
+
+### HoverCard (Root)
+
+| 属性         | 说明                      | 类型                    | 默认值 |
+| :----------- | :------------------------ | :---------------------- | :----- |
+| isOpen       | 是否打开（受控）          | boolean                 | -      |
+| onOpenChange | 打开状态改变的回调        | (open: boolean) => void | -      |
+| openDelay    | 鼠标移入后的开启延迟 (ms) | number                  | 700    |
+| closeDelay   | 鼠标移出后的关闭延迟 (ms) | number                  | 300    |
+
+### HoverCard.Trigger
+
+| 属性  | 说明                     | 类型           | 默认值 |
+| :---- | :----------------------- | :------------- | :----- |
+| as    | 底层渲染的元素           | ValidComponent | 'a'    |
+| href  | 如果是链接，指定跳转地址 | string         | -      |
+| class | 触发器的样式类名         | string         | -      |
+
+### HoverCard.Content
+
+| 属性       | 说明           | 类型                                   | 默认值   |
+| :--------- | :------------- | :------------------------------------- | :------- |
+| side       | 弹出方向       | 'top' \| 'right' \| 'bottom' \| 'left' | 'top'    |
+| align      | 对齐方式       | 'start' \| 'center' \| 'end'           | 'center' |
+| sideOffset | 与触发器的间距 | number                                 | 4        |
+
+## 无障碍 (Accessibility)
+
+-   触发逻辑: 仅在鼠标悬停或焦点进入时触发，不适用于纯点击交互。
+-   焦点管理: 默认情况下，HoverCard 不会夺取焦点，以免中断用户的输入流。
+-   屏幕阅读器: 触发器会自动关联 aria-haspopup 属性。
+-   智能定位: 使用浮动定位引擎，确保卡片始终在视口可见范围内，并根据可用空间自动调整方向。

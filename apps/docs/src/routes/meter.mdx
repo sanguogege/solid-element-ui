@@ -1,0 +1,71 @@
+# Meter 计量条
+
+用于展示已知范围内的一个标量测量值，或者一个分数值。基于 Kobalte 的 Meter 核心构建，内置了基于数值区间的语义化颜色状态（低、中、高）。
+
+---
+
+## 引入
+
+import { Meter } from "solid-element-ui";
+
+---
+
+## 代码演示
+
+### 1. 基础用法
+
+展示一个简单的数值。注意：由于组件封装，`Meter.Track` 会自动渲染内部的填充进度（Fill），无需手动添加 Indicator。
+
+<Meter value={65}>
+    <div class="flex justify-between">
+        <Meter.Label>内存使用率</Meter.Label>
+        <Meter.ValueLabel />
+    </div>
+    <Meter.Track />
+</Meter>
+
+### 2. 语义化颜色状态
+
+通过配置 `low`、`high` 和 `optimum` 属性，计量条会自动根据当前 `value` 切换颜色（如：警告红、稳定绿、提醒黄）。
+
+<Meter value={20} minValue={0} maxValue={100} low={30} high={80} optimum={50}>
+    <Meter.Label>磁盘空间（低电量示例）</Meter.Label>
+    <Meter.Track />
+    <Meter.ValueLabel />
+</Meter>
+
+---
+
+## API 参考
+
+### Meter (Root)
+
+| 属性          | 说明                 | 类型                                                            | 默认值 |
+| :------------ | :------------------- | :-------------------------------------------------------------- | :----- |
+| value         | 当前数值             | number                                                          | 0      |
+| minValue      | 最小值               | number                                                          | 0      |
+| maxValue      | 最大值               | number                                                          | 100    |
+| low           | 指定“低”数值的界限   | number                                                          | -      |
+| high          | 指定“高”数值的界限   | number                                                          | -      |
+| optimum       | 指定“最理想”的数值点 | number                                                          | -      |
+| getValueLabel | 自定义数值文本格式   | (params: { value: number, min: number, max: number }) => string | -      |
+
+### Meter.Track
+
+封装了轨道和填充逻辑。
+
+-   **自动填充**：组件内部已集成 `KMeter.Fill`。
+-   **动画支持**：填充条内置了 `transition-all duration-300` 平滑过渡。
+
+### Meter.ValueLabel
+
+用于显示当前的数值或通过 `getValueLabel` 定义的文本。
+
+---
+
+## 组件特性
+
+-   **状态样式**：通过 `tailwind-variants` 的 `fill` slot，自动响应 `data-[low]`、`data-[optimum]` 和 `data-[high]` 状态切换背景色。
+-   **深色模式**：预设了 `dark:bg-zinc-800` 和 `dark:bg-zinc-50` 的适配。
+-   **简化结构**：开发者只需调用 `<Meter.Track />` 即可完成进度展示，无需手动处理内部的 Fill 逻辑。
+-   **无障碍**：自动维护 `role="meter"` 以及相关的 `aria` 进度属性。

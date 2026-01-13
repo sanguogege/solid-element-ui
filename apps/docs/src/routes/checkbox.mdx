@@ -1,0 +1,71 @@
+# Checkbox 复选框
+
+允许用户在多个选项中进行选择，或在两种状态之间切换。基于 Kobalte 核心构建，支持半选状态、完全的键盘导航和自动表单集成。
+
+## 引入
+
+import { Checkbox } from "solid-element-ui";
+
+## 代码演示
+
+### 1. 基础用法
+
+通过 Label 和 Control 组合成一个完整的复选框。
+
+<Checkbox>
+    <Checkbox.Control />
+    <Checkbox.Label>接受服务条款</Checkbox.Label>
+</Checkbox>
+
+### 2. 自定义图标与半选
+
+你可以通过 Control 的子元素自定义选中时的图标。对于全选场景，可以使用 indeterminate 属性。
+
+<Checkbox indeterminate>
+    <Checkbox.Control>
+        <div class="h-3 w-3 bg-current" />
+    </Checkbox.Control>
+    <Checkbox.Label>部分选中状态</Checkbox.Label>
+</Checkbox>
+
+### 3. 禁用状态
+
+禁用后的复选框将无法交互。
+
+<Checkbox disabled>
+    <Checkbox.Control />
+    <Checkbox.Label>选项已禁用</Checkbox.Label>
+</Checkbox>
+
+## API 参考
+
+### Checkbox (Root)
+
+| 属性            | 说明             | 类型                       | 默认值 |
+| :-------------- | :--------------- | :------------------------- | :----- |
+| checked         | 是否选中（受控） | boolean                    | -      |
+| defaultChecked  | 默认是否选中     | boolean                    | false  |
+| onCheckedChange | 状态改变时的回调 | (checked: boolean) => void | -      |
+| indeterminate   | 是否处于半选状态 | boolean                    | false  |
+| disabled        | 是否禁用         | boolean                    | false  |
+| required        | 是否必填         | boolean                    | false  |
+| name            | 表单提交名称     | string                     | -      |
+
+### Checkbox.Control
+
+| 属性     | 说明                   | 类型        | 默认值 |
+| :------- | :--------------------- | :---------- | :----- |
+| class    | 视觉方框的样式类名     | string      | -      |
+| children | 自定义选中时的指示图标 | JSX.Element | Check  |
+
+### Checkbox.Label
+
+| 属性  | 说明               | 类型   | 默认值 |
+| :---- | :----------------- | :----- | :----- |
+| class | 标签文本的样式类名 | string | -      |
+
+## 无障碍 (Accessibility)
+
+-   自动关联: Checkbox.Label 自动通过 id 与隐藏的原生 input 关联。
+-   键盘支持: 使用 Space 键切换状态，使用 Tab 键聚焦。
+-   状态反馈: 自动管理 aria-checked 属性（支持 "true", "false", "mixed"）。

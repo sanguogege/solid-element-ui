@@ -1,5 +1,71 @@
-import { AlertDialogDemo } from "@/components/alert-dialog";
+# Alert Dialog 警示对话框
 
-Alert 组件
+一个中断用户的模态对话框，用于展示重要信息并要求用户做出响应。它是 Dialog 的一个变体，专门用于需要用户确认的操作（如删除、退出等）。
 
-<AlertDialogDemo/>
+## 引入
+
+import { AlertDialog } from "solid-element-ui";
+
+## 代码演示
+
+### 1. 基础用法
+点击触发器打开对话框，用户必须选择取消或确认操作。
+
+<AlertDialog>
+  <AlertDialog.Trigger variant="destructive">删除账户</AlertDialog.Trigger>
+  <AlertDialog.Content>
+    <AlertDialog.Title>你确定要删除吗？</AlertDialog.Title>
+    <AlertDialog.Description>
+      此操作无法撤销。这将永久删除您的账户并从我们的服务器中移除您的所有数据。
+    </AlertDialog.Description>
+    <div class="flex justify-end gap-3 mt-6">
+      <AlertDialog.Close variant="outline">取消</AlertDialog.Close>
+      <AlertDialog.Action variant="destructive">是的，删除账户</AlertDialog.Action>
+    </div>
+  </AlertDialog.Content>
+</AlertDialog>
+
+### 2. 受控状态
+通过 isOpen 属性手动控制对话框的开关。
+
+<AlertDialog isOpen={isOpen()} onOpenChange={setIsOpen}>
+  <AlertDialog.Content>
+    <AlertDialog.Title>系统提醒</AlertDialog.Title>
+    <AlertDialog.Description>检测到您的登录环境发生变化。</AlertDialog.Description>
+    <div class="flex justify-end mt-4">
+      <AlertDialog.Action onClick={() => setIsOpen(false)}>我知道了</AlertDialog.Action>
+    </div>
+  </AlertDialog.Content>
+</AlertDialog>
+
+## API 参考
+
+### AlertDialog (Root)
+
+| 属性 | 说明 | 类型 | 默认值 |
+| :--- | :--- | :--- | :--- |
+| isOpen | 对话框是否打开（受控） | boolean | - |
+| defaultOpen | 默认是否打开 | boolean | false |
+| onOpenChange | 打开状态改变时的回调函数 | (open: boolean) => void | - |
+| modal | 是否为模态（禁用背景交互） | boolean | true |
+
+### AlertDialog.Content
+
+| 属性 | 说明 | 类型 | 默认值 |
+| :--- | :--- | :--- | :--- |
+| onEscapeKeyDown | 按下 Esc 键时的回调 | (event: Event) => void | - |
+| onPointerDownOutside | 点击外部区域时的回调 | (event: Event) => void | - |
+
+### AlertDialog.Trigger / Action / Close
+
+| 属性 | 说明 | 类型 | 默认值 |
+| :--- | :--- | :--- | :--- |
+| variant | 按钮视觉变体 | 'default' | 'destructive' | 'outline' | ... | 'default' |
+| as | 渲染的 HTML 标签 | ValidComponent | 'button' |
+
+## 无障碍 (Accessibility)
+
+- 角色分配: 内容容器自动标记为 role="alertdialog"。
+- 焦点管理: 打开时焦点自动移动到对话框（通常是 Cancel 按钮，防止误操作），关闭时焦点返回触发器。
+- 屏幕阅读器: 必须包含 Title 和 Description，它们通过 aria-labelledby 和 aria-describedby 自动关联。
+- 交互限制: 当对话框打开时，背景内容对辅助技术不可见（aria-hidden）。

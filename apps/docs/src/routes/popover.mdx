@@ -1,0 +1,96 @@
+# Popover 气泡卡片
+
+在点击触发元素时，在元素附近弹出的浮动窗口。基于 Kobalte 的 Popover 核心构建，常用于展示详细信息、表单或复杂的交互内容。
+
+---
+
+## 引入
+
+import { Popover } from "solid-element-ui";
+
+---
+
+## 代码演示
+
+### 1. 基础用法
+
+点击按钮弹出包含标题和描述内容的卡片。
+
+<Popover>
+    <Popover.Trigger class="px-4 py-2 bg-blue-600 text-white rounded">
+        查看详情
+    </Popover.Trigger>
+    <Popover.Portal>
+        <Popover.Content class="bg-white p-4 shadow-md rounded border">
+            <Popover.Arrow />
+            <Popover.Title class="font-bold border-b mb-2">
+                项目说明
+            </Popover.Title>
+            <Popover.Description class="text-sm text-zinc-600">
+                该项目目前处于 Beta 阶段，部分功能可能尚不稳定。
+            </Popover.Description>
+            <Popover.Close class="mt-4 text-blue-600 text-sm">
+                确定
+            </Popover.Close>
+        </Popover.Content>
+    </Popover.Portal>
+</Popover>
+
+### 2. 受控模式
+
+通过 isOpen 属性受控管理气泡卡片的显示状态。
+
+<Popover isOpen={show()} onOpenChange={setShow}>
+    <Popover.Trigger>点击切换</Popover.Trigger>
+    <Popover.Portal>
+        <Popover.Content>
+            <p>受控内容展示</p>
+        </Popover.Content>
+    </Popover.Portal>
+</Popover>
+
+### 3. 自定义位置与偏移
+
+使用 side 和 align 属性精确控制弹出位置。
+
+<Popover>
+    <Popover.Trigger>向上弹出</Popover.Trigger>
+    <Popover.Portal>
+        <Popover.Content side="top" sideOffset={10} align="start">
+            <p>这是从顶部弹出的内容。</p>
+        </Popover.Content>
+    </Popover.Portal>
+</Popover>
+
+---
+
+## API 参考
+
+### Popover (Root)
+
+| 属性         | 说明                       | 类型                    | 默认值 |
+| :----------- | :------------------------- | :---------------------- | :----- |
+| isOpen       | 是否打开（受控）           | boolean                 | -      |
+| defaultOpen  | 默认是否打开               | boolean                 | false  |
+| onOpenChange | 状态改变时的回调           | (open: boolean) => void | -      |
+| modal        | 是否为模态（禁用背景交互） | boolean                 | false  |
+
+### Popover.Content
+
+| 属性        | 说明           | 类型                                   | 默认值   |
+| :---------- | :------------- | :------------------------------------- | :------- |
+| side        | 弹出方向       | 'top' \| 'right' \| 'bottom' \| 'left' | 'bottom' |
+| align       | 对齐方式       | 'start' \| 'center' \| 'end'           | 'center' |
+| sideOffset  | 与触发器的间距 | number                                 | 4        |
+| alignOffset | 对齐偏移量     | number                                 | 0        |
+| class       | 样式类名       | string                                 | -        |
+
+---
+
+## 无障碍 (Accessibility)
+
+-   **角色分配**：内容容器自动标记为 `role="dialog"`，触发器标记为 `aria-haspopup="dialog"`。
+-   **焦点管理**：打开时默认聚焦到内容区或首个可聚焦元素，关闭时焦点返回触发器。
+-   **语义关联**：Title 和 Description 通过 `aria-labelledby` 和 `aria-describedby` 自动关联。
+-   **交互行为**：支持按下 `Esc` 键或点击外部区域自动关闭。
+-   **智能定位**：自动处理视口溢出，确保卡片在屏幕可见范围内。

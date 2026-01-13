@@ -1,0 +1,77 @@
+# ColorChannelField 颜色通道输入框
+
+允许用户输入或调整特定颜色通道（如红色、绿色、蓝色或 Alpha 透明度）的数值。基于 Kobalte 的 ColorChannelField 核心构建，集成了文本输入和数字校验逻辑。
+
+## 引入
+
+import { ColorChannelField } from "solid-element-ui";
+
+## 代码演示
+
+### 1. 基础用法
+关联一个颜色对象并指定要编辑的通道（如 "red"）。
+
+
+
+<ColorChannelField value={color()} onChange={setColor} channel="red">
+  <ColorChannelField.Label>红色通道</ColorChannelField.Label>
+  <ColorChannelField.Input />
+</ColorChannelField>
+
+### 2. 带有描述和错误提示
+在表单场景下，可以添加说明文本或验证失败时的错误提示。
+
+<ColorChannelField channel="alpha">
+  <ColorChannelField.Label>不透明度</ColorChannelField.Label>
+  <ColorChannelField.Input />
+  <ColorChannelField.Description>请输入 0 到 1 之间的数值。</ColorChannelField.Description>
+  <ColorChannelField.ErrorMessage>请输入有效的透明度数值。</ColorChannelField.ErrorMessage>
+</ColorChannelField>
+
+### 3. 禁用与只读
+控制输入框的可编辑性。
+
+<div class="flex flex-col gap-4">
+  <ColorChannelField channel="blue" disabled>
+    <ColorChannelField.Label>禁用通道</ColorChannelField.Label>
+    <ColorChannelField.Input />
+  </ColorChannelField>
+
+  <ColorChannelField channel="green" readOnly>
+    <ColorChannelField.Label>只读通道</ColorChannelField.Label>
+    <ColorChannelField.Input />
+  </ColorChannelField>
+</div>
+
+## API 参考
+
+### ColorChannelField (Root)
+
+| 属性 | 说明 | 类型 | 默认值 |
+| :--- | :--- | :--- | :--- |
+| value | 当前颜色值 (受控) | Color | - |
+| defaultValue | 默认颜色值 | Color | - |
+| onChange | 颜色变化时的回调 | (value: Color) => void | - |
+| channel | 要编辑的颜色通道 | ColorChannel | - |
+| disabled | 是否禁用 | boolean | false |
+| readOnly | 是否只读 | boolean | false |
+| validationState | 验证状态 | 'valid' | 'invalid' | - |
+
+### ColorChannelField.Input
+
+| 属性 | 说明 | 类型 | 默认值 |
+| :--- | :--- | :--- | :--- |
+| class | 输入框的样式类名 | string | - |
+
+### ColorChannelField.Label
+
+| 属性 | 说明 | 类型 | 默认值 |
+| :--- | :--- | :--- | :--- |
+| class | 标签的样式类名 | string | - |
+
+## 无障碍 (Accessibility)
+
+- 自动关联: Label、Description 和 ErrorMessage 会通过 aria-labelledby、aria-describedby 和 aria-errormessage 自动与 Input 关联。
+- 数值校验: 自动根据颜色通道的范围（如 0-255 或 0-100%）限制输入内容。
+- 键盘支持: 支持标准的文本编辑快捷键，并确保 Tab 键导航流符合预期。
+- 状态告知: 当输入无效时，自动向屏幕阅读器播报错误状态。

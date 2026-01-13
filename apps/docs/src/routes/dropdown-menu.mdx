@@ -1,0 +1,119 @@
+# Dropdown Menu 下下拉菜单
+
+向用户展示一组动作或内容的列表，由按钮触发。基于 Kobalte 的 DropdownMenu 核心构建，支持嵌套菜单、复选/单选菜单项以及完整的键盘导航逻辑。
+
+## 引入
+
+import { DropdownMenu } from "solid-element-ui";
+
+## 代码演示
+
+### 1. 基础用法
+
+包含基础的菜单项、分隔线和快捷键提示。
+
+<DropdownMenu>
+    <DropdownMenu.Trigger>选项</DropdownMenu.Trigger>
+    <DropdownMenu.Portal>
+        <DropdownMenu.Content>
+            <DropdownMenu.Item>
+                <span>新建文件</span>
+                <DropdownMenu.ItemShortcut>⌘N</DropdownMenu.ItemShortcut>
+            </DropdownMenu.Item>
+            <DropdownMenu.Item>
+                <span>打开...</span>
+                <DropdownMenu.ItemShortcut>⌘O</DropdownMenu.ItemShortcut>
+            </DropdownMenu.Item>
+            <DropdownMenu.Separator />
+            <DropdownMenu.Item variant="destructive">
+                <span>删除</span>
+                <DropdownMenu.ItemShortcut>⌘⌫</DropdownMenu.ItemShortcut>
+            </DropdownMenu.Item>
+        </DropdownMenu.Content>
+    </DropdownMenu.Portal>
+</DropdownMenu>
+
+### 2. 复选与单选菜单
+
+用于在菜单内切换设置状态。
+
+<DropdownMenu>
+    <DropdownMenu.Trigger>视图设置</DropdownMenu.Trigger>
+    <DropdownMenu.Portal>
+        <DropdownMenu.Content>
+            <DropdownMenu.CheckboxItem
+                checked={showStatusBar()}
+                onCheckedChange={setShowStatusBar}
+            >
+                <DropdownMenu.ItemIndicator />
+                显示状态栏
+            </DropdownMenu.CheckboxItem>
+            <DropdownMenu.Separator />
+            <DropdownMenu.RadioGroup value={theme()} onValueChange={setTheme}>
+                <DropdownMenu.RadioItem value="light">
+                    <DropdownMenu.ItemIndicator />
+                    浅色模式
+                </DropdownMenu.RadioItem>
+                <DropdownMenu.RadioItem value="dark">
+                    <DropdownMenu.ItemIndicator />
+                    深色模式
+                </DropdownMenu.RadioItem>
+            </DropdownMenu.RadioGroup>
+        </DropdownMenu.Content>
+    </DropdownMenu.Portal>
+</DropdownMenu>
+
+### 3. 嵌套子菜单
+
+支持无限层级的子菜单嵌套，自动处理鼠标悬停和键盘展开逻辑。
+
+<DropdownMenu>
+    <DropdownMenu.Trigger>更多</DropdownMenu.Trigger>
+    <DropdownMenu.Portal>
+        <DropdownMenu.Content>
+            <DropdownMenu.Item>常规设置</DropdownMenu.Item>
+            <DropdownMenu.Sub>
+                <DropdownMenu.SubTrigger>发送至...</DropdownMenu.SubTrigger>
+                <DropdownMenu.Portal>
+                    <DropdownMenu.SubContent>
+                        <DropdownMenu.Item>电子邮件</DropdownMenu.Item>
+                        <DropdownMenu.Item>隔空投送</DropdownMenu.Item>
+                    </DropdownMenu.SubContent>
+                </DropdownMenu.Portal>
+            </DropdownMenu.Sub>
+        </DropdownMenu.Content>
+    </DropdownMenu.Portal>
+</DropdownMenu>
+
+## API 参考
+
+### DropdownMenu (Root)
+
+| 属性         | 说明                | 类型                    | 默认值 |
+| :----------- | :------------------ | :---------------------- | :----- |
+| isOpen       | 菜单是否打开 (受控) | boolean                 | -      |
+| onOpenChange | 打开状态改变回调    | (open: boolean) => void | -      |
+| modal        | 是否以模态方式呈现  | boolean                 | true   |
+
+### DropdownMenu.Item
+
+| 属性          | 说明                          | 类型                   | 默认值 |
+| :------------ | :---------------------------- | :--------------------- | :----- |
+| onSelect      | 选中项时的回调 (自动关闭菜单) | (event: Event) => void | -      |
+| disabled      | 是否禁用该项                  | boolean                | false  |
+| closeOnSelect | 选中后是否关闭菜单            | boolean                | true   |
+
+### DropdownMenu.Content / SubContent
+
+| 属性       | 说明           | 类型    | 默认值   |
+| :--------- | :------------- | :------ | :------- | -------- | ------- | -------- |
+| side       | 弹出方向       | 'top'   | 'right'  | 'bottom' | 'left'  | 'bottom' |
+| align      | 对齐方式       | 'start' | 'center' | 'end'    | 'start' |
+| sideOffset | 弹出间距偏移量 | number  | 4        |
+
+## 无障碍 (Accessibility)
+
+-   键盘导航: 上下键切换选项，左右键打开/关闭子菜单，Enter 选中，Esc 关闭。
+-   自动聚焦: 菜单打开时自动聚焦首个有效项，关闭时焦点返回触发器。
+-   角色定义: 遵循 menu、menuitem、menuitemcheckbox 等 ARIA 角色标准。
+-   智能定位: 自动根据视口空间调整弹出位置，防止内容溢出。

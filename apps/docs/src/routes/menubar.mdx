@@ -1,0 +1,93 @@
+# Menubar 菜单栏
+
+通常位于应用程序顶部的水平菜单条，用于组织大量的命令和选项。基于 Kobalte 的 Menubar 核心构建，支持完整的键盘箭头键导航、子菜单嵌套以及单选/复选菜单项。
+
+## 引入
+
+import { Menubar } from "solid-element-ui";
+
+## 代码演示
+
+### 1. 基础用法
+
+创建一个包含“文件”、“编辑”和“视图”的标准菜单栏。
+
+<Menubar>
+  <Menubar.Menu>
+    <Menubar.Trigger>文件</Menubar.Trigger>
+    <Menubar.Portal>
+      <Menubar.Content>
+        <Menubar.Item>新建窗口 <Menubar.ItemShortcut>⌘N</Menubar.ItemShortcut></Menubar.Item>
+        <Menubar.Item>保存 <Menubar.ItemShortcut>⌘S</Menubar.ItemShortcut></Menubar.Item>
+        <Menubar.Separator />
+        <Menubar.Item>打印...</Menubar.Item>
+      </Menubar.Content>
+    </Menubar.Portal>
+  </Menubar.Menu>
+
+  <Menubar.Menu>
+    <Menubar.Trigger>编辑</Menubar.Trigger>
+    <Menubar.Portal>
+      <Menubar.Content>
+        <Menubar.Item>撤销</Menubar.Item>
+        <Menubar.Item>重做</Menubar.Item>
+      </Menubar.Content>
+    </Menubar.Portal>
+  </Menubar.Menu>
+</Menubar>
+
+### 2. 带有选择状态的菜单
+
+在菜单栏中嵌入复选框或单选框项，用于切换应用设置。
+
+<Menubar>
+    <Menubar.Menu>
+        <Menubar.Trigger>视图</Menubar.Trigger>
+        <Menubar.Portal>
+            <Menubar.Content>
+                <Menubar.CheckboxItem
+                    checked={showGrid()}
+                    onCheckedChange={setShowGrid}
+                >
+                    <Menubar.ItemIndicator />
+                    显示网格
+                </Menubar.CheckboxItem>
+                <Menubar.Separator />
+                <Menubar.RadioGroup value={zoom()} onValueChange={setZoom}>
+                    <Menubar.RadioItem value="100%">100%</Menubar.RadioItem>
+                    <Menubar.RadioItem value="200%">200%</Menubar.RadioItem>
+                </Menubar.RadioGroup>
+            </Menubar.Content>
+        </Menubar.Portal>
+    </Menubar.Menu>
+</Menubar>
+
+## API 参考
+
+### Menubar (Root)
+
+| 属性      | 说明                         | 类型    | 默认值 |
+| :-------- | :--------------------------- | :------ | :----- |
+| autoFocus | 挂载时是否自动聚焦首个触发器 | boolean | false  |
+| loop      | 在菜单栏末尾是否循环回开头   | boolean | true   |
+
+### Menubar.Trigger
+
+| 属性     | 说明               | 类型    | 默认值 |
+| :------- | :----------------- | :------ | :----- |
+| disabled | 是否禁用该菜单入口 | boolean | false  |
+| class    | 触发按钮样式类名   | string  | -      |
+
+### Menubar.Content
+
+| 属性       | 说明               | 类型                         | 默认值  |
+| :--------- | :----------------- | :--------------------------- | :------ |
+| align      | 下拉菜单的对齐方式 | 'start' \| 'center' \| 'end' | 'start' |
+| sideOffset | 与菜单栏的垂直间距 | number                       | 0       |
+
+## 无障碍 (Accessibility)
+
+-   键盘导航: 使用左右箭头键在不同的菜单（Trigger）之间切换；使用上下箭头键在菜单项（Item）之间移动。
+-   智能激活: 当一个菜单已经打开时，鼠标移动到其他触发器上会自动切换打开对应的菜单。
+-   角色定义: 根容器标记为 `role="menubar"`，触发器标记为 `role="menuitem"`。
+-   焦点回归: 关闭菜单后，焦点会自动返回至最后一次激活的触发器。

@@ -1,0 +1,113 @@
+# Context Menu 右键菜单
+
+在用户于指定区域触发次要交互（通常是鼠标右键点击）时出现的列表。基于 Kobalte 的 ContextMenu 核心构建，支持嵌套子菜单、复选/单选项以及完全的键盘导航。
+
+## 引入
+
+import { ContextMenu } from "solid-element-ui";
+
+## 代码演示
+
+### 1. 基础用法
+
+定义一个触发区域，并配置菜单项。
+
+<ContextMenu>
+    <ContextMenu.Trigger class="flex h-[150px] w-full items-center justify-center rounded-md border border-dashed text-sm">
+        在此区域右键点击
+    </ContextMenu.Trigger>
+    <ContextMenu.Portal>
+        <ContextMenu.Content>
+            <ContextMenu.Item>返回</ContextMenu.Item>
+            <ContextMenu.Item disabled>前进</ContextMenu.Item>
+            <ContextMenu.Item>重新加载</ContextMenu.Item>
+            <ContextMenu.Separator />
+            <ContextMenu.Item>检查元素</ContextMenu.Item>
+        </ContextMenu.Content>
+    </ContextMenu.Portal>
+</ContextMenu>
+
+### 2. 子菜单与快捷键
+
+支持多级嵌套以及在菜单项右侧展示快捷键提示。
+
+<ContextMenu>
+    <ContextMenu.Trigger class="...">右键尝试子菜单</ContextMenu.Trigger>
+    <ContextMenu.Portal>
+        <ContextMenu.Content>
+            <ContextMenu.Item>
+                保存页面 <ContextMenu.Shortcut>⌘S</ContextMenu.Shortcut>
+            </ContextMenu.Item>
+            <ContextMenu.Sub>
+                <ContextMenu.SubTrigger>更多工具</ContextMenu.SubTrigger>
+                <ContextMenu.Portal>
+                    <ContextMenu.SubContent>
+                        <ContextMenu.Item>开发者工具</ContextMenu.Item>
+                        <ContextMenu.Item>任务管理器</ContextMenu.Item>
+                    </ContextMenu.SubContent>
+                </ContextMenu.Portal>
+            </ContextMenu.Sub>
+        </ContextMenu.Content>
+    </ContextMenu.Portal>
+</ContextMenu>
+
+### 3. 复选与单选菜单项
+
+用于切换设置或从一组互斥选项中选择。
+
+<ContextMenu>
+    <ContextMenu.Trigger class="...">设置选项</ContextMenu.Trigger>
+    <ContextMenu.Portal>
+        <ContextMenu.Content>
+            <ContextMenu.CheckboxItem
+                checked={showToolbar()}
+                onCheckedChange={setShowToolbar}
+            >
+                <ContextMenu.ItemIndicator>✓</ContextMenu.ItemIndicator>
+                显示工具栏
+            </ContextMenu.CheckboxItem>
+            <ContextMenu.Separator />
+            <ContextMenu.Label>皮肤</ContextMenu.Label>
+            <ContextMenu.RadioGroup value={theme()} onValueChange={setTheme}>
+                <ContextMenu.RadioItem value="light">
+                    <ContextMenu.ItemIndicator>•</ContextMenu.ItemIndicator>
+                    浅色模式
+                </ContextMenu.RadioItem>
+                <ContextMenu.RadioItem value="dark">
+                    <ContextMenu.ItemIndicator>•</ContextMenu.ItemIndicator>
+                    深色模式
+                </ContextMenu.RadioItem>
+            </ContextMenu.RadioGroup>
+        </ContextMenu.Content>
+    </ContextMenu.Portal>
+</ContextMenu>
+
+## API 参考
+
+### ContextMenu (Root)
+
+| 属性         | 说明                  | 类型                    | 默认值 |
+| :----------- | :-------------------- | :---------------------- | :----- |
+| disabled     | 是否禁用右键菜单      | boolean                 | false  |
+| onOpenChange | 菜单打开/关闭时的回调 | (open: boolean) => void | -      |
+
+### ContextMenu.Content / SubContent
+
+| 属性            | 说明               | 类型               | 默认值 |
+| :-------------- | :----------------- | :----------------- | :----- |
+| class           | 菜单面板的样式类名 | string             | -      |
+| onEscapeKeyDown | 按下 Esc 时的回调  | (e: Event) => void | -      |
+
+### ContextMenu.Item
+
+| 属性     | 说明             | 类型               | 默认值 |
+| :------- | :--------------- | :----------------- | :----- |
+| onSelect | 选中该项时的回调 | (e: Event) => void | -      |
+| disabled | 是否禁用该项     | boolean            | false  |
+
+## 无障碍 (Accessibility)
+
+-   触发逻辑: 自动监听 contextmenu 事件并屏蔽系统默认菜单。
+-   键盘导航: 上下箭头移动焦点，左右箭头进入/退出子菜单，Enter 触发选中，Esc 关闭。
+-   角色定义: 遵循 WAI-ARIA Menu 模式，自动分配 menu、menuitem、menuitemcheckbox 等角色。
+-   焦点管理: 菜单打开时自动聚焦首项，关闭时焦点返回到触发区域。

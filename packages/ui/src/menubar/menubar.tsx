@@ -1,5 +1,5 @@
 import { Menubar as KMenubar } from "@kobalte/core/menubar";
-import { splitProps, type ComponentProps, JSX } from "solid-js";
+import { splitProps, type ComponentProps, type JSX } from "solid-js";
 import { menubarVariants } from "./setting";
 import { Check, ChevronRight, Circle } from "lucide-solid";
 

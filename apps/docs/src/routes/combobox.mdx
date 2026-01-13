@@ -1,0 +1,107 @@
+# Combobox 组合框
+
+结合了文本输入框和下拉列表功能的控件，允许用户通过输入过滤选项并从中进行选择。基于 Kobalte 的 Combobox 核心构建，具备高效的虚拟列表支持、模糊搜索以及完善的键盘导航。
+
+## 引入
+
+import { Combobox } from "solid-element-ui";
+
+## 代码演示
+
+### 1. 基础用法
+
+提供一组选项进行单选。
+
+<Combobox
+    options={["Apple", "Banana", "Blueberry", "Cherry"]}
+    placeholder="搜索水果..."
+>
+    <Combobox.Label>水果</Combobox.Label>
+    <Combobox.Control>
+        <Combobox.Input />
+        <Combobox.Trigger />
+    </Combobox.Control>
+    <Combobox.Portal>
+        <Combobox.Content>
+            <Combobox.Listbox />
+        </Combobox.Content>
+    </Combobox.Portal>
+</Combobox>
+
+### 2. 多选模式 (Multiple)
+
+允许用户选择多个项目，通常配合标签（Tag）展示已选项。
+
+<Combobox multiple options={["React", "Solid", "Vue", "Svelte"]}>
+    <Combobox.Control>
+        <Combobox.Input />
+    </Combobox.Control>
+    <Combobox.Portal>
+        <Combobox.Content>
+            <Combobox.Listbox />
+        </Combobox.Content>
+    </Combobox.Portal>
+</Combobox>
+
+### 3. 对象选项与自定义渲染
+
+当数据为复杂对象时，通过 optionValue 和 optionLabel 指定映射字段。
+
+<Combobox
+    options={[
+        { id: 1, name: "管理员", role: "admin" },
+        { id: 2, name: "编辑器", role: "editor" },
+    ]}
+    optionValue="id"
+    optionLabel="name"
+    itemComponent={(props) => (
+        <Combobox.Item item={props.item}>
+            <Combobox.ItemLabel>{props.item.rawValue.name}</Combobox.ItemLabel>
+            <Combobox.ItemIndicator />
+        </Combobox.Item>
+    )}
+>
+    <Combobox.Control>
+        <Combobox.Input />
+    </Combobox.Control>
+    <Combobox.Portal>
+        <Combobox.Content>
+            <Combobox.Listbox />
+        </Combobox.Content>
+    </Combobox.Portal>
+</Combobox>
+
+## API 参考
+
+### Combobox (Root)
+
+| 属性          | 说明                                      | 类型               | 默认值     |
+| :------------ | :---------------------------------------- | :----------------- | :--------- |
+| options       | 数据源列表                                | Array              | []         |
+| value         | 选中项的值 (受控)                         | T \| T[]           | -          |
+| onValueChange | 选中值变化的回调                          | (value: T) => void | -          |
+| multiple      | 是否开启多选                              | boolean            | false      |
+| filter        | 过滤逻辑（'contains' \| 'startsWith' 等） | string \| function | 'contains' |
+| disabled      | 是否禁用组件                              | boolean            | false      |
+
+### Combobox.Input
+
+| 属性      | 说明           | 类型    | 默认值 |
+| :-------- | :------------- | :------ | :----- |
+| autoFocus | 自动聚焦输入框 | boolean | false  |
+| class     | 输入框样式类名 | string  | -      |
+
+### Combobox.Item
+
+| 属性     | 说明                                   | 类型           | 默认值 |
+| :------- | :------------------------------------- | :------------- | :----- |
+| item     | 数据项对象 (必须从 itemComponent 传入) | CollectionItem | -      |
+| disabled | 是否禁用该项                           | boolean        | false  |
+
+## 无障碍 (Accessibility)
+
+-   角色分配: 遵循 ARIA 1.2 组合框模式，包含 combobox、listbox 和 option 角色。
+-   键盘导航: 上下箭头移动焦点，Enter 选中，Esc 关闭列表，Alt + Down 展开列表。
+-   智能关联: Label 自动通过 aria-labelledby 与输入框关联。
+-   实时反馈: 当用户输入时，屏幕阅读器会播报过滤后剩余的选项数量。
+-   状态同步: 自动处理 aria-expanded、aria-activedescendant 等关键属性。

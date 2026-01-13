@@ -1,0 +1,84 @@
+# Radio Group 单选框组
+
+一组互斥的选项，用户只能从中选择一个。基于 Kobalte 的 Radio Group 核心构建。
+
+---
+
+## 引入
+
+import { RadioGroup } from "solid-element-ui";
+
+---
+
+## 代码演示
+
+### 1. 基础用法
+
+一组基础的选项列表。
+
+<RadioGroup defaultValue="apple">
+    <RadioGroup.Label class="text-sm font-medium mb-2 block">
+        选择你最喜欢的水果
+    </RadioGroup.Label>
+    <div class="flex flex-col gap-2">
+        <RadioGroup.Item value="apple" class="flex items-center gap-2">
+            <RadioGroup.ItemInput />
+            <RadioGroup.ItemControl class="w-4 h-4 rounded-full border border-zinc-300 data-[checked]:bg-blue-600 data-[checked]:border-blue-600 flex items-center justify-center">
+                <RadioGroup.ItemIndicator class="w-1.5 h-1.5 rounded-full bg-white" />
+            </RadioGroup.ItemControl>
+            <RadioGroup.ItemLabel class="text-sm">苹果</RadioGroup.ItemLabel>
+        </RadioGroup.Item>
+        <RadioGroup.Item value="orange" class="flex items-center gap-2">
+            <RadioGroup.ItemInput />
+            <RadioGroup.ItemControl class="w-4 h-4 rounded-full border border-zinc-300 data-[checked]:bg-blue-600 data-[checked]:border-blue-600 flex items-center justify-center">
+                <RadioGroup.ItemIndicator class="w-1.5 h-1.5 rounded-full bg-white" />
+            </RadioGroup.ItemControl>
+            <RadioGroup.ItemLabel class="text-sm">橙子</RadioGroup.ItemLabel>
+        </RadioGroup.Item>
+    </div>
+</RadioGroup>
+
+### 2. 受控状态
+
+通过 value 属性管理当前选中项。
+
+<RadioGroup value={selected()} onValueChange={setSelected}>
+    <RadioGroup.Label>主题设置</RadioGroup.Label>
+    <RadioGroup.Item value="light">
+        <RadioGroup.ItemLabel>浅色</RadioGroup.ItemLabel>
+    </RadioGroup.Item>
+    <RadioGroup.Item value="dark">
+        <RadioGroup.ItemLabel>深色</RadioGroup.ItemLabel>
+    </RadioGroup.Item>
+</RadioGroup>
+
+---
+
+## API 参考
+
+### RadioGroup (Root)
+
+| 属性          | 说明                | 类型                       | 默认值     |
+| :------------ | :------------------ | :------------------------- | :--------- |
+| value         | 当前选中的值 (受控) | string                     | -          |
+| defaultValue  | 默认选中的值        | string                     | -          |
+| onValueChange | 选中值改变时的回调  | (value: string) => void    | -          |
+| orientation   | 排列方向            | 'horizontal' \| 'vertical' | 'vertical' |
+| disabled      | 是否禁用整个组      | boolean                    | false      |
+| required      | 是否必选            | boolean                    | false      |
+
+### RadioGroup.Item
+
+| 属性     | 说明         | 类型    | 默认值 |
+| :------- | :----------- | :------ | :----- |
+| value    | 该选项的值   | string  | -      |
+| disabled | 是否禁用该项 | boolean | false  |
+
+---
+
+## 无障碍 (Accessibility)
+
+-   **角色分配**：容器自动获得 `role="radiogroup"`，每个选项获得 `role="radio"`。
+-   **键盘导航**：使用 `Tab` 键进入组，使用方向键（箭头键）在选项间切换并自动选中。
+-   **状态同步**：自动管理 `aria-checked`、`aria-disabled` 和 `aria-required`。
+-   **语义关联**：Label 自动通过 `aria-labelledby` 与组关联。

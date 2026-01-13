@@ -1,0 +1,81 @@
+# ColorField 颜色输入框
+
+允许用户通过文本输入框直接输入颜色值（如 Hex、RGB 或 HSL 格式）。基于 Kobalte 的 ColorField 核心构建，具有内置的格式校验和自动解析功能。
+
+## 引入
+
+import { ColorField } from "solid-element-ui";
+
+## 代码演示
+
+### 1. 基础用法
+关联一个颜色对象，默认支持输入十六进制格式。
+
+
+
+<ColorField value={color()} onChange={setColor}>
+  <ColorField.Label>十六进制颜色</ColorField.Label>
+  <ColorField.Input />
+</ColorField>
+
+### 2. 完整表单结构
+包含颜色预览块（Swatch）、描述信息以及校验错误提示。
+
+<ColorField validationState={isValid() ? "valid" : "invalid"}>
+  <ColorField.Label>背景颜色</ColorField.Label>
+  <div class="flex items-center gap-2">
+    <ColorField.Swatch class="h-8 w-8 rounded border" />
+    <ColorField.Input />
+  </div>
+  <ColorField.Description>请输入有效的 Hex 颜色代码。</ColorField.Description>
+  <ColorField.ErrorMessage>颜色格式不正确，请重新输入。</ColorField.ErrorMessage>
+</ColorField>
+
+### 3. 不同的颜色空间
+支持解析多种颜色空间。
+
+<div class="grid grid-cols-2 gap-4">
+  <ColorField channel="red">
+    <ColorField.Label>红色通道 (0-255)</ColorField.Label>
+    <ColorField.Input />
+  </ColorField>
+  
+  <ColorField channel="alpha">
+    <ColorField.Label>透明度 (0-1)</ColorField.Label>
+    <ColorField.Input />
+  </ColorField>
+</div>
+
+## API 参考
+
+### ColorField (Root)
+
+| 属性 | 说明 | 类型 | 默认值 |
+| :--- | :--- | :--- | :--- |
+| value | 当前颜色值 (受控) | Color | - |
+| defaultValue | 默认颜色值 | Color | - |
+| onChange | 颜色变化时的回调 | (value: Color) => void | - |
+| channel | 指定编辑的特定通道 | ColorChannel | - |
+| disabled | 是否禁用 | boolean | false |
+| readOnly | 是否只读 | boolean | false |
+| validationState | 验证状态 | 'valid' | 'invalid' | - |
+
+### ColorField.Input
+
+| 属性 | 说明 | 类型 | 默认值 |
+| :--- | :--- | :--- | :--- |
+| class | 输入框的样式类名 | string | - |
+| placeholder | 占位符文本 | string | - |
+
+### ColorField.Swatch
+
+| 属性 | 说明 | 类型 | 默认值 |
+| :--- | :--- | :--- | :--- |
+| class | 颜色预览块的样式类名 | string | - |
+
+## 无障碍 (Accessibility)
+
+- 文本关联: Label 自动与 Input 关联，Description 和 ErrorMessage 通过 aria-describedby 提供额外上下文。
+- 自动更正: 当失去焦点时，组件会自动将不完整的输入解析为最接近的有效颜色格式。
+- 角色定义: Swatch 自动获得角色属性，确保辅助技术能识别其为当前的颜色显示。
+- 键盘流: 完全符合标准的文本输入焦点管理。

@@ -1,0 +1,74 @@
+# Collapsible 折叠面板
+
+用于在显示和隐藏内容之间切换。基于 Kobalte 的 Collapsible 核心构建，支持平滑的展开动画和完全的键盘控制。
+
+## 引入
+
+import { Collapsible } from "solid-element-ui";
+
+## 代码演示
+
+### 1. 基础用法
+
+点击触发器切换内容的显示状态。
+
+<Collapsible>
+    <Collapsible.Trigger>点击展开详情</Collapsible.Trigger>
+    <Collapsible.Content>
+        这是一段隐藏的内容，只有在触发器被激活时才会显示。你可以用来放置长文本、设置选项或次要信息。
+    </Collapsible.Content>
+</Collapsible>
+
+### 2. 受控状态
+
+通过 isOpen 属性手动管理展开状态。
+
+<Collapsible isOpen={isOpen()} onOpenChange={setIsOpen}>
+    <div class="flex items-center justify-between">
+        <span>项目设置</span>
+        <Collapsible.Trigger>{isOpen() ? "收起" : "管理"}</Collapsible.Trigger>
+    </div>
+    <Collapsible.Content class="mt-2">
+        这里是复杂的配置面板。
+    </Collapsible.Content>
+</Collapsible>
+
+### 3. 禁用状态
+
+禁用后触发器将失效。
+
+<Collapsible disabled>
+    <Collapsible.Trigger>无法操作</Collapsible.Trigger>
+    <Collapsible.Content>这段内容永远不会被看到。</Collapsible.Content>
+</Collapsible>
+
+## API 参考
+
+### Collapsible (Root)
+
+| 属性         | 说明                 | 类型                    | 默认值 |
+| :----------- | :------------------- | :---------------------- | :----- |
+| isOpen       | 是否展开（受控）     | boolean                 | -      |
+| defaultOpen  | 默认是否展开         | boolean                 | false  |
+| onOpenChange | 展开状态变化时的回调 | (open: boolean) => void | -      |
+| disabled     | 是否禁用交互         | boolean                 | false  |
+
+### Collapsible.Trigger
+
+| 属性  | 说明               | 类型           | 默认值   |
+| :---- | :----------------- | :------------- | :------- |
+| class | 触发按钮的样式类名 | string         | -        |
+| as    | 底层渲染的元素     | ValidComponent | 'button' |
+
+### Collapsible.Content
+
+| 属性  | 说明               | 类型   | 默认值 |
+| :---- | :----------------- | :----- | :----- |
+| class | 内容容器的样式类名 | string | -      |
+
+## 无障碍 (Accessibility)
+
+-   状态感知: 触发器自动关联 aria-expanded 和 aria-controls。
+-   键盘支持: 支持使用 Enter 或 Space 键激活触发器。
+-   动画处理: 当内容折叠时，会自动从 Tab 键导航流中移除，并对屏幕阅读器不可见。
+-   角色定义: 内容区域具备 region 角色含义，确保结构清晰。

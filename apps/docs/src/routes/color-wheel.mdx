@@ -1,0 +1,69 @@
+# ColorWheel 色轮
+
+一个圆形的颜色选择器，允许用户通过沿圆形轨道拖动滑块来选择颜色的色相（Hue）。基于 Kobalte 的 ColorWheel 核心构建，支持触控和精细的键盘导航。
+
+## 引入
+
+import { ColorWheel } from "solid-element-ui";
+
+## 代码演示
+
+### 1. 基础用法
+
+默认渲染一个圆形的色相环，通过拖动滑块改变颜色。
+
+<ColorWheel value={color()} onChange={setColor}>
+    <ColorWheel.Background />
+    <ColorWheel.Thumb />
+</ColorWheel>
+
+### 2. 自定义尺寸与厚度
+
+通过类名控制色轮的直径和圆环的宽度。
+
+<ColorWheel class="h-[250px] w-[250px]">
+    <ColorWheel.Background class="stroke-[20px]" />
+    <ColorWheel.Thumb class="h-6 w-6 border-4 border-white shadow-md" />
+</ColorWheel>
+
+### 3. 禁用与只读
+
+在某些业务逻辑下（如权限限制），可以锁定色轮。
+
+<ColorWheel disabled>
+    <ColorWheel.Background />
+    <ColorWheel.Thumb />
+</ColorWheel>
+
+## API 参考
+
+### ColorWheel (Root)
+
+| 属性         | 说明                    | 类型                   | 默认值 |
+| :----------- | :---------------------- | :--------------------- | :----- |
+| value        | 当前选中的颜色值 (受控) | Color                  | -      |
+| defaultValue | 默认颜色值              | Color                  | -      |
+| onChange     | 颜色变化时的回调函数    | (value: Color) => void | -      |
+| onChangeEnd  | 拖动/交互结束时的回调   | (value: Color) => void | -      |
+| disabled     | 是否禁用交互            | boolean                | false  |
+| readOnly     | 是否只读                | boolean                | false  |
+
+### ColorWheel.Background
+
+| 属性  | 说明               | 类型   | 默认值 |
+| :---- | :----------------- | :----- | :----- |
+| class | 圆环背景的样式类名 | string | -      |
+
+### ColorWheel.Thumb
+
+| 属性  | 说明               | 类型   | 默认值 |
+| :---- | :----------------- | :----- | :----- |
+| class | 选择滑块的样式类名 | string | -      |
+
+## 无障碍 (Accessibility)
+
+-   键盘交互: 使用上/右箭头键增加色相角度，下/左箭头键减少色相角度。
+-   快捷键: 使用 Home/End 键快速跳至 0° 或 360°。
+-   步长微调: 配合 Shift 键使用箭头键可以以更大的步长（通常为 15°）进行调整。
+-   语音播报: 自动关联当前色相的度数，并向屏幕阅读器实时更新颜色状态。
+-   触控友好: 针对移动端优化了点击与滑动的触控目标。

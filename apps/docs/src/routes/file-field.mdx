@@ -1,0 +1,102 @@
+# FileField 文件选择域
+
+允许用户从设备中选择一个或多个文件。基于 Kobalte 的 FileField 核心构建，提供了完整的拖拽支持、文件过滤、预览处理以及表单集成功能。
+
+## 引入
+
+import { FileField } from "solid-element-ui";
+
+## 代码演示
+
+### 1. 基础用法
+
+点击触发器或将文件拖入区域。
+
+<FileField>
+    <FileField.Label>上传文档</FileField.Label>
+    <FileField.DropZone>
+        <div class="flex flex-col items-center">
+            <span>拖拽文件至此 或</span>
+            <FileField.Trigger class="text-blue-500 underline">
+                浏览本地文件
+            </FileField.Trigger>
+        </div>
+    </FileField.DropZone>
+    <FileField.Input />
+</FileField>
+
+### 2. 多文件与类型限制
+
+通过 multiple 属性开启多选，并通过 accept 限制文件格式（例如仅限图片）。
+
+<FileField
+    multiple
+    accept="image/*"
+    onValueChange={(files) => console.log(files)}
+>
+    <FileField.Trigger variant="outline">选择图片</FileField.Trigger>
+    <FileField.Input />
+    <FileField.ItemList
+        itemComponent={(props) => (
+            <FileField.Item file={props.file}>
+                <FileField.ItemName />
+                <FileField.ItemSize />
+                <FileField.ItemDelete />
+            </FileField.Item>
+        )}
+    />
+</FileField>
+
+### 3. 文件预览 (Preview)
+
+对于图片文件，可以使用预览组件实时展示。
+
+<FileField accept="image/*">
+    <FileField.Trigger>上传头像</FileField.Trigger>
+    <FileField.Input />
+    <FileField.ItemList
+        itemComponent={(props) => (
+            <FileField.Item file={props.file} class="flex gap-4 items-center">
+                <FileField.ItemPreview
+                    type="image"
+                    class="h-10 w-10 rounded object-cover"
+                />
+                <FileField.ItemName />
+                <FileField.ItemDelete />
+            </FileField.Item>
+        )}
+    />
+</FileField>
+
+## API 参考
+
+### FileField (Root)
+
+| 属性          | 说明                    | 类型                    | 默认值 |
+| :------------ | :---------------------- | :---------------------- | :----- |
+| value         | 已选中的文件列表 (受控) | File[]                  | -      |
+| onValueChange | 文件列表变化时的回调    | (files: File[]) => void | -      |
+| multiple      | 是否允许选择多个文件    | boolean                 | false  |
+| accept        | 允许的文件类型 (MIME)   | string                  | -      |
+| maxFiles      | 最大选择数量            | number                  | -      |
+| disabled      | 是否禁用                | boolean                 | false  |
+
+### FileField.DropZone
+
+| 属性  | 说明               | 类型   | 默认值 |
+| :---- | :----------------- | :----- | :----- |
+| class | 拖拽区域的样式类名 | string | -      |
+
+### FileField.ItemPreview
+
+| 属性 | 说明     | 类型              | 默认值  |
+| :--- | :------- | :---------------- | :------ |
+| type | 预览类型 | 'image' \| 'text' | 'image' |
+
+## 无障碍 (Accessibility)
+
+-   隐形输入: 自动管理隐藏的 input[type="file"]，并通过 Label 关联。
+-   键盘交互: Trigger 支持 Enter 或 Space 键激活。
+-   拖拽状态: DropZone 具有 aria-disabled 和拖拽时的状态反馈。
+-   列表播报: 动态更新已选择的文件列表，辅助技术能够识别文件的添加和移除操作。
+-   错误提示: 当文件类型或数量不符合 accept/maxFiles 限制时，可配合 ErrorMessage 进行无障碍播报。

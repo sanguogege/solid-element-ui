@@ -1,0 +1,49 @@
+# ColorSwatch 颜色样本
+
+用于显示特定颜色值的静态预览组件。通常在颜色选择器、调色板列表或产品规格展示中使用。基于 Kobalte 的 ColorSwatch 核心构建。
+
+## 引入
+
+import { ColorSwatch } from "solid-element-ui";
+
+## 代码演示
+
+### 1. 基础用法
+
+直接展示一个颜色对象或颜色字符串。
+
+<ColorSwatch value="#3b82f6" />
+
+### 2. 自定义形状与尺寸
+
+通过类名控制组件的大小、圆角以及边框样式。
+
+<div class="flex gap-4">
+    <ColorSwatch
+        value="hsl(24, 100%, 50%)"
+        class="h-10 w-10 rounded-full border-2 border-white shadow-sm"
+    />
+    <ColorSwatch value="rgb(34, 197, 94)" class="h-12 w-20 rounded-md" />
+</div>
+
+### 3. 与颜色对象配合
+
+支持从颜色状态中动态获取值并渲染。
+
+<ColorSwatch value={color()} class="h-8 w-8 rounded border" />
+
+## API 参考
+
+### ColorSwatch
+
+| 属性  | 说明           | 类型           | 默认值 |
+| :---- | :------------- | :------------- | :----- | --- |
+| value | 要显示的颜色值 | string         | Color  | -   |
+| class | 自定义样式类名 | string         | -      |
+| as    | 底层渲染的元素 | ValidComponent | 'div'  |
+
+## 无障碍 (Accessibility)
+
+-   颜色描述: 自动为组件添加 aria-label，播报当前颜色的人类可读名称（例如 "Blue" 或 "Hex #3b82f6"）。
+-   角色定义: 自动获得 img 角色，使其在辅助技术中被识别为视觉内容。
+-   状态展示: 当颜色具有透明度时，建议在底层配合棋盘格背景以真实反映颜色的视觉效果。

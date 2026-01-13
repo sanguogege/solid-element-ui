@@ -1,0 +1,96 @@
+# Navigation Menu 导航菜单
+
+用于展示网站的主要导航结构，通常位于页面顶部。基于 Kobalte 的 NavigationMenu 核心构建，支持复杂的子菜单布局、精细的交互延迟控制以及自适应的无障碍体验。
+
+---
+
+## 引入
+
+import { NavigationMenu } from "solid-element-ui";
+
+---
+
+## 代码演示
+
+### 1. 基础用法
+创建一个带有下拉内容的标准水平导航栏。
+
+
+
+<NavigationMenu>
+  <NavigationMenu.List class="flex list-none bg-white p-2 shadow rounded-md">
+    <NavigationMenu.Menu>
+      <NavigationMenu.Trigger class="px-3 py-2 hover:bg-zinc-100 rounded">
+        产品
+      </NavigationMenu.Trigger>
+      <NavigationMenu.Portal>
+        <NavigationMenu.Content class="absolute bg-white p-4 shadow-lg rounded-lg w-[300px]">
+          <ul class="grid gap-2">
+            <li>
+              <a href="/pro" class="block p-2 hover:bg-zinc-50 font-bold">专业版</a>
+              <p class="text-xs text-zinc-500">解锁所有高级 UI 组件和模板。</p>
+            </li>
+            <li>
+              <a href="/free" class="block p-2 hover:bg-zinc-50 font-bold">社区版</a>
+              <p class="text-xs text-zinc-500">永远免费的开源基础核心。</p>
+            </li>
+          </ul>
+        </NavigationMenu.Content>
+      </NavigationMenu.Portal>
+    </NavigationMenu.Menu>
+
+    <NavigationMenu.Item href="/docs" class="px-3 py-2 hover:bg-zinc-100 rounded">
+      文档
+    </NavigationMenu.Item>
+    <NavigationMenu.Item href="/blog" class="px-3 py-2 hover:bg-zinc-100 rounded">
+      博客
+    </NavigationMenu.Item>
+  </NavigationMenu.List>
+</NavigationMenu>
+
+### 2. 视口容器 (Viewport)
+使用视口容器来统一管理多个子菜单内容的动画和尺寸切换。
+
+<NavigationMenu>
+  <NavigationMenu.List>
+    {/* 菜单触发器内容... */}
+  </NavigationMenu.List>
+
+  <div class="perspective-[2000px] absolute left-0 top-full flex w-full justify-center">
+    <NavigationMenu.Viewport class="relative mt-2 h-[var(--kb-navigation-menu-viewport-height)] w-[var(--kb-navigation-menu-viewport-width)] origin-[top_center] overflow-hidden rounded-md border bg-white shadow-lg transition-[width,height] duration-300" />
+  </div>
+</NavigationMenu>
+
+---
+
+## API 参考
+
+### NavigationMenu (Root)
+
+| 属性 | 说明 | 类型 | 默认值 |
+| :--- | :--- | :--- | :--- |
+| value | 当前选中的菜单项值 (受控) | string | - |
+| defaultValue | 默认选中的值 | string | - |
+| onValueChange | 选中项变化的回调 | (value: string) => void | - |
+| delay | 鼠标移入触发的延迟 (ms) | number | 200 |
+| skipDelay | 切换菜单项时的跳过延迟 (ms) | number | 300 |
+| orientation | 导航排列方向 | 'horizontal' \| 'vertical' | 'horizontal' |
+
+### NavigationMenu.Item (Link)
+
+| 属性 | 说明 | 类型 | 默认值 |
+| :--- | :--- | :--- | :--- |
+| href | 外部或内部链接地址 | string | - |
+| class | 样式类名 | string | - |
+
+---
+
+## 无障碍 (Accessibility)
+
+- **角色分配**：根元素自动标记为 `role="navigation"`，列表容器标记为 `role="menubar"`。
+- **键盘导航**：
+    - 使用 `Tab` 键在顶级项之间导航。
+    - 使用 `Enter` 或 `Space` 展开菜单。
+    - 使用方向键（左右）在水平菜单项之间移动。
+- **意图感知**：支持交互延迟逻辑，防止用户在移动鼠标时意外触发不需要的下拉菜单。
+- **状态同步**：自动管理 `aria-expanded`、`aria-haspopup` 和 `aria-controls` 属性。

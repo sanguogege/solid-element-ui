@@ -1,0 +1,85 @@
+# Select 选择器
+
+允许用户从列表中选择一个选项。基于 Kobalte 的 Select 核心构建，通过 `tailwind-variants` 内置了完整的视觉样式与交互动画。
+
+---
+
+## 引入
+
+import { Select } from "solid-element-ui";
+
+---
+
+## 代码演示
+
+### 1. 基础用法
+
+配置 `options` 数据源并使用 `itemComponent` 渲染选项。组件内部已处理好图标、选中态和布局。
+
+<Select
+    options={["Apple", "Banana", "Blueberry", "Grapes"]}
+    placeholder="选择一个水果..."
+    itemComponent={(props) => (
+        <Select.Item item={props.item}>{props.item.rawValue}</Select.Item>
+    )}
+>
+    <Select.Label>水果名称</Select.Label>
+    <Select.Trigger>
+        <Select.Value />
+    </Select.Trigger>
+    <Select.Content />
+</Select>
+
+### 2. 对象数组
+
+当选项为对象时，通过 `optionValue` 和 `optionTextValue` 指定键值。
+
+<Select
+    options={[
+        { id: 1, name: "选项一" },
+        { id: 2, name: "选项二" },
+    ]}
+    optionValue="id"
+    optionTextValue="name"
+    itemComponent={(props) => (
+        <Select.Item item={props.item}>{props.item.rawValue.name}</Select.Item>
+    )}
+>
+    <Select.Trigger>
+        <Select.Value />
+    </Select.Trigger>
+    <Select.Content />
+</Select>
+
+---
+
+## API 参考
+
+### Select (Root)
+
+| 属性            | 说明                                  | 类型               | 默认值 |
+| :-------------- | :------------------------------------ | :----------------- | :----- |
+| options         | 数据源数组                            | T[]                | []     |
+| value           | 当前选中的值 (受控)                   | T                  | -      |
+| defaultValue    | 默认选中的值                          | T                  | -      |
+| onValueChange   | 值改变时的回调                        | (value: T) => void | -      |
+| placeholder     | 未选中时的提示文本                    | string             | -      |
+| disabled        | 是否禁用整个组件                      | boolean            | false  |
+| optionValue     | 如果 options 是对象，指定唯一标识键   | string \| keyof T  | -      |
+| optionTextValue | 如果 options 是对象，指定显示的文本键 | string \| keyof T  | -      |
+
+### Select.Item
+
+| 属性     | 说明                          | 类型        | 默认值 |
+| :------- | :---------------------------- | :---------- | :----- |
+| item     | 由 itemComponent 提供的项对象 | any         | -      |
+| children | 选项显示的文本内容            | JSX.Element | -      |
+
+---
+
+## 组件特性
+
+-   **样式封装**：采用 `tailwind-variants` 驱动，内置了 `Select.Trigger` 的下箭头图标和 `Select.Item` 的选中勾选图标（Check）。
+-   **动画效果**：`Select.Content` 内置了 `fade-in` 动画及弹出层阴影。
+-   **状态感知**：自动响应禁用（disabled）、高亮（highlighted）及选中（selected）等交互状态。
+-   **无障碍**：完全继承自 Kobalte，支持键盘上下键导航、`Enter` 选中以及 `Type-to-select` 快速搜索。

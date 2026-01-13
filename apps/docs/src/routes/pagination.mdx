@@ -1,0 +1,89 @@
+# Pagination 分页
+
+用于将大量内容分隔在多个页面中，并允许用户在页面间导航。基于 Kobalte 的 Pagination 核心构建，支持动态页码计算、边界控制以及完整的键盘无障碍支持。
+
+---
+
+## 引入
+
+import { Pagination } from "solid-element-ui";
+
+---
+
+## 代码演示
+
+### 1. 基础用法
+展示带有页码、上一页和下一页按钮的标准分页。
+
+
+
+<Pagination count={10} defaultPage={1}>
+  <Pagination.List class="flex items-center gap-1">
+    <Pagination.Previous class="px-3 py-1 hover:bg-zinc-100 rounded">上一页</Pagination.Previous>
+    <Pagination.Items />
+    <Pagination.Next class="px-3 py-1 hover:bg-zinc-100 rounded">下一页</Pagination.Next>
+  </Pagination.List>
+</Pagination>
+
+### 2. 自定义页码渲染
+通过 `itemComponent` 自定义页码按钮的样式。
+
+<Pagination 
+  count={20} 
+  itemComponent={(props) => (
+    <Pagination.Item page={props.page} class="w-8 h-8 flex items-center justify-center rounded data-[selected]:bg-blue-600 data-[selected]:text-white">
+      {props.page}
+    </Pagination.Item>
+  )}
+  ellipsisComponent={() => <span class="px-2">...</span>}
+>
+  <Pagination.List />
+</Pagination>
+
+### 3. 受控模式
+通过 `page` 和 `onPageChange` 属性管理当前状态。
+
+<Pagination 
+  page={currentPage()} 
+  onPageChange={setCurrentPage} 
+  count={100}
+>
+  <Pagination.List />
+</Pagination>
+
+---
+
+## API 参考
+
+### Pagination (Root)
+
+| 属性 | 说明 | 类型 | 默认值 |
+| :--- | :--- | :--- | :--- |
+| count | 总页数 | number | 1 |
+| page | 当前页码 (受控) | number | - |
+| defaultPage | 默认页码 | number | 1 |
+| onPageChange | 页码改变时的回调 | (page: number) => void | - |
+| siblingCount | 当前页码左右展示的页码数量 | number | 1 |
+| boundaryCount | 首页和末页展示的页码数量 | number | 1 |
+| showFirstButton | 是否显示首页跳转按钮 | boolean | false |
+| showLastButton | 是否显示末页跳转按钮 | boolean | false |
+| disabled | 是否禁用整个分页组件 | boolean | false |
+
+### Pagination.Item
+
+| 属性 | 说明 | 类型 | 默认值 |
+| :--- | :--- | :--- | :--- |
+| page | 对应页码 | number | - |
+| class | 样式类名 | string | - |
+
+---
+
+## 无障碍 (Accessibility)
+
+- **角色定义**：根元素自动标记为 `role="navigation"`。
+- **语义标注**：使用 `aria-label` 描述导航目的（如 "pagination navigation"）。
+- **当前项状态**：当前选中的页码按钮自动分配 `aria-current="page"`。
+- **键盘导航**：
+    - 支持使用 `Tab` 在各个按钮之间切换焦点。
+    - 使用 `Enter` 或 `Space` 激活选中的按钮。
+- **状态同步**：自动为上一页/下一页按钮管理 `aria-disabled` 状态，并在不可用时正确禁用交互。

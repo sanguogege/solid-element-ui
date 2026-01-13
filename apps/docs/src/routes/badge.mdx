@@ -1,0 +1,48 @@
+# Badge 徽章
+
+用于对内容进行标记、分类或展示状态的小型组件。
+
+## 引入
+
+import { Badge } from "solid-element-ui";
+
+## 代码演示
+
+### 1. 基础用法
+
+默认样式的徽章。
+
+<Badge>新发布</Badge>
+
+### 2. 语义化变体
+
+通过 variant 属性展示不同的状态。
+
+<div class="flex gap-2">
+    <Badge variant="default">默认</Badge>
+    <Badge variant="secondary">次要</Badge>
+    <Badge variant="outline">轮廓</Badge>
+    <Badge variant="destructive">危险</Badge>
+</div>
+
+### 3. 自定义样式
+
+结合 Tailwind CSS 调整颜色或圆角。
+
+<Badge class="bg-blue-500 text-white hover:bg-blue-600">自定义颜色</Badge>
+
+## API 参考
+
+### Badge
+
+| 属性    | 说明            | 类型           | 默认值      |
+| :------ | :-------------- | :------------- | :---------- | --------- | ------------- | --------- |
+| variant | 视觉变体风格    | 'default'      | 'secondary' | 'outline' | 'destructive' | 'default' |
+| class   | 自定义 CSS 类名 | string         | -           |
+| as      | 底层渲染的元素  | ValidComponent | 'div'       |
+
+## 无障碍 (Accessibility)
+
+-   语义化: 默认渲染为 div，如果作为链接使用建议设置 as="a"。
+-   视觉辅助: 确保徽章内的文字颜色与背景颜色有足够的对比度。
+-   屏幕阅读器: 对于仅起装饰作用的徽章，可以考虑添加 aria-hidden="true"。
