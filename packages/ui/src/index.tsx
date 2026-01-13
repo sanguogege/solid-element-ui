@@ -1,313 +1,91 @@
 import "./style/index.css";
 
-// TODO Breadcrumbs，Collapsible也要混合导出
+export { Accordion } from "./accordion/accordion";
 
-export {
-    Accordion,
-    AccordionRoot,
-    AccordionItem,
-    AccordionHeader,
-    AccordionTrigger,
-    AccordionContent,
-} from "./accordion/accordion";
+export { Alert } from "./alert/alert";
 
-export { Button, ButtonRoot } from "./button/button";
+export { AlertDialog } from "./alert-dialog/alert-dialog";
 
-export { Alert, AlertRoot, AlertTitle, AlertDescription } from "./alert/alert";
+export { Badge } from "./badge/badge";
 
-export {
-    AlertDialog,
-    AlertDialogRoot,
-    AlertDialogTrigger,
-    AlertDialogContent,
-    AlertDialogHeader,
-    AlertDialogFooter,
-    AlertDialogTitle,
-    AlertDialogDescription,
-} from "./alert-dialog/alert-dialog";
+export { Breadcrumbs } from "./breadcrumbs/breadcrumbs";
 
+export { Button } from "./button/button";
 
-export { Badge, BadgeRoot } from "./badge/badge";
+export { Checkbox } from "./checkbox/checkbox";
 
-export {
-    Breadcrumbs,
-    BreadcrumbsRoot,
-    BreadcrumbsList,
-    BreadcrumbsLink,
-    BreadcrumbsSeparator,
-} from "./breadcrumbs/breadcrumbs";
+export { Collapsible } from "./collapsible/collapsible";
 
-export {
-    Checkbox,
-    CheckboxRoot,
-    CheckboxControl,
-    CheckboxLabel,
-} from "./checkbox/checkbox";
+export { ColorArea } from "./color-area/color-area";
 
-export {
-    Collapsible,
-    CollapsibleRoot,
-    CollapsibleTrigger,
-    CollapsibleContent,
-} from "./collapsible/collapsible";
+export { ColorChannelField } from "./color-channel-field/color-channel-field";
 
-export {
-    ColorArea,
-    ColorAreaRoot,
-    ColorAreaThumb,
-} from "./color-area/color-area";
+export { ColorField } from "./color-field/color-field";
 
+export { ColorSlider } from "./color-slider/color-slider";
 
-export {
-    ColorChannelField,
-    ColorChannelFieldRoot,
-    ColorChannelFieldLabel,
-    ColorChannelFieldInput,
-} from "./color-channel-field/color-channel-field";
+export { ColorSwatch } from "./color-swatch/color-swatch";
 
-export {
-    ColorField,
-    ColorFieldRoot,
-    ColorFieldLabel,
-    ColorFieldInput,
-} from "./color-field/color-field";
+export { ColorWheel } from "./color-wheel/color-wheel";
 
-export {
-    ColorSlider,
-    ColorSliderRoot,
-    ColorSliderTrack,
-    ColorSliderThumb,
-} from "./color-slider/color-slider";
+export { Combobox, ComboboxItem } from "./combobox/combobox";
 
-export { ColorSwatch, ColorSwatchRoot } from "./color-swatch/color-swatch";
+export { ContextMenu } from "./context-menu/context-menu";
 
-export {
-    ColorWheel,
-    ColorWheelRoot,
-    ColorWheelThumb,
-} from "./color-wheel/color-wheel";
+export { Dialog } from "./dialog/dialog";
 
-export {
-    Combobox,
-    ComboboxControl, 
-    ComboboxInput,
-    ComboboxContent,
-    ComboboxItem,
-} from "./combobox/combobox";
+export { DropdownMenu } from "./dropdown-menu/dropdown-menu";
 
-export {
-    ContextMenu,
-    ContextMenuContent,
-    ContextMenuItem,
-    ContextMenuSeparator,
-    ContextMenuCheckboxItem,
-    ContextMenuRadioItem,
-    ContextMenuSubTrigger,
-} from "./context-menu/context-menu";
+export { FileField } from "./file-field/file-field";
 
-export {
-    Dialog,
-    DialogContent,
-    DialogHeader,
-    DialogFooter,
-    DialogTitle,
-    DialogDescription,
-    DialogOverlay,
-} from "./dialog/dialog";
+export { HoverCard } from "./hover-card/hover-card";
 
-export {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuSeparator,
-    DropdownMenuCheckboxItem,
-    DropdownMenuRadioItem,
-    DropdownMenuSubTrigger,
-} from "./dropdown-menu/dropdown-menu";
+export { Image } from "./image/image";
 
-export {
-    FileField,
-    FileFieldLabel,
-    FileFieldDropzone,
-    FileFieldTrigger,
-    FileFieldItemList,
-    FileFieldItem,
-} from "./file-field/file-field";
+export { Link } from "./link/link";
 
-export {
-    HoverCard,
-    HoverCardTrigger,
-    HoverCardContent,
-    HoverCardArrow,
-} from "./hover-card/hover-card";
+export { Menubar } from "./menubar/menubar";
 
-export { Image, ImageRoot, ImageImg, ImageFallback } from "./image/image";
+export { Meter } from "./meter/meter";
 
-export { Link, LinkRoot } from "./link/link";
+export { NavigationMenu } from "./navigation-menu/navigation-menu";
 
-export {
-    Menubar,
-    MenubarMenu,
-    MenubarTrigger,
-    MenubarContent,
-    MenubarItem,
-    MenubarShortcut,
-    MenubarSeparator,
-    MenubarCheckboxItem,
-    MenubarRadioItem,
-    MenubarSubTrigger,
-} from "./menubar/menubar";
+export { NumberField } from "./number-field/number-field";
 
-export { Meter, MeterLabel, MeterValueLabel, MeterTrack } from "./meter/meter";
+export { Pagination } from "./pagination/pagination";
 
-export {
-    NavigationMenu,
-    NavigationMenuRoot,
-    NavigationMenuMenu,
-    NavigationMenuTrigger,
-    NavigationMenuContent,
-    NavigationMenuItem,
-} from "./navigation-menu/navigation-menu";
+export { Popover } from "./popover/popover";
 
-export {
-    NumberField,
-    NumberFieldRoot,
-    NumberFieldLabel,
-    NumberFieldInput,
-    NumberFieldSteppers,
-} from "./number-field/number-field";
+export { Progress } from "./progress/progress";
 
-export {
-    Pagination,
-    PaginationRoot,
-    PaginationList,
-    PaginationItem,
-    PaginationEllipsis,
-    PaginationPrevious,
-    PaginationNext,
-} from "./pagination/pagination";
+export { RadioGroup } from "./radio-group/radio-group";
 
-export {
-    Popover,
-    PopoverTrigger,
-    PopoverContent,
-    PopoverTitle,
-    PopoverDescription,
-    PopoverArrow,
-} from "./popover/popover";
+// rating-group 组件
 
-export {
-    Progress,
-    ProgressRoot,
-    ProgressLabel,
-    ProgressValueLabel,
-    ProgressTrack,
-} from "./progress/progress";
+export { Search } from "./search/search";
 
-export {
-    RadioGroup,
-    RadioGroupRoot,
-    RadioGroupLabel,
-    RadioGroupItem,
-    RadioGroupItemLabel,
-} from "./radio-group/radio-group";
+export { SegmentedControl } from "./segmented-control/segmented-control";
 
-// export {
-//     RatingGroup,
-//     RatingGroupRoot,
-//     RatingGroupLabel,
-//     RatingGroupControl,
-//     RatingGroupItem,
-// } from "./rating-group/rating-group";
+export { Select } from "./select/select";
 
+export { Separator } from "./separator/separator";
 
-export { Search, SearchRoot, SearchLabel, SearchInput } from "./search/search";
+export { Skeleton } from "./skeleton/skeleton";
 
-export {
-    SegmentedControl,
-    SegmentedRoot,
-    SegmentedList,
-    SegmentedTrigger,
-    SegmentedContent,
-} from "./segmented-control/segmented-control";
+export { Slider } from "./slider/slider";
 
-export {
-    Select,
-    SelectRoot,
-    SelectLabel,
-    SelectTrigger,
-    SelectContent,
-    SelectItem,
-    SelectSection,
-} from "./select/select";
+export { Switch } from "./switch/switch";
 
-export { Separator, SeparatorRoot } from "./separator/separator";
+export { Tabs } from "./tabs/tabs";
 
-export { Skeleton, SkeletonRoot } from "./skeleton/skeleton";
+export { TextField } from "./text-field/text-field";
 
-export {
-    Slider,
-    SliderRoot,
-    SliderLabel,
-    SliderValueLabel,
-    SliderTrack,
-    SliderThumb,
-} from "./slider/slider";
+//  time-field
 
-export {
-    Switch,
-    SwitchRoot,
-    SwitchLabel,
-    SwitchControl,
-} from "./switch/switch";
+export { Toast, showToast } from "./toast/toast";
 
-export {
-    Tabs,
-    TabsRoot,
-    TabsList,
-    TabsTrigger,
-    TabsContent,
-} from "./tabs/tabs";
+export { ToggleButton } from "./toggle-button/toggle-button";
 
-export {
-    TextField,
-    TextFieldRoot,
-    TextFieldLabel,
-    TextFieldInput,
-    TextFieldDescription,
-    TextFieldErrorMessage,
-} from "./text-field/text-field";
+export { ToggleGroup } from "./toggle-group/toggle-group";
 
-// export {
-//     TimeField,
-//     TimeFieldRoot,
-//     TimeFieldLabel,
-//     TimeFieldInput,
-// } from "./time-field/time-field";
-
-
-export {
-    Toast,
-    ToastRoot,
-    ToastTitle,
-    ToastDescription,
-    ToastList,
-    toaster,
-} from "./toast/toast";
-
-export {
-    ToggleGroup,
-    ToggleGroupRoot,
-    ToggleGroupItem,
-} from "./toggle-group/toggle-group";
-
-
-export { ToggleButton, ToggleButtonRoot } from "./toggle-button/toggle-button";
-
-export {
-    Tooltip,
-    TooltipRoot,
-    TooltipTrigger,
-    TooltipContent,
-    TooltipArrow,
-} from "./tooltip/tooltip";
+export { Tooltip } from "./tooltip/tooltip";

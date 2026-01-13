@@ -27,7 +27,13 @@ export default defineConfig({
             },
         },
         ssr: {
-            noExternal: ["solid-mdx", "@kobalte/core", "tailwind-variants", "lucide-solid"],
+            noExternal: [
+                "solid-mdx",
+                "solid-js",
+                "@kobalte/core",
+                "tailwind-variants",
+                "lucide-solid",
+            ],
         },
     },
 });
