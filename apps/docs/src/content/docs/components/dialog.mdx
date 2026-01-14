@@ -3,23 +3,6 @@ title: dialog
 description: A reference page in my new Starlight docs site.
 ---
 
-import { Dialog } from "solid-element-ui";
-
-<Dialog 
-  title="确认操作" 
-  description="此操作无法撤销，请确认是否继续。"
-  trigger={<button class="btn-primary">删除账户</button>}
-  footer={
-    <>
-      <button class="px-4 py-2 border rounded-md">取消</button>
-      <button class="px-4 py-2 bg-red-600 text-white rounded-md">确认删除</button>
-    </>
-  }
->
-  <p class="text-sm text-zinc-600">
-    删除后，您的所有数据将永久从我们的服务器中移除。
-  </p>
-</Dialog>
 
 ## Dialog 对话框 (高度封装)
 
