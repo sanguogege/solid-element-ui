@@ -1,0 +1,52 @@
+---
+title: toggle-button
+description: A reference page in my new Starlight docs site.
+---
+
+## ToggleButton 切换按钮
+
+一个允许用户在两个状态之间切换的双态按钮。
+
+### 导入
+
+```tsx
+import { ToggleButton } from "solid-element-ui";
+import { Bold, Italic } from "lucide-solid";
+```
+
+### 使用示例
+
+```tsx
+<div className="flex gap-2 p-4">
+  {/* 基础图标切换 */}
+  <ToggleButton size="icon" variant="outline" aria-label="加粗">
+    {(state) => <Bold class={state.pressed() ? "text-blue-500" : ""} size={20} />}
+  </ToggleButton>
+
+  {/* 文字切换 */}
+  <ToggleButton variant="solid">
+    {state => state.pressed() ? "已收藏" : "收藏"}
+  </ToggleButton>
+</div>
+```
+
+---
+
+### API 参考
+
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| **variant** | `'solid' \| 'outline' \| 'ghost'` | `'solid'` | 按钮的视觉样式。 |
+| **size** | `'sm' \| 'md' \| 'lg' \| 'icon'` | `'md'` | 按钮的大小。 |
+| **pressed** | `boolean` | - | 受控的状态（是否按下）。 |
+| **defaultPressed** | `boolean` | - | 非受控的初始状态。 |
+| **onChange** | `(pressed: boolean) => void` | - | 状态改变时的回调。 |
+| **children** | `JSX.Element \| ((state) => JSX.Element)` | - | 内容，支持 render props 以获取当前状态。 |
+
+---
+
+### 特性说明
+
+1. **Render Props**：`children` 支持传入一个函数，通过 `state.pressed()` 动态渲染不同的图标或文字。
+2. **ARIA**：底层自动管理 `aria-pressed` 属性，确保屏幕阅读器能正确识别按钮状态。
+3. **状态伪类**：使用 `data-[pressed]` 匹配按下状态，取代了传统的 `active` 伪类，逻辑更严谨。

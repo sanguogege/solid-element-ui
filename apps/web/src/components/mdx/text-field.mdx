@@ -1,0 +1,60 @@
+---
+title: text-field
+description: A reference page in my new Starlight docs site.
+---
+
+## TextField 输入框
+
+基础的表单文本输入组件，集成了标签、描述和校验状态。
+
+### 导入
+
+```tsx
+import { TextField } from "solid-element-ui";
+```
+
+### 使用示例
+
+```tsx
+<div className="space-y-4 max-w-xs">
+  {/* 基础用法 */}
+  <TextField label="用户名" placeholder="请输入用户名" />
+
+  {/* 密码类型 + 描述 */}
+  <TextField 
+    type="password" 
+    label="密码" 
+    description="密码长度至少为 8 位。" 
+  />
+
+  {/* 错误状态 */}
+  <TextField 
+    label="邮箱" 
+    defaultValue="invalid-email"
+    errorMessage="请输入有效的邮箱地址。" 
+  />
+</div>
+```
+
+---
+
+### API 参考
+
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| **label** | `string` | - | 输入框顶部的标签文字。 |
+| **description** | `string` | - | 输入框底部的辅助说明。 |
+| **errorMessage** | `string` | - | 错误提示文字。传入时会自动将状态切换为 `invalid`。 |
+| **size** | `'sm' \| 'md' \| 'lg'` | `'md'` | 输入框的高度和字体规格。 |
+| **type** | `string` | `'text'` | HTML 原生输入类型，如 `password`, `email` 等。 |
+| **value** | `string` | - | 受控绑定的值。 |
+| **onChange** | `(val: string) => void` | - | 值改变时的回调。 |
+| **disabled** | `boolean` | `false` | 是否禁用输入。 |
+
+---
+
+### 注意事项
+
+1. **自动校验状态**：组件内部根据是否传入 `errorMessage` 自动设置 `validationState`。
+2. **多行文本**：如果需要多行输入，请使用 `as="textarea"` 属性透传给 `KTextField.Input`（或单独封装 `TextArea` 组件）。
+3. **无障碍**：完全符合 WAI-ARIA 标准，描述和错误消息会自动通过 `aria-describedby` 与输入框关联。

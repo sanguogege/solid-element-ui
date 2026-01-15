@@ -1,0 +1,27 @@
+---
+title: pagination
+description: A reference page in my new Starlight docs site.
+---
+
+## Pagination 分页
+
+高度封装的分页组件，自动管理页码生成逻辑与省略号显示。
+
+### 导入
+```tsx
+import { Pagination } from "solid-element-ui";
+```
+
+### 使用示例
+
+```tsx
+<Pagination count={10} defaultPage={1} />
+```
+
+### API 参考
+
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| **count** | `number` | - | **必填**。总页数。 |
+| **siblingCount** | `number` | `1` | 当前页左右保留的页码数。 |
+| **onPageChange** | `(page: number) => void` | - | 页码改变回调。 |

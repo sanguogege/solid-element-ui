@@ -1,0 +1,68 @@
+---
+title: button
+description: A reference page in my new Starlight docs site.
+---
+
+## Button 按钮
+
+基于 Kobalte Button 核心构建的交互组件，支持多种视觉变体和加载状态。
+
+### 导入
+
+
+```tsx
+import { Button } from "solid-element-ui";
+import { Search } from "lucide-solid"
+```
+
+### 使用示例
+
+在 MDX 中渲染按钮实例：
+
+```tsx
+<div className="flex flex-wrap gap-4 p-4">
+    <Button variant="default">确定</Button>
+    <Button variant="outline" leftIcon={<Search size={14} />}>
+        搜索
+    </Button>
+    <Button variant="destructive">删除</Button>
+    <Button loading>请稍候</Button>
+</div>
+```
+
+---
+
+### API 参考
+
+| 属性          | 类型          | 默认值      | 说明                         |
+| :------------ | :------------ | :---------- | :--------------------------- |
+| **variant**   | `Enum`        | `'default'` | 样式变体。                   |
+| **size**      | `Enum`        | `'default'` | 按钮尺寸。                   |
+| **loading**   | `boolean`     | `false`     | 是否显示加载状态并禁用交互。 |
+| **leftIcon**  | `JSX.Element` | -           | 按钮文本左侧的图标。         |
+| **rightIcon** | `JSX.Element` | -           | 按钮文本右侧的图标。         |
+
+---
+
+### Tailwind v4 适配
+
+在你的全局 CSS 中定义旋转动画：
+
+```css
+@import "tailwindcss";
+
+@theme {
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+```

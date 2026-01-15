@@ -1,0 +1,42 @@
+---
+title: navigation-menu
+description: A reference page in my new Starlight docs site.
+---
+
+## NavigationMenu 导航菜单
+
+高度封装版，自动处理菜单状态切换与 Viewport 视口动画。
+
+### 导入
+```tsx
+import { NavigationMenu } from "solid-element-ui";
+```
+
+### 使用示例
+
+```tsx
+<NavigationMenu 
+  items={[
+    { title: "文档", href: "/docs" },
+    { 
+      title: "资源", 
+      content: <div class="w-75 p-4 text-sm">内置丰富组件示例...</div> 
+    }
+  ]} 
+/>
+```
+
+### API 参考
+
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| **items** | `NavItem[]` | `[]` | 导航数据。有 `content` 则展示为下拉，否则为链接。 |
+| **class** | `string` | - | 容器自定义类名。 |
+
+---
+
+### Tailwind v4 优化
+
+根据编译器建议，我们使用了更规范的变量引用方式：
+- `w-[var(--x)]` -> `w-(--x)`
+- `w-[300px]` -> `w-75`

@@ -1,0 +1,47 @@
+---
+title: skeleton
+description: A reference page in my new Starlight docs site.
+---
+
+## Skeleton 骨架屏
+
+用于内容加载时的占位，已修正 Kobalte 原生属性中 `width/height` 仅支持数字的限制。
+
+### 导入
+
+```tsx
+import { Skeleton } from "solid-element-ui";
+```
+
+### 使用示例
+
+```tsx
+// 现在完美支持字符串百分比或数字
+<Skeleton width="100%" height={200} variant="rect" />
+<Skeleton width={40} height={40} variant="circle" />
+```
+
+---
+
+### API 参考
+
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| **width** | `string \| number` | - | 宽度。数字会被转为 `px`，字符串直接透传。 |
+| **height** | `string \| number` | - | 高度。数字会被转为 `px`，字符串直接透传。 |
+| **variant** | `'rect' \| 'circle' \| 'text'` | `'rect'` | 形状变体。 |
+| **animation** | `'pulse' \| 'wave' \| 'none'` | `'pulse'` | 加载动画类型。 |
+| **class** | `string` | - | 覆盖样式。 |
+
+---
+
+### 故障排除 (TS Error 2430)
+
+由于 Kobalte 内部定义 `SkeletonRootOptions` 时：
+```ts
+interface SkeletonRootOptions {
+  width?: number;  // 仅支持 number
+  height?: number; // 仅支持 number
+}
+```
+本组件通过 `Omit` 丢弃了原始定义并重新声明，从而支持了 `width="100%"` 等更灵活的 CSS 赋值方式。

@@ -1,0 +1,59 @@
+---
+title: dropdown-menu
+description: A reference page in my new Starlight docs site.
+---
+
+## Dropdown Menu 下拉菜单 (配置式)
+
+通过 `items` 数组一键生成复杂的下拉菜单，支持无限层级子菜单和分隔线。
+
+[Image showing a multi-level dropdown menu with icons and dividers]
+
+### 导入
+
+```tsx
+import { DropdownMenu } from "solid-element-ui";
+```
+
+### 使用示例
+
+```tsx
+const profileMenu = [
+  { label: "个人资料", onClick: () => console.log("Profile") },
+  { label: "设置", onClick: () => console.log("Settings") },
+  { separator: true },
+  { 
+    label: "邀请好友", 
+    children: [
+      { label: "通过邮件", onClick: () => {} },
+      { label: "通过微信", onClick: () => {} },
+    ]
+  },
+  { separator: true },
+  { label: "退出登录", onClick: () => {}, disabled: false }
+];
+
+<DropdownMenu 
+  items={profileMenu} 
+  trigger={<button className="btn">账户设置</button>} 
+/>
+```
+
+---
+
+### API 参考
+
+| 属性 | 类型 | 说明 |
+| :--- | :--- | :--- |
+| **items** | `DropdownItemConfig[]` | **必填**。菜单项结构配置。 |
+| **trigger** | `JSX.Element` | **必填**。点击后弹出菜单的元素。 |
+| **placement** | `string` | 弹出位置，默认为 `bottom-start`。 |
+
+**DropdownItemConfig 类型说明:**
+
+| 字段 | 类型 | 说明 |
+| :--- | :--- | :--- |
+| **label** | `string` | 显示的文字内容。 |
+| **onClick** | `() => void` | 点击后的回调（内部自动处理 `onSelect`）。 |
+| **separator** | `boolean` | 是否渲染为水平分隔线。 |
+| **children** | `array` | 子菜单项，存在时自动渲染嵌套结构。 |

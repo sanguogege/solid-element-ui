@@ -1,0 +1,55 @@
+---
+title: meter
+description: A reference page in my new Starlight docs site.
+---
+
+## Meter 仪表条
+
+展示已知范围内标量值或分数值的指示器。
+
+### 导入
+```tsx
+import { Meter } from "solid-element-ui";
+```
+
+### 使用示例
+
+```tsx
+<Meter value={75} color="success">
+  <div class="flex justify-between">
+    <Meter.Label>存储空间</Meter.Label>
+    <Meter.ValueLabel />
+  </div>
+  <Meter.Track>
+    <Meter.Fill />
+  </Meter.Track>
+</Meter>
+```
+
+### API 参考
+
+| 组件 | 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- | :--- |
+| **Meter** | **value** | `number` | `0` | 当前数值。 |
+| | **minValue** | `number` | `0` | 最小值。 |
+| | **maxValue** | `number` | `100` | 最大值。 |
+| | **color** | `Variant` | `'primary'` | 内置颜色：`primary`, `success`, `warning`, `danger` |
+| **Meter.Label** | - | - | - | 仪表条的名称标签。 |
+| **Meter.ValueLabel** | - | - | - | 自动格式化的当前值文本。 |
+| **Meter.Track** | - | - | - | 进度槽背景。 |
+| **Meter.Fill** | - | - | - | 进度填充区域，支持 transition 动画。 |
+
+---
+
+### 状态反馈 (Tailwind v4)
+
+可以通过 `data-low`, `data-high`, `data-optimium` 等属性（由 Kobalte 自动注入）实现动态变色逻辑：
+
+```css
+[data-kb-meter-fill][data-low] {
+  @apply bg-red-500;
+}
+[data-kb-meter-fill][data-high] {
+  @apply bg-amber-500;
+}
+```

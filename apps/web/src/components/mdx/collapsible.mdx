@@ -1,0 +1,66 @@
+---
+title: collapsible
+description: A reference page in my new Starlight docs site.
+---
+
+## Collapsible 折叠容器
+
+一个简单的可折叠区域，用于隐藏非核心信息。
+
+### 导入
+
+```tsx
+import { Collapsible } from "solid-element-ui";
+```
+
+### 使用示例
+
+在 MDX 中渲染基础折叠实例：
+
+```tsx
+<Collapsible title="查看源代码说明">
+  这段内容默认是隐藏的，点击上方按钮可以展开。
+  它使用了原生高度动画和 Kobalte 的状态管理。
+</Collapsible>
+```
+
+---
+
+### API 参考
+
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| **title** | `JSX.Element \| string` | - | **必填**。触发器显示的标题内容。 |
+| **open** | `boolean` | - | 受控状态下的展开状态。 |
+| **defaultOpen** | `boolean` | `false` | 初始展开状态。 |
+| **onOpenChange** | `(open: boolean) => void` | - | 展开状态变化时的回调。 |
+| **disabled** | `boolean` | `false` | 是否禁用交互。 |
+
+---
+
+### Tailwind v4 动画配置
+
+请确保在 `index.css` 中定义了以下基于 CSS 变量的动画，否则折叠将没有平滑过渡：
+
+```css
+@import "tailwindcss";
+
+@theme {
+  @keyframes collapsible-down {
+    from { height: 0; }
+    to { height: var(--kb-collapsible-content-height); }
+  }
+  @keyframes collapsible-up {
+    from { height: var(--kb-collapsible-content-height); }
+    to { height: 0; }
+  }
+}
+
+.animate-collapsible-down {
+  animation: collapsible-down 0.2s ease-out;
+}
+
+.animate-collapsible-up {
+  animation: collapsible-up 0.2s ease-out;
+}
+```

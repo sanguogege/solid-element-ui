@@ -1,0 +1,53 @@
+---
+title: select
+description: A reference page in my new Starlight docs site.
+---
+
+## Select 选择器
+
+基于 Kobalte Select 封装，支持单选、禁用状态及自定义内容渲染。
+
+### 导入
+
+```tsx
+import { Select } from "solid-element-ui";
+```
+
+### 使用示例
+
+```tsx
+const options = [
+  { label: "Apple", value: "apple" },
+  { label: "Banana", value: "banana" },
+  { label: "Blueberry", value: "blueberry", disabled: true },
+];
+
+<Select 
+  label="水果" 
+  options={options} 
+  placeholder="请选择一个水果..." 
+  description="请确保选择您不过敏的水果。"
+/>
+```
+
+---
+
+### API 参考
+
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| **options** | `Option[]` | `[]` | 数据项数组，包含 `label`, `value`, `disabled`。 |
+| **label** | `string` | - | 顶部的表单标签。 |
+| **placeholder** | `string` | - | 未选中时的占位文字。 |
+| **description** | `string` | - | 底部的描述性文字。 |
+| **size** | `'sm' \| 'md' \| 'lg'` | `'md'` | 触发器和选项的尺寸。 |
+| **value** | `any` | - | 受控值。 |
+| **onChange** | `(val: any) => void` | - | 值改变时的回调。 |
+
+---
+
+### 进阶说明
+
+1. **Portal 渲染**：菜单默认通过 `Portal` 渲染在 `body` 底部，以解决 `overflow: hidden` 裁剪问题。
+2. **多选支持**：虽然此封装偏向单选，但你可以通过传入 `multiple={true}` 并调整 `KSelect.Value` 的渲染逻辑来扩展它。
+3. **可访问性**：完全支持键盘导航（上下箭头、回车选中）以及 WAI-ARIA 标准。

@@ -1,0 +1,50 @@
+---
+title: segmented-control
+description: A reference page in my new Starlight docs site.
+---
+
+## SegmentedControl 分段控制器
+
+基于 Kobalte `SegmentedControl` 封装。注意：该组件不使用 `List` 子组件，结构更加扁平。
+
+### 导入
+
+```tsx
+import { SegmentedControl } from "solid-element-ui";
+```
+
+### 使用示例
+
+```tsx
+<SegmentedControl
+  label="环境选择"
+  options={[
+    { label: "开发", value: "dev" },
+    { label: "测试", value: "test" },
+    { label: "生产", value: "prod" }
+  ]}
+  value={env()}
+  onChange={setEnv}
+/>
+```
+
+---
+
+### API 参考
+
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| **options** | `Option[]` | `[]` | 选项配置数组。 |
+| **label** | `string` | - | 外置展示标签。 |
+| **size** | `'sm' \| 'md' \| 'lg'` | `'md'` | 控件尺寸。 |
+| **value** | `string` | - | 受控当前值。 |
+| **onChange** | `(val: string) => void` | - | 值改变的回调函数。 |
+
+---
+
+### 结构说明 (Internal Structure)
+
+根据 Kobalte 的类型定义，正确的 DOM 层次如下：
+1. `Root` (承担了容器和 List 的双重角色)
+2. `Item` (内部包含 Input 和 Label)
+3. `Indicator` (绝对定位的滑动背景块)

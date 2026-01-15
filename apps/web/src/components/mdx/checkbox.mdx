@@ -1,0 +1,72 @@
+---
+title: checkbox
+description: A reference page in my new Starlight docs site.
+---
+
+
+## Checkbox 复选框
+
+允许用户在多个选项中选择一个或多个。
+
+### 导入
+
+```tsx
+import { Checkbox } from "solid-element-ui";
+```
+
+### 使用示例
+
+在 MDX 中渲染复选框实例：
+
+```tsx
+<div className="flex flex-col gap-4 p-4">
+  <Checkbox label="接受服务协议" />
+  
+  <Checkbox defaultChecked label="默认选中项" />
+  
+  <Checkbox disabled label="禁用状态" />
+  
+  <Checkbox 
+    label={
+      <span className="text-zinc-500 italic">
+        自定义 Label 样式
+      </span>
+    } 
+  />
+</div>
+```
+
+---
+
+### API 参考
+
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| **label** | `JSX.Element \| string` | - | 复选框旁边的文字内容。 |
+| **checked** | `boolean` | - | 受控模式下的选中状态。 |
+| **defaultChecked** | `boolean` | - | 初始渲染时的选中状态。 |
+| **onChange** | `(checked: boolean) => void` | - | 状态改变时的回调函数。 |
+| **disabled** | `boolean` | `false` | 是否禁用交互。 |
+| **class** | `string` | - | 覆盖根容器的类名。 |
+
+---
+
+### Tailwind v4 适配
+
+Checkbox 核心利用了 `data-[checked]` 伪类选择器。在 Tailwind v4 中，你可以通过 CSS 变量为选中状态添加微动效：
+
+```css
+@import "tailwindcss";
+
+@theme {
+  @keyframes check-pop {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+}
+
+/* 选中时的图标动画 */
+[data-kb-checkbox-indicator] {
+  animation: check-pop 0.1s ease-out;
+}
+```

@@ -1,0 +1,61 @@
+---
+title: hover-card
+description: A reference page in my new Starlight docs site.
+---
+
+## HoverCard 悬停卡片
+
+用于在鼠标悬停在特定元素上时，展示更多详细信息的浮层容器。
+
+### 导入
+
+```tsx
+import { HoverCard } from "solid-element-ui";
+```
+
+### 使用示例
+
+```tsx
+<HoverCard 
+  size="lg"
+  showArrow
+  trigger={<a href="#" class="text-blue-500 underline">@Gemini</a>}
+>
+  <div class="flex flex-col gap-2">
+    <h4 class="font-bold">Gemini AI</h4>
+    <p class="text-sm text-slate-500">
+      一个能力出众、极具洞察力的 AI 思考伙伴。
+    </p>
+  </div>
+</HoverCard>
+```
+
+### API 参考
+
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| **trigger** | `JSX.Element` | - | 必填。触发悬停卡片的元素。 |
+| **size** | `'sm' \| 'md' \| 'lg'` | `'md'` | 卡片宽度和内边距的预设大小。 |
+| **showArrow** | `boolean` | `false` | 是否显示指向触发器的指示箭头。 |
+| **openDelay** | `number` | `200` | 鼠标进入到卡片显示的延迟时间（毫秒）。 |
+| **closeDelay** | `number` | `300` | 鼠标离开到卡片隐藏的延迟时间（毫秒）。 |
+
+---
+
+### 关键样式细节 (Tailwind v4)
+
+为了实现平滑的淡入放大效果，请确保全局配置包含：
+
+```css
+@theme {
+  @keyframes zoom-in-95 {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+}
+
+/* 解决 Kobalte 的层级和动画触发 */
+[data-kb-hover-card-content] {
+  transform-origin: var(--kb-hover-card-content-transform-origin);
+}
+```

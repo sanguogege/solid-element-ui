@@ -1,0 +1,55 @@
+---
+title: color-area
+description: A reference page in my new Starlight docs site.
+---
+
+
+## Color Area 颜色区域
+
+用于选择颜色的饱和度和亮度。
+
+### 导入
+
+```tsx
+import { ColorArea } from "solid-element-ui";
+```
+
+### 使用示例
+
+```tsx
+<div className="p-6 border rounded-xl bg-zinc-50 dark:bg-zinc-900 max-w-75">
+  <ColorArea />
+  <p className="mt-2 text-xs text-center text-zinc-500">
+    拖动圆点选择颜色
+  </p>
+</div>
+```
+
+---
+
+### API 参考补充
+
+| 子组件 | 说明 |
+| :--- | :--- |
+| **HiddenInputX** | 处理 X 轴（通常是饱和度）的隐藏 input，支持键盘左右键。 |
+| **HiddenInputY** | 处理 Y 轴（通常是亮度）的隐藏 input，支持键盘上下键。 |
+
+---
+
+### Tailwind v4 动画提示
+
+为了让颜色区域的 Thumb 在移动时更加丝滑，可以在 CSS 中加入：
+
+```css
+@import "tailwindcss";
+
+[data-kb-color-area-thumb] {
+  /* 避免移动时产生布局抖动 */
+  will-change: transform;
+}
+
+[data-kb-color-area-background] {
+  /* 确保颜色渐变过渡平滑 */
+  transition: background-color 0.2s ease;
+}
+```

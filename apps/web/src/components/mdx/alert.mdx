@@ -1,0 +1,64 @@
+---
+title: alert
+description: A reference page in my new Starlight docs site.
+---
+
+### Alert 警告提示
+
+展示重要状态反馈的容器。
+
+### 导入
+
+```tsx
+import { Alert } from "solid-element-ui";
+```
+
+### 使用示例
+
+在 MDX 环境下的实例展示：
+
+```tsx
+<div className="flex flex-col gap-4 w-full p-4">
+  <Alert variant="success" title="成功" icon>
+    组件现已正确导出，去掉了不存在的 .Root 属性。
+  </Alert>
+
+  <Alert variant="info" title="提示" icon>
+    基于 Tailwind v4 和 Kobalte 构建。
+  </Alert>
+
+  <Alert variant="danger" title="错误" icon>
+    类型检查现已通过。
+  </Alert>
+</div>
+```
+
+---
+
+### API 参考
+
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| **variant** | `'info' \| 'success' \| 'warning' \| 'danger'` | `'info'` | 视觉变体样式。 |
+| **title** | `string` | - | 可选标题。 |
+| **icon** | `boolean \| JSX.Element` | `true` | 是否显示图标或自定义图标。 |
+| **class** | `string` | - | 附加的 Tailwind 类名。 |
+
+---
+
+### Tailwind v4 动画
+
+```css
+@import "tailwindcss";
+
+@theme {
+  @keyframes alert-fade {
+    from { opacity: 0; transform: translateY(-2px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+[role="alert"] {
+  animation: alert-fade 0.2s ease-out;
+}
+```

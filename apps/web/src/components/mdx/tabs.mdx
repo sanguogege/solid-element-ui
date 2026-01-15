@@ -1,0 +1,37 @@
+---
+title: tabs
+description: A reference page in my new Starlight docs site.
+---
+
+## Tabs 标签页
+
+高度封装的标签页切换组件，通过简单的 `items` 数组即可配置完整的导航结构。
+
+
+
+### 基础用法
+
+直接传递包含 `value`、`label` 和 `content` 的对象数组。
+
+```tsx
+const tabData = [
+  { value: "account", label: "账户", content: "这里是账户设置内容。" },
+  { value: "password", label: "密码", content: "在此处修改您的登录密码。" },
+  { value: "settings", label: "偏好", content: "管理您的系统通知和外观设置。" }
+];
+
+<Tabs items={tabData} defaultValue="account" />
+```
+
+---
+
+### API 参考
+
+| 属性 | 类型 | 说明 |
+| :--- | :--- | :--- |
+| **items** | `TabItem[]` | **必填**。配置每个标签的标识、标签文字及展示内容。 |
+| **defaultValue** | `string` | 初始选中的标签 `value`。 |
+| **orientation** | `"horizontal" \| "vertical"` | 布局方向，默认为水平。 |
+| **onValueChange** | `(value: string) => void` | 切换标签时的回调函数。 |
+
+---

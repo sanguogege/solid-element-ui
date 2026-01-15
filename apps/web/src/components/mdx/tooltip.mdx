@@ -1,0 +1,43 @@
+---
+title: tooltip
+description: A reference page in my new Starlight docs site.
+---
+
+## Tooltip 文字提示
+
+用于在悬停或聚焦时显示的辅助信息。已修正 `asChild` 类型冲突与 `Show` 导入丢失问题。
+
+### 导入
+
+```tsx
+import { Tooltip } from "solid-element-ui";
+```
+
+### 使用示例
+
+```tsx
+<Tooltip content="删除此项" variant="danger" showArrow>
+  <button className="p-2 text-red-500 hover:bg-red-50 rounded">
+    <TrashIcon />
+  </button>
+</Tooltip>
+```
+
+---
+
+### API 参考
+
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| **content** | `JSX.Element` | - | 浮层中显示的内容。 |
+| **children** | `JSX.Element` | - | 触发元素。 |
+| **variant** | `'default' \| 'danger'` | `'default'` | 视觉风格。 |
+| **showArrow** | `boolean` | `false` | 是否显示三角形箭头。 |
+| **placement** | `string` | `'top'` | 弹出位置，遵循 Floating UI 标准。 |
+
+---
+
+### 注意事项
+
+1. **Trigger 包裹**：在 Kobalte 中，`Trigger` 默认渲染为 `button`。如果你的 `children` 本身也是一个 `button`，可能会导致嵌套按钮。如果需要避免这种情况，可以为 `KTooltip.Trigger` 添加 `as="div"` 或确保子元素是纯文本/图标。
+2. **控制流**：确保 `solid-js` 的 `Show` 组件已正确解构。

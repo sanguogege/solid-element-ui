@@ -1,0 +1,61 @@
+---
+title: color-channel-field
+description: A reference page in my new Starlight docs site.
+---
+
+
+## Color Channel Field 颜色通道输入
+
+用于精确输入颜色的特定通道值（如红色分量、饱和度等）。
+
+### 导入
+
+```tsx
+import { ColorChannelField } from "solid-element-ui";
+```
+
+### 使用示例
+
+在 MDX 中渲染一组颜色通道输入框：
+
+// TODO channel 不存在
+
+
+```tsx
+<div className="grid grid-cols-3 gap-4 p-4 border rounded-xl bg-white dark:bg-zinc-950">
+  <ColorChannelField label="R (红色)" channel="red" />
+  <ColorChannelField label="G (绿色)" channel="green" />
+  <ColorChannelField label="B (蓝色)" channel="blue" />
+</div>
+```
+
+---
+
+### API 参考
+
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| **channel** | `string` | - | **必填**。指定通道名称（如 'red', 'hue', 'alpha'）。 |
+| **label** | `string` | - | 输入框顶部的标签文字。 |
+| **value** | `string \| number` | - | 受控值。 |
+| **readonly** | `boolean` | `false` | 是否只读。 |
+| **disabled** | `boolean` | `false` | 是否禁用。 |
+
+---
+
+### Tailwind v4 适配说明
+
+由于这是一个表单类组件，主要样式集中在 `focus-visible`。在 Tailwind v4 中，你可以利用 `@theme` 统一定义焦点环的颜色变量：
+
+```css
+@import "tailwindcss";
+
+@theme {
+  --color-brand-ring: var(--color-blue-500);
+}
+
+[data-kb-color-channel-field-input]:focus {
+  border-color: var(--color-brand-ring);
+  box-shadow: 0 0 0 1px var(--color-brand-ring);
+}
+```

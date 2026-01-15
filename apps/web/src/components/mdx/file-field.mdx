@@ -1,0 +1,53 @@
+---
+title: file-field
+description: A reference page in my new Starlight docs site.
+---
+
+## FileField 文件上传
+
+基于 Kobalte TextField 封装的高效文件上传组件，完美适配 Tailwind 样式体系。
+
+### 导入
+
+```tsx
+import { FileField } from "solid-element-ui";
+```
+
+### 使用示例
+
+```tsx
+<FileField 
+  label="附件上传" 
+  description="支持 PDF 格式" 
+  accept=".pdf"
+  onChange={(files) => console.log(files)}
+/>
+```
+
+### API 参考
+
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| **label** | `string` | - | 输入框顶部的标签文字。 |
+| **description** | `string` | - | 区域内的辅助描述。 |
+| **accept** | `string` | - | 允许的文件扩展名。 |
+| **multiple** | `boolean` | `false` | 是否支持选择多个文件。 |
+| **validationState** | `'valid' \| 'invalid'` | `'valid'` | 校验状态。 |
+| **onChange** | `(files: File[]) => void` | - | 选择文件后的回调，返回 File 对象数组。 |
+
+---
+
+### 动画配置 (Tailwind v4)
+
+```css
+@theme {
+  @keyframes slide-down {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+[data-invalid] [data-kb-text-field-error-message] {
+  animation: slide-down 0.2s ease-out;
+}
+```

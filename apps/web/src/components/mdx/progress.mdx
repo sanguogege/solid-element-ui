@@ -1,0 +1,58 @@
+---
+title: progress
+description: A reference page in my new Starlight docs site.
+---
+
+## Progress 进度条
+
+高度封装的进度展示组件，支持确定进度、不确定进度（Indeterminate）以及圆角和尺寸定制。
+
+### 导入
+```tsx
+import { Progress } from "solid-element-ui";
+```
+
+### 使用示例
+
+```tsx
+<div class="space-y-4">
+  {/* 基础用法 */}
+  <Progress value={60} label="正在下载..." showValue />
+
+  {/* 不确定状态 (加载中) */}
+  <Progress indeterminate label="系统更新中" />
+
+  {/* 尺寸定制 */}
+  <Progress value={30} size="sm" radius="none" />
+</div>
+```
+
+### API 参考
+
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| **value** | `number` | - | 当前进度值。 |
+| **minValue** | `number` | `0` | 最小值。 |
+| **maxValue** | `number` | `100` | 最大值。 |
+| **indeterminate** | `boolean` | `false` | 是否处于不确定状态（循环滚动动画）。 |
+| **label** | `string` | - | 进度条上方的文本标签。 |
+| **showValue** | `boolean` | `false` | 是否显示百分比数值。 |
+| **size** | `'sm' \| 'md' \| 'lg'` | `'md'` | 进度条的高度粗细。 |
+| **radius** | `'none' \| 'sm' \| 'md' \| 'lg' \| 'full'` | `'full'` | 进度条圆角样式。 |
+
+---
+
+### Tailwind v4 动画配置
+
+为了支持 `indeterminate` 状态，请确保 CSS 中包含以下定义：
+
+```css
+@keyframes progress-indeterminate {
+  from { transform: translateX(-100%); width: 30%; }
+  to { transform: translateX(333%); width: 30%; }
+}
+
+.animate-progress-indeterminate {
+  animation: progress-indeterminate 1.5s infinite linear;
+}
+```
