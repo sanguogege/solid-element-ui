@@ -8,7 +8,7 @@ const accordionStyles = tv({
     slots: {
         root: "w-full divide-y divide-zinc-200 border-y border-zinc-200",
         item: "group",
-        header: "flex",
+        header: "flex my-0",
         trigger: [
             "flex flex-1 items-center justify-between py-4 px-2 text-sm font-medium transition-all hover:bg-zinc-50",
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500",
