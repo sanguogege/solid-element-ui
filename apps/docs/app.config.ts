@@ -4,6 +4,8 @@ import pkg from "@vinxi/plugin-mdx";
 
 import tailwindcss from "@tailwindcss/vite";
 
+import remarkGfm from "remark-gfm";
+
 const { default: mdx } = pkg;
 export default defineConfig({
     extensions: ["mdx", "md"],
@@ -13,6 +15,7 @@ export default defineConfig({
                 jsx: true,
                 jsxImportSource: "solid-js",
                 providerImportSource: "solid-mdx",
+                remarkPlugins: [remarkGfm],
             }),
             tailwindcss(),
         ],

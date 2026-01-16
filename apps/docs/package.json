@@ -13,6 +13,7 @@
         "@tailwindcss/typography": "^0.5.19",
         "@vinxi/plugin-mdx": "^3.7.1",
         "lucide-solid": "^0.562.0",
+        "remark-gfm": "3.0.1",
         "solid-element-ui": "*",
         "solid-js": "^1.9.5",
         "solid-mdx": "^0.0.7",
@@ -20,7 +21,9 @@
     },
     "devDependencies": {
         "@tailwindcss/vite": "*",
-        "tailwindcss": "^4.0.7"
+        "tailwindcss": "^4.0.7",
+        "mdast-util-gfm-table": "1.0.7",
+        "micromark-extension-gfm-table": "1.0.5"
     },
     "engines": {
         "node": ">=22"
