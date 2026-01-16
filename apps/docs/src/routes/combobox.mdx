@@ -1,8 +1,3 @@
----
-title: combobox
-description: A reference page in my new Starlight docs site.
----
-
 ## Combobox 组合框
 
 支持过滤和自定义选择逻辑的智能输入框。
@@ -10,29 +5,29 @@ description: A reference page in my new Starlight docs site.
 ## 导入
 
 ```tsx
-import { Combobox ,ComboboxItem} from "solid-element-ui";
+import { Combobox, ComboboxItem } from "solid-element-ui";
 ```
 
-### 使用示例
+### 基础用法
 
 你可以直接传递字符串数组，或者复杂的对象数组。
 
 ```tsx
-<Combobox 
-  options={["Apple", "Banana", "Orange"]} 
-  placeholder="Search fruits..."
-  itemComponent={(props) => <ComboboxItem item={props.item} />}
+<Combobox
+    options={["Apple", "Banana", "Orange"]}
+    placeholder="Search fruits..."
+    itemComponent={(props) => <ComboboxItem item={props.item} />}
 />
 ```
 
 ### 多选模式 (Multiple)
 
 ```tsx
-<Combobox 
-  multiple
-  options={["React", "Solid", "Vue"]} 
-  label="Frameworks"
-  itemComponent={(props) => <ComboboxItem item={props.item} />}
+<Combobox
+    multiple
+    options={["React", "Solid", "Vue"]}
+    label="Frameworks"
+    itemComponent={(props) => <ComboboxItem item={props.item} />}
 />
 ```
 
@@ -40,9 +35,9 @@ import { Combobox ,ComboboxItem} from "solid-element-ui";
 
 ### API 参考
 
-| 属性 | 类型 | 说明 |
-| :--- | :--- | :--- |
-| **options** | `T[]` | 候选项数据源。 |
+| 属性              | 类型                                           | 说明                                   |
+| :---------------- | :--------------------------------------------- | :------------------------------------- |
+| **options**       | `T[]`                                          | 候选项数据源。                         |
 | **itemComponent** | `(props: ComboboxItemProps<T>) => JSX.Element` | **必填**。定义如何渲染列表中的每一项。 |
-| **optionValue** | `keyof T \| (option: T) => string` | 如果数据是对象，指定取值的键名。 |
-| **optionLabel** | `keyof T \| (option: T) => string` | 如果数据是对象，指定显示的键名。 |
+| **optionValue**   | `keyof T \| (option: T) => string`             | 如果数据是对象，指定取值的键名。       |
+| **optionLabel**   | `keyof T \| (option: T) => string`             | 如果数据是对象，指定显示的键名。       |

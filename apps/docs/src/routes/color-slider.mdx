@@ -1,9 +1,3 @@
----
-title: color-slider
-description: A reference page in my new Starlight docs site.
----
-
-
 ## Color Slider 颜色滑块
 
 Color Slider 允许用户通过滑动轨道来调节颜色特定的通道（如色相、饱和度、亮度或透明度）。
@@ -20,21 +14,21 @@ import { ColorSlider } from "solid-element-ui";
 
 ```tsx
 <div className="space-y-6 p-6 border rounded-xl max-w-sm">
-  {/* 色相滑块 */}
-  <ColorSlider 
-    label="色相 (Hue)" 
-    channel="hue" 
-    defaultValue="hsl(0, 100%, 50%)" 
-    showValue 
-  />
+    {/* 色相滑块 */}
+    <ColorSlider
+        label="色相 (Hue)"
+        channel="hue"
+        defaultValue="hsl(0, 100%, 50%)"
+        showValue
+    />
 
-  {/* 透明度滑块 */}
-  <ColorSlider 
-    label="透明度 (Alpha)" 
-    channel="alpha" 
-    defaultValue="rgba(59, 130, 246, 0.5)" 
-    showValue 
-  />
+    {/* 透明度滑块 */}
+    <ColorSlider
+        label="透明度 (Alpha)"
+        channel="alpha"
+        defaultValue="rgba(59, 130, 246, 0.5)"
+        showValue
+    />
 </div>
 ```
 
@@ -42,13 +36,13 @@ import { ColorSlider } from "solid-element-ui";
 
 ### API 参考
 
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| **channel** | `ColorChannel` | - | **必填**。指定颜色通道（如 'hue', 'saturation', 'brightness', 'alpha' 等）。 |
-| **label** | `string` | - | 显示在滑块上方的标签。 |
-| **showValue** | `boolean` | `false` | 是否在右上角显示当前数值（带单位）。 |
-| **defaultValue** | `string \| Color` | - | 初始颜色值。 |
-| **value** | `string \| Color` | - | 受控颜色值。 |
+| 属性             | 类型              | 默认值  | 说明                                                                         |
+| :--------------- | :---------------- | :------ | :--------------------------------------------------------------------------- |
+| **channel**      | `ColorChannel`    | -       | **必填**。指定颜色通道（如 'hue', 'saturation', 'brightness', 'alpha' 等）。 |
+| **label**        | `string`          | -       | 显示在滑块上方的标签。                                                       |
+| **showValue**    | `boolean`         | `false` | 是否在右上角显示当前数值（带单位）。                                         |
+| **defaultValue** | `string \| Color` | -       | 初始颜色值。                                                                 |
+| **value**        | `string \| Color` | -       | 受控颜色值。                                                                 |
 
 ---
 
@@ -61,19 +55,24 @@ import { ColorSlider } from "solid-element-ui";
 
 /* 针对透明度轨道的底纹处理 */
 [data-kb-color-slider-track][data-channel="alpha"] {
-  /* 棋盘格背景 */
-  background-image: conic-gradient(#eee 0.25turn, #fff 0 0.5turn, #eee 0 0.75turn, #fff 0);
-  background-size: 8px 8px;
+    /* 棋盘格背景 */
+    background-image: conic-gradient(
+        #eee 0.25turn,
+        #fff 0 0.5turn,
+        #eee 0 0.75turn,
+        #fff 0
+    );
+    background-size: 8px 8px;
 }
 
 /* 确保 Kobalte 的颜色渐变层盖在底纹上方 */
 [data-kb-color-slider-track] {
-  position: relative;
-  z-index: 1;
+    position: relative;
+    z-index: 1;
 }
 
 /* 移除 cSpell 对 tabular-nums 的警告（如果需要） */
 .tabular-nums {
-  font-variant-numeric: tabular-nums;
+    font-variant-numeric: tabular-nums;
 }
 ```

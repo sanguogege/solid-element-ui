@@ -1,51 +1,48 @@
----
-title: link
-description: A reference page in my new Starlight docs site.
----
-
 ### Link 链接
 
 基于 Kobalte Link 封装，用于页面导航或外链跳转，支持按钮样式和可访问性优化。
 
 ### 导入
+
 ```tsx
 import { Link } from "solid-element-ui";
 ```
 
-### 使用示例
+### 基础用法
 
 ```tsx
 <div class="flex flex-col gap-2">
-  {/* 默认链接 */}
-  <Link href="[https://github.com](https://github.com)" external>
-    GitHub 官网
-  </Link>
+    {/* 默认链接 */}
+    <Link href="[https://github.com](https://github.com)" external>
+        GitHub 官网
+    </Link>
 
-  {/* 品牌颜色变体 */}
-  <Link href="/docs" variant="primary">
-    查看文档
-  </Link>
+    {/* 品牌颜色变体 */}
+    <Link href="/docs" variant="primary">
+        查看文档
+    </Link>
 
-  {/* 模拟按钮样式 */}
-  <Link href="/login" variant="button" radius="md">
-    立即登录
-  </Link>
+    {/* 模拟按钮样式 */}
+    <Link href="/login" variant="button" radius="md">
+        立即登录
+    </Link>
 </div>
 ```
 
 ### API 参考
 
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| **href** | `string` | - | 跳转地址。 |
-| **variant** | `'default' \| 'primary' \| 'muted' \| 'button'` | `'default'` | 视觉变体样式。 |
-| **underline** | `'always' \| 'hover' \| 'none'` | `'hover'` | 下划线的显示策略。 |
-| **external** | `boolean` | `false` | 是否为外部链接（自动添加 target="_blank" 和 rel）。 |
-| **disabled** | `boolean` | `false` | 是否禁用链接。 |
+| 属性          | 类型                                            | 默认值      | 说明                                                 |
+| :------------ | :---------------------------------------------- | :---------- | :--------------------------------------------------- |
+| **href**      | `string`                                        | -           | 跳转地址。                                           |
+| **variant**   | `'default' \| 'primary' \| 'muted' \| 'button'` | `'default'` | 视觉变体样式。                                       |
+| **underline** | `'always' \| 'hover' \| 'none'`                 | `'hover'`   | 下划线的显示策略。                                   |
+| **external**  | `boolean`                                       | `false`     | 是否为外部链接（自动添加 target="\_blank" 和 rel）。 |
+| **disabled**  | `boolean`                                       | `false`     | 是否禁用链接。                                       |
 
 ---
 
 ### 技术亮点
-- **语义化**：当不提供 `href` 时，Kobalte 会自动将其映射为正确的 `div` 或 `span` 结构，避免非法 HTML 嵌套。
-- **安全外链**：开启 `external` 属性后，自动注入 `rel="noopener noreferrer"` 以防范安全漏洞。
-- **Focus 管理**：统一了 `focus-visible` 的环绕样式，符合 WCAG 2.1 标准。
+
+-   **语义化**：当不提供 `href` 时，Kobalte 会自动将其映射为正确的 `div` 或 `span` 结构，避免非法 HTML 嵌套。
+-   **安全外链**：开启 `external` 属性后，自动注入 `rel="noopener noreferrer"` 以防范安全漏洞。
+-   **Focus 管理**：统一了 `focus-visible` 的环绕样式，符合 WCAG 2.1 标准。

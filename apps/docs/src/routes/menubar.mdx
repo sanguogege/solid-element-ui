@@ -1,55 +1,52 @@
----
-title: menubar
-description: A reference page in my new Starlight docs site.
----
-
 ## Menubar 菜单栏
 
 基于 Kobalte 原生能力，通过命名空间方式导出，兼顾开发体验与样式统一。
 
 ### 导入
+
 ```tsx
 import { Menubar } from "solid-element-ui";
 ```
 
-### 使用示例
+### 基础用法
 
 ```tsx
 <Menubar>
-  <Menubar.Menu>
-    <Menubar.Trigger>文件</Menubar.Trigger>
-    <Menubar.Content>
-      <Menubar.Item>
-        新建项目 <Menubar.Shortcut>⌘N</Menubar.Shortcut>
-      </Menubar.Item>
-      <Menubar.Separator />
-      <Menubar.Item disabled>删除</Menubar.Item>
-    </Menubar.Content>
-  </Menubar.Menu>
+    <Menubar.Menu>
+        <Menubar.Trigger>文件</Menubar.Trigger>
+        <Menubar.Content>
+            <Menubar.Item>
+                新建项目 <Menubar.Shortcut>⌘N</Menubar.Shortcut>
+            </Menubar.Item>
+            <Menubar.Separator />
+            <Menubar.Item disabled>删除</Menubar.Item>
+        </Menubar.Content>
+    </Menubar.Menu>
 
-  <Menubar.Menu>
-    <Menubar.Trigger>帮助</Menubar.Trigger>
-    <Menubar.Content>
-      <Menubar.Item>检查更新</Menubar.Item>
-    </Menubar.Content>
-  </Menubar.Menu>
+    <Menubar.Menu>
+        <Menubar.Trigger>帮助</Menubar.Trigger>
+        <Menubar.Content>
+            <Menubar.Item>检查更新</Menubar.Item>
+        </Menubar.Content>
+    </Menubar.Menu>
 </Menubar>
 ```
 
 ### API 结构
 
-| 组件路径 | 说明 | 继承属性 |
-| :--- | :--- | :--- |
-| **Menubar** | 菜单栏根组件。 | `KMenubar` |
-| **Menubar.Menu** | 逻辑菜单容器。 | `KMenubar.Menu` |
-| **Menubar.Trigger** | 点击触发按钮。 | `KMenubar.Trigger` |
-| **Menubar.Content** | 弹出层（内置 Portal）。 | `KMenubar.Content` |
-| **Menubar.Item** | 具体操作项。 | `KMenubar.Item` |
-| **Menubar.Shortcut** | 快捷键展示（辅助文本）。 | `span` |
+| 组件路径             | 说明                     | 继承属性           |
+| :------------------- | :----------------------- | :----------------- |
+| **Menubar**          | 菜单栏根组件。           | `KMenubar`         |
+| **Menubar.Menu**     | 逻辑菜单容器。           | `KMenubar.Menu`    |
+| **Menubar.Trigger**  | 点击触发按钮。           | `KMenubar.Trigger` |
+| **Menubar.Content**  | 弹出层（内置 Portal）。  | `KMenubar.Content` |
+| **Menubar.Item**     | 具体操作项。             | `KMenubar.Item`    |
+| **Menubar.Shortcut** | 快捷键展示（辅助文本）。 | `span`             |
 
 ---
 
 ### 键盘操作
-- `ArrowRight / ArrowLeft`: 在顶级菜单间切换。
-- `ArrowDown / ArrowUp`: 在菜单项间移动。
-- `Enter / Space`: 选中当前项。
+
+-   `ArrowRight / ArrowLeft`: 在顶级菜单间切换。
+-   `ArrowDown / ArrowUp`: 在菜单项间移动。
+-   `Enter / Space`: 选中当前项。

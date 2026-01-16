@@ -1,8 +1,3 @@
----
-title: toast
-description: A reference page in my new Starlight docs site.
----
-
 ## Toast 消息提示
 
 在屏幕角落显示的临时通知消息。
@@ -15,30 +10,30 @@ description: A reference page in my new Starlight docs site.
 import { Toaster, ToastRegion } from "@kobalte/core/toast";
 
 function App() {
-  return (
-    <>
-      <YourApp />
-      <Toaster>
-        <ToastRegion>
-          <ol className="fixed bottom-0 right-0 z-[100] flex max-h-screen w-full flex-col-reverse p-4 sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]" />
-        </ToastRegion>
-      </Toaster>
-    </>
-  );
+    return (
+        <>
+            <YourApp />
+            <Toaster>
+                <ToastRegion>
+                    <ol className="fixed bottom-0 right-0 z-[100] flex max-h-screen w-full flex-col-reverse p-4 sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]" />
+                </ToastRegion>
+            </Toaster>
+        </>
+    );
 }
 ```
 
-### 使用示例
+### 基础用法
 
 ```tsx
 import { showToast } from "solid-element-ui";
 
 const notify = () => {
-  showToast({
-    title: "订单已发送",
-    description: "您的包裹预计在 3-5 个工作日内送达。",
-    variant: "success",
-  });
+    showToast({
+        title: "订单已发送",
+        description: "您的包裹预计在 3-5 个工作日内送达。",
+        variant: "success",
+    });
 };
 ```
 
@@ -46,13 +41,13 @@ const notify = () => {
 
 ### API 参考
 
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| **variant** | `'info' \| 'success' \| 'warning' \| 'error'` | `'info'` | 提示类型。 |
-| **title** | `string` | - | 粗体标题。 |
-| **description** | `string` | - | 辅助详细信息。 |
-| **duration** | `number` | `5000` | 自动关闭时间（毫秒）。 |
-| **persistent** | `boolean` | `false` | 为 `true` 时不会自动关闭。 |
+| 属性            | 类型                                          | 默认值   | 说明                       |
+| :-------------- | :-------------------------------------------- | :------- | :------------------------- |
+| **variant**     | `'info' \| 'success' \| 'warning' \| 'error'` | `'info'` | 提示类型。                 |
+| **title**       | `string`                                      | -        | 粗体标题。                 |
+| **description** | `string`                                      | -        | 辅助详细信息。             |
+| **duration**    | `number`                                      | `5000`   | 自动关闭时间（毫秒）。     |
+| **persistent**  | `boolean`                                     | `false`  | 为 `true` 时不会自动关闭。 |
 
 ---
 
@@ -60,9 +55,13 @@ const notify = () => {
 
 ```css
 @theme {
-  @keyframes toast-in {
-    from { transform: translateX(100%); }
-    to { transform: translateX(0); }
-  }
+    @keyframes toast-in {
+        from {
+            transform: translateX(100%);
+        }
+        to {
+            transform: translateX(0);
+        }
+    }
 }
 ```

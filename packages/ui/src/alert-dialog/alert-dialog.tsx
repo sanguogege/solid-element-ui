@@ -3,6 +3,8 @@ import { splitProps, type JSX, type ComponentProps } from "solid-js";
 import { tv } from "tailwind-variants";
 import { X } from "lucide-solid";
 
+// TOTO 修改点击确定时的行为，目前是关闭对话框
+
 const alertDialogStyles = tv({
     slots: {
         overlay:
@@ -12,7 +14,7 @@ const alertDialogStyles = tv({
         header: "flex flex-col gap-2 text-center sm:text-left",
         title: "text-lg font-semibold text-zinc-900 dark:text-zinc-100",
         description: "text-sm text-zinc-500 dark:text-zinc-400",
-        footer: "mt-6 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end sm:gap-3",
+        footer: "mt-6 flex flex-row justify-end gap-3",
         closeButton:
             "absolute right-4 top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:outline-none",
     },
@@ -62,24 +64,28 @@ export const AlertDialog = (props: AlertDialogProps) => {
                         </div>
 
                         <div class={footer()}>
+                            {/* 取消按钮 */}
                             <KAlertDialog.CloseButton>
                                 {local.cancel || (
                                     <button
                                         type="button"
-                                        class="inline-flex h-9 items-center justify-center rounded-md border px-4 py-2 text-sm font-medium hover:bg-zinc-100"
+                                        class="inline-flex h-9 items-center justify-center rounded-md border px-4 py-2 text-sm font-medium hover:bg-zinc-100 dark:hover:bg-zinc-800"
                                     >
                                         取消
                                     </button>
                                 )}
                             </KAlertDialog.CloseButton>
 
-                            <div
-                                onClick={() => {
-                                    // 如果是确认操作，用户通常会传入 onClick，这里保持原样
-                                }}
-                            >
-                                {local.action}
-                            </div>
+                            <KAlertDialog.CloseButton>
+                                {local.action || (
+                                    <button
+                                        type="button"
+                                        class="inline-flex h-9 items-center justify-center rounded-md bg-zinc-900 px-4 py-2 text-sm font-medium text-white hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900"
+                                    >
+                                        确认
+                                    </button>
+                                )}
+                            </KAlertDialog.CloseButton>
                         </div>
                     </KAlertDialog.Content>
                 </div>

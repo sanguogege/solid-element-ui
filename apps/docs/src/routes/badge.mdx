@@ -1,8 +1,3 @@
----
-title: badge
-description: A reference page in my new Starlight docs site.
----
-
 ## Badge 徽章
 
 基于 Kobalte 的语义化徽章组件，用于展示状态或标签。
@@ -13,16 +8,16 @@ description: A reference page in my new Starlight docs site.
 import { Badge } from "solid-element-ui";
 ```
 
-### 使用示例
+### 基础用法
 
 在 MDX 中渲染基于 Kobalte 的 Badge 实例：
 
 ```tsx
 <div className="flex flex-wrap gap-2 p-4">
-  <Badge variant="default">Beta</Badge>
-  <Badge variant="success">已上线</Badge>
-  <Badge variant="danger">已下线</Badge>
-  <Badge variant="outline">v1.0.0</Badge>
+    <Badge variant="default">Beta</Badge>
+    <Badge variant="success">已上线</Badge>
+    <Badge variant="danger">已下线</Badge>
+    <Badge variant="outline">v1.0.0</Badge>
 </div>
 ```
 
@@ -30,11 +25,11 @@ import { Badge } from "solid-element-ui";
 
 ### API 参考
 
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| **variant** | `'default' \| 'secondary' \| 'outline' \| 'success' \| 'danger'` | `'default'` | 预设的视觉风格。 |
-| **class** | `string` | - | 覆盖样式的 Tailwind 类名。 |
-| **as** | `string \| Component` | `'div'` | 修改渲染的 HTML 标签（如改为 'span'）。 |
+| 属性        | 类型                                                             | 默认值      | 说明                                    |
+| :---------- | :--------------------------------------------------------------- | :---------- | :-------------------------------------- |
+| **variant** | `'default' \| 'secondary' \| 'outline' \| 'success' \| 'danger'` | `'default'` | 预设的视觉风格。                        |
+| **class**   | `string`                                                         | -           | 覆盖样式的 Tailwind 类名。              |
+| **as**      | `string \| Component`                                            | `'div'`     | 修改渲染的 HTML 标签（如改为 'span'）。 |
 
 ---
 
@@ -46,15 +41,21 @@ import { Badge } from "solid-element-ui";
 @import "tailwindcss";
 
 @theme {
-  @keyframes badge-pop {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
-  }
+    @keyframes badge-pop {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.1);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
 }
 
 /* 当 Badge 内容改变时可手动触发或应用此样式 */
 .badge-update {
-  animation: badge-pop 0.2s ease-out;
+    animation: badge-pop 0.2s ease-out;
 }
 ```

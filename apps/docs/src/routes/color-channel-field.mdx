@@ -1,9 +1,3 @@
----
-title: color-channel-field
-description: A reference page in my new Starlight docs site.
----
-
-
 ## Color Channel Field 颜色通道输入
 
 用于精确输入颜色的特定通道值（如红色分量、饱和度等）。
@@ -14,18 +8,17 @@ description: A reference page in my new Starlight docs site.
 import { ColorChannelField } from "solid-element-ui";
 ```
 
-### 使用示例
+### 基础用法
 
 在 MDX 中渲染一组颜色通道输入框：
 
 // TODO channel 不存在
 
-
 ```tsx
 <div className="grid grid-cols-3 gap-4 p-4 border rounded-xl bg-white dark:bg-zinc-950">
-  <ColorChannelField label="R (红色)" channel="red" />
-  <ColorChannelField label="G (绿色)" channel="green" />
-  <ColorChannelField label="B (蓝色)" channel="blue" />
+    <ColorChannelField label="R (红色)" channel="red" />
+    <ColorChannelField label="G (绿色)" channel="green" />
+    <ColorChannelField label="B (蓝色)" channel="blue" />
 </div>
 ```
 
@@ -33,13 +26,13 @@ import { ColorChannelField } from "solid-element-ui";
 
 ### API 参考
 
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| **channel** | `string` | - | **必填**。指定通道名称（如 'red', 'hue', 'alpha'）。 |
-| **label** | `string` | - | 输入框顶部的标签文字。 |
-| **value** | `string \| number` | - | 受控值。 |
-| **readonly** | `boolean` | `false` | 是否只读。 |
-| **disabled** | `boolean` | `false` | 是否禁用。 |
+| 属性         | 类型               | 默认值  | 说明                                                 |
+| :----------- | :----------------- | :------ | :--------------------------------------------------- |
+| **channel**  | `string`           | -       | **必填**。指定通道名称（如 'red', 'hue', 'alpha'）。 |
+| **label**    | `string`           | -       | 输入框顶部的标签文字。                               |
+| **value**    | `string \| number` | -       | 受控值。                                             |
+| **readonly** | `boolean`          | `false` | 是否只读。                                           |
+| **disabled** | `boolean`          | `false` | 是否禁用。                                           |
 
 ---
 
@@ -51,11 +44,11 @@ import { ColorChannelField } from "solid-element-ui";
 @import "tailwindcss";
 
 @theme {
-  --color-brand-ring: var(--color-blue-500);
+    --color-brand-ring: var(--color-blue-500);
 }
 
 [data-kb-color-channel-field-input]:focus {
-  border-color: var(--color-brand-ring);
-  box-shadow: 0 0 0 1px var(--color-brand-ring);
+    border-color: var(--color-brand-ring);
+    box-shadow: 0 0 0 1px var(--color-brand-ring);
 }
 ```

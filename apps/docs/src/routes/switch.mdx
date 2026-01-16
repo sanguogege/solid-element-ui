@@ -1,8 +1,3 @@
----
-title: switch
-description: A reference page in my new Starlight docs site.
----
-
 ## Switch 开关
 
 允许用户在两个互斥状态（开/关）之间切换。
@@ -13,20 +8,20 @@ description: A reference page in my new Starlight docs site.
 import { Switch } from "solid-element-ui";
 ```
 
-### 使用示例
+### 基础用法
 
 ```tsx
 <div className="flex flex-col gap-4">
-  <Switch label="启用通知" defaultChecked />
-  
-  <Switch 
-    label="深色模式" 
-    description="自动根据系统设置调整外观。"
-    variant="success"
-    size="lg"
-  />
+    <Switch label="启用通知" defaultChecked />
 
-  <Switch label="不可用选项" disabled />
+    <Switch
+        label="深色模式"
+        description="自动根据系统设置调整外观。"
+        variant="success"
+        size="lg"
+    />
+
+    <Switch label="不可用选项" disabled />
 </div>
 ```
 
@@ -34,16 +29,16 @@ import { Switch } from "solid-element-ui";
 
 ### API 参考
 
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| **label** | `string` | - | 开关旁边的文本标签。 |
-| **description** | `string` | - | 标签下方的辅助说明文字。 |
-| **size** | `'sm' \| 'md' \| 'lg'` | `'md'` | 开关的尺寸规格。 |
-| **variant** | `'primary' \| 'success' \| 'danger'` | `'primary'` | 选中时的配色方案。 |
-| **checked** | `boolean` | - | 受控选中状态。 |
-| **onChange** | `(val: boolean) => void` | - | 状态改变时的回调。 |
-| **defaultChecked** | `boolean` | - | 非受控初始选中状态。 |
-| **disabled** | `boolean` | `false` | 是否禁用开关。 |
+| 属性               | 类型                                 | 默认值      | 说明                     |
+| :----------------- | :----------------------------------- | :---------- | :----------------------- |
+| **label**          | `string`                             | -           | 开关旁边的文本标签。     |
+| **description**    | `string`                             | -           | 标签下方的辅助说明文字。 |
+| **size**           | `'sm' \| 'md' \| 'lg'`               | `'md'`      | 开关的尺寸规格。         |
+| **variant**        | `'primary' \| 'success' \| 'danger'` | `'primary'` | 选中时的配色方案。       |
+| **checked**        | `boolean`                            | -           | 受控选中状态。           |
+| **onChange**       | `(val: boolean) => void`             | -           | 状态改变时的回调。       |
+| **defaultChecked** | `boolean`                            | -           | 非受控初始选中状态。     |
+| **disabled**       | `boolean`                            | `false`     | 是否禁用开关。           |
 
 ---
 

@@ -1,9 +1,3 @@
----
-title: color-field
-description: A reference page in my new Starlight docs site.
----
-
-
 ## Color Field 颜色文本框
 
 允许用户通过文本输入（如 Hex 或 RGB）来指定颜色值。
@@ -14,28 +8,28 @@ description: A reference page in my new Starlight docs site.
 import { ColorField } from "solid-element-ui";
 ```
 
-### 使用示例
+### 基础用法
 
 在 MDX 中渲染基础、带说明及带错误校验的实例：
 
 ```tsx
 <div className="flex flex-col gap-6 p-4 border rounded-xl bg-white dark:bg-zinc-950 max-w-sm">
-  {/* 基础用法 */}
-  <ColorField label="背景颜色" defaultValue="#3b82f6" />
+    {/* 基础用法 */}
+    <ColorField label="背景颜色" defaultValue="#3b82f6" />
 
-  {/* 带描述信息 */}
-  <ColorField 
-    label="主题色" 
-    desc="请输入十六进制或 HSL 格式"
-    defaultValue="hsl(217, 91%, 60%)" 
-  />
+    {/* 带描述信息 */}
+    <ColorField
+        label="主题色"
+        desc="请输入十六进制或 HSL 格式"
+        defaultValue="hsl(217, 91%, 60%)"
+    />
 
-  {/* 错误状态 */}
-  <ColorField 
-    label="边框颜色" 
-    error="无效的颜色代码" 
-    defaultValue="not-a-color"
-  />
+    {/* 错误状态 */}
+    <ColorField
+        label="边框颜色"
+        error="无效的颜色代码"
+        defaultValue="not-a-color"
+    />
 </div>
 ```
 
@@ -43,13 +37,13 @@ import { ColorField } from "solid-element-ui";
 
 ### API 参考
 
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| **label** | `string` | - | 输入框顶部的标签文字。 |
-| **desc** | `string` | - | 输入框底部的辅助说明文字。 |
-| **error** | `string` | - | 错误提示文字。提供该值时，组件会自动变为 `invalid` 状态。 |
-| **value** | `string` | - | 受控值（如 `#000000`）。 |
-| **defaultValue** | `string` | - | 非受控模式下的默认值。 |
+| 属性             | 类型     | 默认值 | 说明                                                      |
+| :--------------- | :------- | :----- | :-------------------------------------------------------- |
+| **label**        | `string` | -      | 输入框顶部的标签文字。                                    |
+| **desc**         | `string` | -      | 输入框底部的辅助说明文字。                                |
+| **error**        | `string` | -      | 错误提示文字。提供该值时，组件会自动变为 `invalid` 状态。 |
+| **value**        | `string` | -      | 受控值（如 `#000000`）。                                  |
+| **defaultValue** | `string` | -      | 非受控模式下的默认值。                                    |
 
 ---
 
@@ -62,14 +56,21 @@ import { ColorField } from "solid-element-ui";
 
 /* 当颜色无效时，输入框会有轻微的抖动效果 */
 [data-kb-color-field-input][data-invalid] {
-  animation: shake 0.2s ease-in-out 0s 2;
+    animation: shake 0.2s ease-in-out 0s 2;
 }
 
 @theme {
-  @keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-2px); }
-    75% { transform: translateX(2px); }
-  }
+    @keyframes shake {
+        0%,
+        100% {
+            transform: translateX(0);
+        }
+        25% {
+            transform: translateX(-2px);
+        }
+        75% {
+            transform: translateX(2px);
+        }
+    }
 }
 ```

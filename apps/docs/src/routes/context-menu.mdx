@@ -1,8 +1,3 @@
----
-title: context-menu
-description: A reference page in my new Starlight docs site.
----
-
 ## Context Menu 右键菜单 (配置式)
 
 通过传入一个 `items` 数组即可生成完整的右键菜单，支持无限级嵌套和分隔线。
@@ -13,46 +8,48 @@ description: A reference page in my new Starlight docs site.
 import { ContextMenu } from "solid-element-ui";
 ```
 
-
-### 使用示例
+### 基础用法
 
 ```tsx
 const menuItems = [
-  { label: "返回", onClick: () => console.log("Back") },
-  { label: "前进", disabled: true },
-  { separator: true },
-  { 
-    label: "更多工具", 
-    children: [
-      { label: "保存页面", onClick: () => alert("Saved") },
-      { label: "打印", onClick: () => window.print() },
-    ]
-  },
-  { separator: true },
-  { label: "检查", onClick: () => console.log("Inspect") }
+    { label: "返回", onClick: () => console.log("Back") },
+    { label: "前进", disabled: true },
+    { separator: true },
+    {
+        label: "更多工具",
+        children: [
+            { label: "保存页面", onClick: () => alert("Saved") },
+            { label: "打印", onClick: () => window.print() },
+        ],
+    },
+    { separator: true },
+    { label: "检查", onClick: () => console.log("Inspect") },
 ];
 
-<ContextMenu items={menuItems} className="flex h-32 w-full items-center justify-center border-2 border-dashed rounded-lg">
-  在此处点击右键查看效果
-</ContextMenu>
+<ContextMenu
+    items={menuItems}
+    className="flex h-32 w-full items-center justify-center border-2 border-dashed rounded-lg"
+>
+    在此处点击右键查看效果
+</ContextMenu>;
 ```
 
 ---
 
 ### API 参考
 
-| 属性 | 类型 | 说明 |
-| :--- | :--- | :--- |
-| **items** | `ContextMenuItemConfig[]` | 菜单结构配置数组。 |
-| **children** | `JSX.Element` | 触发右键点击的容器内容。 |
-| **class** | `string` | 触发容器的 CSS 类名。 |
+| 属性         | 类型                      | 说明                     |
+| :----------- | :------------------------ | :----------------------- |
+| **items**    | `ContextMenuItemConfig[]` | 菜单结构配置数组。       |
+| **children** | `JSX.Element`             | 触发右键点击的容器内容。 |
+| **class**    | `string`                  | 触发容器的 CSS 类名。    |
 
 **ContextMenuItemConfig 结构:**
 
-| 字段 | 类型 | 说明 |
-| :--- | :--- | :--- |
-| **label** | `string` | 菜单显示的文字。 |
-| **onClick** | `function` | 点击后的回调函数。 |
-| **disabled** | `boolean` | 是否禁用该项。 |
-| **separator** | `boolean` | 是否渲染为分隔线。 |
-| **children** | `array` | 子菜单项集合。 |
+| 字段          | 类型       | 说明               |
+| :------------ | :--------- | :----------------- |
+| **label**     | `string`   | 菜单显示的文字。   |
+| **onClick**   | `function` | 点击后的回调函数。 |
+| **disabled**  | `boolean`  | 是否禁用该项。     |
+| **separator** | `boolean`  | 是否渲染为分隔线。 |
+| **children**  | `array`    | 子菜单项集合。     |

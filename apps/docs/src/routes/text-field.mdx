@@ -1,8 +1,3 @@
----
-title: text-field
-description: A reference page in my new Starlight docs site.
----
-
 ## TextField 输入框
 
 基础的表单文本输入组件，集成了标签、描述和校验状态。
@@ -13,26 +8,26 @@ description: A reference page in my new Starlight docs site.
 import { TextField } from "solid-element-ui";
 ```
 
-### 使用示例
+### 基础用法
 
 ```tsx
 <div className="space-y-4 max-w-xs">
-  {/* 基础用法 */}
-  <TextField label="用户名" placeholder="请输入用户名" />
+    {/* 基础用法 */}
+    <TextField label="用户名" placeholder="请输入用户名" />
 
-  {/* 密码类型 + 描述 */}
-  <TextField 
-    type="password" 
-    label="密码" 
-    description="密码长度至少为 8 位。" 
-  />
+    {/* 密码类型 + 描述 */}
+    <TextField
+        type="password"
+        label="密码"
+        description="密码长度至少为 8 位。"
+    />
 
-  {/* 错误状态 */}
-  <TextField 
-    label="邮箱" 
-    defaultValue="invalid-email"
-    errorMessage="请输入有效的邮箱地址。" 
-  />
+    {/* 错误状态 */}
+    <TextField
+        label="邮箱"
+        defaultValue="invalid-email"
+        errorMessage="请输入有效的邮箱地址。"
+    />
 </div>
 ```
 
@@ -40,16 +35,16 @@ import { TextField } from "solid-element-ui";
 
 ### API 参考
 
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| **label** | `string` | - | 输入框顶部的标签文字。 |
-| **description** | `string` | - | 输入框底部的辅助说明。 |
-| **errorMessage** | `string` | - | 错误提示文字。传入时会自动将状态切换为 `invalid`。 |
-| **size** | `'sm' \| 'md' \| 'lg'` | `'md'` | 输入框的高度和字体规格。 |
-| **type** | `string` | `'text'` | HTML 原生输入类型，如 `password`, `email` 等。 |
-| **value** | `string` | - | 受控绑定的值。 |
-| **onChange** | `(val: string) => void` | - | 值改变时的回调。 |
-| **disabled** | `boolean` | `false` | 是否禁用输入。 |
+| 属性             | 类型                    | 默认值   | 说明                                               |
+| :--------------- | :---------------------- | :------- | :------------------------------------------------- |
+| **label**        | `string`                | -        | 输入框顶部的标签文字。                             |
+| **description**  | `string`                | -        | 输入框底部的辅助说明。                             |
+| **errorMessage** | `string`                | -        | 错误提示文字。传入时会自动将状态切换为 `invalid`。 |
+| **size**         | `'sm' \| 'md' \| 'lg'`  | `'md'`   | 输入框的高度和字体规格。                           |
+| **type**         | `string`                | `'text'` | HTML 原生输入类型，如 `password`, `email` 等。     |
+| **value**        | `string`                | -        | 受控绑定的值。                                     |
+| **onChange**     | `(val: string) => void` | -        | 值改变时的回调。                                   |
+| **disabled**     | `boolean`               | `false`  | 是否禁用输入。                                     |
 
 ---
 

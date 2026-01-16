@@ -1,48 +1,45 @@
----
-title: radio-group
-description: A reference page in my new Starlight docs site.
----
-
 ## RadioGroup 单选框组
 
 用于从一组互斥选项中选择一个。高度封装版支持配置化生成选项。
 
 ### 导入
+
 ```tsx
 import { RadioGroup } from "solid-element-ui";
 ```
 
-### 使用示例
+### 基础用法
 
 ```tsx
 const planOptions = [
-  { label: "基础版 (免费)", value: "free" },
-  { label: "专业版 ($19/mo)", value: "pro" },
-  { label: "企业版 (联系我们)", value: "enterprise", disabled: true }
+    { label: "基础版 (免费)", value: "free" },
+    { label: "专业版 ($19/mo)", value: "pro" },
+    { label: "企业版 (联系我们)", value: "enterprise", disabled: true },
 ];
 
-<RadioGroup 
-  label="选择您的订阅方案" 
-  options={planOptions} 
-  defaultValue="pro" 
-  orientation="vertical"
-/>
+<RadioGroup
+    label="选择您的订阅方案"
+    options={planOptions}
+    defaultValue="pro"
+    orientation="vertical"
+/>;
 ```
 
 ### API 参考
 
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| **options** | `RadioOption[]` | `[]` | **必填**。选项数组，包含 label, value 和 disabled。 |
-| **label** | `string` | - | 单选组的标题。 |
-| **value** | `string` | - | 当前选中的值（受控）。 |
-| **defaultValue** | `string` | - | 默认选中的值。 |
-| **orientation** | `'horizontal' \| 'vertical'` | `'vertical'` | 选项的排列方向。 |
-| **onChange** | `(value: string) => void` | - | 选中项改变时的回调。 |
+| 属性             | 类型                         | 默认值       | 说明                                                |
+| :--------------- | :--------------------------- | :----------- | :-------------------------------------------------- |
+| **options**      | `RadioOption[]`              | `[]`         | **必填**。选项数组，包含 label, value 和 disabled。 |
+| **label**        | `string`                     | -            | 单选组的标题。                                      |
+| **value**        | `string`                     | -            | 当前选中的值（受控）。                              |
+| **defaultValue** | `string`                     | -            | 默认选中的值。                                      |
+| **orientation**  | `'horizontal' \| 'vertical'` | `'vertical'` | 选项的排列方向。                                    |
+| **onChange**     | `(value: string) => void`    | -            | 选中项改变时的回调。                                |
 
 ---
 
 ### 视觉反馈
-- **选中状态**：使用 `group-data-[checked]` 自动切换背景色。
-- **焦点环**：支持键盘导航，使用 `group-focus-visible` 确保符合无障碍标准。
-- **禁用态**：自动处理 `pointer-events-none` 和透明度。
+
+-   **选中状态**：使用 `group-data-[checked]` 自动切换背景色。
+-   **焦点环**：支持键盘导航，使用 `group-focus-visible` 确保符合无障碍标准。
+-   **禁用态**：自动处理 `pointer-events-none` 和透明度。

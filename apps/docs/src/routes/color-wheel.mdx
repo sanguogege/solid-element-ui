@@ -1,13 +1,6 @@
----
-title: color-wheel
-description: A reference page in my new Starlight docs site.
----
-
-
 ## Color Wheel 色轮
 
 圆环形色相选择器。采用标准的 HSL 模式进行色相调整，支持全方位的交互体验。
-
 
 ### 导入
 
@@ -15,17 +8,13 @@ description: A reference page in my new Starlight docs site.
 import { ColorWheel } from "solid-element-ui";
 ```
 
-### 使用示例
+### 基础用法
 
 `thickness` 为圆环的宽度，`size` 为组件的总外径。
 
 ```tsx
 <div className="flex justify-center p-8 border rounded-xl bg-white dark:bg-zinc-950">
-  <ColorWheel 
-    size={200} 
-    thickness={20} 
-    defaultValue="hsl(200, 100%, 50%)" 
-  />
+    <ColorWheel size={200} thickness={20} defaultValue="hsl(200, 100%, 50%)" />
 </div>
 ```
 
@@ -39,16 +28,16 @@ import { ColorWheel } from "solid-element-ui";
 @import "tailwindcss";
 
 [data-kb-color-wheel-track] {
-  /* 确保圆环完美居中并展示背景 */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 9999px;
-  position: relative;
+    /* 确保圆环完美居中并展示背景 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    position: relative;
 }
 
 [data-kb-color-wheel-thumb] {
-  /* 增加外部投影，防止在亮色区域消失 */
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.1), 0 2px 4px rgba(0,0,0,0.2);
+    /* 增加外部投影，防止在亮色区域消失 */
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 ```

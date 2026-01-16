@@ -1,10 +1,3 @@
----
-title: color-swatch
-description: A reference page in my new Starlight docs site.
----
-
-
-
 ## Color Swatch 颜色样本
 
 用于展示静态颜色值。它提供了语义化的无障碍支持，确保屏幕阅读器能识别颜色信息。
@@ -15,24 +8,24 @@ description: A reference page in my new Starlight docs site.
 import { ColorSwatch } from "solid-element-ui";
 ```
 
-### 使用示例
+### 基础用法
 
 在 MDX 中渲染不同形状和大小的颜色样本：
 
 ```tsx
 <div className="flex flex-wrap gap-4 p-4 border rounded-xl bg-white dark:bg-zinc-950">
-  {/* 基础用法 */}
-  <ColorSwatch color="#3b82f6" />
-  <ColorSwatch color="hsl(142, 71%, 45%)" />
-  
-  {/* 自定义样式 */}
-  <ColorSwatch 
-    color="#f59e0b" 
-    className="h-12 w-12 rounded-full ring-2 ring-offset-2 ring-zinc-200" 
-  />
-  
-  {/* 透明度展示 */}
-  <ColorSwatch color="rgba(239, 68, 68, 0.5)" />
+    {/* 基础用法 */}
+    <ColorSwatch color="#3b82f6" />
+    <ColorSwatch color="hsl(142, 71%, 45%)" />
+
+    {/* 自定义样式 */}
+    <ColorSwatch
+        color="#f59e0b"
+        className="h-12 w-12 rounded-full ring-2 ring-offset-2 ring-zinc-200"
+    />
+
+    {/* 透明度展示 */}
+    <ColorSwatch color="rgba(239, 68, 68, 0.5)" />
 </div>
 ```
 
@@ -40,10 +33,10 @@ import { ColorSwatch } from "solid-element-ui";
 
 ### API 参考
 
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| **color** | `string \| Color` | - | **必填**。要展示的颜色值（Hex, RGB, HSL 等）。 |
-| **class** | `string` | - | 覆盖默认的 Tailwind 类名。 |
+| 属性      | 类型              | 默认值 | 说明                                           |
+| :-------- | :---------------- | :----- | :--------------------------------------------- |
+| **color** | `string \| Color` | -      | **必填**。要展示的颜色值（Hex, RGB, HSL 等）。 |
+| **class** | `string`          | -      | 覆盖默认的 Tailwind 类名。                     |
 
 ---
 
@@ -55,24 +48,24 @@ import { ColorSwatch } from "solid-element-ui";
 @import "tailwindcss";
 
 [data-kb-color-swatch] {
-  /* 当颜色包含 alpha 通道时，显示棋盘格底纹 */
-  background-image: conic-gradient(
-    rgba(0,0,0,0.05) 0.25turn, 
-    transparent 0 0.5turn, 
-    rgba(0,0,0,0.05) 0 0.75turn, 
-    transparent 0
-  );
-  background-size: 8px 8px;
-  background-clip: content-box;
+    /* 当颜色包含 alpha 通道时，显示棋盘格底纹 */
+    background-image: conic-gradient(
+        rgba(0, 0, 0, 0.05) 0.25turn,
+        transparent 0 0.5turn,
+        rgba(0, 0, 0, 0.05) 0 0.75turn,
+        transparent 0
+    );
+    background-size: 8px 8px;
+    background-clip: content-box;
 }
 
 /* 确保内部颜色层覆盖在底纹上 */
 [data-kb-color-swatch]::after {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 100%;
-  background-color: inherit;
-  border-radius: inherit;
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: inherit;
+    border-radius: inherit;
 }
 ```

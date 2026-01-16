@@ -1,8 +1,3 @@
----
-title: time-field
-description: A reference page in my new Starlight docs site.
----
-
 ## TimeField 时间输入框
 
 允许用户输入特定时间（小时、分钟、秒、AM/PM），支持键盘操作和分段验证。
@@ -14,31 +9,31 @@ import { TimeField } from "solid-element-ui";
 import { parseTime } from "@internationalized/date";
 ```
 
-### 使用示例
+### 基础用法
 
 ```tsx
 const [value, setValue] = createSignal(parseTime("14:30"));
 
-<TimeField 
-  label="会议时间" 
-  value={value()} 
-  onChange={setValue}
-  description="请选择下午的会议时段。"
-/>
+<TimeField
+    label="会议时间"
+    value={value()}
+    onChange={setValue}
+    description="请选择下午的会议时段。"
+/>;
 ```
 
 ---
 
 ### API 参考
 
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| **label** | `string` | - | 顶部的标签文字。 |
-| **value** | `Time` | - | `@internationalized/date` 提供的 Time 对象。 |
-| **hourCycle** | `12 \| 24` | - | 强制使用 12 小时制或 24 小时制。 |
-| **granularity** | `'hour' \| 'minute' \| 'second'` | `'minute'` | 时间精度。 |
-| **size** | `'sm' \| 'md' \| 'lg'` | `'md'` | 控件尺寸。 |
-| **errorMessage** | `string` | - | 错误提示，传入后会自动变红。 |
+| 属性             | 类型                             | 默认值     | 说明                                         |
+| :--------------- | :------------------------------- | :--------- | :------------------------------------------- |
+| **label**        | `string`                         | -          | 顶部的标签文字。                             |
+| **value**        | `Time`                           | -          | `@internationalized/date` 提供的 Time 对象。 |
+| **hourCycle**    | `12 \| 24`                       | -          | 强制使用 12 小时制或 24 小时制。             |
+| **granularity**  | `'hour' \| 'minute' \| 'second'` | `'minute'` | 时间精度。                                   |
+| **size**         | `'sm' \| 'md' \| 'lg'`           | `'md'`     | 控件尺寸。                                   |
+| **errorMessage** | `string`                         | -          | 错误提示，传入后会自动变红。                 |
 
 ---
 

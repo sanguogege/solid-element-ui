@@ -1,9 +1,3 @@
----
-title: dialog
-description: A reference page in my new Starlight docs site.
----
-
-
 ## Dialog 对话框 (高度封装)
 
 高度封装的模态弹窗组件，集成了状态管理、遮罩层、标题、描述及页脚区域。
@@ -14,25 +8,27 @@ description: A reference page in my new Starlight docs site.
 import { Dialog } from "solid-element-ui";
 ```
 
-### 使用示例
+### 基础用法
 
 最简化的调用方式，只需传入 `title` 和 `children`：
 
 ```tsx
-<Dialog 
-  title="确认操作" 
-  description="此操作无法撤销，请确认是否继续。"
-  trigger={<button class="btn-primary">删除账户</button>}
-  footer={
-    <>
-      <button class="px-4 py-2 border rounded-md">取消</button>
-      <button class="px-4 py-2 bg-red-600 text-white rounded-md">确认删除</button>
-    </>
-  }
+<Dialog
+    title="确认操作"
+    description="此操作无法撤销，请确认是否继续。"
+    trigger={<button class="btn-primary">删除账户</button>}
+    footer={
+        <>
+            <button class="px-4 py-2 border rounded-md">取消</button>
+            <button class="px-4 py-2 bg-red-600 text-white rounded-md">
+                确认删除
+            </button>
+        </>
+    }
 >
-  <p class="text-sm text-zinc-600">
-    删除后，您的所有数据将永久从我们的服务器中移除。
-  </p>
+    <p class="text-sm text-zinc-600">
+        删除后，您的所有数据将永久从我们的服务器中移除。
+    </p>
 </Dialog>
 ```
 
@@ -40,15 +36,15 @@ import { Dialog } from "solid-element-ui";
 
 ### API 参考
 
-| 属性 | 类型 | 说明 |
-| :--- | :--- | :--- |
-| **title** | `string` | **必填**。弹窗的标题内容。 |
-| **trigger** | `JSX.Element` | 触发弹窗的按钮或元素。如果不传，则需通过 `open` 手动控制。 |
-| **description** | `string` | 标题下方的辅助说明文字。 |
-| **children** | `JSX.Element` | 弹窗的正文区域。 |
-| **footer** | `JSX.Element` | 底部操作栏（通常放置按钮）。 |
-| **open** | `boolean` | 受控状态：是否显示弹窗。 |
-| **onOpenChange** | `(open: boolean) => void` | 弹窗打开/关闭时的回调。 |
+| 属性             | 类型                      | 说明                                                       |
+| :--------------- | :------------------------ | :--------------------------------------------------------- |
+| **title**        | `string`                  | **必填**。弹窗的标题内容。                                 |
+| **trigger**      | `JSX.Element`             | 触发弹窗的按钮或元素。如果不传，则需通过 `open` 手动控制。 |
+| **description**  | `string`                  | 标题下方的辅助说明文字。                                   |
+| **children**     | `JSX.Element`             | 弹窗的正文区域。                                           |
+| **footer**       | `JSX.Element`             | 底部操作栏（通常放置按钮）。                               |
+| **open**         | `boolean`                 | 受控状态：是否显示弹窗。                                   |
+| **onOpenChange** | `(open: boolean) => void` | 弹窗打开/关闭时的回调。                                    |
 
 ---
 
@@ -57,10 +53,10 @@ import { Dialog } from "solid-element-ui";
 你可以通过 `class` 属性直接覆盖弹窗容器的宽度或背景：
 
 ```tsx
-<Dialog 
-  title="自定义宽度" 
-  class="max-w-[800px]" // 覆盖默认的 max-w-lg
+<Dialog
+    title="自定义宽度"
+    class="max-w-[800px]" // 覆盖默认的 max-w-lg
 >
-  <div>...</div>
+    <div>...</div>
 </Dialog>
 ```
