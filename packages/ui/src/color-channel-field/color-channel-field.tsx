@@ -22,6 +22,9 @@ export interface ColorChannelFieldProps
     label?: string;
 }
 
+
+// TODO channel 问题
+
 export const ColorChannelField = (props: ColorChannelFieldProps) => {
     const [local, others] = splitProps(props, ["label", "class"]);
 

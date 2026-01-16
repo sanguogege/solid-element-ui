@@ -2,17 +2,27 @@
 
 用于精确输入颜色的特定通道值（如红色分量、饱和度等）。
 
+
+import { ColorChannelField } from "solid-element-ui";
+
 ### 导入
 
 ```tsx
 import { ColorChannelField } from "solid-element-ui";
 ```
 
+
+<div className="flex p-4 bg-white dark:bg-zinc-950 border rounded-lg space-x-2">
+    {/* <ColorChannelField label="R (红色)"  />
+    <ColorChannelField label="G (绿色)"  /> */}
+    <ColorChannelField label="B (蓝色)" channel="hue" />
+</div>
+
 ### 基础用法
 
 在 MDX 中渲染一组颜色通道输入框：
 
-// TODO channel 不存在
+
 
 ```tsx
 <div className="grid grid-cols-3 gap-4 p-4 border rounded-xl bg-white dark:bg-zinc-950">
