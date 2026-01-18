@@ -2,6 +2,8 @@ import { ColorWheel as KColorWheel } from "@kobalte/core/color-wheel";
 import { splitProps, type ComponentProps } from "solid-js";
 import { tv } from "tailwind-variants";
 
+// FIXME 颜色选项都有源代码问题，注意查看原始kobalte的问题。
+
 const colorWheelStyles = tv({
     slots: {
         root: "relative flex flex-col items-center justify-center select-none touch-none",

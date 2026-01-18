@@ -2,6 +2,20 @@
 
 通过传入一个 `items` 数组即可生成完整的右键菜单，支持无限级嵌套和分隔线。
 
+import { ContextMenu } from "solid-element-ui";
+import { menuItems } from "~/components/data";
+
+<div className="p-4 bg-white dark:bg-zinc-950 border rounded-lg space-y-2">
+
+    <ContextMenu
+        items={menuItems}
+        className="flex h-32 w-full items-center justify-center border-2 border-dashed rounded-lg"
+    >
+       <span>触发区域</span>
+    </ContextMenu>
+
+</div>
+
 ## 导入
 
 ```tsx
@@ -31,7 +45,7 @@ const menuItems = [
     className="flex h-32 w-full items-center justify-center border-2 border-dashed rounded-lg"
 >
     在此处点击右键查看效果
-</ContextMenu>;
+</ContextMenu>
 ```
 
 ---

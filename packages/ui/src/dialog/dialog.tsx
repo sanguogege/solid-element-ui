@@ -3,6 +3,9 @@ import { splitProps, type JSX, Show } from "solid-js";
 import { tv } from "tailwind-variants";
 import { X } from "lucide-solid";
 
+//TODO 修改footer，可自定义或是自带，方法传入等等
+// FIXME title 和close icon 平行。
+
 const dialogStyles = tv({
     slots: {
         overlay:

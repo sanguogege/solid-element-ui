@@ -3,6 +3,9 @@ import { splitProps, type ComponentProps } from "solid-js";
 import { tv } from "tailwind-variants";
 import { Check, ChevronDown } from "lucide-solid";
 
+
+// FIXME icon 位置问题和旋转问题
+
 const comboboxStyles = tv({
     slots: {
         root: "flex flex-col gap-1.5 w-full",
@@ -17,7 +20,7 @@ const comboboxStyles = tv({
         item: "relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none data-[highlighted]:bg-zinc-100 data-[highlighted]:text-zinc-900 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:data-[highlighted]:bg-zinc-800 dark:data-[highlighted]:text-zinc-50",
         itemIndicator:
             "absolute left-2 flex h-3.5 w-3.5 items-center justify-center",
-        icon: "h-4 w-4 transition-transform duration-200 data-[expanded]:rotate-180",
+        icon: "h-4 w-4 transition-transform duration-200 origin-center data-[expanded]:rotate-180",
     },
 });
 
@@ -34,7 +37,7 @@ const {
     icon,
 } = comboboxStyles();
 
-// 修复 1：使用 type 代替 interface 解决泛型扩展静态已知成员的问题
+
 export type ComboboxProps<T> = ComponentProps<typeof KCombobox<T>> & {
     label?: string;
     placeholder?: string;
@@ -64,7 +67,7 @@ export const Combobox = <T extends string | object>(
                 />
                 <KCombobox.Trigger class={trigger()}>
                     <KCombobox.Icon class={icon()}>
-                        <ChevronDown />
+                        <ChevronDown class="h-4 w-4" />
                     </KCombobox.Icon>
                 </KCombobox.Trigger>
             </KCombobox.Control>
