@@ -3,7 +3,7 @@
 /* --- 1. 定义语义化变量映射 --- */
 @layer theme {
     :root {
-        --primary: var(--color-bule-600);
+        --primary: var(--color-blue-600);
         --success: var(--color-green-600);
         --warning: var(--color-orange-600);
         --danger: var(--color-red-600);
@@ -48,6 +48,5 @@
     --radius-app: 0.75rem;
 }
 
-/* --- 3. 注册自定义变体 (可选) --- */
-/* 如果你还想保留 dark:xxx 的写法，但让它匹配 data-theme */
+
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
