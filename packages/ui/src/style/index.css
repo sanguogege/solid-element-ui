@@ -2,41 +2,50 @@
 
 /* --- 1. 定义语义化变量映射 --- */
 @layer theme {
-  :root {
-    --app-bg: #ffffff;
-    --app-text-main: var(--color-zinc-900);
-    --app-text-muted: var(--color-zinc-500);
-    --app-border: var(--color-zinc-200);
-    --app-ring: var(--color-zinc-400);
-  }
+    :root {
+        --primary: var(--color-bule-600);
+        --success: var(--color-green-600);
+        --warning: var(--color-orange-600);
+        --danger: var(--color-red-600);
 
-  /* 当 [data-theme="dark"] 时的变量覆盖 */
-  [data-theme="dark"] {
-    --app-bg: var(--color-zinc-950);
-    --app-text-main: var(--color-zinc-50);
-    --app-text-muted: var(--color-zinc-400);
-    --app-border: var(--color-zinc-800);
-    --app-ring: var(--color-zinc-600);
-  }
+        --app-bg: #ffffff;
+        --app-text-main: var(--color-zinc-900);
+        --app-text-muted: var(--color-zinc-500);
+        --app-border: var(--color-zinc-200);
+        --app-ring: var(--color-zinc-400);
+    }
 
-  /* 扩展：如果你以后想加个咖啡模式，只需几行 */
-  [data-theme="coffee"] {
-    --app-bg: #2c2420;
-    --app-text-main: #f3e5d8;
-    --app-border: #4b3621;
-    --app-ring: #8b5e3c;
-  }
+    /* 当 [data-theme="dark"] 时的变量覆盖 */
+    [data-theme="dark"] {
+        --app-bg: var(--color-zinc-950);
+        --app-text-main: var(--color-zinc-50);
+        --app-text-muted: var(--color-zinc-400);
+        --app-border: var(--color-zinc-800);
+        --app-ring: var(--color-zinc-600);
+    }
+
+    /* 扩展：如果你以后想加个咖啡模式，只需几行 */
+    [data-theme="coffee"] {
+        --app-bg: #2c2420;
+        --app-text-main: #f3e5d8;
+        --app-border: #4b3621;
+        --app-ring: #8b5e3c;
+    }
 }
 
 /* --- 2. 注册到 Tailwind v4 主题系统 --- */
 @theme {
-  --color-app: var(--app-bg);
-  --color-main: var(--app-text-main);
-  --color-muted: var(--app-text-muted);
-  --color-base: var(--app-border);
-  --color-accent-ring: var(--app-ring);
-  --radius-app: 0.75rem;
-  
+    --color-primary: var(--primary);
+    --color-success: var(--success);
+    --color-warning: var(--warning);
+    --color-danger: var(--danger);
+
+    --color-app: var(--app-bg);
+    --color-main: var(--app-text-main);
+    --color-muted: var(--app-text-muted);
+    --color-base: var(--app-border);
+    --color-accent-ring: var(--app-ring);
+    --radius-app: 0.75rem;
 }
 
 /* --- 3. 注册自定义变体 (可选) --- */

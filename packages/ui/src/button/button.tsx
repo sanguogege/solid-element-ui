@@ -1,7 +1,7 @@
 import { Button as KButton } from "@kobalte/core/button";
 import { splitProps, type JSX, type ComponentProps } from "solid-js";
 import { tv, type VariantProps } from "tailwind-variants";
-import { Loader2 } from "lucide-solid";
+import { LoaderCircle } from "lucide-solid";
 
 const buttonStyles = tv({
     base: "inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 disabled:pointer-events-none disabled:opacity-50 dark:focus-visible:ring-zinc-300 antialiased cursor-pointer",
@@ -34,8 +34,7 @@ const buttonStyles = tv({
 type ButtonVariants = VariantProps<typeof buttonStyles>;
 
 export interface ButtonProps
-    extends ComponentProps<typeof KButton>,
-        ButtonVariants {
+    extends ComponentProps<typeof KButton>, ButtonVariants {
     loading?: boolean;
     leftIcon?: JSX.Element;
     rightIcon?: JSX.Element;
@@ -45,7 +44,7 @@ export const Button = (props: ButtonProps) => {
     const [local, variantProps, others] = splitProps(
         props,
         ["class", "children", "loading", "leftIcon", "rightIcon", "disabled"],
-        ["variant", "size"]
+        ["variant", "size"],
     );
 
     return (
@@ -58,7 +57,9 @@ export const Button = (props: ButtonProps) => {
             disabled={local.disabled || local.loading}
             {...others}
         >
-            {local.loading && <Loader2 class="mr-2 h-4 w-4 animate-spin" />}
+            {local.loading && (
+                <LoaderCircle class="mr-2 h-4 w-4 animate-spin" />
+            )}
             {!local.loading && local.leftIcon && (
                 <span class="mr-2">{local.leftIcon}</span>
             )}
