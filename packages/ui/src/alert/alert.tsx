@@ -5,14 +5,27 @@ import { Info, CircleAlert, CircleCheck, CircleX } from "lucide-solid";
 
 const alertStyles = tv({
     slots: {
-        root: "relative w-full rounded-lg border p-4 flex gap-3 antialiased",
+        root: "relative w-full rounded-lg border p-4 flex gap-3 antialiased text-main",
+        icon: "shrink-0",
     },
     variants: {
         variant: {
-            info: { root: "bg-primary/20 border-primary/80 text-main" },
-            success: { root: "bg-success/20 border-success/80 text-success" },
-            warning: { root: "bg-warning/20 border-warning/80 text-warning" },
-            danger: { root: "bg-danger/20 border-danger/80 text-danger" },
+            info: {
+                root: "bg-primary/20 border-primary/80",
+                icon: "text-primary",
+            },
+            success: {
+                root: "bg-success/20 border-success/80 ",
+                icon: "text-success",
+            },
+            warning: {
+                root: "bg-warning/20 border-warning/80 ",
+                icon: "text-warning",
+            },
+            danger: {
+                root: "bg-danger/20 border-danger/80 ",
+                icon: "text-danger",
+            },
         },
     },
     defaultVariants: {
@@ -36,22 +49,24 @@ const iconMap = {
 };
 
 export const Alert = (props: AlertProps) => {
-    // 2. 分离属性
     const [local, variantProps, others] = splitProps(
         props,
         ["title", "icon", "children", "class"],
         ["variant"],
     );
 
-    const { root } = alertStyles(variantProps);
+    const slots = alertStyles(variantProps);
+    const { root, icon } = slots;
 
     const RenderedIcon = () => {
         if (local.icon === false) return null;
         if (typeof local.icon === "object") return local.icon;
+
         const Icon = iconMap[variantProps.variant || "info"];
-        return <Icon size={18} class="shrink-0" />;
+        return <Icon size={18} class={icon()} />;
     };
 
+    // 5. 渲染组件
     return (
         <KAlert class={`${root()} ${local.class || ""}`.trim()} {...others}>
             <RenderedIcon />
