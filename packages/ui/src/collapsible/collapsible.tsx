@@ -7,11 +7,11 @@ const collapsibleStyles = tv({
     slots: {
         root: "w-full space-y-2",
         trigger:
-            "flex w-full items-center justify-between rounded-lg border border-zinc-200 bg-white px-4 py-2 text-sm font-medium hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-950 dark:hover:bg-zinc-900 transition-all group",
+            "flex w-full items-center justify-between border border-base/30 bg-header px-4 py-2 text-sm font-medium hover:bg-header/80  transition-all group mb-0",
         content:
             "overflow-hidden text-sm transition-all data-[expanded]:animate-collapsible-down data-[closed]:animate-collapsible-up",
         contentInner:
-            "px-4 py-3 text-zinc-600 dark:text-zinc-400 border border-t-0 border-zinc-200 dark:border-zinc-800 rounded-b-lg",
+            "px-4 py-3 text-main border border-t-0 border-base/20 ",
         icon: "h-4 w-4 text-zinc-500 transition-transform duration-200 group-data-[expanded]:rotate-180",
     },
 });
