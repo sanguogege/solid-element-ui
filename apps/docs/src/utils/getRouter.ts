@@ -3,7 +3,16 @@ const getFilteredRoutes: any = (routes: any[]) => {
         routes
             .filter((route) => {
                 // 1. 排除 404 页面
-                if (route.path.includes("404") || route.path.includes("*")) {
+                if (
+                    route.path.includes("404") ||
+                    route.path.includes("*") ||
+                    route.path.includes("color-area") ||
+                    route.path.includes("color-channel-field") ||
+                    route.path.includes("color-field") ||
+                    route.path.includes("color-slider") ||
+                    route.path.includes("color-wheel") ||
+                    route.path.includes("color-swatch")
+                ) {
                     return false;
                 }
                 // 2. 排除 index 页面
