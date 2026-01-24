@@ -58,7 +58,7 @@ export const Dialog = (props: DialogProps) => {
     return (
         <KDialog open={props.open} onOpenChange={props.onOpenChange}>
             <Show when={local.trigger}>
-                <KDialog.Trigger as="div" class="inline-block">
+                <KDialog.Trigger class="inline-block">
                     {local.trigger}
                 </KDialog.Trigger>
             </Show>

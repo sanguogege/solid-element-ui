@@ -47,7 +47,6 @@ export type ComboboxProps<T> = ComponentProps<typeof KCombobox<T>> & {
 export const Combobox = <T extends string | object>(
     props: ComboboxProps<T>
 ) => {
-    // 修复 2：显式解构以确保 class 属性被正确捕获
     const [local, others] = splitProps(props as ComboboxProps<T>, [
         "label",
         "placeholder",

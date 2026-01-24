@@ -1,7 +1,7 @@
 import { Pagination as KPagination } from "@kobalte/core/pagination";
 import { splitProps, type ComponentProps } from "solid-js";
 import { tv } from "tailwind-variants";
-import { ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-solid";
+import { ChevronLeft, ChevronRight, Ellipsis } from "lucide-solid";
 
 
 // FIXME 样式修改，
@@ -43,7 +43,7 @@ export const Pagination = (props: PaginationProps) => {
             )}
             ellipsisComponent={() => (
                 <KPagination.Ellipsis class={s.ellipsis()}>
-                    <MoreHorizontal size={16} />
+                    <Ellipsis size={16} />
                 </KPagination.Ellipsis>
             )}
         >
