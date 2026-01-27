@@ -4,9 +4,7 @@ import { tv } from "tailwind-variants";
 import { X } from "lucide-solid";
 import { Button } from "../button/button";
 
-
 // TODO 修改点击确定时的行为，目前是关闭对话框
-
 
 const alertDialogStyles = tv({
     slots: {
@@ -48,47 +46,37 @@ export const AlertDialog = (props: AlertDialogProps) => {
             <KAlertDialog.Trigger>{local.trigger}</KAlertDialog.Trigger>
             <KAlertDialog.Portal>
                 <KAlertDialog.Overlay class={overlay()} />
-                <div class="fixed inset-0 z-50 flex items-center justify-center">
-                    <KAlertDialog.Content class={content()}>
-                        <div class={header()}>
-                            <KAlertDialog.Title class={title()}>
-                                {local.title}
-                            </KAlertDialog.Title>
-                            <KAlertDialog.CloseButton class={closeButton()}>
-                                <X size={18} />
-                            </KAlertDialog.CloseButton>
-                        </div>
-                        <div>
-                            {local.description && (
-                                <KAlertDialog.Description class={description()}>
-                                    {local.description}
-                                </KAlertDialog.Description>
+                <KAlertDialog.Content class={content()}>
+                    <div class={header()}>
+                        <KAlertDialog.Title class={title()}>
+                            {local.title}
+                        </KAlertDialog.Title>
+                        <KAlertDialog.CloseButton class={closeButton()}>
+                            <X size={18} />
+                        </KAlertDialog.CloseButton>
+                    </div>
+                    <div>
+                        {local.description && (
+                            <KAlertDialog.Description class={description()}>
+                                {local.description}
+                            </KAlertDialog.Description>
+                        )}
+                    </div>
+
+                    <div class={footer()}>
+                        <KAlertDialog.CloseButton>
+                            {local.cancel || (
+                                <Button variant="outline">取消</Button>
                             )}
-                        </div>
+                        </KAlertDialog.CloseButton>
 
-                        <div class={footer()}>
-                            <KAlertDialog.CloseButton>
-                                {local.cancel || (
-                                    <Button
-                                        variant="outline"
-                                    >
-                                        取消
-                                    </Button>
-                                )}
-                            </KAlertDialog.CloseButton>
-
-                            <KAlertDialog.CloseButton>
-                                {local.action || (
-                                    <Button
-                                        color="primary"
-                                    >
-                                        确认
-                                    </Button>
-                                )}
-                            </KAlertDialog.CloseButton>
-                        </div>
-                    </KAlertDialog.Content>
-                </div>
+                        <KAlertDialog.CloseButton>
+                            {local.action || (
+                                <Button color="primary">确认</Button>
+                            )}
+                        </KAlertDialog.CloseButton>
+                    </div>
+                </KAlertDialog.Content>
             </KAlertDialog.Portal>
         </KAlertDialog>
     );

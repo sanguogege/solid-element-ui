@@ -6,6 +6,9 @@ import { Info, CircleAlert, CircleCheck, CircleX } from "lucide-solid";
 const alertStyles = tv({
     slots: {
         root: "relative w-full rounded-lg border p-4 flex gap-3 antialiased text-main",
+        content: "flex flex-col gap-1 text-left",
+        title: "font-semibold leading-none tracking-tight",
+        children: "text-md leading-relaxed opacity-90",
         icon: "shrink-0",
     },
     variants: {
@@ -55,8 +58,7 @@ export const Alert = (props: AlertProps) => {
         ["variant"],
     );
 
-    const slots = alertStyles(variantProps);
-    const { root, icon } = slots;
+    const { root, content, title, children, icon } = alertStyles(variantProps);
 
     const RenderedIcon = () => {
         if (local.icon === false) return null;
@@ -70,15 +72,9 @@ export const Alert = (props: AlertProps) => {
     return (
         <KAlert class={`${root()} ${local.class || ""}`.trim()} {...others}>
             <RenderedIcon />
-            <div class="flex flex-col gap-1 text-left">
-                {local.title && (
-                    <h5 class="font-semibold leading-none tracking-tight">
-                        {local.title}
-                    </h5>
-                )}
-                <div class="text-md leading-relaxed opacity-90">
-                    {local.children}
-                </div>
+            <div class={content()}>
+                {local.title && <h5 class={title()}>{local.title}</h5>}
+                <div class={children()}>{local.children}</div>
             </div>
         </KAlert>
     );
