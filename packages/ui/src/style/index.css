@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* --- 1. 先定义 CSS 变量 --- */
 @layer theme {
     :root {
         --primary: var(--color-blue-600);
@@ -32,7 +33,7 @@
     }
 }
 
-/* --- 2. 注册到 Tailwind v4 主题系统 --- */
+/* --- 3. 注册到 Tailwind 主题系统 --- */
 @theme {
     --color-primary: var(--primary);
     --color-success: var(--success);
@@ -46,6 +47,46 @@
     --color-base: var(--app-border);
     --color-accent-ring: var(--app-ring);
     --radius-app: 0.75rem;
+
+    /* 注册动画到主题 */
+    --animate-accordion-down: accordion-down 0.2s ease-out;
+    --animate-accordion-up: accordion-up 0.2s ease-out;
 }
 
+[data-kb-overlay] {
+    animation: fade-in 0.2s;
+}
+[data-kb-content] {
+    animation: fade-in 0.2s;
+}
+
+/* --- 2. 定义关键帧动画（在 @theme 外部）--- */
+@keyframes accordion-down {
+    from {
+        height: 0;
+    }
+    to {
+        height: var(--kb-accordion-content-height);
+    }
+}
+
+@keyframes accordion-up {
+    from {
+        height: var(--kb-accordion-content-height);
+    }
+    to {
+        height: 0;
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* --- 5. 暗色主题变体 --- */
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
