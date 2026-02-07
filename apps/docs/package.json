@@ -1,5 +1,6 @@
 {
     "name": "example-with-mdx",
+    "private": true,
     "type": "module",
     "scripts": {
         "dev": "vinxi dev",
