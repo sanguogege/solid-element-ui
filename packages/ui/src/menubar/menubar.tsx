@@ -2,20 +2,27 @@ import { Menubar as KMenubar } from "@kobalte/core/menubar";
 import { splitProps, type ComponentProps } from "solid-js";
 import { tv } from "tailwind-variants";
 
-const menubarStyles = tv({
-    slots: {
-        root: "flex h-10 items-center space-x-1 rounded-md border bg-white p-1 shadow-sm dark:bg-slate-950 dark:border-slate-800",
-        trigger:
-            "flex cursor-default select-none items-center rounded-sm px-3 py-1.5 text-sm font-medium outline-none focus:bg-slate-100 data-[state=open]:bg-slate-100 dark:focus:bg-slate-800 dark:data-[state=open]:bg-slate-800",
-        content: [
-            "z-50 min-w-[12rem] overflow-hidden rounded-md border bg-white p-1 shadow-md dark:bg-slate-950 dark:border-slate-800 animate-in fade-in zoom-in-95",
-            "data-[expanded]:animate-in data-[closed]:animate-out",
-        ],
-        item: "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-slate-100 data-[disabled]:opacity-50 dark:focus:bg-slate-800",
-        separator: "-mx-1 my-1 h-px bg-slate-100 dark:bg-slate-800",
-        shortcut: "ml-auto text-xs tracking-widest text-slate-500",
+// TODO 1. 格式
+
+const menubarStyles = tv(
+    {
+        slots: {
+            root: "flex h-10 items-center space-x-1 rounded-md border bg-white p-1 shadow-sm dark:bg-slate-950 dark:border-slate-800",
+            trigger:
+                "flex cursor-default select-none items-center rounded-sm px-3 py-1.5 text-sm font-medium outline-none focus:bg-slate-100 data-[state=open]:bg-slate-100 dark:focus:bg-slate-800 dark:data-[state=open]:bg-slate-800",
+            content: [
+                "z-50 min-w-[12rem] overflow-hidden rounded-md border bg-white p-1 shadow-md dark:bg-slate-950 dark:border-slate-800 animate-in fade-in zoom-in-95",
+                "data-[expanded]:animate-in data-[closed]:animate-out",
+            ],
+            item: "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-slate-100 data-[disabled]:opacity-50 dark:focus:bg-slate-800",
+            separator: "-mx-1 my-1 h-px bg-slate-100 dark:bg-slate-800",
+            shortcut: "ml-auto text-xs tracking-widest text-slate-500",
+        },
     },
-});
+    {
+        twMerge: true,
+    },
+);
 
 const s = menubarStyles();
 

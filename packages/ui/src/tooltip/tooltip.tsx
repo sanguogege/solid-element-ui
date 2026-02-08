@@ -4,31 +4,36 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 // FIXME 为什么没有箭头
 
-const tooltipStyles = tv({
-    slots: {
-        content: [
-            "z-50 overflow-hidden rounded-md px-3 py-1.5 text-xs shadow-md",
-            "animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
-        ],
-        arrow: "",
-    },
-    variants: {
-        variant: {
-            default: {
-                content:
-                    "bg-slate-900 text-slate-50 dark:bg-slate-50 dark:text-slate-900",
-                arrow: "text-slate-900 dark:text-slate-50",
-            },
-            danger: {
-                content: "bg-red-600 text-white",
-                arrow: "text-red-600",
+const tooltipStyles = tv(
+    {
+        slots: {
+            content: [
+                "z-50 overflow-hidden rounded-md px-3 py-1.5 text-xs shadow-md",
+                "animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
+            ],
+            arrow: "",
+        },
+        variants: {
+            variant: {
+                default: {
+                    content:
+                        "bg-slate-900 text-slate-50 dark:bg-slate-50 dark:text-slate-900",
+                    arrow: "text-slate-900 dark:text-slate-50",
+                },
+                danger: {
+                    content: "bg-red-600 text-white",
+                    arrow: "text-red-600",
+                },
             },
         },
+        defaultVariants: {
+            variant: "default",
+        },
     },
-    defaultVariants: {
-        variant: "default",
+    {
+        twMerge: true,
     },
-});
+);
 
 type TooltipVariants = VariantProps<typeof tooltipStyles>;
 

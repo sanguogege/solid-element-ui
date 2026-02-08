@@ -7,23 +7,28 @@ import { ChevronDown } from "lucide-solid";
 import { tv, type VariantProps } from "tailwind-variants";
 
 // 1. 定义样式
-const accordionStyles = tv({
-    slots: {
-        root: "w-full divide-y divide-base border border-base rounded-lg overflow-hidden",
-        item: "group",
-        header: "flex",
-        trigger: [
-            "flex flex-1 items-center justify-between cursor-pointer py-4 px-4 text-md font-medium transition-all ",
-            "bg-header hover:bg-header/80",
-        ],
-        content: [
-            "overflow-hidden text-md transition-all bg-transparent text-main",
-            "data-[expanded]:animate-accordion-down data-[closed]:animate-accordion-up",
-        ],
-        contentInner: "pb-4 pt-2 px-4",
-        icon: "h-4 w-4 transition-transform duration-200 group-data-[expanded]:rotate-180",
+const accordionStyles = tv(
+    {
+        slots: {
+            root: "w-full divide-y divide-base border border-base rounded-lg overflow-hidden",
+            item: "group",
+            header: "flex",
+            trigger: [
+                "flex flex-1 items-center justify-between cursor-pointer py-4 px-4 text-md font-medium transition-all ",
+                "bg-header hover:bg-header/80",
+            ],
+            content: [
+                "overflow-hidden text-md transition-all bg-transparent text-main",
+                "data-[expanded]:animate-accordion-down data-[closed]:animate-accordion-up",
+            ],
+            contentInner: "pb-4 pt-2 px-4",
+            icon: "h-4 w-4 transition-transform duration-200 group-data-[expanded]:rotate-180",
+        },
     },
-});
+    {
+        twMerge: true,
+    },
+);
 
 const { root, item, header, trigger, content, contentInner, icon } =
     accordionStyles();

@@ -3,40 +3,45 @@ import { splitProps, Show, createMemo } from "solid-js";
 import { tv, type VariantProps } from "tailwind-variants";
 import { ChevronDown, Check } from "lucide-solid";
 
-const selectStyles = tv({
-    slots: {
-        root: "flex flex-col gap-1.5 w-full",
-        label: "text-sm font-medium text-slate-700 dark:text-slate-300",
-        trigger: [
-            "flex h-10 w-full items-center justify-between rounded-md border border-slate-200 bg-white px-3 py-2 text-sm",
-            "ring-offset-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500",
-            "disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-800 dark:bg-slate-950",
-        ],
-        content: [
-            "relative z-50 min-w-[8rem] overflow-hidden rounded-md border border-slate-200 bg-white text-slate-950 shadow-md",
-            "data-[expanded]:animate-in data-[closed]:animate-out dark:border-slate-800 dark:bg-slate-950 dark:text-slate-50",
-        ],
-        listbox: "p-1",
-        item: [
-            "relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none",
-            "focus:bg-slate-100 focus:text-slate-900 data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
-            "dark:focus:bg-slate-800 dark:focus:text-slate-50",
-        ],
-        itemIndicator:
-            "absolute left-2 flex h-3.5 w-3.5 items-center justify-center",
-        description: "text-xs text-slate-500 dark:text-slate-400",
-    },
-    variants: {
-        size: {
-            sm: { trigger: "h-8 text-xs", item: "py-1 text-xs" },
-            md: { trigger: "h-10 text-sm", item: "py-1.5 text-sm" },
-            lg: { trigger: "h-12 text-base", item: "py-2 text-base" },
+const selectStyles = tv(
+    {
+        slots: {
+            root: "flex flex-col gap-1.5 w-full",
+            label: "text-sm font-medium text-slate-700 dark:text-slate-300",
+            trigger: [
+                "flex h-10 w-full items-center justify-between rounded-md border border-slate-200 bg-white px-3 py-2 text-sm",
+                "ring-offset-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500",
+                "disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-800 dark:bg-slate-950",
+            ],
+            content: [
+                "relative z-50 min-w-[8rem] overflow-hidden rounded-md border border-slate-200 bg-white text-slate-950 shadow-md",
+                "data-[expanded]:animate-in data-[closed]:animate-out dark:border-slate-800 dark:bg-slate-950 dark:text-slate-50",
+            ],
+            listbox: "p-1",
+            item: [
+                "relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none",
+                "focus:bg-slate-100 focus:text-slate-900 data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+                "dark:focus:bg-slate-800 dark:focus:text-slate-50",
+            ],
+            itemIndicator:
+                "absolute left-2 flex h-3.5 w-3.5 items-center justify-center",
+            description: "text-xs text-slate-500 dark:text-slate-400",
+        },
+        variants: {
+            size: {
+                sm: { trigger: "h-8 text-xs", item: "py-1 text-xs" },
+                md: { trigger: "h-10 text-sm", item: "py-1.5 text-sm" },
+                lg: { trigger: "h-12 text-base", item: "py-2 text-base" },
+            },
+        },
+        defaultVariants: {
+            size: "md",
         },
     },
-    defaultVariants: {
-        size: "md",
+    {
+        twMerge: true,
     },
-});
+);
 
 type SelectVariants = VariantProps<typeof selectStyles>;
 

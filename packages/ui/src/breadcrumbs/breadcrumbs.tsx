@@ -6,13 +6,18 @@ import { ChevronRight } from "lucide-solid";
 // TODO 1. 定义样式
 //      2. icon 支持自定义
 
-const breadcrumbStyles = tv({
-    slots: {
-        root: "flex w-full justify-start items-center gap-2",
-        link: "text-md transition-colors text-main data-[current]:text-main/50 data-[disabled]:pointer-events-none no-underline",
-        separator: "flex h-4 w-4 items-center justify-center text-main/80",
+const breadcrumbStyles = tv(
+    {
+        slots: {
+            root: "flex w-full justify-start items-center gap-2",
+            link: "text-md transition-colors text-main data-[current]:text-main/50 data-[disabled]:pointer-events-none no-underline",
+            separator: "flex h-4 w-4 items-center justify-center text-main/80",
+        },
     },
-});
+    {
+        twMerge: true,
+    },
+);
 
 const { root, link, separator } = breadcrumbStyles();
 

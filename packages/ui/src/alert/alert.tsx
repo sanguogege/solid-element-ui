@@ -3,38 +3,43 @@ import { splitProps, type JSX, type ComponentProps } from "solid-js";
 import { tv, type VariantProps } from "tailwind-variants";
 import { Info, CircleAlert, CircleCheck, CircleX } from "lucide-solid";
 
-const alertStyles = tv({
-    slots: {
-        root: "relative w-full rounded-lg border p-4 flex gap-3 antialiased text-main",
-        content: "flex flex-col gap-1 text-left",
-        title: "font-semibold leading-none tracking-tight",
-        children: "text-md leading-relaxed opacity-90",
-        icon: "shrink-0",
-    },
-    variants: {
-        variant: {
-            info: {
-                root: "bg-primary/20 border-primary/80",
-                icon: "text-primary",
-            },
-            success: {
-                root: "bg-success/20 border-success/80 ",
-                icon: "text-success",
-            },
-            warning: {
-                root: "bg-warning/20 border-warning/80 ",
-                icon: "text-warning",
-            },
-            danger: {
-                root: "bg-danger/20 border-danger/80 ",
-                icon: "text-danger",
+const alertStyles = tv(
+    {
+        slots: {
+            root: "relative w-full rounded-lg border p-4 flex gap-3 antialiased text-main",
+            content: "flex flex-col gap-1 text-left",
+            title: "font-semibold leading-none tracking-tight",
+            children: "text-md leading-relaxed opacity-90",
+            icon: "shrink-0",
+        },
+        variants: {
+            variant: {
+                info: {
+                    root: "bg-primary/20 border-primary/80",
+                    icon: "text-primary",
+                },
+                success: {
+                    root: "bg-success/20 border-success/80 ",
+                    icon: "text-success",
+                },
+                warning: {
+                    root: "bg-warning/20 border-warning/80 ",
+                    icon: "text-warning",
+                },
+                danger: {
+                    root: "bg-danger/20 border-danger/80 ",
+                    icon: "text-danger",
+                },
             },
         },
+        defaultVariants: {
+            variant: "info",
+        },
     },
-    defaultVariants: {
-        variant: "info",
+    {
+        twMerge: true,
     },
-});
+);
 
 type AlertVariants = VariantProps<typeof alertStyles>;
 

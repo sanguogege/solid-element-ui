@@ -2,25 +2,30 @@ import { Skeleton as KSkeleton } from "@kobalte/core/skeleton";
 import { splitProps, type ComponentProps } from "solid-js";
 import { tv, type VariantProps } from "tailwind-variants";
 
-const skeletonStyles = tv({
-    base: "bg-slate-200 dark:bg-slate-800",
-    variants: {
-        variant: {
-            rect: "rounded-md",
-            circle: "rounded-full",
-            text: "rounded h-3 w-full",
+const skeletonStyles = tv(
+    {
+        base: "bg-slate-200 dark:bg-slate-800",
+        variants: {
+            variant: {
+                rect: "rounded-md",
+                circle: "rounded-full",
+                text: "rounded h-3 w-full",
+            },
+            animation: {
+                pulse: "animate-pulse",
+                wave: "relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[wave_2s_linear_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent",
+                none: "",
+            },
         },
-        animation: {
-            pulse: "animate-pulse",
-            wave: "relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[wave_2s_linear_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent",
-            none: "",
+        defaultVariants: {
+            variant: "rect",
+            animation: "pulse",
         },
     },
-    defaultVariants: {
-        variant: "rect",
-        animation: "pulse",
+    {
+        twMerge: true,
     },
-});
+);
 
 type SkeletonVariants = VariantProps<typeof skeletonStyles>;
 

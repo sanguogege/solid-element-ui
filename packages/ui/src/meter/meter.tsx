@@ -2,26 +2,33 @@ import { Meter as KMeter } from "@kobalte/core/meter";
 import { splitProps, type ComponentProps } from "solid-js";
 import { tv, type VariantProps } from "tailwind-variants";
 
-const meterStyles = tv({
-    slots: {
-        root: "flex flex-col gap-2 w-full antialiased",
-        labelContainer:
-            "flex justify-between items-center text-sm font-medium text-slate-700 dark:text-slate-300",
-        track: "h-2.5 w-full rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden",
-        fill: "h-full transition-all duration-500 ease-out rounded-full",
-    },
-    variants: {
-        color: {
-            primary: { fill: "bg-blue-600" },
-            success: { fill: "bg-emerald-500" },
-            warning: { fill: "bg-amber-500" },
-            danger: { fill: "bg-red-500" },
+// TODO 1. 格式
+
+const meterStyles = tv(
+    {
+        slots: {
+            root: "flex flex-col gap-2 w-full antialiased",
+            labelContainer:
+                "flex justify-between items-center text-sm font-medium text-slate-700 dark:text-slate-300",
+            track: "h-2.5 w-full rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden",
+            fill: "h-full transition-all duration-500 ease-out rounded-full",
+        },
+        variants: {
+            color: {
+                primary: { fill: "bg-blue-600" },
+                success: { fill: "bg-emerald-500" },
+                warning: { fill: "bg-amber-500" },
+                danger: { fill: "bg-red-500" },
+            },
+        },
+        defaultVariants: {
+            color: "primary",
         },
     },
-    defaultVariants: {
-        color: "primary",
+    {
+        twMerge: true,
     },
-});
+);
 
 type MeterVariants = VariantProps<typeof meterStyles>;
 
