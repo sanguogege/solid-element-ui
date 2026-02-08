@@ -37,8 +37,9 @@ interface AlertDialogProps extends ComponentProps<typeof KAlertDialog> {
     trigger: JSX.Element;
     title: string;
     description?: string;
-    action: JSX.Element;
+    action?: JSX.Element;
     cancel?: JSX.Element;
+    onConfirm?: () => void;
 }
 
 export const AlertDialog = (props: AlertDialogProps) => {
@@ -48,7 +49,12 @@ export const AlertDialog = (props: AlertDialogProps) => {
         "description",
         "action",
         "cancel",
+        "onConfirm",
     ]);
+
+    const handleConfirm = () => {
+        local.onConfirm?.();
+    };
 
     return (
         <KAlertDialog {...others}>
@@ -79,7 +85,7 @@ export const AlertDialog = (props: AlertDialogProps) => {
                             )}
                         </KAlertDialog.CloseButton>
 
-                        <KAlertDialog.CloseButton>
+                        <KAlertDialog.CloseButton onClick={handleConfirm}>
                             {local.action || (
                                 <Button color="primary">确认</Button>
                             )}
