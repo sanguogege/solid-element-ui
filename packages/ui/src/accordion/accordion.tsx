@@ -15,7 +15,7 @@ const accordionStyles = tv(
             header: "flex",
             trigger: [
                 "flex flex-1 items-center justify-between cursor-pointer py-4 px-4 text-md font-medium transition-all ",
-                "bg-header hover:bg-header/80",
+                "bg-foreground hover:bg-foreground/80",
             ],
             content: [
                 "overflow-hidden text-md transition-all bg-transparent text-main",

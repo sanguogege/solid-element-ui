@@ -3,7 +3,7 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-@import "../node_modules/solid-element-ui/src/style/index.css";
+@import "../node_modules/solid-element-ui/src/style/global.css";
 
 /* 4. 显式覆盖 UI 库中那些“霸道”的基础样式 */
 @layer base {

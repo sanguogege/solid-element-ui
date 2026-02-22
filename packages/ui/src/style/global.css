@@ -8,23 +8,23 @@
         --danger: var(--color-red-600);
 
 
-        --app-bg: #ffffff;
-        --app-foreground: var(--color-zinc-900);
-        --app-text-reversal: #ffffff;
-        --app-text-main: var(--color-zinc-900);
-        --app-text-muted: var(--color-zinc-500);
-        --app-border: var(--color-zinc-500);
+        --app-bg: var(--color-white);  /* 应用背景色 */
+        --app-foreground: var(--color-zinc-100); /* 应用前景色 */
+        --app-text-main: var(--color-zinc-950);  /* 应用主文字色 */
+        --app-text-muted: var(--color-zinc-600); /* 应用次级文字色*/
+        --app-border: var(--color-zinc-500); /* 应用边框色*/
         --app-ring: var(--color-zinc-400);
-        --container-header: var(--color-zinc-100);
+        --app-text-reversal: var(--color-zinc-100); /* 应用反转文字色 */
+     
     }
 
     [data-theme="dark"] {
-        --app-text-reversal: #000;
+        --app-text-reversal: var(--color-zinc-950);
         --app-bg: var(--color-zinc-950);
         --app-text-main: var(--color-zinc-50);
         --app-text-muted: var(--color-zinc-400);
         --app-ring: var(--color-zinc-600);
-        --container-header: var(--color-zinc-900);
+        --app-foreground: var(--color-zinc-900);
     }
 
     [data-theme="coffee"] {
@@ -121,14 +121,13 @@
     --color-success: var(--success);
     --color-warning: var(--warning);
     --color-danger: var(--danger);
-    --color-foreground: var(--app-foreground);
+
     --color-reversal: var(--app-text-reversal);
-    --color-header: var(--container-header);
+    --color-foreground: var(--app-foreground);
     --color-app: var(--app-bg);
     --color-main: var(--app-text-main);
     --color-muted: var(--app-text-muted);
     --color-base: var(--app-border);
-    --color-accent-ring: var(--app-ring);
     --radius-app: 0.75rem;
 
     /* 注册动画到主题 */
