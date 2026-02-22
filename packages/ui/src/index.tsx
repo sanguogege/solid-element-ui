@@ -1,4 +1,4 @@
-import "./style/index.css";
+import "./style/global.css";
 
 export { Accordion } from "./accordion/accordion";
 

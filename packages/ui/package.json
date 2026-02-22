@@ -42,7 +42,7 @@
             "browser": "./dist/index.js",
             "default": "./dist/index.js"
         },
-        "./index.css": "./dist/index.css"
+        "./index.css": "./dist/global.css"
     },
     "source": "./src/index.tsx",
     "scripts": {

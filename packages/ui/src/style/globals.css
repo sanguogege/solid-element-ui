@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-/* --- 1. 先定义 CSS 变量 --- */
 @layer theme {
     :root {
         --primary: var(--color-blue-600);
@@ -8,7 +7,9 @@
         --warning: var(--color-orange-600);
         --danger: var(--color-red-600);
 
+
         --app-bg: #ffffff;
+        --app-foreground: var(--color-zinc-900);
         --app-text-reversal: #ffffff;
         --app-text-main: var(--color-zinc-900);
         --app-text-muted: var(--color-zinc-500);
@@ -120,6 +121,7 @@
     --color-success: var(--success);
     --color-warning: var(--warning);
     --color-danger: var(--danger);
+    --color-foreground: var(--app-foreground);
     --color-reversal: var(--app-text-reversal);
     --color-header: var(--container-header);
     --color-app: var(--app-bg);
