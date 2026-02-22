@@ -2,38 +2,15 @@
 
 展示重要状态反馈的容器。
 
-import { Alert } from "solid-element-ui";
-
-<div className="p-4 bg-white not-prose dark:bg-zinc-950 border rounded-lg space-y-2">
-    <Alert variant="success" title="成功" class="text-red-900" icon>
-        组件现已正确导出，去掉了不存在的 .Root 属性。
-    </Alert>
-
-    <Alert variant="info" title="提示" icon>
-        基于 Tailwind v4 和 Kobalte 构建。
-    </Alert>
-
-    <Alert variant="warning" title="警告" icon>
-        警告
-    </Alert>
-
-    <Alert variant="danger" title="错误" icon>
-        类型检查现已通过。
-    </Alert>
-
-</div>
-
-### 导入
-
-```tsx
-import { Alert } from "solid-element-ui";
-```
+import {DemoCode} from "~/components/alert"
 
 ### 基础用法
 
 在 MDX 环境下的实例展示：
 
 ```tsx
+import { Alert } from "solid-element-ui";
+
 <div className="flex flex-col gap-4 w-full p-4">
     <Alert variant="success" title="成功"  class="text-green-900" >
         组件现已正确导出，去掉了不存在的 .Root 属性。
@@ -65,26 +42,3 @@ import { Alert } from "solid-element-ui";
 | **class**   | `string`                                       | -        | 附加的 Tailwind 类名。     |
 
 ---
-
-### Tailwind v4 动画
-
-```css
-@import "tailwindcss";
-
-@theme {
-    @keyframes alert-fade {
-        from {
-            opacity: 0;
-            transform: translateY(-2px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-}
-
-[role="alert"] {
-    animation: alert-fade 0.2s ease-out;
-}
-```
