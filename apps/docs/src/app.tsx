@@ -8,6 +8,10 @@ import { ToastProvider } from "solid-element-ui";
 import Nav from "~/layout/nav";
 import Aside from "~/layout/aside";
 
+// TODO 组件库文档
+//  - 组件属性表格
+//  - 组件事件表格
+
 export default function App() {
   return (
       <Router

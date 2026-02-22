@@ -1,3 +1,5 @@
-export default function () {
-  return null;
-}
+const DemoCode = () => {
+    return;
+};
+
+export { DemoCode };

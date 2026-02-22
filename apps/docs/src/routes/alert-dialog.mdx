@@ -1,43 +1,16 @@
 ## Alert Dialog 警告对话框
 
-import { AlertDialog, Button } from "solid-element-ui";
+import {DemoCode} from "~/components/alert-dialog"
 
-<div class="p-4 bg-white not-prose dark:bg-zinc-950 border rounded-lg space-x-2 space-y-2">
-    <AlertDialog
-        title="确认删除？"
-        description="此操作不可逆。"
-        trigger={<Button >点击弹出</Button>}
-    />
+<DemoCode />
 
-    <AlertDialog
-    title="确认删除？"
-    description="此操作不可逆。"
-    trigger={<Button color="warning">自定义action</Button>}
-    action={
-        <Button onclick={() => alert("确认删除？")} color="danger">
-            确定
-        </Button>
-    }
-
-/>
-
-<AlertDialog
-    title="删除提醒"
-    onConfirm={() => alert("执行删除操作")}
-    trigger={<Button color="danger">点击删除</Button>}
-/>
-
-</div>
-
-### 导入
-
-```tsx
-import { AlertDialog, Button } from "solid-element-ui";
-```
 
 ### 基础用法
 
 ```tsx
+import { AlertDialog, Button } from "solid-element-ui";
+
+
 <div class="p-4 bg-white dark:bg-zinc-950 border rounded-lg space-x-2 space-y-2">
     <AlertDialog
         title="确认删除？"
@@ -64,26 +37,24 @@ import { AlertDialog, Button } from "solid-element-ui";
 </div>
 ```
 
-### Tailwind v4 动画
+## API 参考
 
-```css
-@import "tailwindcss";
+### Accordion Props
 
-@theme {
-    @keyframes fade-in {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
-    }
-}
+| 参数            | 类型              | 默认值  | 说明                             |
+| :-------------- | :---------------- | :------ | :------------------------------- |
+| **items**       | `AccordionItem[]` | `[]`    | **必填**。渲染面板的数据源。     |
+| **multiple**    | `boolean`         | `false` | 是否允许多个面板同时展开。       |
+| **collapsible** | `boolean`         | `false` | 是否允许关闭当前已展开的面板。   |
+| **class**       | `string`          | -       | 覆盖根容器样式的 Tailwind 类名。 |
 
-[data-kb-overlay] {
-    animation: fade-in 0.2s;
-}
-[data-kb-content] {
-    animation: fade-in 0.2s;
-}
-```
+### AccordionItem 接口
+
+| 字段         | 类型                    | 说明           |
+| :----------- | :---------------------- | :------------- |
+| **value**    | `string`                | 唯一标识符。   |
+| **title**    | `JSX.Element \| string` | 标题内容。     |
+| **content**  | `JSX.Element \| string` | 展开后的内容。 |
+| **disabled** | `boolean`               | 是否禁用。     |
+
+---

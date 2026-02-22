@@ -1,30 +1,19 @@
 
-import { Accordion } from "solid-element-ui";
-import {accordionData} from "~/components/data"
-
-
+import {DemoCode} from "~/components/accordion"
 
 # Accordion 折叠面板 (Tailwind v4)
 
 基于 **Kobalte** 与 **Tailwind Variants** 构建的高性能配置式组件。
 
-
-
-<div className="not-prose p-4 bg-white dark:bg-zinc-950 border rounded-lg space-y-2">
-    <Accordion class="w-48 not-prose" items={accordionData} />
-</div>
-
-## 导入
-
-```tsx
-import { Accordion } from "solid-element-ui";
-```
+<DemoCode class="w-48 not-prose" />
 
 ---
 
 ## 基础用法
 
 ```tsx
+import { Accordion } from "solid-element-ui";
+
 const items = [
     { value: "1", title: "第一项", content: "内容部分" },
     { value: "2", title: "第二项", content: "内容部分" },
@@ -57,36 +46,3 @@ const items = [
 
 ---
 
-## Tailwind CSS v4 样式配置
-
-在 TW v4 中，请直接在你的全局 CSS 文件中添加以下 `@theme` 配置，以支持 Kobalte 的高度过渡动画：
-
-```css
-@import "tailwindcss";
-
-@theme {
-    @keyframes accordion-down {
-        from {
-            height: 0;
-        }
-        to {
-            height: var(--kb-accordion-content-height);
-        }
-    }
-    @keyframes accordion-up {
-        from {
-            height: var(--kb-accordion-content-height);
-        }
-        to {
-            height: 0;
-        }
-    }
-
-    .animate-accordion-down {
-        animation: accordion-down 0.2s ease-out;
-    }
-    .animate-accordion-up {
-        animation: accordion-up 0.2s ease-out;
-    }
-}
-```
