@@ -2,20 +2,10 @@
 
 允许用户在两个互斥状态（开/关）之间切换。
 
-import { Switch } from "solid-element-ui";
 
-<div className="p-4 bg-white dark:bg-zinc-950 border rounded-lg space-x-2 space-y-2">
-    <Switch label="启用通知" defaultChecked />
+import {DemoCode} from "~/components/switch"
 
-    <Switch
-        label="深色模式"
-        description="自动根据系统设置调整外观。"
-        variant="success"
-        size="lg"
-    />
-
-    <Switch label="不可用选项" disabled />
-</div>
+<DemoCode />
 
 
 ### 导入
@@ -27,7 +17,7 @@ import { Switch } from "solid-element-ui";
 ### 基础用法
 
 ```tsx
-<div className="flex flex-col gap-4">
+<div class="flex flex-col gap-4">
     <Switch label="启用通知" defaultChecked />
 
     <Switch

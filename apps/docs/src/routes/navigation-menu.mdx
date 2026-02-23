@@ -2,31 +2,18 @@
 
 高度封装版，自动处理菜单状态切换与 Viewport 视口动画。
 
-import { NavigationMenu } from "solid-element-ui";
 
+import {DemoCode} from "~/components/navigation-menu"
 
-<div class="not-prose p-4 bg-white dark:bg-zinc-950 border rounded-lg space-x-2 space-y-2">
-    <NavigationMenu
-    items={[
-        { title: "文档", href: "/docs" },
-        {
-            title: "资源",
-            content: <div class="w-75 p-4 text-sm">内置丰富组件示例...</div>,
-        },
-    ]}
-/>
-    
-</div>
+<DemoCode />
 
-### 导入
-
-```tsx
-import { NavigationMenu } from "solid-element-ui";
-```
 
 ### 基础用法
 
 ```tsx
+
+import { NavigationMenu } from "solid-element-ui";
+
 <NavigationMenu
     items={[
         { title: "文档", href: "/docs" },

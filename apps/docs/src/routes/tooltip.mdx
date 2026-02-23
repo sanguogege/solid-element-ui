@@ -2,34 +2,19 @@
 
 用于在悬停或聚焦时显示的辅助信息。已修正 `asChild` 类型冲突与 `Show` 导入丢失问题。
 
-import { Tooltip } from "solid-element-ui";     
-import { TrashIcon } from "lucide-solid";
+import {DemoCode} from "~/components/tooltip"
 
-<div class="flex gap-2 p-4">
-<Tooltip content="删除此项" variant="danger" class="not-prose">
-    <button className="p-2 text-red-500 hover:bg-red-50 rounded">
-        <TrashIcon />
-    </button>
-</Tooltip>
+<DemoCode />
 
-
-<Tooltip content="测此项" variant="default" class="not-prose" >
-    <p>这是测试</p>
-</Tooltip>
-</div>
-
-### 导入
-
-```tsx
-import { Tooltip } from "solid-element-ui";
-import { TrashIcon } from "lucide-solid";
-```
 
 ### 基础用法
 
 ```tsx
+import { Tooltip } from "solid-element-ui";
+import { TrashIcon } from "lucide-solid";
+
 <Tooltip content="删除此项" variant="danger" showArrow>
-    <button className="p-2 text-red-500 hover:bg-red-50 rounded">
+    <button class="p-2 text-red-500 hover:bg-red-50 rounded">
         <TrashIcon />
     </button>
 </Tooltip>

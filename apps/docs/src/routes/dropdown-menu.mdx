@@ -4,29 +4,17 @@
 
 [Image showing a multi-level dropdown menu with icons and dividers]
 
-import { DropdownMenu } from "solid-element-ui";
+import {DemoCode} from "~/components/dropdown-menu"
 
-import { profileMenu } from "~/components/data";
+<DemoCode />
 
-
-<div className="p-4 bg-white dark:bg-zinc-950 border rounded-lg space-y-2">
-
-    <DropdownMenu
-    items={profileMenu}
-    trigger={<button className="btn">账户设置</button>}/>
-
-</div>
-
-
-### 导入
-
-```tsx
-import { DropdownMenu } from "solid-element-ui";
-```
 
 ### 基础用法
 
 ```tsx
+
+import { DropdownMenu } from "solid-element-ui";
+
 const profileMenu = [
     { label: "个人资料", onClick: () => console.log("Profile") },
     { label: "设置", onClick: () => console.log("Settings") },
@@ -44,7 +32,7 @@ const profileMenu = [
 
 <DropdownMenu
     items={profileMenu}
-    trigger={<button className="btn">账户设置</button>}/>
+    trigger={<button class="btn">账户设置</button>}/>
 ```
 
 ---

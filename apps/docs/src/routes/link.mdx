@@ -3,35 +3,16 @@
 基于 Kobalte Link 封装，用于页面导航或外链跳转，支持按钮样式和可访问性优化。
 
 
-import { Link } from "solid-element-ui";
+import {DemoCode} from "~/components/link"
 
-<div class="p-4 bg-white dark:bg-zinc-950 border rounded-lg space-x-2 space-y-2">
-    {/* 默认链接 */}
-    <Link href="[https://github.com](https://github.com)" class="not-prose" external>
-        GitHub 官网
-    </Link>
+<DemoCode />
 
-    {/* 品牌颜色变体 */}
-    <Link href="/docs" variant="primary" class="not-prose">
-        查看文档
-    </Link>
-
-    {/* 模拟按钮样式 */}
-    <Link href="/login" variant="button" class="not-prose" radius="sm">
-        立即登录
-    </Link>
-</div>
-
-
-### 导入
-
-```tsx
-import { Link } from "solid-element-ui";
-```
 
 ### 基础用法
 
 ```tsx
+import { Link } from "solid-element-ui";
+
 <div class="flex flex-col gap-2">
     {/* 默认链接 */}
     <Link href="[https://github.com](https://github.com)" external>

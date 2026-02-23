@@ -2,32 +2,16 @@
 
 基于 Kobalte Select 封装，支持单选、禁用状态及自定义内容渲染。
 
-import { Select } from "solid-element-ui";
-import {selectOptions} from "~/components/data"
+import {DemoCode} from "~/components/select"
 
+<DemoCode />
 
-
-
-<div class="not-prose p-4 bg-white dark:bg-zinc-950 border rounded-lg space-x-2 space-y-2">
-
-   <Select
-    label="水果"
-    options={selectOptions}
-    placeholder="请选择一个水果..."
-    description="请确保选择您不过敏的水果。"
-/>
-    
-</div>
-
-### 导入
-
-```tsx
-import { Select } from "solid-element-ui";
-```
 
 ### 基础用法
 
 ```tsx
+import { Select } from "solid-element-ui";
+
 const options = [
     { label: "Apple", value: "apple" },
     { label: "Banana", value: "banana" },

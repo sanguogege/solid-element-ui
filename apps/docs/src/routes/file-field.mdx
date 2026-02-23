@@ -2,29 +2,16 @@
 
 基于 Kobalte TextField 封装的高效文件上传组件，完美适配 Tailwind 样式体系。
 
-import { FileField } from "solid-element-ui";
+import {DemoCode} from "~/components/file-field"
 
-<div className="p-4 bg-white dark:bg-zinc-950 border rounded-lg space-y-2">
-
-  <FileField
-    label="附件上传"
-    description="支持 PDF 格式"
-    accept=".pdf"
-    onChange={(files) => console.log(files)}
-/>
-
-</div>
-
-
-### 导入
-
-```tsx
-import { FileField } from "solid-element-ui";
-```
+<DemoCode />
 
 ### 基础用法
 
 ```tsx
+
+import { FileField } from "solid-element-ui";
+
 <FileField
     label="附件上传"
     description="支持 PDF 格式"
@@ -45,24 +32,3 @@ import { FileField } from "solid-element-ui";
 | **onChange**        | `(files: File[]) => void` | -         | 选择文件后的回调，返回 File 对象数组。 |
 
 ---
-
-### 动画配置 (Tailwind v4)
-
-```css
-@theme {
-    @keyframes slide-down {
-        from {
-            opacity: 0;
-            transform: translateY(-4px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-}
-
-[data-invalid] [data-kb-text-field-error-message] {
-    animation: slide-down 0.2s ease-out;
-}
-```

@@ -2,28 +2,17 @@
 
 高度封装的进度展示组件，支持确定进度、不确定进度（Indeterminate）以及圆角和尺寸定制。
 
-import { Progress } from "solid-element-ui";
+import {DemoCode} from "~/components/progress"
 
-<div class="p-4 bg-white dark:bg-zinc-950 border rounded-lg space-x-2 space-y-4">
-    {/* 基础用法 */}
-    <Progress value={60} label="正在下载..." showValue />
+<DemoCode />
 
-    {/* 不确定状态 (加载中) */}
-    <Progress indeterminate label="系统更新中" />
-
-    {/* 尺寸定制 */}
-    <Progress value={30} size="sm" radius="none" />
-</div>
-
-### 导入
-
-```tsx
-import { Progress } from "solid-element-ui";
-```
 
 ### 基础用法
 
 ```tsx
+import { Progress } from "solid-element-ui";
+
+
 <div class="space-y-4">
     {/* 基础用法 */}
     <Progress value={60} label="正在下载..." showValue />

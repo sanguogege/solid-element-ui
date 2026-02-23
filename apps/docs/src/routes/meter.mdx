@@ -2,32 +2,17 @@
 
 展示已知范围内标量值或分数值的指示器。
 
-import { Meter } from "solid-element-ui";
+import {DemoCode} from "~/components/meter"
 
+<DemoCode />
 
-<div class="p-4 bg-white dark:bg-zinc-950 border rounded-lg space-x-2 space-y-2">
-    <Meter value={75} color="success">
-    <div class="flex justify-between">
-        <Meter.Label>存储空间</Meter.Label>
-        <Meter.ValueLabel />
-    </div>
-    <Meter.Track>
-        <Meter.Fill />
-    </Meter.Track>
-</Meter>
-    
-</div>
-
-
-### 导入
-
-```tsx
-import { Meter } from "solid-element-ui";
-```
 
 ### 基础用法
 
 ```tsx
+import { Meter } from "solid-element-ui";
+
+
 <Meter value={75} color="success">
     <div class="flex justify-between">
         <Meter.Label>存储空间</Meter.Label>

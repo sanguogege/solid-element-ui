@@ -2,40 +2,20 @@
 
 基础的表单文本输入组件，集成了标签、描述和校验状态。
 
-import { TextField } from "solid-element-ui";
 
 
-<div class="p-4 bg-white dark:bg-zinc-950 border rounded-lg space-x-2 space-y-2">
-     {/* 基础用法 */}
-    <TextField label="用户名" placeholder="请输入用户名" />
+import {DemoCode} from "~/components/text-field"
 
-    {/* 密码类型 + 描述 */}
-    <TextField
-        type="password"
-        label="密码"
-        description="密码长度至少为 8 位。"
-    />
+<DemoCode />
 
-    {/* 错误状态 */}
-    <TextField
-        label="邮箱"
-        defaultValue="invalid-email"
-        errorMessage="请输入有效的邮箱地址。"
-    />
-</div>
-
-
-
-### 导入
-
-```tsx
-import { TextField } from "solid-element-ui";
-```
 
 ### 基础用法
 
 ```tsx
-<div className="space-y-4 max-w-xs">
+import { TextField } from "solid-element-ui";
+
+
+<div class="space-y-4 max-w-xs">
     {/* 基础用法 */}
     <TextField label="用户名" placeholder="请输入用户名" />
 

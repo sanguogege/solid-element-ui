@@ -2,22 +2,9 @@
 
 高度封装的模态弹窗组件，集成了状态管理、遮罩层、标题、描述及页脚区域。
 
-import { Dialog } from "solid-element-ui";
+import {DemoCode} from "~/components/dialog"
 
-
-<div className="p-4 bg-white dark:bg-zinc-950 border rounded-lg space-y-2">
-
-   <Dialog
-        title="确认操作"
-        description="此操作无法撤销，请确认是否继续。"
-        trigger={<button class="btn-primary">删除账户</button>}
-    >
-        <p class="text-sm text-zinc-600">
-            删除后，您的所有数据将永久从我们的服务器中移除。
-        </p>
-    </Dialog>
-
-</div>
+<DemoCode />
 
 
 ## 导入
@@ -31,6 +18,8 @@ import { Dialog } from "solid-element-ui";
 最简化的调用方式，只需传入 `title` 和 `children`：
 
 ```tsx
+import { Dialog } from "solid-element-ui";
+
 <Dialog
     title="确认操作"
     description="此操作无法撤销，请确认是否继续。"
@@ -65,16 +54,3 @@ import { Dialog } from "solid-element-ui";
 | **onOpenChange** | `(open: boolean) => void` | 弹窗打开/关闭时的回调。                                    |
 
 ---
-
-### 样式自定义
-
-你可以通过 `class` 属性直接覆盖弹窗容器的宽度或背景：
-
-```tsx
-<Dialog
-    title="自定义宽度"
-    class="max-w-lg" // 覆盖默认的 max-w-lg
->
-    <div>...</div>
-</Dialog>
-```

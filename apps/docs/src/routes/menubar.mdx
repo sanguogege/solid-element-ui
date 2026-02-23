@@ -2,43 +2,16 @@
 
 基于 Kobalte 原生能力，通过命名空间方式导出，兼顾开发体验与样式统一。
 
-import { Menubar } from "solid-element-ui";
+import {DemoCode} from "~/components/menubar"
 
+<DemoCode />
 
-
-<div class="p-4 bg-white dark:bg-zinc-950 border rounded-lg space-x-2 space-y-2">
-    <Menubar>
-        <Menubar.Menu>
-            <Menubar.Trigger>文件</Menubar.Trigger>
-            <Menubar.Content>
-                <Menubar.Item>
-                    新建项目 <Menubar.Shortcut>⌘N</Menubar.Shortcut>
-                </Menubar.Item>
-                <Menubar.Separator />
-                <Menubar.Item disabled>删除</Menubar.Item>
-            </Menubar.Content>
-        </Menubar.Menu>
-
-        <Menubar.Menu>
-            <Menubar.Trigger>帮助</Menubar.Trigger>
-            <Menubar.Content>
-                <Menubar.Item>检查更新</Menubar.Item>
-            </Menubar.Content>
-        </Menubar.Menu>
-    </Menubar>
-</div>
-
-
-
-### 导入
-
-```tsx
-import { Menubar } from "solid-element-ui";
-```
 
 ### 基础用法
 
 ```tsx
+import { Menubar } from "solid-element-ui";
+
 <Menubar>
     <Menubar.Menu>
         <Menubar.Trigger>文件</Menubar.Trigger>

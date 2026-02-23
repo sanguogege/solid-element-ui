@@ -6,6 +6,7 @@ const getFilteredRoutes: any = (routes: any[]) => {
                 if (
                     route.path.includes("404") ||
                     route.path.includes("*") ||
+                    route.path.includes("rating-group") ||
                     route.path.includes("color-area") ||
                     route.path.includes("color-channel-field") ||
                     route.path.includes("color-field") ||

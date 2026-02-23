@@ -2,14 +2,9 @@
 
 用于内容加载时的占位。
 
-import { Skeleton } from "solid-element-ui";
+import {DemoCode} from "~/components/skeleton"
 
-
-<div class="p-4 bg-white dark:bg-zinc-950 border rounded-lg space-x-2 space-y-4">
-   <Skeleton width="100%" height={200} variant="rect" />
-<Skeleton width={40} height={40} variant="circle" />
-</div>
-
+<DemoCode />
 ### 导入
 
 ```tsx
@@ -19,6 +14,9 @@ import { Skeleton } from "solid-element-ui";
 ### 基础用法
 
 ```tsx
+import { Skeleton } from "solid-element-ui";
+
+
 // 现在完美支持字符串百分比或数字
 <Skeleton width="100%" height={200} variant="rect" />
 <Skeleton width={40} height={40} variant="circle" />

@@ -2,42 +2,16 @@
 
 一组可以被选中或取消选中的双态按钮集合，支持单选或多选。
 
-import { ToggleGroup } from "solid-element-ui";
-import { AlignLeft, AlignCenter, AlignRight } from "lucide-solid";
+import {DemoCode} from "~/components/toggle-group"
 
+<DemoCode />
 
-<div class="flex gap-2 p-4">
-    <ToggleGroup
-  type="single"
-  defaultValue="left"
-  options={[
-    { label: <AlignLeft size={18} />, value: "left" },
-    { label: <AlignCenter size={18} />, value: "center" },
-    { label: <AlignRight size={18} />, value: "right" },
-  ]}
-/>
-
-<ToggleGroup
-  type="multiple"
-  options={[
-    { label: "加粗", value: "bold" },
-    { label: "倾斜", value: "italic" },
-    { label: "下划线", value: "underline" },
-  ]}
-/>
-</div>
-
-
-### 导入
-
-```tsx
-import { ToggleGroup } from "solid-element-ui";
-import { AlignLeft, AlignCenter, AlignRight } from "lucide-solid";
-```
 
 ### 基础用法
 
 ```tsx
+import { ToggleGroup } from "solid-element-ui";
+import { AlignLeft, AlignCenter, AlignRight } from "lucide-solid";
 // 单选模式 (类似 SegmentedControl 但更具按钮感)
 <ToggleGroup
   type="single"

@@ -2,30 +2,15 @@
 
 用于从一组互斥选项中选择一个。高度封装版支持配置化生成选项。
 
-import { RadioGroup } from "solid-element-ui";
+import {DemoCode} from "~/components/radio-group"
 
-import {planOptions} from "~/components/data"
-
-
-<div class="p-4 bg-white dark:bg-zinc-950 border rounded-lg space-x-2 space-y-4">
-    <RadioGroup
-    label="选择您的订阅方案"
-    options={planOptions}
-    defaultValue="pro"
-    orientation="horizontal"
-/>
-</div>
-
-
-### 导入
-
-```tsx
-import { RadioGroup } from "solid-element-ui";
-```
+<DemoCode />
 
 ### 基础用法
 
 ```tsx
+import { RadioGroup } from "solid-element-ui";
+
 const planOptions = [
     { label: "基础版 (免费)", value: "free" },
     { label: "专业版 ($19/mo)", value: "pro" },

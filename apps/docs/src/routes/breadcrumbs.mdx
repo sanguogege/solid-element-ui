@@ -1,35 +1,30 @@
-import { Breadcrumbs } from "solid-element-ui";
-import {navItems} from "~/components/data"
+
 
 
 ## Breadcrumbs 面包屑
 
 显示当前页面在层级结构中的位置，并允许用户向上回溯。
 
+import {DemoCode} from "~/components/breadcrumbs"
 
-<div className=" not-prose p-4 bg-white dark:bg-zinc-950 border rounded-lg">
-    <Breadcrumbs class="" items={navItems} />
-</div>
+<DemoCode />
 
-
-### 导入
-
-```tsx
-import { Breadcrumbs } from "solid-element-ui";
-```
 
 ### 基础用法
 
 在 MDX 中定义导航路径并渲染：
 
 ```tsx
+import { Breadcrumbs } from "solid-element-ui";
+
+
 export const navItems = [
     { title: "首页", href: "/" },
     { title: "组件库", href: "/components" },
     { title: "面包屑", current: true },
 ];
 
-<div className="p-4 bg-white dark:bg-zinc-950 border rounded-lg">
+<div class="p-4 bg-white dark:bg-zinc-950 border rounded-lg">
     <Breadcrumbs items={navItems} />
 </div>;
 ```
@@ -55,27 +50,3 @@ export const navItems = [
 
 ---
 
-### Tailwind v4 适配
-
-Breadcrumbs 主要使用 `data-current` 状态。在 Tailwind v4 中，你可以通过 CSS 变量微调链接样式：
-
-```css
-@import "tailwindcss";
-
-@theme {
-    /* 定义面包屑专属的颜色变量（可选） */
-}
-
-/* 针对当前页面的特殊动画或样式 */
-[data-kb-breadcrumbs-link][data-current] {
-    color: var(--color-zinc-900);
-    text-decoration: none;
-    cursor: default;
-}
-
-/* 列表容器响应式处理 */
-ol {
-    display: flex;
-    flex-wrap: wrap;
-}
-```

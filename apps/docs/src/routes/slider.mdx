@@ -2,28 +2,17 @@
 
 允许用户从一系列值中做出选择，支持单滑块和双范围滑块模式。
 
-import { Slider } from "solid-element-ui";
+import {DemoCode} from "~/components/slider"
 
-<div class="p-4 bg-white dark:bg-zinc-950 border rounded-lg space-x-2 space-y-4">
-   <Slider
-    label="价格区间"
-    defaultValue={[20, 80]}
-    variant="success"
-    showValue
-  />
-</div>
+<DemoCode />
 
-
-
-### 导入
-
-```tsx
-import { Slider } from "solid-element-ui";
-```
 
 ### 基础用法
 
 ```tsx
+import { Slider } from "solid-element-ui";
+
+
 // 基础使用
 <Slider label="音量" defaultValue={[50]} showValue />
 

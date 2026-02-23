@@ -2,26 +2,18 @@
 
 高度封装的标签页切换组件，通过简单的 `items` 数组即可配置完整的导航结构。
 
-import { Tabs } from "solid-element-ui";
-import {tabOptions} from "~/components/data"
+import {DemoCode} from "~/components/tabs"
 
+<DemoCode />
 
-<div className="p-4 bg-white dark:bg-zinc-950 border rounded-lg space-x-2 space-y-2">
-   <Tabs items={tabOptions} defaultValue="account" />
-</div>
-
-
-### 导入
-
-```tsx
-import { Tabs } from "solid-element-ui";
-```
 
 ### 基础用法
 
 直接传递包含 `value`、`label` 和 `content` 的对象数组。
 
 ```tsx
+import { Tabs } from "solid-element-ui";
+
 const tabData = [
     { value: "account", label: "账户", content: "这里是账户设置内容。" },
     { value: "password", label: "密码", content: "在此处修改您的登录密码。" },

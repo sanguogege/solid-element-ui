@@ -2,42 +2,17 @@
 
 用于在鼠标悬停在特定元素上时，展示更多详细信息的浮层容器。
 
-import { HoverCard } from "solid-element-ui";
+import {DemoCode} from "~/components/hover-card"
 
+<DemoCode />
 
-<div class="p-4 bg-white dark:bg-zinc-950 border rounded-lg space-y-2">
-
-<HoverCard
-    size="lg"
-    showArrow
-    trigger={
-        <a href="#" class="text-blue-500 underline">
-            @Gemini
-        </a>
-    }
->
-    <div class="flex flex-col gap-2">
-        <h4 class="font-bold">Gemini AI</h4>
-        <p class="text-sm text-slate-500">
-            一个能力出众、极具洞察力的 AI 思考伙伴。
-        </p>
-    </div>
-</HoverCard>
-
-</div>
-
-
-
-
-### 导入
-
-```tsx
-import { HoverCard } from "solid-element-ui";
-```
 
 ### 基础用法
 
 ```tsx
+
+import { HoverCard } from "solid-element-ui";
+
 <HoverCard
     size="lg"
     showArrow

@@ -2,29 +2,16 @@
 
 基于 Kobalte `SegmentedControl` 封装。注意：该组件不使用 `List` 子组件，结构更加扁平。
 
-import { SegmentedControl } from "solid-element-ui";
+import {DemoCode} from "~/components/segmented-control"
 
-<div className="not-prose p-4 bg-white dark:bg-zinc-950 border rounded-lg space-y-2">
-<SegmentedControl
-    label="环境选择"
-    options={[
-        { label: "开发", value: "dev" },
-        { label: "测试", value: "test" },
-        { label: "生产", value: "prod" },
-    ]}
-/>
+<DemoCode />
 
-</div>
-
-### 导入
-
-```tsx
-import { SegmentedControl } from "solid-element-ui";
-```
 
 ### 基础用法
 
 ```tsx
+import { SegmentedControl } from "solid-element-ui";
+
 <SegmentedControl
     label="环境选择"
     options={[

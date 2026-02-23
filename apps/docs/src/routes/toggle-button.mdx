@@ -2,32 +2,18 @@
 
 一个允许用户在两个状态之间切换的双态按钮。
 
-import { ToggleButton } from "solid-element-ui";
-import { Bold, Italic } from "lucide-solid";
+import {DemoCode} from "~/components/toggle-button"
 
-<div class="flex p-4 bg-white dark:bg-zinc-950 border rounded-lg space-x-2 space-y-2">
-    <ToggleButton size="icon" variant="outline" aria-label="加粗">
-        {(state) => (
-            <Bold class={state.pressed() ? "text-blue-500" : ""} size={20} />
-        )}
-    </ToggleButton>
+<DemoCode />
 
-    <ToggleButton variant="solid" pressed={true}>
-        {(state) => (state.pressed() ? "已收藏" : "收藏")}
-    </ToggleButton>
-</div>
-
-
-### 导入
-
-```tsx
-import { ToggleButton } from "solid-element-ui";
-import { Bold, Italic } from "lucide-solid";
-```
 
 ### 基础用法
 
 ```tsx
+
+import { ToggleButton } from "solid-element-ui";
+import { Bold, Italic } from "lucide-solid";
+
 <div class="flex gap-2 p-4">
     <ToggleButton size="icon" variant="outline" aria-label="加粗">
         {(state) => (

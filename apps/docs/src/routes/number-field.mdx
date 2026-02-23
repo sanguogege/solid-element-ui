@@ -2,28 +2,16 @@
 
 高度封装的数值输入组件，内置步进器、范围限制和无障碍支持。
 
-import { NumberField } from "solid-element-ui";
+import {DemoCode} from "~/components/checkbox"
 
-<div class="p-4 bg-white dark:bg-zinc-950 border rounded-lg space-x-2 space-y-2">
-  <NumberField
-        label="购买数量"
-        defaultValue={1}
-        minValue={1}
-        maxValue={10}
-        step={1}
-    />
-    
-</div>
-
-### 导入
-
-```tsx
-import { NumberField } from "solid-element-ui";
-```
+<DemoCode />
 
 ### 基础用法
 
 ```tsx
+import { NumberField } from "solid-element-ui";
+
+
 <div class="max-w-48">
     <NumberField
         label="购买数量"
