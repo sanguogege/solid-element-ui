@@ -2,7 +2,7 @@ import { ToggleGroup } from "solid-element-ui";
 import { TextAlignStart, TextAlignCenter, TextAlignEnd } from "lucide-solid";
 const DemoCode = () => {
     return (
-        <div class="flex gap-2 p-4">
+        <div class="flex p-4 bg-white dark:bg-zinc-950 border rounded-lg space-x-2 space-y-2 flex-wrap not-prose">
             <ToggleGroup
                 type="single"
                 defaultValue="left"
