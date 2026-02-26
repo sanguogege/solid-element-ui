@@ -1,10 +1,13 @@
 import { AlertDialog as KAlertDialog } from "@kobalte/core/alert-dialog";
-import { splitProps, type JSX, type ComponentProps } from "solid-js";
+import {
+    splitProps,
+    type JSX,
+    type ComponentProps,
+    createSignal,
+} from "solid-js";
 import { tv } from "tailwind-variants";
 import { X } from "lucide-solid";
 import { Button } from "../button/button";
-
-// TODO 修改点击确定时的行为，目前是关闭对话框
 
 const alertDialogStyles = tv(
     {
@@ -39,10 +42,14 @@ interface AlertDialogProps extends ComponentProps<typeof KAlertDialog> {
     description?: string;
     action?: JSX.Element;
     cancel?: JSX.Element;
-    onConfirm?: () => void;
+    onConfirm?: () => void | Promise<void>;
 }
 
 export const AlertDialog = (props: AlertDialogProps) => {
+    // 使用受控模式
+    const [isOpen, setIsOpen] = createSignal(false);
+    const [loading, setLoading] = createSignal(false);
+
     const [local, others] = splitProps(props, [
         "trigger",
         "title",
@@ -52,13 +59,34 @@ export const AlertDialog = (props: AlertDialogProps) => {
         "onConfirm",
     ]);
 
-    const handleConfirm = () => {
-        local.onConfirm?.();
+    const handleConfirm = async (e: MouseEvent) => {
+        // 阻止默认行为和冒泡，确保点击不会误触发 Kobalte 的内部关闭逻辑
+        e.preventDefault();
+        e.stopPropagation();
+
+        if (local.onConfirm) {
+            setLoading(true);
+            try {
+                await local.onConfirm();
+                // 只有逻辑成功执行后，才手动关闭
+                setIsOpen(false);
+            } catch (error) {
+                console.error("确认操作失败:", error);
+                // 报错时不关闭，让用户留在页面
+            } finally {
+                setLoading(false);
+            }
+        } else {
+            setIsOpen(false);
+        }
     };
 
     return (
-        <KAlertDialog {...others}>
-            <KAlertDialog.Trigger>{local.trigger}</KAlertDialog.Trigger>
+        <KAlertDialog {...others} open={isOpen()} onOpenChange={setIsOpen}>
+            <div onClick={() => setIsOpen(true)} class="inline-block">
+                {local.trigger}
+            </div>
+
             <KAlertDialog.Portal>
                 <KAlertDialog.Overlay class={overlay()} />
                 <KAlertDialog.Content class={content()}>
@@ -66,11 +94,13 @@ export const AlertDialog = (props: AlertDialogProps) => {
                         <KAlertDialog.Title class={title()}>
                             {local.title}
                         </KAlertDialog.Title>
+                        {/* 这里使用 CloseButton 是正确的，因为它专门负责“取消/关闭” */}
                         <KAlertDialog.CloseButton class={closeButton()}>
                             <X size={18} />
                         </KAlertDialog.CloseButton>
                     </div>
-                    <div>
+
+                    <div class="mt-2">
                         {local.description && (
                             <KAlertDialog.Description class={description()}>
                                 {local.description}
@@ -84,12 +114,13 @@ export const AlertDialog = (props: AlertDialogProps) => {
                                 <Button variant="outline">取消</Button>
                             )}
                         </KAlertDialog.CloseButton>
-
-                        <KAlertDialog.CloseButton onClick={handleConfirm}>
+                        <div onClick={handleConfirm}>
                             {local.action || (
-                                <Button color="primary">确认</Button>
+                                <Button color="primary" loading={loading()}>
+                                    确认
+                                </Button>
                             )}
-                        </KAlertDialog.CloseButton>
+                        </div>
                     </div>
                 </KAlertDialog.Content>
             </KAlertDialog.Portal>
