@@ -6,7 +6,11 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
     plugins: [
         solidPlugin(),
-        dts({ include: ["src"] }),
+        dts({
+            include: ["src"],
+            insertTypesEntry: true,
+            entryRoot: "src",
+        }),
         tailwindcss(),
     ],
     build: {
@@ -22,6 +26,7 @@ export default defineConfig({
                 "solid-js/store",
                 "@kobalte/core",
                 "tailwind-variants",
+                "tailwind-merge",
             ],
         },
     },
