@@ -12,7 +12,7 @@ const badgeStyles = tv(
                 secondary:
                     "border-transparent bg-zinc-100 text-zinc-900 hover:bg-zinc-100/80 dark:bg-zinc-800 dark:text-zinc-50",
                 outline:
-                    "text-zinc-950 border-zinc-200 dark:text-zinc-50 dark:border-zinc-800",
+                    "text-zinc-950 border-base dark:text-zinc-50",
                 success:
                     "border-transparent bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400",
                 danger: "border-transparent bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400",

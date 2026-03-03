@@ -6,7 +6,7 @@ const tabsStyles = tv(
     {
         slots: {
             root: "flex flex-col w-full",
-            list: "relative flex items-center border-b border-zinc-200 dark:border-zinc-800",
+            list: "relative flex items-center border-b border-base",
             trigger: [
                 "relative flex h-9 items-center justify-center px-4 text-sm font-medium transition-colors outline-none select-none cursor-pointer",
                 "text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200",

@@ -5,7 +5,7 @@ import { tv } from "tailwind-variants";
 const colorAreaStyles = tv(
     {
         slots: {
-            root: "relative h-48 w-full shrink-0 rounded-lg border border-zinc-200 dark:border-zinc-800 touch-none",
+            root: "relative h-48 w-full shrink-0 rounded-lg border border-base touch-none",
             background: "h-full w-full rounded-[inherit]",
             thumb: [
                 "z-10 h-5 w-5 rounded-full border-2 border-white bg-transparent shadow-md transition-[transform]",
