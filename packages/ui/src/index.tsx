@@ -1,7 +1,7 @@
 import "./style/global.css";
 
 // TODO 组件 form , data等
-// TODO border-lignt-color, background-color 等颜色相关的属性,添加 dark 模式的支持
+// TODO background-color 等颜色相关的属性,添加 dark 模式的支持
 
 export { Accordion } from "./accordion/accordion";
 
