@@ -20,7 +20,7 @@ const paginationStyles = tv(
             ],
             ellipsis: "flex h-9 w-9 items-center justify-center text-slate-400",
             trigger:
-                "inline-flex h-9 w-9 items-center justify-center rounded-md border border-slate-200 bg-transparent hover:bg-slate-100 dark:border-slate-800 dark:hover:bg-slate-800",
+                "inline-flex h-9 w-9 items-center justify-center rounded-md border border-light bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800",
         },
     },
     {

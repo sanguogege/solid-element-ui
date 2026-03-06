@@ -8,7 +8,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 const toggleGroupStyles = tv(
     {
         slots: {
-            root: "inline-flex items-center justify-center rounded-md border border-slate-200 bg-transparent p-1 dark:border-slate-800",
+            root: "inline-flex items-center justify-center rounded-md border border-light bg-transparent p-1",
             item: [
                 "inline-flex items-center justify-center rounded-sm px-3 py-1.5 text-sm font-medium transition-all cursor-pointer",
                 "outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2",

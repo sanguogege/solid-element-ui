@@ -7,7 +7,6 @@
         --warning: var(--color-orange-600);
         --danger: var(--color-red-600);
 
-
         --app-bg: var(--color-white);  /* 应用背景色 */
         --app-foreground: var(--color-zinc-100); /* 应用前景色 */
         --app-text-main: var(--color-zinc-950);  /* 应用主文字色 */

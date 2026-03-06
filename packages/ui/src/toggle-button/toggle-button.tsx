@@ -13,7 +13,7 @@ const toggleStyles = tv(
             variant: {
                 solid: "bg-slate-100 text-slate-900 hover:bg-slate-200 data-[pressed]:bg-blue-600 data-[pressed]:text-white dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700 dark:data-[pressed]:bg-blue-500",
                 outline:
-                    "border border-slate-200 bg-transparent hover:bg-slate-100 data-[pressed]:bg-slate-900 data-[pressed]:text-white dark:border-slate-800 dark:hover:bg-slate-800 dark:data-[pressed]:bg-slate-50 dark:data-[pressed]:text-slate-900",
+                    "border border-light bg-transparent hover:bg-slate-100 data-[pressed]:bg-slate-900 data-[pressed]:text-white dark:hover:bg-slate-800 dark:data-[pressed]:bg-slate-50 dark:data-[pressed]:text-slate-900",
                 ghost: "bg-transparent hover:bg-slate-100 data-[pressed]:bg-slate-200 dark:hover:bg-slate-800 dark:data-[pressed]:bg-slate-800",
             },
             size: {

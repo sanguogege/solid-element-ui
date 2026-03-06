@@ -9,13 +9,13 @@ const selectStyles = tv(
             root: "flex flex-col gap-1.5 w-full",
             label: "text-sm font-medium text-slate-700 dark:text-slate-300",
             trigger: [
-                "flex h-10 w-full items-center justify-between rounded-md border border-slate-200 bg-white px-3 py-2 text-sm",
+                "flex h-10 w-full items-center justify-between rounded-md border border-light bg-white px-3 py-2 text-sm",
                 "ring-offset-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500",
-                "disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-800 dark:bg-slate-950",
+                "disabled:cursor-not-allowed disabled:opacity-50  dark:bg-slate-950",
             ],
             content: [
-                "relative z-50 min-w-[8rem] overflow-hidden rounded-md border border-slate-200 bg-white text-slate-950 shadow-md",
-                "data-[expanded]:animate-in data-[closed]:animate-out dark:border-slate-800 dark:bg-slate-950 dark:text-slate-50",
+                "relative z-50 min-w-[8rem] overflow-hidden rounded-md border border-light bg-white text-slate-950 shadow-md",
+                "data-[expanded]:animate-in data-[closed]:animate-out dark:bg-slate-950 dark:text-slate-50",
             ],
             listbox: "p-1",
             item: [

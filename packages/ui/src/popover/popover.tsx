@@ -11,8 +11,8 @@ const popoverStyles = tv(
     {
         slots: {
             content: [
-                "z-50 w-72 rounded-md border bg-white p-4 shadow-md outline-none antialiased",
-                "dark:bg-slate-950 dark:border-slate-800 dark:text-slate-50",
+                "z-50 w-72 rounded-md border border-light bg-white p-4 shadow-md outline-none antialiased",
+                "dark:bg-slate-950 dark:text-slate-50",
                 "data-[expanded]:animate-in data-[closed]:animate-out",
             ],
             arrow: "fill-white stroke-slate-200 dark:fill-slate-950 dark:stroke-slate-800",
