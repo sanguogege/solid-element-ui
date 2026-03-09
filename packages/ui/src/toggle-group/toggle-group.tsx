@@ -13,19 +13,18 @@ const toggleGroupStyles = tv(
                 "inline-flex items-center justify-center rounded-sm px-3 py-1.5 text-sm font-medium transition-all cursor-pointer",
                 "outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2",
                 "disabled:pointer-events-none disabled:opacity-50",
-                "hover:bg-slate-100 hover:text-slate-500 dark:hover:bg-slate-800 dark:hover:text-slate-400",
-                "data-[pressed]:bg-slate-100 data-[pressed]:text-slate-900 dark:data-[pressed]:bg-slate-800 dark:data-[pressed]:text-slate-50",
+                "hover:bg-foreground/80 hover:text-muted/80",
             ],
-        },
+        }, 
         variants: {
             variant: {
                 default: {
                     root: "bg-transparent",
-                    item: "data-[pressed]:bg-slate-200 dark:data-[pressed]:bg-slate-700",
+                    item: "data-[pressed]:bg-foreground data-[pressed]:text-main",
                 },
                 outline: {
-                    root: "border border-slate-200 dark:border-slate-800",
-                    item: "border-r last:border-r-0 border-slate-200 dark:border-slate-800 rounded-none first:rounded-l-md last:rounded-r-md",
+                    root: "border border-light",
+                    item: "border-r last:border-r-0 border-light rounded-none first:rounded-l-md last:rounded-r-md",
                 },
             },
             size: {

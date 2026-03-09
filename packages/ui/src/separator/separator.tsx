@@ -4,7 +4,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 const separatorStyles = tv(
     {
-        base: "bg-slate-200 dark:bg-slate-800 shrink-0 transition-colors",
+        base: "bg-foreground shrink-0 transition-colors",
         variants: {
             orientation: {
                 horizontal: "h-[1px] w-full my-4",
@@ -16,9 +16,11 @@ const separatorStyles = tv(
                 thick: "data-[orientation=horizontal]:h-[4px] data-[orientation=vertical]:w-[4px] rounded-full",
             },
             variant: {
-                default: "bg-slate-200 dark:bg-slate-800",
-                muted: "bg-slate-100 dark:bg-slate-900",
-                primary: "bg-blue-500/50",
+                default: "bg-foreground",
+                primary: "bg-primary",
+                success: "bg-success",
+                warning: "bg-warning",
+                danger: "bg-danger",
             },
         },
         defaultVariants: {

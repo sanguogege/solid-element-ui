@@ -8,8 +8,10 @@
         --danger: var(--color-red-600);
 
         --app-bg: var(--color-white); /* 应用背景色 */
-        --app-bg-reveral: var(--color-zinc-900); /* 应用反转背景色 */
+        --app-bg-reversal: var(--color-zinc-900); /* 应用反转背景色 */
         --app-foreground: var(--color-zinc-100); /* 应用前景色 */
+
+
         --app-text-main: var(--color-zinc-950); /* 应用主文字色 */
         --app-text-muted: var(--color-zinc-600); /* 应用次级文字色*/
         --app-border: var(--color-zinc-500); /* 应用边框色*/
@@ -20,7 +22,7 @@
 
     [data-theme="dark"] {
         --app-text-reversal: var(--color-zinc-950);
-        --app-bg-reveral: var(--color-zinc-50);
+        --app-bg-reversal: var(--color-zinc-50);
         --app-bg: var(--color-zinc-950);
         --app-text-main: var(--color-zinc-50);
         --app-text-muted: var(--color-zinc-400);
@@ -123,12 +125,12 @@
     --color-warning: var(--warning);
     --color-danger: var(--danger);
 
-    --color-reversal: var(--app-text-reversal);
-    --color-foreground: var(--app-foreground);
-    --color-reversal-bg: var(--app-bg-reveral);
     --color-app: var(--app-bg);
+    --color-foreground: var(--app-foreground);
+    --color-reversal-bg: var(--app-bg-reversal);
     --color-main: var(--app-text-main);
     --color-muted: var(--app-text-muted);
+    --color-reversal: var(--app-text-reversal);
     --color-base: var(--app-border);
     --color-light: var(--app-border-light);
     --radius-app: 0.75rem;

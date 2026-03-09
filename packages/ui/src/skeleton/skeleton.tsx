@@ -4,7 +4,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 const skeletonStyles = tv(
     {
-        base: "bg-slate-200 dark:bg-slate-800",
+        base: "bg-foreground",
         variants: {
             variant: {
                 rect: "rounded-md",

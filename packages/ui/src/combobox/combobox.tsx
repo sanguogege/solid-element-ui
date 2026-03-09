@@ -11,11 +11,11 @@ const comboboxStyles = tv(
             root: "flex flex-col gap-1.5 w-full",
             label: "text-sm font-medium text-zinc-900 dark:text-zinc-100 select-none",
             control:
-                "relative flex items-center rounded-md border border-base bg-white shadow-sm transition-colors focus-within:ring-1 focus-within:ring-zinc-950  dark:bg-zinc-950 dark:focus-within:ring-zinc-300",
+                "relative flex items-center rounded-md border border-base bg-app shadow-sm transition-colors focus-within:ring-1 focus-within:ring-zinc-950 dark:focus-within:ring-zinc-300",
             input: "h-9 w-full bg-transparent px-3 py-1 text-sm outline-none placeholder:text-zinc-500 disabled:cursor-not-allowed",
             trigger: "flex h-9 w-9 items-center justify-center text-zinc-500",
             content: [
-                "z-50 min-w-[8rem] overflow-hidden rounded-md border border-base bg-white text-zinc-950 shadow-md animate-in fade-in-0 zoom-in-95  dark:bg-zinc-950 dark:text-zinc-50",
+                "z-50 min-w-[8rem] overflow-hidden rounded-md border border-base bg-app text-zinc-950 shadow-md animate-in fade-in-0 zoom-in-95   dark:text-zinc-50",
                 "data-[expanded]:animate-in data-[closed]:animate-out",
             ],
             listbox: "p-1",

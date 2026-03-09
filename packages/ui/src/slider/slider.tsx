@@ -2,28 +2,31 @@ import { Slider as KSlider } from "@kobalte/core/slider";
 import { splitProps, type ComponentProps, For, Show } from "solid-js";
 import { tv, type VariantProps } from "tailwind-variants";
 
+// FIXME 点击轨道时报错
+
 const sliderStyles = tv(
     {
         slots: {
             root: "relative flex flex-col items-center select-none touch-none w-full gap-2",
             labelWrapper: "flex w-full justify-between items-center",
-            label: "text-sm font-medium text-slate-700 dark:text-slate-300",
-            value: "text-sm text-slate-500 font-mono",
-            track: "relative h-2 w-full grow rounded-full bg-slate-100 dark:bg-slate-800",
-            fill: "absolute h-full rounded-full bg-blue-600 dark:bg-blue-500",
+            label: "text-sm font-medium text-muted",
+            value: "text-sm text-muted font-mono",
+            track: "relative h-2 w-full grow rounded-full bg-foreground",
+            fill: "absolute h-full rounded-full ",
             thumb: [
-                "block h-5 w-5 rounded-full border-2 border-blue-600 bg-white ring-offset-white transition-colors",
+                "block h-5 w-5 rounded-full border-2 bg-app ring-offset-white transition-colors",
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2",
                 "disabled:pointer-events-none disabled:opacity-50 hover:scale-110 active:scale-95 transition-transform",
             ],
         },
         variants: {
             variant: {
-                default: { fill: "bg-blue-600", thumb: "border-blue-600" },
-                danger: { fill: "bg-red-600", thumb: "border-red-600" },
+                default: { fill: "bg-primary", thumb: "border-primary" },
+                danger: { fill: "bg-danger", thumb: "border-danger" },
+                warning: { fill: "bg-warning", thumb: "border-warning" },
                 success: {
-                    fill: "bg-emerald-600",
-                    thumb: "border-emerald-600",
+                    fill: "bg-success",
+                    thumb: "border-success",
                 },
             },
             size: {

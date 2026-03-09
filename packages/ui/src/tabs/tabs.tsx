@@ -9,13 +9,13 @@ const tabsStyles = tv(
             list: "relative flex items-center border-b border-base",
             trigger: [
                 "relative flex h-9 items-center justify-center px-4 text-sm font-medium transition-colors outline-none select-none cursor-pointer",
-                "text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200",
-                "data-[selected]:text-zinc-950 dark:data-[selected]:text-zinc-50",
+                "text-muted hover:text-muted/80 ",
+                "data-[selected]:text-main",
             ],
             indicator:
-                "absolute bottom-[-1px] h-0.5 bg-zinc-950 dark:bg-zinc-50 transition-all duration-200",
+                "absolute bottom-[-1px] h-0.5 bg-reversal-bg transition-all duration-200",
             content:
-                "mt-4 text-sm text-zinc-600 dark:text-zinc-400 focus-visible:outline-none",
+                "mt-4 text-sm text-main focus-visible:outline-none",
         },
     },
     {

@@ -10,13 +10,13 @@ const dialogStyles = tv(
     {
         slots: {
             overlay: [
-                "fixed inset-0 z-50 bg-black/50 backdrop-blur-sm animate-in fade-in-0 duration-200",
+                "fixed inset-0 z-50 backdrop-blur-sm animate-in fade-in-0 duration-200",
                 "data-[expanded]:animate-in data-[closed]:animate-out",
             ],
             content: [
                 [
-                    "fixed left-[50%] top-[50%] z-50 w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border border-base bg-white p-4 shadow-lg rounded-xl",
-                    "animate-in fade-in-0 zoom-in-95 duration-200 dark:bg-zinc-950 dark:text-zinc-50",
+                    "fixed left-[50%] top-[50%] z-50 w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border border-base bg-app text-main p-4 shadow-lg rounded-xl",
+                    // "animate-in fade-in-0 zoom-in-95 duration-200 ",
                     "data-[expanded]:animate-in data-[closed]:animate-out",
                 ],
             ],

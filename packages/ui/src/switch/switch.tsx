@@ -8,16 +8,16 @@ const switchStyles = tv(
             root: "inline-flex items-center gap-2 group",
             control: [
                 "inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors",
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2",
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-primary focus-visible:ring-offset-2",
                 "disabled:cursor-not-allowed disabled:opacity-50",
-                "bg-slate-200 dark:bg-slate-800 data-[checked]:bg-blue-600 dark:data-[checked]:bg-blue-500",
+                "bg-foreground data-[checked]:bg-primary",
             ],
             thumb: [
-                "pointer-events-none block h-5 w-5 rounded-full bg-white shadow-lg ring-0 transition-transform",
+                "pointer-events-none block h-5 w-5 rounded-full bg-app shadow-lg ring-0 transition-transform",
                 "data-[checked]:translate-x-5 translate-x-0",
             ],
             label: "text-sm font-medium leading-none group-data-[disabled]:opacity-70",
-            description: "text-xs text-slate-500 dark:text-slate-400",
+            description: "text-xs text-muted",
         },
         variants: {
             size: {
@@ -37,15 +37,15 @@ const switchStyles = tv(
             variant: {
                 primary: {
                     control:
-                        "data-[checked]:bg-blue-600 dark:data-[checked]:bg-blue-500",
+                        "data-[checked]:bg-primary",
                 },
                 success: {
                     control:
-                        "data-[checked]:bg-emerald-600 dark:data-[checked]:bg-emerald-500",
+                        "data-[checked]:bg-success",
                 },
                 danger: {
                     control:
-                        "data-[checked]:bg-red-600 dark:data-[checked]:bg-red-500",
+                        "data-[checked]:bg-danger",
                 },
             },
         },

@@ -15,12 +15,12 @@ const tooltipStyles = tv(
             variant: {
                 default: {
                     content:
-                        "bg-slate-900 text-slate-50 dark:bg-slate-50 dark:text-slate-900",
-                    arrow: "fill-slate-900 dark:text-slate-50",
+                        "bg-reversal-bg text-reversal ",
+                    arrow: "fill-muted",
                 },
                 danger: {
-                    content: "bg-red-600 text-white",
-                    arrow: "fill-red-600",
+                    content: "bg-danger text-white",
+                    arrow: "fill-danger",
                 },
             },
         },

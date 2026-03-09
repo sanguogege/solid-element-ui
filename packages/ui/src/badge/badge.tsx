@@ -4,16 +4,16 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 const badgeStyles = tv(
     {
-        base: "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none",
+        base: "inline-flex items-center rounded-full border border-transparent px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none",
         variants: {
             variant: {
-                default: "border-transparent bg-reveral-bg text-reveral",
+                default: " bg-reversal-bg text-reversal",
                 secondary:
-                    "border-transparent bg-zinc-100 text-zinc-900 hover:bg-zinc-100/80 dark:bg-zinc-800 dark:text-zinc-50",
+                    "bg-foreground text-muted",
                 outline: "text-main border-light",
                 success:
-                    "border-transparent bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400",
-                danger: "border-transparent bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400",
+                    "bg-success/20 text-success ",
+                danger: "bg-danger/20 text-danger",
             },
         },
         defaultVariants: {

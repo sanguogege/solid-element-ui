@@ -26,8 +26,8 @@ const toastStyles = tv(
             title: "text-sm font-semibold",
             description: "text-xs opacity-90 leading-relaxed",
             closeButton: [
-                "absolute right-2 top-2 rounded-md p-1 text-slate-500 opacity-0 transition-opacity hover:text-slate-900",
-                "focus:opacity-100 focus:outline-none focus:ring-2 group-hover:opacity-100 dark:text-slate-400 dark:hover:text-slate-50",
+                "absolute right-2 top-2 rounded-md p-1 opacity-0 transition-opacity hover:text-main",
+                "focus:opacity-100 focus:outline-none focus:ring-2 group-hover:opacity-100",
             ],
             content: "flex flex-col gap-1 flex-1",
             icon: "h-5 w-5 shrink-0 mt-0.5", // 稍微下移一点对齐文字
@@ -35,20 +35,20 @@ const toastStyles = tv(
         variants: {
             variant: {
                 info: {
-                    root: "bg-white border-slate-200 text-slate-950 dark:bg-slate-950 dark:border-slate-800 dark:text-slate-50",
-                    icon: "text-blue-500",
+                    root: "bg-app border-light text-main",
+                    icon: "text-primary",
                 },
                 success: {
-                    root: "bg-emerald-50 border-emerald-200 text-emerald-900 dark:bg-emerald-950 dark:border-emerald-900 dark:text-emerald-50",
-                    icon: "text-emerald-500",
+                    root: "bg-success/50 border-success text-success",
+                    icon: "text-success",
                 },
                 warning: {
-                    root: "bg-amber-50 border-amber-200 text-amber-900 dark:bg-amber-950 dark:border-amber-900 dark:text-amber-50",
-                    icon: "text-amber-500",
+                    root: "bg-warning/50 border-warning text-warning",
+                    icon: "text-warning",
                 },
                 error: {
-                    root: "bg-red-50 border-red-200 text-red-900 dark:bg-red-950 dark:border-red-900 dark:text-red-50",
-                    icon: "text-red-500",
+                    root: "bg-danger/50 border-danger text-danger",
+                    icon: "text-danger",
                 },
             },
         },

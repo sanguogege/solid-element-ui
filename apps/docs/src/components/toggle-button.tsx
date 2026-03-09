@@ -1,6 +1,10 @@
 import { ToggleButton } from "solid-element-ui";
 import { Bold, Italic } from "lucide-solid";
+import { createSignal } from "solid-js";
 const DemoCode = () => {
+    const [pressed, setPressed] = createSignal(false);
+
+
     return (
         <div class="flex p-4 bg-white dark:bg-zinc-950 border rounded-lg space-x-2 space-y-2">
             <ToggleButton size="icon" variant="outline" aria-label="加粗">
@@ -12,7 +16,7 @@ const DemoCode = () => {
                 )}
             </ToggleButton>
 
-            <ToggleButton variant="solid" pressed={true}>
+            <ToggleButton variant="solid" pressed={pressed()}>
                 {(state:any) => (state.pressed() ? "已收藏" : "收藏")}
             </ToggleButton>
         </div>

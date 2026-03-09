@@ -9,16 +9,16 @@ const meterStyles = tv(
         slots: {
             root: "flex flex-col gap-2 w-full antialiased",
             labelContainer:
-                "flex justify-between items-center text-sm font-medium text-slate-700 dark:text-slate-300",
-            track: "h-2.5 w-full rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden",
+                "flex justify-between items-center text-sm font-medium text-main",
+            track: "h-2.5 w-full rounded-full bg-foreground overflow-hidden",
             fill: "h-full transition-all duration-500 ease-out rounded-full",
         },
         variants: {
             color: {
-                primary: { fill: "bg-blue-600" },
-                success: { fill: "bg-emerald-500" },
-                warning: { fill: "bg-amber-500" },
-                danger: { fill: "bg-red-500" },
+                primary: { fill: "bg-primary" },
+                success: { fill: "bg-success" },
+                warning: { fill: "bg-warning" },
+                danger: { fill: "bg-danger" },
             },
         },
         defaultVariants: {

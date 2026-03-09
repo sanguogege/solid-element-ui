@@ -8,11 +8,11 @@ const linkStyles = tv(
         variants: {
             variant: {
                 default:
-                    "text-slate-900 underline underline-offset-4 hover:text-slate-700 dark:text-slate-100",
+                    "text-main hover:text-main/80 underline-offset-4",
                 primary:
-                    "text-blue-600 hover:text-blue-500 dark:text-blue-400 font-medium",
-                muted: "text-slate-500 hover:text-slate-600 dark:text-slate-400",
-                button: "bg-slate-900 text-slate-50 hover:bg-slate-900/90 px-4 py-2 text-sm dark:bg-slate-50 dark:text-slate-900",
+                    "text-primary hover:text-primary/80 font-medium",
+                muted: "text-muted hover:text-muted/80",
+                button: "bg-reversal-bg text-reversal hover:reversal-bg/90 px-4 py-2 text-sm ",
             },
             underline: {
                 always: "underline",
