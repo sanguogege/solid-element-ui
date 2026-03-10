@@ -37,7 +37,7 @@ export default () => {
                     <a href="/">Home</a>
                 </li>
             </ul>
-            <div class="flex items-center">
+            <div class="flex not-prose items-center">
                 <Select
                     value={value()}
                     options={options}

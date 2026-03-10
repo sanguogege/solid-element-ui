@@ -9,8 +9,8 @@ const selectStyles = tv(
             root: "flex flex-col gap-1.5 w-full",
             label: "text-sm font-medium text-muted",
             trigger: [
-                "flex h-10 w-full items-center justify-between rounded-md border border-light bg-app px-3 py-2 text-sm",
-                "ring-offset-white placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-blue-500",
+                "flex h-10 w-full text-main items-center justify-between rounded-md border border-light bg-app px-3 py-2 text-sm",
+                "ring-offset-white placeholder:text-muted focus:outline-none focus:ring-1 focus:ring-blue-500",
                 "disabled:cursor-not-allowed disabled:opacity-50",
             ],
             content: [
