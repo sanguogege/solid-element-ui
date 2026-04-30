@@ -26,9 +26,8 @@
         "noFallthroughCasesInSwitch": true,
         "noUncheckedSideEffectImports": true,
         "rootDir": ".",
-        "baseUrl": ".",
         "paths": {
-            "solid-element-ui": ["packages/ui/src/index.tsx"]
+            "solid-element-ui": ["./src/index.tsx"]
         }
     },
     "include": ["src/**/*","src/index.tsx","globals.d.ts"]
