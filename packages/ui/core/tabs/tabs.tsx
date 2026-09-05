@@ -41,7 +41,7 @@ export const Tabs = (props: TabsProps) => {
           {(item) => (
             <KTabs.Trigger
               class={cn(
-                "relative flex h-9 items-center justify-center px-4 text-sm font-medium transition-colors outline-none select-none cursor-pointer text-muted hover:text-muted/80 data-[selected]:text-main",
+                "relative flex h-9 items-center justify-center px-4 text-sm font-medium transition-colors outline-none select-none cursor-pointer text-muted hover:text-muted/80 data-selected:text-main",
                 props.triggerClass,
               )}
               value={item.value}
@@ -53,7 +53,7 @@ export const Tabs = (props: TabsProps) => {
         </For>
         <KTabs.Indicator
           class={cn(
-            "absolute bottom-[-1px] h-0.5 bg-reversal-bg transition-all duration-200",
+            "absolute -bottom-px h-0.5 bg-reversal-bg transition-all duration-200",
             props.indicatorClass,
           )}
         />

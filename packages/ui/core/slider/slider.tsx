@@ -66,7 +66,7 @@ export const Slider = (props: SliderProps) => {
           {() => (
             <KSlider.Thumb
               class={cn(
-                "block h-5 w-5 rounded-full border-2 bg-app ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:scale-110 active:scale-95 transition-transform",
+                "block h-5 w-5 rounded-full border-2 bg-app ring-offset-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:scale-110 active:scale-95 transition-transform",
                 props.thumbClass,
               )}
             >

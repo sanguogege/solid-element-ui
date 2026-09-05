@@ -69,7 +69,7 @@ export const Combobox = <T extends string | object>(props: ComboboxProps<T>) => 
         >
           <KCombobox.Icon
             class={cn(
-              "h-4 w-4 transition-transform duration-200 origin-center data-[expanded]:rotate-180",
+              "h-4 w-4 transition-transform duration-200 origin-center data-expanded:rotate-180",
               props.iconClass,
             )}
           >
@@ -81,7 +81,7 @@ export const Combobox = <T extends string | object>(props: ComboboxProps<T>) => 
       <KCombobox.Portal>
         <KCombobox.Content
           class={cn(
-            "z-50 min-w-[8rem] overflow-hidden rounded-md border border-base bg-app text-zinc-950 shadow-md animate-in zoom-in-95 dark:text-zinc-50 data-[expanded]:animate-in data-[closed]:animate-out",
+            "z-50 min-w-32 overflow-hidden rounded-md border border-base bg-app text-zinc-950 shadow-md animate-in zoom-in-95 dark:text-zinc-50 data-expanded:animate-in data-closed:animate-out",
             props.contentClass,
           )}
         >
@@ -101,7 +101,7 @@ export const ComboboxItem = (props: {
     <KCombobox.Item
       item={props.item}
       class={cn(
-        "relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none data-[highlighted]:bg-zinc-100 data-[highlighted]:text-zinc-900 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:data-[highlighted]:bg-zinc-800 dark:data-[highlighted]:text-zinc-50",
+        "relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none data-highlighted:bg-zinc-100 data-highlighted:text-zinc-900 data-disabled:pointer-events-none data-disabled:opacity-50 dark:data-highlighted:bg-zinc-800 dark:data-highlighted:text-zinc-50",
         props.itemClass,
       )}
     >

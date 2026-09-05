@@ -59,7 +59,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
             <KRadioGroup.ItemInput />
             <KRadioGroup.ItemControl
               class={cn(
-                "flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-slate-300 bg-app transition-all shadow-sm group-hover:border-light group-data-[checked]:border-primary group-data-[checked]:bg-primary group-focus-visible:ring-2 group-focus-visible:ring-blue-500/20",
+                "flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-slate-300 bg-app transition-all shadow-sm group-hover:border-light group-data-checked:border-primary group-data-checked:bg-primary group-focus-visible:ring-2 group-focus-visible:ring-blue-500/20",
                 props.controlClass,
               )}
             >
@@ -69,7 +69,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
             </KRadioGroup.ItemControl>
             <KRadioGroup.ItemLabel
               class={cn(
-                "text-sm font-medium text-main group-data-[disabled]:opacity-50",
+                "text-sm font-medium text-main group-data-disabled:opacity-50",
                 props.itemLabelClass,
               )}
             >

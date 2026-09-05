@@ -32,7 +32,7 @@ export const HoverCard = (props: HoverCardProps) => {
       <KHoverCard.Portal>
         <KHoverCard.Content
           class={cn(
-            "z-50 w-64 rounded-xl border border-light bg-app p-4 shadow-lg outline-none data-[expanded]:animate-in data-[closed]:animate-out",
+            "z-50 w-64 rounded-xl border border-light bg-app p-4 shadow-lg outline-none data-expanded:animate-in data-closed:animate-out",
             props.contentClass,
           )}
         >

@@ -39,7 +39,7 @@ export const Breadcrumbs = (props: BreadcrumbsProps) => {
               current={breadcrumb.current}
               disabled={breadcrumb.disabled}
               class={cn(
-                "text-md transition-colors text-main data-[current]:text-main/50 data-[disabled]:pointer-events-none no-underline",
+                "text-md transition-colors text-main data-current:text-main/50 data-disabled:pointer-events-none no-underline",
                 props.linkClass,
               )}
             >

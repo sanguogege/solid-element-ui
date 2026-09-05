@@ -52,7 +52,7 @@ export const Progress = (props: ProgressProps) => {
       >
         <KProgress.Fill
           class={cn(
-            "h-full bg-primary transition-all duration-300 ease-in-out data-[indeterminate]:animate-progress-indeterminate",
+            "h-full bg-primary transition-all duration-300 ease-in-out data-indeterminate:animate-progress-indeterminate",
             props.fillClass,
           )}
           style={{ width: "var(--kb-progress-fill-width)" }}

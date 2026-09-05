@@ -100,7 +100,7 @@ export const Select = (props: SelectProps) => {
         <KSelect.Item
           item={itemProps.item}
           class={cn(
-            "relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-foreground focus:text-main data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+            "relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-foreground focus:text-main data-disabled:pointer-events-none data-disabled:opacity-50",
             props.itemClass,
           )}
         >
@@ -143,7 +143,7 @@ export const Select = (props: SelectProps) => {
       <KSelect.Portal>
         <KSelect.Content
           class={cn(
-            "relative z-50 min-w-[8rem] overflow-hidden rounded-md border border-light bg-app shadow-md text-main data-[expanded]:animate-in data-[closed]:animate-out",
+            "relative z-50 min-w-32 overflow-hidden rounded-md border border-light bg-app shadow-md text-main data-expanded:animate-in data-closed:animate-out",
             props.contentClass,
           )}
         >

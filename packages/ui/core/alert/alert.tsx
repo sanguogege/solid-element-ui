@@ -1,6 +1,5 @@
 import { Alert as KAlert, type AlertRootProps } from "@kobalte/core/alert";
 import { omit } from "solid-js";
-import { Info, CircleAlert, CircleCheck, CircleX } from "../icons";
 
 import type { JSX } from "@solidjs/web";
 import { cn } from "../../utils/cn";

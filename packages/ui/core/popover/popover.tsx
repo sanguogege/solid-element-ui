@@ -27,7 +27,7 @@ export const Popover = (props: PopoverProps) => {
       <KPopover.Portal>
         <KPopover.Content
           class={cn(
-            "z-50 w-72 rounded-md border border-light bg-app p-4 shadow-md outline-none antialiased text-main data-[expanded]:animate-in data-[closed]:animate-out",
+            "z-50 w-72 rounded-md border border-light bg-app p-4 shadow-md outline-none antialiased text-main data-expanded:animate-in data-closed:animate-out",
             props.contentClass,
           )}
         >

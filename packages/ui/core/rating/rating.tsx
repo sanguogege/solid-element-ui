@@ -46,7 +46,7 @@ export const RatingGroup = (props: RatingGroupProps) => {
 
       <KRating.Control class={cn("flex items-center gap-0.5", props.controlClass)}>
         <For each={Array(5)}>
-          {(_) => (
+          {() => (
             <KRating.Item
               class={cn(
                 "relative cursor-pointer transition-transform active:scale-90 focus-visible:outline-none",

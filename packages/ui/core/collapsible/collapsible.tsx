@@ -38,7 +38,7 @@ export const Collapsible = (props: CollapsibleProps) => {
         <span>{props.title}</span>
         <ChevronDown
           class={cn(
-            "h-4 w-4 text-zinc-500 transition-transform duration-200 group-data-[expanded]:rotate-180",
+            "h-4 w-4 text-zinc-500 transition-transform duration-200 group-data-expanded:rotate-180",
             props.iconClass,
           )}
         />
@@ -46,12 +46,12 @@ export const Collapsible = (props: CollapsibleProps) => {
 
       <KCollapsible.Content
         class={cn(
-          "overflow-hidden text-sm transition-all data-[expanded]:animate-collapsible-down data-[closed]:animate-collapsible-up",
+          "overflow-hidden text-sm transition-all data-expanded:animate-collapsible-down data-closed:animate-collapsible-up",
           props.contentClass,
         )}
       >
         <div
-          class={cn("px-4 py-3 text-main border border-light !border-t-0", props.contentTextClass)}
+          class={cn("px-4 py-3 text-main border border-light border-t-0!", props.contentTextClass)}
         >
           {props.children}
         </div>

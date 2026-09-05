@@ -50,7 +50,7 @@ const RenderMenuItems = (props: {
             fallback={
               <KContextMenu.Item
                 class={cn(
-                  "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none data-[highlighted]:bg-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+                  "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none data-highlighted:bg-foreground data-disabled:pointer-events-none data-disabled:opacity-50",
                   props.itemClass,
                 )}
                 disabled={itemConfig.disabled}
@@ -64,7 +64,7 @@ const RenderMenuItems = (props: {
             <KContextMenu.Sub>
               <KContextMenu.SubTrigger
                 class={cn(
-                  "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none data-[highlighted]:bg-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+                  "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none data-highlighted:bg-foreground data-disabled:pointer-events-none data-disabled:opacity-50",
                   props.itemClass,
                 )}
               >
@@ -74,7 +74,7 @@ const RenderMenuItems = (props: {
               <KContextMenu.Portal>
                 <KContextMenu.SubContent
                   class={cn(
-                    "z-50 min-w-[10rem] overflow-hidden rounded-md border border-light bg-app p-1 text-main shadow-md dark:text-zinc-50 data-[expanded]:animate-in data-[closed]:animate-out",
+                    "z-50 min-w-32 overflow-hidden rounded-md border border-light bg-app p-1 text-main shadow-md dark:text-zinc-50 data-expanded:animate-in data-closed:animate-out",
                     props.contentClass,
                   )}
                 >
@@ -102,7 +102,7 @@ export const ContextMenu = (props: UnifiedContextMenuProps) => {
       <KContextMenu.Portal>
         <KContextMenu.Content
           class={cn(
-            "z-50 min-w-[10rem] overflow-hidden rounded-md border border-light bg-app p-1 text-main shadow-md dark:text-zinc-50 data-[expanded]:animate-in data-[closed]:animate-out",
+            "z-50 min-w-32 overflow-hidden rounded-md border border-light bg-app p-1 text-main shadow-md dark:text-zinc-50 data-expanded:animate-in data-closed:animate-out",
             props.contentClass,
           )}
         >

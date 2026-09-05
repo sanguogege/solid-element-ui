@@ -1,6 +1,5 @@
 import { Accordion as KAccordion, type AccordionRootProps } from "@kobalte/core/accordion";
-import { ComponentProps, For, omit } from "solid-js";
-import type { JSX } from "@solidjs/web";
+import { For, omit } from "solid-js";
 import { ChevronDown } from "../icons";
 
 import { cn } from "../../utils/cn";
@@ -55,7 +54,7 @@ export const Accordion = (props: AccordionProps) => {
                 {itemData.title}
                 <ChevronDown
                   class={cn(
-                    "h-4 w-4 transition-transform duration-200 group-data-[expanded]:rotate-180",
+                    "h-4 w-4 transition-transform duration-200 group-data-expanded:rotate-180",
                     props.iconClass,
                   )}
                   aria-hidden="true"
@@ -64,7 +63,7 @@ export const Accordion = (props: AccordionProps) => {
             </KAccordion.Header>
             <KAccordion.Content
               class={cn(
-                "overflow-hidden text-md transition-all bg-transparent text-main data-[expanded]:animate-accordion-down data-[closed]:animate-accordion-up",
+                "overflow-hidden text-md transition-all bg-transparent text-main ata-expanded:animate-accordion-down data-closed:animate-accordion-up",
                 props.contentClass,
               )}
             >

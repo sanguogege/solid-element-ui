@@ -53,7 +53,7 @@ export const TimeField = (props: TimeFieldProps) => {
           <KTimeField.Segment
             segment={segment()}
             class={cn(
-              "inline rounded-sm px-0.5 tabular-nums outline-none transition-colors focus:bg-blue-600 focus:text-white dark:focus:bg-blue-500 data-[placeholder]:text-slate-400 data-[type=literal]:px-0",
+              "inline rounded-sm px-0.5 tabular-nums outline-none transition-colors focus:bg-blue-600 focus:text-white dark:focus:bg-blue-500 data-placeholder:text-slate-400 data-type=literal:px-0",
               props.segmentClass,
             )}
           />

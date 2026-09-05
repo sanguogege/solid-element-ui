@@ -35,7 +35,7 @@ export const Pagination = (props: PaginationProps) => {
         <KPagination.Item
           page={p.page}
           class={cn(
-            "inline-flex h-9 w-9 items-center justify-center rounded-md text-sm font-medium transition-colors text-main hover:bg-foreground hover:text-muted data-[current]:bg-foreground data-[current]:text-muted disabled:pointer-events-none disabled:opacity-50",
+            "inline-flex h-9 w-9 items-center justify-center rounded-md text-sm font-medium transition-colors text-main hover:bg-foreground hover:text-muted data-current:bg-foreground data-current:text-muted disabled:pointer-events-none disabled:opacity-50",
             props.itemClass,
           )}
         >

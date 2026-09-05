@@ -43,13 +43,13 @@ export const Dialog = (props: DialogProps) => {
       <KDialog.Portal>
         <KDialog.Overlay
           class={cn(
-            "fixed inset-0 z-50 backdrop-blur-sm animate-in duration-200 data-[expanded]:animate-in data-[closed]:animate-out",
+            "fixed inset-0 z-50 backdrop-blur-sm animate-in duration-200 data-expanded:animate-in data-closed:animate-out",
             props.overlayClass,
           )}
         />
         <KDialog.Content
           class={cn(
-            "fixed left-[50%] top-[50%] z-50 w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border border-base bg-app text-main p-4 shadow-lg rounded-xl data-[expanded]:animate-in data-[closed]:animate-out",
+            "fixed left-[50%] top-[50%] z-50 w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border border-base bg-app text-main p-4 shadow-lg rounded-xl data-expanded:animate-in data-closed:animate-out",
             props.contentClass,
           )}
           style={{ "pointer-events": "auto" }}

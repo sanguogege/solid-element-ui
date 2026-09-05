@@ -58,7 +58,7 @@ const Toast = (props: ToastProps) => {
     <KToast
       toastId={props.toastId}
       class={cn(
-        "group relative flex w-[400px] items-start justify-between space-x-4 overflow-hidden rounded-md border p-4 pr-8 shadow-lg transition-all data-[opened]:animate-slide-in data-[closed]:animate-hide data-[swipe=move]:translate-x-[--kb-toast-swipe-move-x] data-[swipe=cancel]:translate-x-0 data-[swipe=cancel]:transition-transform data-[swipe=cancel]:duration-200 data-[swipe=cancel]:ease-out data-[swipe=end]:animate-swipe-out",
+        "group relative flex w-100 items-start justify-between space-x-4 overflow-hidden rounded-md border p-4 pr-8 shadow-lg transition-all data-opened:animate-slide-in data-closed:animate-hide data-[swipe=move]:translate-x-[--kb-toast-swipe-move-x] data-[swipe=cancel]:translate-x-0 data-[swipe=cancel]:transition-transform data-[swipe=cancel]:duration-200 data-[swipe=cancel]:ease-out data-[swipe=end]:animate-swipe-out",
         props.class,
       )}
       {...others}

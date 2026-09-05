@@ -42,7 +42,7 @@ export const Menubar = Object.assign(
         <KMenubar.Portal>
           <KMenubar.Content
             class={cn(
-              "z-50 min-w-[12rem] overflow-hidden rounded-md border bg-app p-1 shadow-md border-light animate-in fade-in zoom-in-95 data-[expanded]:animate-in data-[closed]:animate-out",
+              "z-50 min-w-48 overflow-hidden rounded-md border bg-app p-1 shadow-md border-light animate-in fade-in zoom-in-95 data-expanded:animate-in data-closed:animate-out",
               props.class,
             )}
             {...others}
@@ -55,7 +55,7 @@ export const Menubar = Object.assign(
       return (
         <KMenubar.Item
           class={cn(
-            "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-foreground data-[disabled]:opacity-50",
+            "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-foreground data-disabled:opacity-50",
             props.class,
           )}
           {...others}
