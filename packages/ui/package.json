@@ -49,13 +49,13 @@
         "build": "vp build"
     },
     "dependencies": {
-        "@kobalte/core": "2.0.0-alpha.0",
-        "clsx": "catalog:",
-        "tailwind-merge": "^3.6.0"
+        "@kobalte/core": "2.0.0-alpha.4",
+        "cn": "catalog:"
     },
     "devDependencies": {
         "@solidjs/vite-plugin": "catalog:",
         "@tailwindcss/vite": "catalog:",
+        "@types/node": "catalog:",
         "tailwindcss": "catalog:",
         "typescript": "catalog:",
         "vite": "catalog:",

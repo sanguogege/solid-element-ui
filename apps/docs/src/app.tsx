@@ -1,23 +1,17 @@
-import { Router } from "@solidjs/router";
-import { FileRoutes } from "@solidjs/start/router";
-import "./app.css";
 import { SolidBaseRoot } from "@kobalte/solidbase/client";
-import { Suspense } from "solid-js";
+import { createRouter } from "@solidjs/router";
+import { fileRoutes } from "@solidjs/router/fs";
+import { pageRoutes } from "virtual:file-routes";
 
-import { ToastProvider } from "solid-element-ui";
+import "./app.css";
+
+const Router = createRouter({
+  routes: fileRoutes(pageRoutes),
+  // Vite's base ends with a slash ("/docs/"), which the router would keep when
+  // resolving links ("/docs//guide"), so pass it without one.
+  base: import.meta.env.BASE_URL.replace(/\/$/, ""),
+});
 
 export default function App() {
-  return (
-    <Router
-      root={(props) => (
-        <SolidBaseRoot>
-          <ToastProvider>
-            <Suspense>{props.children}</Suspense>
-          </ToastProvider>
-        </SolidBaseRoot>
-      )}
-    >
-      <FileRoutes />
-    </Router>
-  );
+  return <Router>{(props) => <SolidBaseRoot>{props.children}</SolidBaseRoot>}</Router>;
 }

@@ -32,14 +32,14 @@ release. Add a tool name to select part of the graph. For example, run
 
 ## 📦 Project Overview
 
-**solid-element-ui** is a SolidJS component library built as a **thin wrapper** around [Kobalte](https://kobalte.dev/) (headless UI primitives for SolidJS). It adds Tailwind CSS v4 styling via `tailwind-variants` (tv). The library is published as the npm package `solid-element-ui`.
+**solid-element-ui** is a SolidJS component library built as a **thin wrapper** around [Kobalte](https://kobalte.dev/) (headless UI primitives for SolidJS). It adds Tailwind CSS v4 styling merged through [`cn`](https://github.com/shadcn-ui/cn). The library is published as the npm package `solid-element-ui`.
 
 ### Monorepo Structure
 
 | Path           | Purpose                                                          |
 | -------------- | ---------------------------------------------------------------- |
 | `packages/ui/` | 📦 The component library source (`solid-element-ui` npm package) |
-| `apps/docs/`   | 📖 Documentation site built with SolidStart + MDX                |
+| `apps/docs/`   | 📖 Documentation site built with SolidBase (SolidBase 3 + MDX)   |
 | `tools/`       | (Reserved for future tooling)                                    |
 
 ### Quick Start Commands
@@ -49,13 +49,14 @@ vp install         # Install all dependencies (uses bun)
 vp check           # Lint + format + type check (oxlint + oxfmt + tsc)
 vp test            # Run tests (vitest via Vite+)
 vp run -r build    # Build all workspaces
-vp run dev         # Start docs dev server (vp run docs#dev)
+vp run example-docs#dev  # Start docs dev server (apps/docs)
 vp run ready       # Full CI check: check → test → build
 ```
 
 ### Package Manager & Runtime
 
-- **Package manager**: `bun` v1.3.14 (specified in `devEngines.packageManager`)
+- **Toolchain**: Vite+ `1.7.0` (`vp`, wraps Vite 8.3, Vitest 5, Oxlint, Oxfmt)
+- **Package manager**: `bun` v1.4.4 (specified in `devEngines.packageManager`)
 - **Node**: `>=22.18.0`
 - **TypeScript**: `^5.7` with `verbatimModuleSyntax`, `erasableSyntaxOnly`, `strict: true`
 
@@ -63,7 +64,7 @@ vp run ready       # Full CI check: check → test → build
 
 ## 🧩 Component Conventions
 
-Every component in `packages/ui/src/<name>/<name>.tsx` follows this pattern:
+Every component in `packages/ui/core/<name>/<name>.tsx` follows this pattern:
 
 ### 1. Architecture: Kobalte Wrapper
 
@@ -71,23 +72,26 @@ Each component wraps a Kobalte primitive (imported with `K` prefix) and adds Tai
 
 ```tsx
 import { Button as KButton } from "@kobalte/core/button";
-import { splitProps, type ComponentProps } from "solid-js";
-import { tv, type VariantProps } from "tailwind-variants";
+import { omit } from "solid-js";
+import { cn } from "../../utils/cn";
 ```
 
-### 2. Styles: `tailwind-variants` (tv)
+### 2. Styles: `cn` (class merging)
 
-Always use `tv()` with `{ twMerge: true }` option. Two patterns:
+`packages/ui/utils/cn.ts` re-exports [`cn`](https://github.com/shadcn-ui/cn) (`shadcn-ui/cn`) — a drop-in replacement for `clsx` + `tailwind-merge` with the same merging semantics. Components build classes as plain strings:
 
-- **Single slot**: `tv({ base: "...", variants: {...} })` — for simple components (Badge, Skeleton, Link)
-- **Multi-slot**: `tv({ slots: { root, trigger, content, ... }, variants: {...} })` — for complex components (Button, Dialog, Select, Switch)
+```tsx
+class={cn("inline-flex items-center rounded-full px-2.5 py-0.5 text-xs", props.class)}
+```
+
+Reusable class sets live in the sibling `<name>/setting.ts` (`defaultClass`, variant maps); components pick the variant string and pass it to `cn` together with `props.class` so the consumer's classes win.
 
 ### 3. Props: Three-Way `splitProps`
 
 Almost all components split props into three groups:
 
 - **local**: Component-consumed props (`class`, `children`, custom props like `loading`, `leftIcon`)
-- **variantKeys**: tv variant keys (`variant`, `size`, `color`, `orientation`)
+- **variantKeys**: variant keys (`variant`, `size`, `color`, `orientation`)
 - **others**: Remaining props forwarded to the Kobalte root component
 
 ```tsx
@@ -98,12 +102,12 @@ const [local, variantKeys, others] = splitProps(
 );
 ```
 
-Simple components without tv variants may use two-way split (local + others).
+Simple components without variants may use two-way split (local + others), or `omit(props, ...)`.
 
 ### 4. Export Pattern
 
 - Each component folder has a single `<name>.tsx` file (no `index.tsx`)
-- All exports are re-exported from `packages/ui/src/index.tsx`
+- All exports are re-exported from `packages/ui/core/index.tsx`
 - `ComponentProps<typeof KComponent>` is used for type intersection
 
 ### 5. Compound Components (Meter pattern)
@@ -129,7 +133,7 @@ Uses `@tailwindcss/vite` plugin (NOT PostCSS). Key differences from v3:
 
 ### Semantic Color Tokens
 
-All components use CSS variable-based semantic colors (defined in `packages/ui/src/style/global.css`):
+All components use CSS variable-based semantic colors (defined in `packages/ui/style/theme.css`):
 
 | Token                                        | Usage                                   |
 | -------------------------------------------- | --------------------------------------- |
@@ -151,37 +155,35 @@ Uses custom `data-theme` attribute (NOT `class` or `prefers-color-scheme`):
 
 ### Global CSS Import
 
-The library's `global.css` is imported in `src/index.tsx`. Consumers can also import `solid-element-ui/index.css`.
+The library's `style/theme.css` is imported in `core/index.tsx`. Consumers can also import `solid-element-ui/index.css`.
 
 ### Animation Tokens
 
-Defined in global.css: `accordion-down`, `fade-in`, `fade-out`, `slide-in`, `collapsible-down/up`, `swipe-out`. Use via `animate-*` utility classes.
+Defined in `theme.css`: `accordion-down`, `fade-in`, `fade-out`, `slide-in`, `collapsible-down/up`, `swipe-out`. Use via `animate-*` utility classes.
 
 ---
 
 ## 📐 Documentation Site (apps/docs)
 
-- **Framework**: SolidStart (`@solidjs/start` v1.3.2) powered by Vinxi
-- **Routing**: File-based routing via `@solidjs/start/router` (FileRoutes)
-- **Content**: MDX files in `apps/docs/src/routes/` with `@vinxi/plugin-mdx` + `solid-mdx`
-- **Layout**: `app.tsx` → Nav (top bar with theme selector) + Aside (sidebar component nav) + main content
-- **Styling**: Uses `@tailwindcss/typography` — wrap demos in `` class to escape prose styles
-- **API tables**: Manually written Markdown tables in MDX files
-- **404 route**: `[...404].mdx`
-- Route filter: `getFilteredRoutes.ts` filters out 404, color-\*, rating-group routes
+- **Framework**: [SolidBase](https://solidbase.dev) `@kobalte/solidbase` v3 on `@solidjs/vite-plugin` start mode (no SolidStart/Vinxi)
+- **Routing**: File-based routing from `apps/docs/src/routes` via `virtual:file-routes` + `@solidjs/router/fs`
+- **Content**: `.mdx` / `.md` pages in `apps/docs/src/routes/` (currently only a placeholder `index.mdx`)
+- **Shell**: `src/app.tsx` (router + `SolidBaseRoot`), `src/Document.tsx` (SSR document), `src/global.d.ts` (SolidBase virtual module types)
+- **Config**: `apps/docs/vite.config.ts` → `createSolidBase(defaultTheme).plugin({...})` + `solid(solidBase.startConfig())`
+- **Output**: `vp build` emits SSR output to `dist/server` and prerenders pages into `dist/client`
 
 ---
 
 ## 📦 Key Dependencies
 
-| Package                    | Purpose                                           |
-| -------------------------- | ------------------------------------------------- |
-| `solid-js` ^1.9.13         | SolidJS core (peer dependency)                    |
-| `@kobalte/core` ^0.13.11   | Headless UI primitives (accessibility + behavior) |
-| `tailwind-variants` ^3.2.2 | Type-safe component variant definitions           |
-| `tailwind-merge` ^3.6.0    | Smart Tailwind class merging (used by tv)         |
-| `lucide-solid` ^1.16.0     | Icon library                                      |
-| `vinxi` ^0.5.11            | Meta-framework engine for docs site               |
+| Package                       | Purpose                                              |
+| ----------------------------- | ---------------------------------------------------- |
+| `solid-js` 2.0.3              | SolidJS core (peer dependency)                       |
+| `@solidjs/web` 2.0.3          | Solid 2 DOM renderer / JSX runtime                   |
+| `@kobalte/core` 2.0.0-alpha.4 | Headless UI primitives (accessibility + behavior)    |
+| `cn` ^0.5.2                   | Tailwind class merging (replaces clsx+tailwind-merge) |
+| `tailwindcss` ^4.3.5          | Tailwind CSS v4 (with `@tailwindcss/vite`)           |
+| `@kobalte/solidbase` ^3.0     | Static site generation engine for the docs site      |
 
 ---
 
@@ -189,20 +191,19 @@ Defined in global.css: `accordion-down`, `fade-in`, `fade-out`, `slide-in`, `col
 
 1. **Dark mode inconsistency**: Some components use hardcoded `zinc` colors or `dark:` prefix instead of semantic tokens — prefer the CSS variable system for new components.
 2. **`verbatimModuleSyntax: true`**: Always use `import type` for type-only imports. Never use `enum` (disallowed by `erasableSyntaxOnly`).
-3. **Global CSS imported at package root**: `import "./style/global.css"` in `index.tsx` means styles are bundled. For consumers, use `solid-element-ui/index.css`.
+3. **Global CSS imported at package root**: `import "../style/theme.css"` in `core/index.tsx` means styles are bundled. For consumers, use `solid-element-ui/index.css`.
 4. **AlertDialog uses internal state**: It manages `isOpen` internally via `createSignal` and does NOT accept `open`/`onOpenChange` from parents.
 5. **No SSR guards**: Most components don't check `isServer` — only Toast does. Be mindful of SSR if adding new browser-API-dependent code.
 6. **Children as render prop**: `ToggleButton` accepts children as a function `{(state) => ...}` pattern — check component's type definition.
 7. **Chinese text hardcoded**: Some components have Chinese UI strings (Dialog "关闭", AlertDialog "取消"/"确认") — these are intentional.
-8. **Components without `class` forwarding**: Always split `class` into local props and pass to tv styles for `tailwind-merge` to work properly.
+8. **Components without `class` forwarding**: Always merge the component's classes with `props.class` through `cn(...)` (consumer classes last) so consumer overrides win.
 
 ---
 
 ## 🔧 Build Configuration
 
-- `packages/ui/vite.config.ts`: Builds library as ESM, externalizes `solid-js`, `@kobalte/core`, `tailwind-variants`, `tailwind-merge`
-- `packages/ui/tsconfig.json`: `jsx: preserve`, `jsxImportSource: solid-js`, `moduleResolution: bundler`
-- Type declarations generated by `vite-plugin-dts`
+- `packages/ui/vite.config.ts`: Builds library as ESM, externalizes `solid-js`, `@solidjs/web`, `@kobalte/core` (incl. subpaths) and `cn`
+- `packages/ui/tsconfig.json`: `jsx: preserve`, `jsxImportSource: @solidjs/web`, `moduleResolution: bundler`
 - Root `vite.config.ts` configures oxlint rules for Vite+
 
 <!--PROJECT END-->

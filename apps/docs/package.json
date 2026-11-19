@@ -1,0 +1,25 @@
+{
+  "name": "example-docs",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vp dev",
+    "build": "vp build",
+    "preview": "vp preview"
+  },
+  "dependencies": {
+    "@kobalte/solidbase": "^3.0.0",
+    "@solidjs/router": "catalog:",
+    "@solidjs/web": "catalog:",
+    "filesystem-routing": "^0.4.0",
+    "solid-js": "catalog:"
+  },
+  "devDependencies": {
+    "@iconify-json/ri": "^1.2.10",
+    "@solidjs/vite-plugin": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vite-plus": "catalog:"
+  }
+}

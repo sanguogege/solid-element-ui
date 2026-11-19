@@ -1,9 +1,9 @@
 dist
-.wrangler
 .output
 .vercel
 .netlify
 .vinxi
+.solid
 app.config.timestamp_*.js
 
 # Environment

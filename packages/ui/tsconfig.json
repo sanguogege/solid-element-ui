@@ -14,7 +14,8 @@
     "strict": true,
     "skipLibCheck": true,
     "types": [
-      "vite/client"
+      "vite/client",
+      "node"
     ],
     "rootDir": ".",
     "paths": {
@@ -26,6 +27,7 @@
   "include": [
     "core/**/*",
     "core/index.tsx",
-    "globals.d.ts"
+    "globals.d.ts",
+    "vite.config.ts"
   ]
 }
