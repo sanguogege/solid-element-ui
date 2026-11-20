@@ -1,6 +1,8 @@
 import { Pagination as KPagination, type PaginationRootProps } from "@kobalte/core/pagination";
 import { omit } from "solid-js";
-import { ChevronLeft, ChevronRight, Ellipsis } from "../icons";
+import ChevronLeft from "@lucide/solid/icons/chevron-left";
+import ChevronRight from "@lucide/solid/icons/chevron-right";
+import Ellipsis from "@lucide/solid/icons/ellipsis";
 
 import { cn } from "cn";
 

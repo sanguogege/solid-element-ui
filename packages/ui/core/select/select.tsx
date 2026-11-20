@@ -1,6 +1,7 @@
 import { Select as KSelect, type SelectRootProps } from "@kobalte/core/select";
 import { omit, Show, createMemo } from "solid-js";
-import { ChevronDown, Check } from "../icons";
+import ChevronDown from "@lucide/solid/icons/chevron-down";
+import Check from "@lucide/solid/icons/check";
 
 import { cn } from "cn";
 

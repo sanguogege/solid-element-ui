@@ -1,7 +1,7 @@
 import { Checkbox as KCheckbox, type CheckboxRootProps } from "@kobalte/core/checkbox";
 import { omit } from "solid-js";
 import type { JSX } from "@solidjs/web";
-import { Check } from "../icons";
+import Check from "@lucide/solid/icons/check";
 
 import { cn } from "cn";
 

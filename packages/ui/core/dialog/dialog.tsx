@@ -1,7 +1,7 @@
 import { Dialog as KDialog, type DialogRootProps } from "@kobalte/core/dialog";
 import { Show } from "solid-js";
 import type { JSX } from "@solidjs/web";
-import { X } from "../icons";
+import X from "@lucide/solid/icons/x";
 
 import { cn } from "cn";
 

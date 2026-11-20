@@ -1,65 +1,112 @@
 import { Button as KButton, type ButtonRootProps } from "@kobalte/core/button";
+import type { PolymorphicProps } from "@kobalte/core/polymorphic";
+import LoaderCircle from "@lucide/solid/icons/loader-circle";
 import { omit, Show } from "solid-js";
-import type { JSX } from "@solidjs/web";
-import { LoaderCircle } from "../icons";
+import type { JSX, ValidComponent } from "@solidjs/web";
 
 import { cn } from "cn";
 
-export interface ButtonProps extends ButtonRootProps {
-  loading?: boolean;
-  leftIcon?: JSX.Element;
-  children?: JSX.Element;
-  rightIcon?: JSX.Element;
-  class?: string;
-  iconClass?: string;
-  variant?: "default" | "outline" | "dashed" | "filled" | "text";
-  color?: "default" | "primary" | "success" | "warning" | "danger";
-  size?: string;
-}
+const buttonClass = [
+  "inline-flex items-center justify-center gap-2 rounded-lg border border-light bg-app px-4 py-2",
+  "text-sm font-medium text-main shadow-xs transition-colors outline-none select-none",
+  "hover:bg-foreground",
+  "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-app",
+  "disabled:pointer-events-none disabled:opacity-50",
+  "aria-disabled:pointer-events-none aria-disabled:opacity-50",
+  "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+].join(" ");
 
-export const Button = (props: ButtonProps) => {
+const spinnerClass = "size-4 animate-spin";
+
+/**
+ * A small styled wrapper around `@kobalte/core/button`.
+ *
+ * Kobalte owns the button semantics (disabled handling, keyboard behaviour,
+ * polymorphic `as`). This component only adds:
+ *   - the token-based classes above (light/dark come from tokens),
+ *   - an accessible loading state,
+ *   - optional `leftIcon` / `rightIcon` slots,
+ *   - a click guard for non-native roots (`as="a"`), where `disabled` does not
+ *     prevent clicks by itself.
+ */
+export type ButtonProps<T extends ValidComponent = "button"> = PolymorphicProps<
+  T,
+  ButtonRootProps<T>
+> & {
+  /** Extra classes. Merged last, so consumer utilities win. */
+  class?: string;
+  children?: JSX.Element;
+  /** Shows a spinner, disables the button and marks it busy. */
+  loading?: boolean;
+  /** Visually hidden text announced while loading (defaults to "Loading"). */
+  loadingText?: string;
+  leftIcon?: JSX.Element;
+  rightIcon?: JSX.Element;
+  iconClass?: string;
+  onClick?: JSX.EventHandlerUnion<HTMLElement, MouseEvent>;
+};
+
+export function Button<T extends ValidComponent = "button">(props: ButtonProps<T>) {
   const others = omit(
     props,
     "class",
     "children",
     "loading",
+    "loadingText",
     "leftIcon",
     "rightIcon",
-    "disabled",
-    "variant",
-    "size",
-    "color",
     "iconClass",
+    "disabled",
+    "onClick",
   );
 
+  const isDisabled = () => Boolean(props.disabled || props.loading);
+
+  const handleClick = (event: MouseEvent) => {
+    if (isDisabled()) {
+      event.preventDefault();
+      event.stopPropagation();
+      return;
+    }
+
+    const onClick = props.onClick as
+      | ((event: MouseEvent & { currentTarget: HTMLElement; target: Element }) => void)
+      | undefined;
+    onClick?.(event as MouseEvent & { currentTarget: HTMLElement; target: Element });
+  };
+
+  // Kobalte's polymorphic generics cannot be re-instantiated through a wrapper
+  // without losing `as` inference; the exported props type keeps it public.
+  const Root = KButton as unknown as (props: ButtonProps) => JSX.Element;
+
   return (
-    <KButton
-      class={cn(
-        [
-          "group/button inline-flex shrink-0 items-center justify-center rounded-lg border bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
-          "",
-        ],
-        props.class,
-      )}
-      disabled={props.disabled || props.loading}
-      {...others}
+    <Root
+      {...(others as ButtonProps)}
+      disabled={isDisabled()}
+      aria-busy={props.loading ? "true" : undefined}
+      data-slot="button"
+      data-loading={props.loading ? "" : undefined}
+      onClick={handleClick}
+      class={cn(buttonClass, props.class)}
     >
-      {/* Loading 状态显示 */}
       <Show when={props.loading}>
-        <LoaderCircle class={cn("animate-spin -ml-1 mr-2 h-4 w-4 text-current", props.iconClass)} />
+        <LoaderCircle aria-hidden="true" class={cn(spinnerClass, props.iconClass)} />
+        <span class="sr-only">{props.loadingText ?? "Loading"}</span>
       </Show>
 
-      {/* 非 Loading 状态下的 Left Icon */}
       <Show when={!props.loading && props.leftIcon}>
-        <span class="mr-2 inline-flex">{props.leftIcon}</span>
+        <span data-icon="inline-start" aria-hidden="true" class="inline-flex shrink-0 items-center">
+          {props.leftIcon}
+        </span>
       </Show>
 
       {props.children}
 
-      {/* Right Icon */}
-      <Show when={props.rightIcon}>
-        <span class="ml-2 inline-flex">{props.rightIcon}</span>
+      <Show when={!props.loading && props.rightIcon}>
+        <span data-icon="inline-end" aria-hidden="true" class="inline-flex shrink-0 items-center">
+          {props.rightIcon}
+        </span>
       </Show>
-    </KButton>
+    </Root>
   );
-};
+}

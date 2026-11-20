@@ -1,4 +1,6 @@
-import "../style/theme.css";
+// Styles are shipped as `solid-element-ui/theme.css` by the build; consumers
+// import that file once. Keeping CSS out of the source entry also keeps the
+// `types` entry (`core/index.tsx`) free of asset imports.
 
 // TODO 组件 form , data等
 // TODO background-color 等颜色相关的属性,添加 dark 模式的支持
@@ -14,6 +16,8 @@ export { Badge } from "./badge/badge";
 export { Breadcrumbs } from "./breadcrumbs/breadcrumbs";
 
 export { Button } from "./button/button";
+
+export type { ButtonProps } from "./button/button";
 
 export { Checkbox } from "./checkbox/checkbox";
 

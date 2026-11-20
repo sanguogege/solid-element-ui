@@ -1,6 +1,6 @@
 import { Rating as KRating, type RatingRootProps } from "@kobalte/core/rating";
 import { omit, Show, For } from "solid-js";
-import { StarIcon } from "../icons";
+import Star from "@lucide/solid/icons/star";
 
 import { cn } from "cn";
 
@@ -54,7 +54,7 @@ export const RatingGroup = (props: RatingGroupProps) => {
               )}
             >
               <KRating.ItemControl>
-                <StarIcon />
+                <Star />
               </KRating.ItemControl>
             </KRating.Item>
           )}

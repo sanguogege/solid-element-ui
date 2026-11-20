@@ -1,6 +1,6 @@
 import { TextField as KTextField, type TextFieldRootProps } from "@kobalte/core/text-field";
 import { omit, Show, createSignal } from "solid-js";
-import { CloudUpload } from "../icons";
+import CloudUpload from "@lucide/solid/icons/cloud-upload";
 
 import { cn } from "cn";
 

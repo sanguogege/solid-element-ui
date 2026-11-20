@@ -1,6 +1,7 @@
 import { NumberField as KNumberField, type NumberFieldRootProps } from "@kobalte/core/number-field";
 import { omit, Show } from "solid-js";
-import { ChevronUp, ChevronDown } from "../icons";
+import ChevronUp from "@lucide/solid/icons/chevron-up";
+import ChevronDown from "@lucide/solid/icons/chevron-down";
 
 import { cn } from "cn";
 

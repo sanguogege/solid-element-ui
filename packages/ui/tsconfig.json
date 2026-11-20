@@ -28,6 +28,7 @@
     "core/**/*",
     "core/index.tsx",
     "globals.d.ts",
+    "test/**/*",
     "vite.config.ts"
   ]
 }

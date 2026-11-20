@@ -1,69 +1,74 @@
 {
-    "name": "solid-element-ui",
-    "version": "0.2.6",
-    "keywords": [
-        "component library",
-        "element",
-        "solid-element-ui",
-        "solidjs",
-        "ui"
-    ],
-    "homepage": "https://github.com/sanguogege/solid-element-ui",
-    "bugs": {
-        "url": "https://github.com/sanguogege/solid-element-ui/issues"
+  "name": "solid-element-ui",
+  "version": "0.2.6",
+  "keywords": [
+    "component library",
+    "element",
+    "solid-element-ui",
+    "solidjs",
+    "ui"
+  ],
+  "homepage": "https://github.com/sanguogege/solid-element-ui",
+  "bugs": {
+    "url": "https://github.com/sanguogege/solid-element-ui/issues"
+  },
+  "license": "MIT",
+  "author": "sanguogege",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sanguogege/solid-element-ui"
+  },
+  "source": "./core/index.tsx",
+  "files": [
+    "dist",
+    "core",
+    "README.md"
+  ],
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./core/index.tsx",
+  "exports": {
+    ".": {
+      "types": "./core/index.tsx",
+      "solid": "./core/index.tsx",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
     },
-    "license": "MIT",
-    "author": "sanguogege",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/sanguogege/solid-element-ui"
-    },
-    "source": "./core/index.tsx",
-    "files": [
-        "dist",
-        "core",
-        "README.md"
-    ],
-    "type": "module",
-    "main": "./dist/index.js",
-    "module": "./dist/index.js",
-    "types": "./dist/index.d.ts",
-    "exports": {
-        ".": {
-            "types": "./dist/index.d.ts",
-            "solid": "./core/index.tsx",
-            "import": {
-                "node": "./dist/index.js",
-                "default": "./dist/index.js"
-            },
-            "browser": "./dist/index.js",
-            "default": "./dist/index.js"
-        },
-        "./theme.css": "./dist/theme.css"
-    },
-    "publishConfig": {
-        "access": "public",
-        "registry": "https://registry.npmjs.org"
-    },
-    "scripts": {
-        "build": "vp build"
-    },
-    "dependencies": {
-        "@kobalte/core": "2.0.0-alpha.4",
-        "cn": "catalog:",
-        "@lucide/solid": "catalog:"
-    },
-    "devDependencies": {
-        "@solidjs/vite-plugin": "catalog:",
-        "@tailwindcss/vite": "catalog:",
-        "@types/node": "catalog:",
-        "tailwindcss": "catalog:",
-        "typescript": "catalog:",
-        "vite": "catalog:",
-        "vite-plus": "catalog:"
-    },
-    "peerDependencies": {
-        "@solidjs/web": "catalog:",
-        "solid-js": "catalog:"
-    }
+    "./theme.css": "./dist/theme.css",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "scripts": {
+    "build": "vp build",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vp test"
+  },
+  "dependencies": {
+    "@kobalte/core": "2.0.0-alpha.4",
+    "cn": "catalog:",
+    "@lucide/solid": "catalog:"
+  },
+  "devDependencies": {
+    "@solidjs/testing-library": "^0.8.10",
+    "@solidjs/vite-plugin": "catalog:",
+    "@tailwindcss/vite": "catalog:",
+    "@testing-library/jest-dom": "^8.0.0",
+    "@types/node": "catalog:",
+    "jsdom": "^31.0.1",
+    "tailwindcss": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vite-plus": "catalog:"
+  },
+  "peerDependencies": {
+    "@solidjs/web": "catalog:",
+    "solid-js": "catalog:"
+  }
 }

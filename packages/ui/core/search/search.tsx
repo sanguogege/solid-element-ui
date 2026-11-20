@@ -1,6 +1,7 @@
 import { TextField as KSearch, type TextFieldRootProps } from "@kobalte/core/text-field";
 import { omit, Show } from "solid-js";
-import { Search as SearchIcon, CircleX } from "../icons";
+import SearchIcon from "@lucide/solid/icons/search";
+import CircleX from "@lucide/solid/icons/circle-x";
 
 import { cn } from "cn";
 

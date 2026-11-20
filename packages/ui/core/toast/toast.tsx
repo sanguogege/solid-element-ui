@@ -2,7 +2,11 @@ import { Toast as KToast, toaster, type ToastRootProps } from "@kobalte/core/toa
 
 import { isServer } from "@solidjs/web";
 import { omit, Show, type ParentProps } from "solid-js";
-import { X, CircleCheck, CircleAlert, Info, TriangleAlert } from "../icons";
+import X from "@lucide/solid/icons/x";
+import CircleCheck from "@lucide/solid/icons/circle-check";
+import CircleExclamationPoint from "@lucide/solid/icons/circle-exclamation-point";
+import Info from "@lucide/solid/icons/info";
+import TriangleExclamationPoint from "@lucide/solid/icons/triangle-exclamation-point";
 
 import { cn } from "cn";
 
@@ -21,8 +25,8 @@ export interface ToastProps extends Omit<ToastRootProps, "class"> {
 const iconMap = {
   info: Info,
   success: CircleCheck,
-  warning: TriangleAlert,
-  error: CircleAlert,
+  warning: TriangleExclamationPoint,
+  error: CircleExclamationPoint,
 } as const; // 使用 const 断言增强类型推导
 
 export const ToastProvider = (props: ParentProps) => {

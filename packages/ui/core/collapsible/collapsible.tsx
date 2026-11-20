@@ -1,7 +1,7 @@
 import { Collapsible as KCollapsible, type CollapsibleRootProps } from "@kobalte/core/collapsible";
 import { omit } from "solid-js";
 import type { JSX } from "@solidjs/web";
-import { ChevronDown } from "../icons";
+import ChevronDown from "@lucide/solid/icons/chevron-down";
 
 import { cn } from "cn";
 

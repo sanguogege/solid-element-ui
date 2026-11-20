@@ -9,7 +9,7 @@
         "tools/*"
     ],
     "scripts": {
-        "ready": "vp check && vp run -r test && vp run -r build",
+        "ready": "vp check && vp test && vp run -r build",
         "dev": "vp run example-docs#dev",
         "prepare": "vp config",
         "test": "vp test"

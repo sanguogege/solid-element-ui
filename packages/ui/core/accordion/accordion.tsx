@@ -1,6 +1,6 @@
 import { Accordion as KAccordion, type AccordionRootProps } from "@kobalte/core/accordion";
 import { For, omit } from "solid-js";
-import { ChevronDown } from "../icons";
+import ChevronDown from "@lucide/solid/icons/chevron-down";
 
 import { cn } from "cn";
 

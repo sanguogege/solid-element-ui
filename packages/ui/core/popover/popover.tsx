@@ -1,5 +1,5 @@
 import { Popover as KPopover, type PopoverRootProps } from "@kobalte/core/popover";
-import { CrossIcon } from "../icons";
+import Cross from "@lucide/solid/icons/cross";
 import { omit } from "solid-js";
 import type { JSX } from "@solidjs/web";
 
@@ -38,7 +38,7 @@ export const Popover = (props: PopoverProps) => {
           <div class="flex">
             <KPopover.Title>{props.title}</KPopover.Title>
             <KPopover.CloseButton>
-              <CrossIcon />
+              <Cross />
             </KPopover.CloseButton>
           </div>
           <KPopover.Description>{props.children}</KPopover.Description>

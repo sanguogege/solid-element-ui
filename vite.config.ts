@@ -13,4 +13,9 @@ export default defineConfig({
   run: {
     cache: true,
   },
+  // Root `vp test` delegates to the package so its Solid plugin, jsdom
+  // environment and aliases are applied.
+  test: {
+    projects: ["packages/ui"],
+  },
 } as any);

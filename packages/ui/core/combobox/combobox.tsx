@@ -1,6 +1,7 @@
 import { Combobox as KCombobox, type ComboboxRootProps } from "@kobalte/core/combobox";
 import { omit } from "solid-js";
-import { Check, ChevronDown } from "../icons";
+import Check from "@lucide/solid/icons/check";
+import ChevronDown from "@lucide/solid/icons/chevron-down";
 
 import { cn } from "cn";
 

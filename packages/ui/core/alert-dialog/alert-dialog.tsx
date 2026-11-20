@@ -1,7 +1,7 @@
 import { AlertDialog as KAlertDialog, type AlertDialogRootProps } from "@kobalte/core/alert-dialog";
 import { omit, createSignal } from "solid-js";
 import type { JSX } from "@solidjs/web";
-import { X } from "../icons";
+import X from "@lucide/solid/icons/x";
 import { Button } from "../button/button";
 
 import { cn } from "cn";
@@ -113,11 +113,11 @@ export const AlertDialog = (props: AlertDialogProps) => {
 
           <div class={cn("mt-6 flex flex-row justify-end gap-3", props.footerClass)}>
             <KAlertDialog.CloseButton>
-              {props.cancel || <Button variant="outline">取消</Button>}
+              {props.cancel || <Button>取消</Button>}
             </KAlertDialog.CloseButton>
             <div onClick={handleConfirm}>
               {props.action || (
-                <Button color="primary" loading={loading()}>
+                <Button loading={loading()}>
                   确认
                 </Button>
               )}

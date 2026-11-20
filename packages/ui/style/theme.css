@@ -27,6 +27,7 @@
     --app-text-muted: var(--color-zinc-400);
     --app-ring: var(--color-zinc-600);
     --app-foreground: var(--color-zinc-900);
+    --app-border-light: var(--color-zinc-800);
   }
 
   [data-theme="coffee"] {
@@ -132,6 +133,7 @@
   --color-reversal: var(--app-text-reversal);
   --color-base: var(--app-border);
   --color-light: var(--app-border-light);
+  --color-ring: var(--app-ring);
   --radius-app: 0.75rem;
 
   /* 注册动画到主题 */

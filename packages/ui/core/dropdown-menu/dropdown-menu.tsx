@@ -4,7 +4,7 @@ import {
 } from "@kobalte/core/dropdown-menu";
 import { For, Show } from "solid-js";
 import type { JSX } from "@solidjs/web";
-import { ChevronRight } from "../icons";
+import ChevronRight from "@lucide/solid/icons/chevron-right";
 
 import { cn } from "cn";
 

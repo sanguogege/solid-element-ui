@@ -1,7 +1,7 @@
 import { Breadcrumbs as KBreadcrumbs, type BreadcrumbsRootProps } from "@kobalte/core/breadcrumbs";
 import { For, omit } from "solid-js";
 import type { JSX } from "@solidjs/web";
-import { ChevronRight } from "../icons";
+import ChevronRight from "@lucide/solid/icons/chevron-right";
 
 import { cn } from "cn";
 
