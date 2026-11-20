@@ -26,7 +26,7 @@ export const ColorArea = (props: ColorAreaProps) => {
         }}
       />
       <KColorArea.Thumb
-        data-slot="color-area-thumb" class="z-10 h-5 w-5 rounded-full border-2 border-white bg-transparent shadow-md transition-[transform] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:ring-offset-2 hover:scale-110 active:scale-90 cursor-grab active:cursor-grabbing"
+        data-slot="color-area-thumb" class="z-10 h-5 w-5 rounded-full border-2 border-contrast bg-transparent shadow-md transition-[transform] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-strong focus-visible:ring-offset-2 hover:scale-110 active:scale-90 cursor-grab active:cursor-grabbing"
       ></KColorArea.Thumb>
     </KColorArea>
   );

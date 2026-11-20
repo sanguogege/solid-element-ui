@@ -32,7 +32,7 @@ export const Image = (props: ImageProps) => {
         data-slot="image-img" class="h-full w-full aspect-square object-cover"
       />
       <KImage.Fallback
-        data-slot="image-fallback" class="flex h-full w-full items-center justify-center bg-slate-100 dark:bg-slate-800 text-slate-400"
+        data-slot="image-fallback" class="flex h-full w-full items-center justify-center bg-foreground text-muted"
       >
         {props.fallback || (props.alt ? props.alt.slice(0, 2).toUpperCase() : "IMG")}
       </KImage.Fallback>

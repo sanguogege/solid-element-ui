@@ -47,7 +47,7 @@ export const SegmentedControl = (props: SegmentedControlProps) => {
             <KSegmented.Item
               value={option.value}
               disabled={option.disabled}
-              data-slot="segmented-control-item" class="z-10 inline-flex flex-1 items-center justify-center whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium transition-all cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 data-disabled:pointer-events-none data-disabled:opacity-50 duration-200"
+              data-slot="segmented-control-item" class="z-10 inline-flex flex-1 items-center justify-center whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium transition-all cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 data-disabled:pointer-events-none data-disabled:opacity-50 duration-200"
             >
               <KSegmented.ItemInput />
               <KSegmented.ItemLabel

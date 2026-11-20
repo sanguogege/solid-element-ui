@@ -30,7 +30,7 @@ export const HoverCard = (props: HoverCardProps) => {
         >
           {props.showArrow && (
             <KHoverCard.Arrow
-              data-slot="hover-card-arrow" class="fill-white stroke-slate-200 dark:fill-slate-900 dark:stroke-slate-800"
+              data-slot="hover-card-arrow" class="fill-app stroke-light"
             />
           )}
           {props.children}

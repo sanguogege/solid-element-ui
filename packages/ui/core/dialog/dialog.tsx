@@ -44,12 +44,12 @@ export const Dialog = (props: DialogProps) => {
         >
           <div class="flex justify-between items-center">
             <KDialog.Title
-              data-slot="dialog-title" class="text-lg font-semibold leading-none text-zinc-950 dark:text-zinc-50"
+              data-slot="dialog-title" class="text-lg font-semibold leading-none text-main"
             >
               {props.title}
             </KDialog.Title>
             <KDialog.CloseButton
-              data-slot="dialog-close-button" class="rounded-sm opacity-70 transition-opacity hover:opacity-100 dark:text-zinc-400"
+              data-slot="dialog-close-button" class="rounded-sm opacity-70 transition-opacity hover:opacity-100 text-muted"
             >
               <X size={18} />
               <span class="sr-only">关闭</span>
@@ -57,7 +57,7 @@ export const Dialog = (props: DialogProps) => {
           </div>
           <Show when={props.description}>
             <KDialog.Description
-              data-slot="dialog-description" class="text-sm text-zinc-500 dark:text-zinc-400 mt-2"
+              data-slot="dialog-description" class="text-sm text-muted mt-2"
             >
               {props.description}
             </KDialog.Description>

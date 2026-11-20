@@ -30,7 +30,7 @@ export const RatingGroup = (props: RatingGroupProps) => {
     <KRating class={cn("flex flex-col gap-1.5 antialiased", props.class)} {...others}>
       <Show when={props.label}>
         <KRating.Label
-          data-slot="rating-label" class="text-sm font-medium text-slate-700 dark:text-slate-300"
+          data-slot="rating-label" class="text-sm font-medium text-muted"
         >
           {props.label}
         </KRating.Label>

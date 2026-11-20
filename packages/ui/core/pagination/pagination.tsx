@@ -6,7 +6,8 @@ import { cn } from "cn";
 
 // FIXME 样式修改，
 
-export interface PaginationProps extends PaginationRootProps {
+export interface PaginationProps
+  extends Omit<PaginationRootProps, "itemComponent" | "ellipsisComponent"> {
   class?: string;
 }
 
@@ -33,7 +34,7 @@ export const Pagination = (props: PaginationProps) => {
       )}
       ellipsisComponent={() => (
         <KPagination.Ellipsis
-          data-slot="pagination-ellipsis" class="flex h-9 w-9 items-center justify-center text-slate-400"
+          data-slot="pagination-ellipsis" class="flex h-9 w-9 items-center justify-center text-muted"
         >
           <Ellipsis size={16} />
         </KPagination.Ellipsis>

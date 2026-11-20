@@ -24,21 +24,21 @@ export const Combobox = <T extends string | object>(props: ComboboxProps<T>) => 
     <KCombobox<T> class={cn("flex flex-col gap-1.5 w-full", props.class)} {...others}>
       {props.label && (
         <KCombobox.Label
-          data-slot="combobox-label" class="text-sm font-medium text-zinc-900 dark:text-zinc-100 select-none"
+          data-slot="combobox-label" class="text-sm font-medium text-main select-none"
         >
           {props.label}
         </KCombobox.Label>
       )}
 
       <KCombobox.Control
-        data-slot="combobox-control" class="relative flex items-center rounded-md border border-base bg-app shadow-sm transition-colors focus-within:ring-1 focus-within:ring-zinc-950 dark:focus-within:ring-zinc-300"
+        data-slot="combobox-control" class="relative flex items-center rounded-md border border-base bg-app shadow-sm transition-colors focus-within:ring-1 focus-within:ring-strong"
       >
         <KCombobox.Input
-          data-slot="combobox-input" class="h-9 w-full bg-transparent px-3 py-1 text-sm outline-none placeholder:text-zinc-500 disabled:cursor-not-allowed"
+          data-slot="combobox-input" class="h-9 w-full bg-transparent px-3 py-1 text-sm outline-none placeholder:text-muted disabled:cursor-not-allowed"
           placeholder={props.placeholder}
         />
         <KCombobox.Trigger
-          data-slot="combobox-trigger" class="flex h-9 w-9 items-center justify-center text-zinc-500"
+          data-slot="combobox-trigger" class="flex h-9 w-9 items-center justify-center text-muted"
         >
           <KCombobox.Icon
             data-slot="combobox-icon" class="h-4 w-4 transition-transform duration-200 origin-center data-expanded:rotate-180"
@@ -50,7 +50,7 @@ export const Combobox = <T extends string | object>(props: ComboboxProps<T>) => 
 
       <KCombobox.Portal>
         <KCombobox.Content
-          data-slot="combobox-content" class="z-50 min-w-32 overflow-hidden rounded-md border border-base bg-app text-zinc-950 shadow-md animate-in zoom-in-95 dark:text-zinc-50 data-expanded:animate-in data-closed:animate-out"
+          data-slot="combobox-content" class="z-50 min-w-32 overflow-hidden rounded-md border border-base bg-app text-main shadow-md animate-in zoom-in-95 data-expanded:animate-in data-closed:animate-out"
         >
           <KCombobox.Listbox data-slot="combobox-listbox" class="p-1" />
         </KCombobox.Content>
@@ -65,7 +65,7 @@ export const ComboboxItem = (props: {
   return (
     <KCombobox.Item
       item={props.item}
-      data-slot="combobox-item" class="relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none data-highlighted:bg-zinc-100 data-highlighted:text-zinc-900 data-disabled:pointer-events-none data-disabled:opacity-50 dark:data-highlighted:bg-zinc-800 dark:data-highlighted:text-zinc-50"
+      data-slot="combobox-item" class="relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none data-highlighted:bg-foreground data-highlighted:text-main data-disabled:pointer-events-none data-disabled:opacity-50"
     >
       <KCombobox.ItemIndicator
         data-slot="combobox-item-indicator" class="absolute left-2 flex h-3.5 w-3.5 items-center justify-center"

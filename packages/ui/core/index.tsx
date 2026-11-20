@@ -67,6 +67,8 @@ export { Progress } from "./progress/progress";
 
 export { RadioGroup } from "./radio-group/radio-group";
 
+export { RatingGroup } from "./rating/rating";
+
 // rating-group 组件
 
 export { Search } from "./search/search";
@@ -87,7 +89,7 @@ export { Tabs } from "./tabs/tabs";
 
 export { TextField } from "./text-field/text-field";
 
-//  time-field
+export { TimeField } from "./time-field/time-field";
 
 export { ToastProvider, showToast } from "./toast/toast";
 

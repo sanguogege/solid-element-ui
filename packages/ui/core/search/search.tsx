@@ -46,7 +46,7 @@ export const Search = (props: SearchProps) => {
             onClick={() => props.onClear?.()}
             data-slot="search-clear" class="absolute right-3 h-4 w-4 text-main hover:text-muted cursor-pointer transition-colors"
           >
-            <CircleX class="text-white dark:text-slate-950" />
+            <CircleX class="text-muted" />
           </button>
         </Show>
       </div>

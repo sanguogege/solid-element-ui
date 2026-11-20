@@ -34,7 +34,7 @@ export const Meter = Object.assign(
     },
     ValueLabel: (props: ComponentProps<typeof KMeter.ValueLabel>) => {
       const others = omit(props, "class");
-      return <KMeter.ValueLabel class={cn("text-xs text-slate-500", props.class)} {...others} />;
+      return <KMeter.ValueLabel class={cn("text-xs text-muted", props.class)} {...others} />;
     },
     Track: (props: ComponentProps<typeof KMeter.Track>) => {
       const others = omit(props, "class");

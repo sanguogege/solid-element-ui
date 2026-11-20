@@ -29,9 +29,9 @@ describe("Button", () => {
   });
 
   it("lets consumer classes win over the default classes", () => {
-    render(() => <Button class="bg-red-500">Override</Button>);
+    render(() => <Button class="m-4">Override</Button>);
 
-    expect(screen.getByRole("button", { name: "Override" }).className).toContain("bg-red-500");
+    expect(screen.getByRole("button", { name: "Override" }).className).toContain("m-4");
   });
 
   it("is disabled when `disabled` is set", () => {

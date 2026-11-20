@@ -14,15 +14,19 @@
       "name": "example-docs",
       "version": "0.0.0",
       "dependencies": {
+        "@kobalte/core": "2.0.0-alpha.4",
         "@kobalte/solidbase": "^3.0.0",
         "@solidjs/router": "catalog:",
         "@solidjs/web": "catalog:",
         "filesystem-routing": "^0.4.0",
+        "solid-element-ui": "workspace:*",
         "solid-js": "catalog:",
       },
       "devDependencies": {
         "@iconify-json/ri": "^1.2.10",
         "@solidjs/vite-plugin": "catalog:",
+        "@tailwindcss/vite": "catalog:",
+        "tailwindcss": "catalog:",
         "typescript": "catalog:",
         "vite": "catalog:",
         "vite-plus": "catalog:",
@@ -414,7 +418,7 @@
 
     "@solid-primitives/scroll": ["@solid-primitives/scroll@3.0.0-next.7", "", { "dependencies": { "@solid-primitives/event-listener": "^3.0.0-next.8", "@solid-primitives/rootless": "^2.0.0-next.4", "@solid-primitives/static-store": "^1.0.0-next.5", "@solid-primitives/utils": "^7.0.0-next.7" }, "peerDependencies": { "@solidjs/web": "^2.0.0-rc.14", "solid-js": "^2.0.0-rc.14" } }, "sha512-liPnzqwthLrzMZSR2DcEjS/h7BgAo2XxRFgWOLXYHB+QqPYFihpb099/Md5EWbL9mcpSIL7rgQyDzrQFu2b8Rw=="],
 
-    "@solid-primitives/static-store": ["@solid-primitives/static-store@1.0.0-next.2", "", { "dependencies": { "@solid-primitives/utils": "^7.0.0-next.4" }, "peerDependencies": { "@solidjs/web": "^2.0.0-rc.0", "solid-js": "^2.0.0-rc.0" } }, "sha512-cyMzFe39VMVF9zVYgZEck1TESbIB4Tnpp00vNQlaOYuhOr4nstRBSS3zsBqZMuF+a5qWlKqS0RHO48FwLScX9w=="],
+    "@solid-primitives/static-store": ["@solid-primitives/static-store@1.0.0", "", { "dependencies": { "@solid-primitives/utils": "^7.0.0" }, "peerDependencies": { "@solidjs/web": "^2.0.0", "solid-js": "^2.0.0" } }, "sha512-mvVXrvXpPzNMMuiWF1c8eMvUJrpCyouOlNMAYmwx/7yRW2+Rhmcvnu/gBb3M/4PRdRm/Ncux2v7oUfAp+tuuGA=="],
 
     "@solid-primitives/storage": ["@solid-primitives/storage@5.0.0-next.7", "", { "dependencies": { "@solid-primitives/utils": "^7.0.0-next.7" }, "peerDependencies": { "@solidjs/web": "^2.0.0-rc.14", "@tauri-apps/plugin-store": "*", "solid-js": "^2.0.0-rc.14" }, "optionalPeers": ["@tauri-apps/plugin-store"] }, "sha512-KUqkkXLrCpF0C6qkdeDGmRaOOW90jirsnf/VBbnls3HrtOQ0wVFwChj8CIT1oUPQFk9C4b72kGv/Veqzv9OokQ=="],
 
@@ -1412,6 +1416,8 @@
 
     "@solid-primitives/media/@solid-primitives/rootless": ["@solid-primitives/rootless@2.0.0-next.2", "", { "dependencies": { "@solid-primitives/utils": "^7.0.0-next.4" }, "peerDependencies": { "@solidjs/web": "^2.0.0-rc.0", "solid-js": "^2.0.0-rc.0" } }, "sha512-QGoy8R+8v+9I8mET50wMwu0uawkQvFFcv67S+vKJ8xP5jPrQXdxuNMckUTKUy2shR3rIRpR0oLzss0Vy0oLkPg=="],
 
+    "@solid-primitives/media/@solid-primitives/static-store": ["@solid-primitives/static-store@1.0.0-next.2", "", { "dependencies": { "@solid-primitives/utils": "^7.0.0-next.4" }, "peerDependencies": { "@solidjs/web": "^2.0.0-rc.0", "solid-js": "^2.0.0-rc.0" } }, "sha512-cyMzFe39VMVF9zVYgZEck1TESbIB4Tnpp00vNQlaOYuhOr4nstRBSS3zsBqZMuF+a5qWlKqS0RHO48FwLScX9w=="],
+
     "@solid-primitives/media/@solid-primitives/utils": ["@solid-primitives/utils@7.0.0-next.4", "", { "peerDependencies": { "@solidjs/web": "^2.0.0-rc.0", "solid-js": "^2.0.0-rc.0" } }, "sha512-9KyRe6eu4hdhxxGOyS9vAa2s/T8FZ1sMJtk3UuV3W1Gi0f4if+o1n7S1M6l/MMjn8+m3+I3VB1KzFa9gNDkDsg=="],
 
     "@solid-primitives/presence/@solid-primitives/utils": ["@solid-primitives/utils@7.0.0-next.4", "", { "peerDependencies": { "@solidjs/web": "^2.0.0-rc.0", "solid-js": "^2.0.0-rc.0" } }, "sha512-9KyRe6eu4hdhxxGOyS9vAa2s/T8FZ1sMJtk3UuV3W1Gi0f4if+o1n7S1M6l/MMjn8+m3+I3VB1KzFa9gNDkDsg=="],
@@ -1420,17 +1426,13 @@
 
     "@solid-primitives/refs/@solid-primitives/utils": ["@solid-primitives/utils@7.0.0-next.4", "", { "peerDependencies": { "@solidjs/web": "^2.0.0-rc.0", "solid-js": "^2.0.0-rc.0" } }, "sha512-9KyRe6eu4hdhxxGOyS9vAa2s/T8FZ1sMJtk3UuV3W1Gi0f4if+o1n7S1M6l/MMjn8+m3+I3VB1KzFa9gNDkDsg=="],
 
-    "@solid-primitives/resize-observer/@solid-primitives/static-store": ["@solid-primitives/static-store@1.0.0", "", { "dependencies": { "@solid-primitives/utils": "^7.0.0" }, "peerDependencies": { "@solidjs/web": "^2.0.0", "solid-js": "^2.0.0" } }, "sha512-mvVXrvXpPzNMMuiWF1c8eMvUJrpCyouOlNMAYmwx/7yRW2+Rhmcvnu/gBb3M/4PRdRm/Ncux2v7oUfAp+tuuGA=="],
-
     "@solid-primitives/resize-observer/@solid-primitives/utils": ["@solid-primitives/utils@7.0.0", "", { "peerDependencies": { "@solidjs/web": "^2.0.0", "solid-js": "^2.0.0" } }, "sha512-3Vd28A7nroFfubjX0LbYThB1TQnuXzxjXup4DmeL4zg+XxDwwx2FWGkkCx0n7foYuqi22uf7q5GS9BX74sg/vQ=="],
 
     "@solid-primitives/rootless/@solid-primitives/utils": ["@solid-primitives/utils@7.0.0", "", { "peerDependencies": { "@solidjs/web": "^2.0.0", "solid-js": "^2.0.0" } }, "sha512-3Vd28A7nroFfubjX0LbYThB1TQnuXzxjXup4DmeL4zg+XxDwwx2FWGkkCx0n7foYuqi22uf7q5GS9BX74sg/vQ=="],
 
-    "@solid-primitives/scroll/@solid-primitives/static-store": ["@solid-primitives/static-store@1.0.0", "", { "dependencies": { "@solid-primitives/utils": "^7.0.0" }, "peerDependencies": { "@solidjs/web": "^2.0.0", "solid-js": "^2.0.0" } }, "sha512-mvVXrvXpPzNMMuiWF1c8eMvUJrpCyouOlNMAYmwx/7yRW2+Rhmcvnu/gBb3M/4PRdRm/Ncux2v7oUfAp+tuuGA=="],
-
     "@solid-primitives/scroll/@solid-primitives/utils": ["@solid-primitives/utils@7.0.0", "", { "peerDependencies": { "@solidjs/web": "^2.0.0", "solid-js": "^2.0.0" } }, "sha512-3Vd28A7nroFfubjX0LbYThB1TQnuXzxjXup4DmeL4zg+XxDwwx2FWGkkCx0n7foYuqi22uf7q5GS9BX74sg/vQ=="],
 
-    "@solid-primitives/static-store/@solid-primitives/utils": ["@solid-primitives/utils@7.0.0-next.4", "", { "peerDependencies": { "@solidjs/web": "^2.0.0-rc.0", "solid-js": "^2.0.0-rc.0" } }, "sha512-9KyRe6eu4hdhxxGOyS9vAa2s/T8FZ1sMJtk3UuV3W1Gi0f4if+o1n7S1M6l/MMjn8+m3+I3VB1KzFa9gNDkDsg=="],
+    "@solid-primitives/static-store/@solid-primitives/utils": ["@solid-primitives/utils@7.0.0", "", { "peerDependencies": { "@solidjs/web": "^2.0.0", "solid-js": "^2.0.0" } }, "sha512-3Vd28A7nroFfubjX0LbYThB1TQnuXzxjXup4DmeL4zg+XxDwwx2FWGkkCx0n7foYuqi22uf7q5GS9BX74sg/vQ=="],
 
     "@solid-primitives/storage/@solid-primitives/utils": ["@solid-primitives/utils@7.0.0", "", { "peerDependencies": { "@solidjs/web": "^2.0.0", "solid-js": "^2.0.0" } }, "sha512-3Vd28A7nroFfubjX0LbYThB1TQnuXzxjXup4DmeL4zg+XxDwwx2FWGkkCx0n7foYuqi22uf7q5GS9BX74sg/vQ=="],
 
@@ -1475,8 +1477,6 @@
     "vitest/tinyexec": ["tinyexec@1.3.1", "", {}, "sha512-GCvB3aoys96IuDFBMcTB46JOR6mdMtAToqwiW8JlWhsoh1mhHi/xn9ss/Dg7N555GiJyEt2qzoG/NHCwM6h1EA=="],
 
     "@iconify/utils/@antfu/install-pkg/tinyexec": ["tinyexec@1.3.1", "", {}, "sha512-GCvB3aoys96IuDFBMcTB46JOR6mdMtAToqwiW8JlWhsoh1mhHi/xn9ss/Dg7N555GiJyEt2qzoG/NHCwM6h1EA=="],
-
-    "@kobalte/utils/@solid-primitives/media/@solid-primitives/static-store": ["@solid-primitives/static-store@1.0.0", "", { "dependencies": { "@solid-primitives/utils": "^7.0.0" }, "peerDependencies": { "@solidjs/web": "^2.0.0", "solid-js": "^2.0.0" } }, "sha512-mvVXrvXpPzNMMuiWF1c8eMvUJrpCyouOlNMAYmwx/7yRW2+Rhmcvnu/gBb3M/4PRdRm/Ncux2v7oUfAp+tuuGA=="],
 
     "@kobalte/utils/@solid-primitives/media/@solid-primitives/utils": ["@solid-primitives/utils@7.0.0", "", { "peerDependencies": { "@solidjs/web": "^2.0.0", "solid-js": "^2.0.0" } }, "sha512-3Vd28A7nroFfubjX0LbYThB1TQnuXzxjXup4DmeL4zg+XxDwwx2FWGkkCx0n7foYuqi22uf7q5GS9BX74sg/vQ=="],
 

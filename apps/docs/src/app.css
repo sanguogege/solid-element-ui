@@ -1,3 +1,10 @@
+@import "tailwindcss";
+@import "solid-element-ui/tailwind.css";
+
+/* Tailwind scans the docs sources automatically; the library lives outside this
+   project, so its component sources need an explicit source. */
+@source "../../../packages/ui/core";
+
 body {
   margin: 0;
 }

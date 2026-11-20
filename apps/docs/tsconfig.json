@@ -14,7 +14,8 @@
     "isolatedModules": true,
     "types": ["vite/client"],
     "paths": {
-      "~/*": ["./src/*"]
+      "~/*": ["./src/*"],
+      "solid-element-ui": ["../../packages/ui/core/index.tsx"]
     }
   },
   "include": ["src", "vite.config.ts"],

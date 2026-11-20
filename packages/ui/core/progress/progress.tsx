@@ -27,13 +27,13 @@ export const Progress = (props: ProgressProps) => {
     <KProgress class={cn("flex flex-col gap-2 w-full antialiased", props.class)} {...others}>
       <Show when={props.label || props.showValue}>
         <div
-          data-slot="progress-label-container" class="flex justify-between items-center text-sm font-medium text-slate-700 dark:text-slate-300"
+          data-slot="progress-label-container" class="flex justify-between items-center text-sm font-medium text-muted"
         >
           <Show when={props.label}>
             <KProgress.Label>{props.label}</KProgress.Label>
           </Show>
           <Show when={props.showValue}>
-            <KProgress.ValueLabel class="text-xs text-slate-500" />
+            <KProgress.ValueLabel class="text-xs text-muted" />
           </Show>
         </div>
       </Show>

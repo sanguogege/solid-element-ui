@@ -44,7 +44,7 @@ const RenderMenuItems = (props: {
             when={config.children && config.children.length > 0}
             fallback={
               <KDropdownMenu.Item
-                data-slot="dropdown-menu-item" class="relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors data-highlighted:bg-zinc-100 data-highlighted:text-zinc-900 data-disabled:pointer-events-none data-disabled:opacity-50 dark:data-highlighted:bg-zinc-800 dark:data-highlighted:text-zinc-50"
+                data-slot="dropdown-menu-item" class="relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors data-highlighted:bg-foreground data-highlighted:text-main data-disabled:pointer-events-none data-disabled:opacity-50"
                 disabled={config.disabled}
                 onSelect={() => config.onClick?.()}
               >
@@ -55,14 +55,14 @@ const RenderMenuItems = (props: {
             {/* 子菜单渲染逻辑 */}
             <KDropdownMenu.Sub>
               <KDropdownMenu.SubTrigger
-                data-slot="dropdown-menu-item" class="relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors data-highlighted:bg-zinc-100 data-highlighted:text-zinc-900 data-disabled:pointer-events-none data-disabled:opacity-50 dark:data-highlighted:bg-zinc-800 dark:data-highlighted:text-zinc-50"
+                data-slot="dropdown-menu-item" class="relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors data-highlighted:bg-foreground data-highlighted:text-main data-disabled:pointer-events-none data-disabled:opacity-50"
               >
                 {config.label}
                 <ChevronRight data-slot="dropdown-menu-sub-icon" class="ml-auto h-4 w-4" />
               </KDropdownMenu.SubTrigger>
               <KDropdownMenu.Portal>
                 <KDropdownMenu.SubContent
-                  data-slot="dropdown-menu-content" class="z-50 min-w-32 overflow-hidden rounded-md border border-light bg-white p-1 text-zinc-950 shadow-md animate-in zoom-in-95 dark:bg-zinc-950 dark:text-zinc-50 data-expanded:animate-in data-closed:animate-out"
+                  data-slot="dropdown-menu-content" class="z-50 min-w-32 overflow-hidden rounded-md border border-light bg-app p-1 text-main shadow-md animate-in zoom-in-95data-expanded:animate-in data-closed:animate-out"
                 >
                   <RenderMenuItems
                     items={config.children!}
@@ -86,7 +86,7 @@ export const DropdownMenu = (props: DropdownMenuProps) => {
 
       <KDropdownMenu.Portal>
         <KDropdownMenu.Content
-          data-slot="dropdown-menu-content" class="z-50 min-w-32 overflow-hidden rounded-md border border-light bg-white p-1 text-zinc-950 shadow-md animate-in zoom-in-95 dark:bg-zinc-950 dark:text-zinc-50 data-expanded:animate-in data-closed:animate-out"
+          data-slot="dropdown-menu-content" class="z-50 min-w-32 overflow-hidden rounded-md border border-light bg-app p-1 text-main shadow-md animate-in zoom-in-95data-expanded:animate-in data-closed:animate-out"
         >
           <RenderMenuItems
             items={props.items}

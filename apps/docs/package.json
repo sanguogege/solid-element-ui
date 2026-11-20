@@ -9,15 +9,19 @@
     "preview": "vp preview"
   },
   "dependencies": {
+    "@kobalte/core": "2.0.0-alpha.4",
     "@kobalte/solidbase": "^3.0.0",
     "@solidjs/router": "catalog:",
     "@solidjs/web": "catalog:",
     "filesystem-routing": "^0.4.0",
+    "solid-element-ui": "workspace:*",
     "solid-js": "catalog:"
   },
   "devDependencies": {
     "@iconify-json/ri": "^1.2.10",
     "@solidjs/vite-plugin": "catalog:",
+    "@tailwindcss/vite": "catalog:",
+    "tailwindcss": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
     "vite-plus": "catalog:"

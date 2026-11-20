@@ -40,7 +40,7 @@ export const TextField = (props: TextFieldProps) => {
       </Show>
 
       <KTextField.Input
-        data-slot="text-field-input" class="flex h-10 w-full rounded-md border border-light bg-app px-3 py-2 text-sm transition-shadow text-main ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted/40 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-50 data-invalid:border-danger data-invalid:focus-visible:ring-danger"
+        data-slot="text-field-input" class="flex h-10 w-full rounded-md border border-light bg-app px-3 py-2 text-sm transition-shadow text-main ring-offset-app file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted/40 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-50 data-invalid:border-danger data-invalid:focus-visible:ring-danger"
         type={props.type}
         placeholder={props.placeholder}
       />

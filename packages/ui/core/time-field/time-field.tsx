@@ -29,7 +29,7 @@ export const TimeField = (props: TimeFieldProps) => {
     >
       <Show when={props.label}>
         <KTimeField.Label
-          data-slot="time-field-label" class="text-sm font-medium text-slate-700 dark:text-slate-300 peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          data-slot="time-field-label" class="text-sm font-medium text-muted peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
         >
           {props.label}
         </KTimeField.Label>
@@ -39,21 +39,21 @@ export const TimeField = (props: TimeFieldProps) => {
         {(segment) => (
           <KTimeField.Segment
             segment={segment()}
-            data-slot="time-field-segment" class="inline rounded-sm px-0.5 tabular-nums outline-none transition-colors focus:bg-blue-600 focus:text-white dark:focus:bg-blue-500 data-placeholder:text-slate-400 data-type=literal:px-0"
+            data-slot="time-field-segment" class="inline rounded-sm px-0.5 tabular-nums outline-none transition-colors focus:bg-primary focus:text-primary-foreground data-placeholder:text-muted data-type=literal:px-0"
           />
         )}
       </KTimeField.Input>
 
       <Show when={props.description}>
         <KTimeField.Description
-          data-slot="time-field-description" class="text-xs text-slate-500 dark:text-slate-400"
+          data-slot="time-field-description" class="text-xs text-muted"
         >
           {props.description}
         </KTimeField.Description>
       </Show>
 
       <Show when={props.errorMessage}>
-        <KTimeField.ErrorMessage data-slot="time-field-error-message" class="text-xs text-red-500">
+        <KTimeField.ErrorMessage data-slot="time-field-error-message" class="text-xs text-danger">
           {props.errorMessage}
         </KTimeField.ErrorMessage>
       </Show>

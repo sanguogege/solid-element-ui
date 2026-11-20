@@ -26,7 +26,7 @@ export const Popover = (props: PopoverProps) => {
           data-slot="popover-content" class="z-50 w-72 rounded-md border border-light bg-app p-4 shadow-md outline-none antialiased text-main data-expanded:animate-in data-closed:animate-out"
         >
           <KPopover.Arrow
-            data-slot="popover-arrow" class="fill-app stroke-slate-200 dark:stroke-slate-800"
+            data-slot="popover-arrow" class="fill-app stroke-light"
           />
 
           <div class="flex">

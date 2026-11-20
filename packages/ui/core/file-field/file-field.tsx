@@ -49,14 +49,14 @@ export const FileField = (props: FileFieldProps) => {
     >
       <Show when={props.label}>
         <KTextField.Label
-          data-slot="file-field-label" class="text-sm font-medium text-slate-700 dark:text-slate-300 ml-1"
+          data-slot="file-field-label" class="text-sm font-medium text-muted ml-1"
         >
           {props.label}
         </KTextField.Label>
       </Show>
 
       <label
-        data-slot="file-field-dropzone" class="relative flex flex-col items-center justify-center w-full min-h-35 border-2 border-dashed rounded-xl transition-all cursor-pointer bg-slate-50/50 hover:bg-slate-100 dark:bg-slate-900/10 dark:hover:bg-slate-900/20 focus-within:ring-2 focus-within:ring-blue-500/20 focus-within:border-blue-500"
+        data-slot="file-field-dropzone" class="relative flex flex-col items-center justify-center w-full min-h-35 border-2 border-dashed rounded-xl transition-all cursor-pointer bg-foreground/50 hover:bg-foreground/80 focus-within:ring-2 focus-within:ring-ring/20 focus-within:border-primary"
       >
         <KTextField.Input
           type="file"
@@ -65,19 +65,19 @@ export const FileField = (props: FileFieldProps) => {
           multiple={props.multiple}
           onChange={onFileChange}
         />
-        <CloudUpload data-slot="file-field-icon" class="w-10 h-10 mb-3 text-slate-400" />
-        <div class="text-sm font-medium text-slate-600 dark:text-slate-400">
+        <CloudUpload data-slot="file-field-icon" class="w-10 h-10 mb-3 text-muted" />
+        <div class="text-sm font-medium text-muted">
           {files().length > 0 ? `已选择 ${files().length} 个文件` : "点击或拖拽上传文件"}
         </div>
         <Show when={props.description}>
-          <p data-slot="file-field-description" class="text-xs text-slate-500 dark:text-slate-400 mt-1">
+          <p data-slot="file-field-description" class="text-xs text-muted mt-1">
             {props.description}
           </p>
         </Show>
       </label>
 
       <KTextField.ErrorMessage
-        data-slot="file-field-error-message" class="text-xs text-red-500 font-medium ml-1 mt-1"
+        data-slot="file-field-error-message" class="text-xs text-danger font-medium ml-1 mt-1"
       />
     </KTextField>
   );

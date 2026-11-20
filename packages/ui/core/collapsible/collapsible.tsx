@@ -26,7 +26,7 @@ export const Collapsible = (props: CollapsibleProps) => {
       >
         <span>{props.title}</span>
         <ChevronDown
-          data-slot="collapsible-icon" class="h-4 w-4 text-zinc-500 transition-transform duration-200 group-data-expanded:rotate-180"
+          data-slot="collapsible-icon" class="h-4 w-4 text-muted transition-transform duration-200 group-data-expanded:rotate-180"
         />
       </KCollapsible.Trigger>
 

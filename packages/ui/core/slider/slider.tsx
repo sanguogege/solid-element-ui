@@ -53,7 +53,7 @@ export const Slider = (props: SliderProps) => {
         <For each={others.value ?? [others.defaultValue]}>
           {() => (
             <KSlider.Thumb
-              data-slot="slider-thumb" class="block h-5 w-5 rounded-full border-2 bg-app ring-offset-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:scale-110 active:scale-95 transition-transform"
+              data-slot="slider-thumb" class="block h-5 w-5 rounded-full border-2 bg-app ring-offset-app focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:scale-110 active:scale-95 transition-transform"
             >
               <KSlider.Input />
             </KSlider.Thumb>

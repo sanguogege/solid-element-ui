@@ -29,13 +29,13 @@ export const NumberField = (props: NumberFieldProps) => {
       </Show>
 
       <div
-        data-slot="number-field-container" class="relative flex items-center rounded-md border border-slate-200 bg-app transition-shadow shadow-sm focus-within:ring-2 focus-within:ring-blue-500/20 focus-within:border-blue-500"
+        data-slot="number-field-container" class="relative flex items-center rounded-md border border-light bg-app transition-shadow shadow-sm focus-within:ring-2 focus-within:ring-ring/20 focus-within:border-primary"
       >
         <KNumberField.Input
           data-slot="number-field-input" class="flex-1 bg-transparent px-3 py-2 text-sm outline-none placeholder:text-muted disabled:cursor-not-allowed"
         />
         <div
-          data-slot="number-field-controls" class="flex flex-col border-l border-slate-200 dark:border-slate-800"
+          data-slot="number-field-controls" class="flex flex-col border-l border-light"
         >
           <KNumberField.IncrementTrigger
             data-slot="number-field-stepper" class="flex h-1/2 w-8 items-center justify-center transition-colors hover:bg-foreground active:bg-foreground disabled:opacity-30 disabled:pointer-events-none"
@@ -45,7 +45,7 @@ export const NumberField = (props: NumberFieldProps) => {
           <KNumberField.DecrementTrigger
             data-slot="number-field-stepper" class={cn(
               "flex h-1/2 w-8 items-center justify-center transition-colors hover:bg-foreground active:bg-foreground disabled:opacity-30 disabled:pointer-events-none",
-              "border-t border-slate-200 dark:border-slate-800",
+              "border-t border-light border-light",
             )}
           >
             <ChevronDown size={14} />
@@ -54,7 +54,7 @@ export const NumberField = (props: NumberFieldProps) => {
       </div>
 
       <Show when={props.description}>
-        <KNumberField.Description class="text-xs text-slate-500 ml-1 mt-1" />
+        <KNumberField.Description class="text-xs text-muted ml-1 mt-1" />
       </Show>
       <KNumberField.ErrorMessage
         data-slot="number-field-error-message" class="text-xs text-danger font-medium ml-1 mt-1"

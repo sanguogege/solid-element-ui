@@ -2,38 +2,62 @@
 
 @layer theme {
   :root {
+    /* 品牌色 / 状态色 */
     --primary: var(--color-blue-600);
-    --success: var(--color-green-600);
-    --warning: var(--color-orange-600);
+    --primary-foreground: var(--color-white);
     --danger: var(--color-red-600);
 
-    --app-bg: var(--color-white); /* 应用背景色 */
-    --app-bg-reversal: var(--color-zinc-900); /* 应用反转背景色 */
-    --app-foreground: var(--color-zinc-100); /* 应用前景色 */
+    /* 背景 */
+    --app-bg: var(--color-white);
+    --app-bg-reversal: var(--color-zinc-900);
+    --app-foreground: var(--color-zinc-100); /* 次级背景 / hover 背景 */
 
-    --app-text-main: var(--color-zinc-950); /* 应用主文字色 */
-    --app-text-muted: var(--color-zinc-600); /* 应用次级文字色*/
-    --app-border: var(--color-zinc-500); /* 应用边框色*/
-    --app-border-light: var(--color-zinc-300); /* 应用浅边框色 */
+    /* 文字 */
+    --app-text-main: var(--color-zinc-950);
+    --app-text-muted: var(--color-zinc-600);
+    --app-text-reversal: var(--color-zinc-100);
+
+    /* 边框、焦点环、遮罩 */
+    --app-border: var(--color-zinc-500);
+    --app-border-light: var(--color-zinc-300);
     --app-ring: var(--color-zinc-300);
-    --app-text-reversal: var(--color-zinc-100); /* 应用反转文字色 */
+    --app-ring-strong: var(--color-zinc-950);
+    --app-overlay: rgb(0 0 0 / 0.5);
+    --app-contrast: var(--color-white);
+    --app-hairline: rgb(0 0 0 / 0.1);
   }
 
   [data-theme="dark"] {
+    --primary: var(--color-blue-500);
+
     --app-text-reversal: var(--color-zinc-950);
     --app-bg-reversal: var(--color-zinc-50);
     --app-bg: var(--color-zinc-950);
     --app-text-main: var(--color-zinc-50);
     --app-text-muted: var(--color-zinc-400);
-    --app-ring: var(--color-zinc-600);
     --app-foreground: var(--color-zinc-900);
+
+    --app-border: var(--color-zinc-700);
     --app-border-light: var(--color-zinc-800);
+    --app-ring: var(--color-zinc-600);
+    --app-ring-strong: var(--color-zinc-300);
+    --app-overlay: rgb(0 0 0 / 0.7);
+    --app-hairline: rgb(255 255 255 / 0.15);
   }
 
   [data-theme="coffee"] {
     --app-bg: #2c2420;
+    --app-foreground: #362c26;
     --app-text-main: #f3e5d8;
+    --app-text-muted: #c9b8a8;
+    --app-text-reversal: #2c2420;
+    --app-bg-reversal: #f3e5d8;
+    --app-border: #8b5e3c;
+    --app-border-light: #6b4a32;
     --app-ring: #8b5e3c;
+    --app-ring-strong: #f3e5d8;
+    --app-overlay: rgb(0 0 0 / 0.7);
+    --app-hairline: rgb(255 255 255 / 0.15);
   }
 
   @keyframes accordion-down {
@@ -121,19 +145,24 @@
 /* --- 2. 注册到 Tailwind 主题系统 --- */
 @theme {
   --color-primary: var(--primary);
-  --color-success: var(--success);
-  --color-warning: var(--warning);
+  --color-primary-foreground: var(--primary-foreground);
   --color-danger: var(--danger);
 
   --color-app: var(--app-bg);
   --color-foreground: var(--app-foreground);
   --color-reversal-bg: var(--app-bg-reversal);
+
   --color-main: var(--app-text-main);
   --color-muted: var(--app-text-muted);
   --color-reversal: var(--app-text-reversal);
+
   --color-base: var(--app-border);
   --color-light: var(--app-border-light);
   --color-ring: var(--app-ring);
+  --color-strong: var(--app-ring-strong);
+  --color-overlay: var(--app-overlay);
+  --color-contrast: var(--app-contrast);
+  --color-hairline: var(--app-hairline);
   --radius-app: 0.75rem;
 
   /* 注册动画到主题 */

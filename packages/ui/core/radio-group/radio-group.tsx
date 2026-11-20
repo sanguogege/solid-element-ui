@@ -45,7 +45,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
           >
             <KRadioGroup.ItemInput />
             <KRadioGroup.ItemControl
-              data-slot="radio-group-control" class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-slate-300 bg-app transition-all shadow-sm group-hover:border-light group-data-checked:border-primary group-data-checked:bg-primary group-focus-visible:ring-2 group-focus-visible:ring-blue-500/20"
+              data-slot="radio-group-control" class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-light bg-app transition-all shadow-sm group-hover:border-light group-data-checked:border-primary group-data-checked:bg-primary group-focus-visible:ring-2 group-focus-visible:ring-ring/20"
             >
               <KRadioGroup.ItemIndicator
                 data-slot="radio-group-indicator" class="h-2 w-2 rounded-full bg-app shadow-sm"

@@ -103,7 +103,7 @@ export const Select = (props: SelectProps) => {
       </Show>
 
       <KSelect.Trigger
-        data-slot="select-trigger" class="flex h-10 w-full text-main items-center justify-between rounded-md border border-light bg-app px-3 py-2 text-sm ring-offset-white placeholder:text-muted focus:outline-none focus:ring-1 focus:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-50"
+        data-slot="select-trigger" class="flex h-10 w-full text-main items-center justify-between rounded-md border border-light bg-app px-3 py-2 text-sm ring-offset-app placeholder:text-muted focus:outline-none focus:ring-1 focus:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
       >
         <KSelect.Value<Option>>
           {(state) => (

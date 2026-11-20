@@ -58,7 +58,7 @@ const RenderMenuItems = (props: {
               </KContextMenu.SubTrigger>
               <KContextMenu.Portal>
                 <KContextMenu.SubContent
-                  data-slot="context-menu-content" class="z-50 min-w-32 overflow-hidden rounded-md border border-light bg-app p-1 text-main shadow-md dark:text-zinc-50 data-expanded:animate-in data-closed:animate-out"
+                  data-slot="context-menu-content" class="z-50 min-w-32 overflow-hidden rounded-md border border-light bg-app p-1 text-main shadow-md data-expanded:animate-in data-closed:animate-out"
                 >
                   <RenderMenuItems
                     items={itemConfig.children!}
@@ -79,7 +79,7 @@ export const ContextMenu = (props: UnifiedContextMenuProps) => {
       <KContextMenu.Trigger class={props.class}>{props.children}</KContextMenu.Trigger>
       <KContextMenu.Portal>
         <KContextMenu.Content
-          data-slot="context-menu-content" class="z-50 min-w-32 overflow-hidden rounded-md border border-light bg-app p-1 text-main shadow-md dark:text-zinc-50 data-expanded:animate-in data-closed:animate-out"
+          data-slot="context-menu-content" class="z-50 min-w-32 overflow-hidden rounded-md border border-light bg-app p-1 text-main shadow-md data-expanded:animate-in data-closed:animate-out"
         >
           <RenderMenuItems
             items={props.items}

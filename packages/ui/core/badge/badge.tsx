@@ -1,10 +1,12 @@
 import { Badge as KBadge, type BadgeRootProps } from "@kobalte/core/badge";
 import { omit } from "solid-js";
+import type { JSX } from "@solidjs/web";
 
 import { cn } from "cn";
 
 export interface BadgeProps extends BadgeRootProps {
   class?: string;
+  children?: JSX.Element;
 }
 
 export const Badge = (props: BadgeProps) => {

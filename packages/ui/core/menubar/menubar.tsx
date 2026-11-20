@@ -5,8 +5,11 @@ import { cn } from "cn";
 
 // TODO 1. 格式
 
+import type { JSX } from "@solidjs/web";
+
 export interface MenubarProps extends MenubarRootProps {
   class?: string;
+  children?: JSX.Element;
 }
 
 export const Menubar = Object.assign(
