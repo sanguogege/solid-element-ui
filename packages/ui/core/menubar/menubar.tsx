@@ -1,7 +1,7 @@
 import { Menubar as KMenubar, type MenubarRootProps } from "@kobalte/core/menubar";
 import { omit, type ComponentProps } from "solid-js";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 // TODO 1. 格式
 

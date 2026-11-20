@@ -1,7 +1,7 @@
 import { Progress as KProgress, type ProgressRootProps } from "@kobalte/core/progress";
 import { omit, Show } from "solid-js";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 // FIXME  进度条问题，value 直接占满
 

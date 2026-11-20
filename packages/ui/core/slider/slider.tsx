@@ -1,7 +1,7 @@
 import { Slider as KSlider, type SliderRootProps } from "@kobalte/core/slider";
 import { omit, For, Show } from "solid-js";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 // FIXME 点击轨道时报错
 

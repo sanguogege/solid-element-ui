@@ -1,7 +1,7 @@
 import { ColorSwatch as KColorSwatch, type ColorSwatchRootProps } from "@kobalte/core/color-swatch";
 import { omit } from "solid-js";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 // TODO 源代码问题
 

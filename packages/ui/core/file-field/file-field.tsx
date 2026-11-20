@@ -2,7 +2,7 @@ import { TextField as KTextField, type TextFieldRootProps } from "@kobalte/core/
 import { omit, Show, createSignal } from "solid-js";
 import { CloudUpload } from "../icons";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 //TODO 样式修改，移除 UploadCloud这种已废弃的icon
 

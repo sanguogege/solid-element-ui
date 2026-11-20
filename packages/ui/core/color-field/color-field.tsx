@@ -1,7 +1,7 @@
 import { ColorField as KColorField, type ColorFieldRootProps } from "@kobalte/core/color-field";
 import { omit } from "solid-js";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 export interface ColorFieldProps extends ColorFieldRootProps {
   label?: string;

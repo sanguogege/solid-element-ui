@@ -1,7 +1,7 @@
 import { Image as KImage, type ImageRootProps } from "@kobalte/core/image";
 import { omit } from "solid-js";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 export interface ImageProps extends ImageRootProps {
   src?: string;

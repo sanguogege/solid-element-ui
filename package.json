@@ -40,6 +40,7 @@
         "@solidjs/web": "2.0.3",
         "@solidjs/router": "2.0.0-next.37",
         "@solidjs/vite-plugin": "3.0.1",
-        "cn": "^0.5.2"
+        "cn": "^0.5.2",
+        "@lucide/solid": "^1.77.0"
     }
 }

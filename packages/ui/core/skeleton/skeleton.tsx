@@ -1,7 +1,7 @@
 import { Skeleton as KSkeleton, type SkeletonRootProps } from "@kobalte/core/skeleton";
 import { omit } from "solid-js";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 // 核心修正：使用 Omit 排除掉冲突的 width 和 height
 export interface SkeletonProps extends Omit<SkeletonRootProps, "class" | "width" | "height"> {

@@ -2,7 +2,7 @@ import { TextField as KSearch, type TextFieldRootProps } from "@kobalte/core/tex
 import { omit, Show } from "solid-js";
 import { Search as SearchIcon, CircleX } from "../icons";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 export interface SearchProps extends Omit<TextFieldRootProps, "class"> {
   class?: string;

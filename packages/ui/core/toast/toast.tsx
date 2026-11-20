@@ -4,7 +4,7 @@ import { isServer } from "@solidjs/web";
 import { omit, Show, type ParentProps } from "solid-js";
 import { X, CircleCheck, CircleAlert, Info, TriangleAlert } from "../icons";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 export interface ToastProps extends Omit<ToastRootProps, "class"> {
   title?: string;

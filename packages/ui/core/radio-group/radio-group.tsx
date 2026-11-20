@@ -1,7 +1,7 @@
 import { RadioGroup as KRadioGroup, type RadioGroupRootProps } from "@kobalte/core/radio-group";
 import { omit, For, Show } from "solid-js";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 export interface RadioOption {
   label: string;

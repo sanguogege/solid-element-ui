@@ -1,7 +1,7 @@
 import { Badge as KBadge, type BadgeRootProps } from "@kobalte/core/badge";
 import { omit } from "solid-js";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 export interface BadgeProps extends BadgeRootProps {
   class?: string;

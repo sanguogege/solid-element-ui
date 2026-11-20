@@ -6,7 +6,7 @@ import { For, Show } from "solid-js";
 import type { JSX } from "@solidjs/web";
 import { ChevronRight } from "../icons";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 // TODO  Dropdown Menu 样式
 

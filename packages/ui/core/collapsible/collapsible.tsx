@@ -3,7 +3,7 @@ import { omit } from "solid-js";
 import type { JSX } from "@solidjs/web";
 import { ChevronDown } from "../icons";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 interface CollapsibleProps extends CollapsibleRootProps {
   title: JSX.Element;

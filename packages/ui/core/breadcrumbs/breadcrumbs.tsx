@@ -3,7 +3,7 @@ import { For, omit } from "solid-js";
 import type { JSX } from "@solidjs/web";
 import { ChevronRight } from "../icons";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 // TODO 1. 定义样式
 //      2. icon 支持自定义

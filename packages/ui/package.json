@@ -50,7 +50,8 @@
     },
     "dependencies": {
         "@kobalte/core": "2.0.0-alpha.4",
-        "cn": "catalog:"
+        "cn": "catalog:",
+        "@lucide/solid": "catalog:"
     },
     "devDependencies": {
         "@solidjs/vite-plugin": "catalog:",

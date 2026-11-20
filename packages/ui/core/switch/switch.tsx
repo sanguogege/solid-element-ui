@@ -1,7 +1,7 @@
 import { Switch as KSwitch, type SwitchRootProps } from "@kobalte/core/switch";
 import { omit, Show } from "solid-js";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 export interface SwitchProps extends Omit<SwitchRootProps, "class"> {
   label?: string;

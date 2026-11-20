@@ -2,7 +2,7 @@ import { Combobox as KCombobox, type ComboboxRootProps } from "@kobalte/core/com
 import { omit } from "solid-js";
 import { Check, ChevronDown } from "../icons";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 // FIXME 缺少Description，ErrorMessage，验证
 

@@ -1,7 +1,7 @@
 import { ColorSlider as KColorSlider, type ColorSliderRootProps } from "@kobalte/core/color-slider";
 import { omit } from "solid-js";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 // TODO defaultValue,还有channel 的问题
 

@@ -2,7 +2,7 @@ import { Pagination as KPagination, type PaginationRootProps } from "@kobalte/co
 import { omit } from "solid-js";
 import { ChevronLeft, ChevronRight, Ellipsis } from "../icons";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 // FIXME 样式修改，
 

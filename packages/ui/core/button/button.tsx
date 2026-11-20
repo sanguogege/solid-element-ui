@@ -3,7 +3,7 @@ import { omit, Show } from "solid-js";
 import type { JSX } from "@solidjs/web";
 import { LoaderCircle } from "../icons";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 export interface ButtonProps extends ButtonRootProps {
   loading?: boolean;

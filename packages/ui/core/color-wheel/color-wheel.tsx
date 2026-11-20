@@ -1,7 +1,7 @@
 import { ColorWheel as KColorWheel, type ColorWheelRootProps } from "@kobalte/core/color-wheel";
 import { omit } from "solid-js";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 // FIXME 颜色选项都有源代码问题，注意查看原始kobalte的问题。
 

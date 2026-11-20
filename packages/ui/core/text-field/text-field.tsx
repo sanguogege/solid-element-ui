@@ -1,7 +1,7 @@
 import { TextField as KTextField, type TextFieldRootProps } from "@kobalte/core/text-field";
 import { omit, Show } from "solid-js";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 export interface TextFieldProps extends Omit<TextFieldRootProps, "class"> {
   label?: string;

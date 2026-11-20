@@ -1,7 +1,7 @@
 import { TimeField as KTimeField, type TimeFieldRootProps } from "@kobalte/core/time-field";
 import { omit, Show } from "solid-js";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 export interface TimeFieldProps extends Omit<TimeFieldRootProps, "class"> {
   label?: string;

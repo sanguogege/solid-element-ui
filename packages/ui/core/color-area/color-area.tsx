@@ -1,7 +1,7 @@
 import { ColorArea as KColorArea, type ColorAreaRootProps } from "@kobalte/core/color-area";
 import { omit } from "solid-js";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 export interface ColorAreaProps extends ColorAreaRootProps {
   class?: string;

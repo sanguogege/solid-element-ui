@@ -2,7 +2,7 @@ import { ToggleGroup as KToggleGroup, type ToggleGroupRootProps } from "@kobalte
 import { omit, For } from "solid-js";
 import type { JSX } from "@solidjs/web";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 // TODO 单选，多选出现问题
 

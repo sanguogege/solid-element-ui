@@ -2,7 +2,7 @@ import { Rating as KRating, type RatingRootProps } from "@kobalte/core/rating";
 import { omit, Show, For } from "solid-js";
 import { StarIcon } from "../icons";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 export interface RatingGroupProps extends Omit<RatingRootProps, "children" | "class"> {
   label?: string;

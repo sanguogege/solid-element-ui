@@ -4,7 +4,7 @@ import {
 } from "@kobalte/core/color-channel-field";
 import { omit } from "solid-js";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 export interface ColorChannelFieldProps extends ColorChannelFieldRootProps {
   label?: string;

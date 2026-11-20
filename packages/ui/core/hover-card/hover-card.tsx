@@ -2,7 +2,7 @@ import { HoverCard as KHoverCard, type HoverCardRootProps } from "@kobalte/core/
 import { omit } from "solid-js";
 import type { JSX } from "@solidjs/web";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 export interface HoverCardProps extends HoverCardRootProps {
   trigger: JSX.Element;

@@ -2,7 +2,7 @@ import { Tabs as KTabs, type TabsRootProps } from "@kobalte/core/tabs";
 import { omit, For } from "solid-js";
 import type { JSX } from "@solidjs/web";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 export type TabItem = {
   value: string;

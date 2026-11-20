@@ -3,7 +3,7 @@ import { omit } from "solid-js";
 import type { JSX } from "@solidjs/web";
 import { Check } from "../icons";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 // TODO 添加checkbox 的几种形状尺寸,看情况吧
 export interface CheckboxProps extends CheckboxRootProps {

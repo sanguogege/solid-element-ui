@@ -73,7 +73,7 @@ Each component wraps a Kobalte primitive (imported with `K` prefix) and adds Tai
 ```tsx
 import { Button as KButton } from "@kobalte/core/button";
 import { omit } from "solid-js";
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 ```
 
 ### 2. Styles: `cn` (class merging)
@@ -176,14 +176,14 @@ Defined in `theme.css`: `accordion-down`, `fade-in`, `fade-out`, `slide-in`, `co
 
 ## 📦 Key Dependencies
 
-| Package                       | Purpose                                              |
-| ----------------------------- | ---------------------------------------------------- |
-| `solid-js` 2.0.3              | SolidJS core (peer dependency)                       |
-| `@solidjs/web` 2.0.3          | Solid 2 DOM renderer / JSX runtime                   |
-| `@kobalte/core` 2.0.0-alpha.4 | Headless UI primitives (accessibility + behavior)    |
+| Package                       | Purpose                                               |
+| ----------------------------- | ----------------------------------------------------- |
+| `solid-js` 2.0.3              | SolidJS core (peer dependency)                        |
+| `@solidjs/web` 2.0.3          | Solid 2 DOM renderer / JSX runtime                    |
+| `@kobalte/core` 2.0.0-alpha.4 | Headless UI primitives (accessibility + behavior)     |
 | `cn` ^0.5.2                   | Tailwind class merging (replaces clsx+tailwind-merge) |
-| `tailwindcss` ^4.3.5          | Tailwind CSS v4 (with `@tailwindcss/vite`)           |
-| `@kobalte/solidbase` ^3.0     | Static site generation engine for the docs site      |
+| `tailwindcss` ^4.3.5          | Tailwind CSS v4 (with `@tailwindcss/vite`)            |
+| `@kobalte/solidbase` ^3.0     | Static site generation engine for the docs site       |
 
 ---
 

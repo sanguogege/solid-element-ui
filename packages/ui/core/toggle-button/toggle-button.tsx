@@ -2,7 +2,7 @@ import { ToggleButton as KToggle, type ToggleButtonRootProps } from "@kobalte/co
 import { omit } from "solid-js";
 import type { JSX } from "@solidjs/web";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 // TODO 切换样式问题
 

@@ -1,7 +1,7 @@
 import { Separator as KSeparator, type SeparatorRootProps } from "@kobalte/core/separator";
 import { omit } from "solid-js";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 export interface SeparatorProps extends SeparatorRootProps {
   orientation?: "horizontal" | "vertical";

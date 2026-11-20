@@ -3,7 +3,7 @@ import { Show } from "solid-js";
 import type { JSX } from "@solidjs/web";
 import { X } from "../icons";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 //TODO 修改footer，可自定义或是自带，方法传入等等
 // FIXME title 和close icon 平行。

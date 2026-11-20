@@ -4,7 +4,7 @@ import type { JSX } from "@solidjs/web";
 import { X } from "../icons";
 import { Button } from "../button/button";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 interface AlertDialogProps extends AlertDialogRootProps {
   trigger: JSX.Element;

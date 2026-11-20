@@ -2,7 +2,7 @@ import { NumberField as KNumberField, type NumberFieldRootProps } from "@kobalte
 import { omit, Show } from "solid-js";
 import { ChevronUp, ChevronDown } from "../icons";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 export interface NumberFieldProps extends Omit<NumberFieldRootProps, "class"> {
   label?: string;

@@ -3,7 +3,7 @@ import { CrossIcon } from "../icons";
 import { omit } from "solid-js";
 import type { JSX } from "@solidjs/web";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 // FIXME 与其他的气泡样式不统一的问题
 // Description，而不是内敛。

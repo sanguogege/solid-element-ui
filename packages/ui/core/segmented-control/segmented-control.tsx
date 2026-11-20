@@ -4,7 +4,7 @@ import {
 } from "@kobalte/core/segmented-control";
 import { omit, For } from "solid-js";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 // FIXME 样式问题
 

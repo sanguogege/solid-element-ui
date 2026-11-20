@@ -2,7 +2,7 @@ import { Meter as KMeter, type MeterRootProps } from "@kobalte/core/meter";
 import { omit, type ComponentProps } from "solid-js";
 import type { JSX } from "@solidjs/web";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 // TODO 1. 格式
 

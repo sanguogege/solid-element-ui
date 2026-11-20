@@ -5,7 +5,7 @@ import {
 import { omit, For, Show } from "solid-js";
 import type { JSX } from "@solidjs/web";
 
-import { cn } from "../../utils/cn";
+import { cn } from "cn";
 
 // TODO 不显示问题
 
