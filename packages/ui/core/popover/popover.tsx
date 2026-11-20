@@ -1,9 +1,8 @@
 import { Popover as KPopover, type PopoverRootProps } from "@kobalte/core/popover";
-import Cross from "@lucide/solid/icons/cross";
 import { omit } from "solid-js";
 import type { JSX } from "@solidjs/web";
 
-import { cn } from "cn";
+import { Cross } from "@lucide/solid";
 
 // FIXME 与其他的气泡样式不统一的问题
 // Description，而不是内敛。
@@ -13,12 +12,10 @@ export interface PopoverProps extends PopoverRootProps {
   trigger: JSX.Element;
   title: string;
   class?: string;
-  contentClass?: string;
-  arrowClass?: string;
 }
 
 export const Popover = (props: PopoverProps) => {
-  const others = omit(props, "trigger", "children", "title", "class", "contentClass", "arrowClass");
+  const others = omit(props, "trigger", "children", "title", "class");
 
   return (
     <KPopover {...others}>
@@ -26,13 +23,10 @@ export const Popover = (props: PopoverProps) => {
 
       <KPopover.Portal>
         <KPopover.Content
-          class={cn(
-            "z-50 w-72 rounded-md border border-light bg-app p-4 shadow-md outline-none antialiased text-main data-expanded:animate-in data-closed:animate-out",
-            props.contentClass,
-          )}
+          data-slot="popover-content" class="z-50 w-72 rounded-md border border-light bg-app p-4 shadow-md outline-none antialiased text-main data-expanded:animate-in data-closed:animate-out"
         >
           <KPopover.Arrow
-            class={cn("fill-app stroke-slate-200 dark:stroke-slate-800", props.arrowClass)}
+            data-slot="popover-arrow" class="fill-app stroke-slate-200 dark:stroke-slate-800"
           />
 
           <div class="flex">

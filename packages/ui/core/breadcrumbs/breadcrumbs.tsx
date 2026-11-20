@@ -1,8 +1,8 @@
 import { Breadcrumbs as KBreadcrumbs, type BreadcrumbsRootProps } from "@kobalte/core/breadcrumbs";
 import { For, omit } from "solid-js";
 import type { JSX } from "@solidjs/web";
-import ChevronRight from "@lucide/solid/icons/chevron-right";
 
+import { ChevronRight } from "@lucide/solid";
 import { cn } from "cn";
 
 // TODO 1. 定义样式
@@ -19,12 +19,10 @@ interface BreadcrumbsProps extends BreadcrumbsRootProps {
   items: BreadcrumbItem[];
   separatorIcon?: JSX.Element;
   class?: string;
-  linkClass?: string;
-  separatorClass?: string;
 }
 
 export const Breadcrumbs = (props: BreadcrumbsProps) => {
-  const others = omit(props, "items", "separatorIcon", "class", "linkClass", "separatorClass");
+  const others = omit(props, "items", "separatorIcon", "class");
 
   return (
     <KBreadcrumbs
@@ -38,10 +36,7 @@ export const Breadcrumbs = (props: BreadcrumbsProps) => {
               href={breadcrumb.href}
               current={breadcrumb.current}
               disabled={breadcrumb.disabled}
-              class={cn(
-                "text-md transition-colors text-main data-current:text-main/50 data-disabled:pointer-events-none no-underline",
-                props.linkClass,
-              )}
+              data-slot="breadcrumbs-link" class="text-md transition-colors text-main data-current:text-main/50 data-disabled:pointer-events-none no-underline"
             >
               {breadcrumb.title}
             </KBreadcrumbs.Link>
@@ -49,10 +44,7 @@ export const Breadcrumbs = (props: BreadcrumbsProps) => {
             {index() < props.items.length - 1 && (
               <span
                 aria-hidden="true"
-                class={cn(
-                  "flex h-4 w-4 items-center justify-center text-main/80",
-                  props.separatorClass,
-                )}
+                data-slot="breadcrumbs-separator" class="flex h-4 w-4 items-center justify-center text-main/80"
               >
                 {props.separatorIcon || <ChevronRight size={16} />}
               </span>

@@ -1,7 +1,7 @@
 import { Accordion as KAccordion, type AccordionRootProps } from "@kobalte/core/accordion";
 import { For, omit } from "solid-js";
-import ChevronDown from "@lucide/solid/icons/chevron-down";
 
+import { ChevronDown } from "@lucide/solid";
 import { cn } from "cn";
 
 // TODO  别忘记如何处理 后端返回的 带标签的数据？强制用户自己处理，组件只用处理jsx就可以了。
@@ -9,12 +9,6 @@ import { cn } from "cn";
 export interface AccordionProps extends AccordionRootProps {
   items: Array<any>;
   class?: string;
-  itemClass?: string;
-  headerClass?: string;
-  triggerClass?: string;
-  contentClass?: string;
-  contentTextClass?: string;
-  iconClass?: string;
 }
 
 export const Accordion = (props: AccordionProps) => {
@@ -22,12 +16,6 @@ export const Accordion = (props: AccordionProps) => {
     props,
     "items",
     "class",
-    "itemClass",
-    "headerClass",
-    "triggerClass",
-    "contentClass",
-    "contentTextClass",
-    "iconClass",
   );
   return (
     <KAccordion
@@ -42,32 +30,23 @@ export const Accordion = (props: AccordionProps) => {
           <KAccordion.Item
             value={itemData.value}
             disabled={itemData.disabled}
-            class={cn("group", props.itemClass)}
+            data-slot="accordion-item" class="group"
           >
-            <KAccordion.Header class={cn("flex", props.headerClass)}>
+            <KAccordion.Header data-slot="accordion-header" class="flex">
               <KAccordion.Trigger
-                class={cn(
-                  "flex flex-1 items-center justify-between cursor-pointer py-4 px-4 text-md font-medium transition-all bg-foreground hover:bg-foreground/80",
-                  props.triggerClass,
-                )}
+                data-slot="accordion-trigger" class="flex flex-1 items-center justify-between cursor-pointer py-4 px-4 text-md font-medium transition-all bg-foreground hover:bg-foreground/80"
               >
                 {itemData.title}
                 <ChevronDown
-                  class={cn(
-                    "h-4 w-4 transition-transform duration-200 group-data-expanded:rotate-180",
-                    props.iconClass,
-                  )}
+                  data-slot="accordion-icon" class="h-4 w-4 transition-transform duration-200 group-data-expanded:rotate-180"
                   aria-hidden="true"
                 />
               </KAccordion.Trigger>
             </KAccordion.Header>
             <KAccordion.Content
-              class={cn(
-                "overflow-hidden text-md transition-all bg-transparent text-main ata-expanded:animate-accordion-down data-closed:animate-accordion-up",
-                props.contentClass,
-              )}
+              data-slot="accordion-content" class="overflow-hidden text-md transition-all bg-transparent text-main ata-expanded:animate-accordion-down data-closed:animate-accordion-up"
             >
-              <p class={cn("p-4", props.contentTextClass)}>{itemData.content}</p>
+              <p data-slot="accordion-content-text" class="p-4">{itemData.content}</p>
             </KAccordion.Content>
           </KAccordion.Item>
         )}

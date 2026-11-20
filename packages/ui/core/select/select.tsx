@@ -1,8 +1,7 @@
 import { Select as KSelect, type SelectRootProps } from "@kobalte/core/select";
 import { omit, Show, createMemo } from "solid-js";
-import ChevronDown from "@lucide/solid/icons/chevron-down";
-import Check from "@lucide/solid/icons/check";
 
+import { ChevronDown, Check } from "@lucide/solid";
 import { cn } from "cn";
 
 interface Option {
@@ -35,13 +34,6 @@ export interface SelectProps extends Omit<
   class?: string;
   size?: string;
   multiple?: boolean;
-  labelClass?: string;
-  triggerClass?: string;
-  contentClass?: string;
-  listboxClass?: string;
-  itemClass?: string;
-  itemIndicatorClass?: string;
-  descriptionClass?: string;
 }
 
 export const Select = (props: SelectProps) => {
@@ -57,13 +49,6 @@ export const Select = (props: SelectProps) => {
     "onChange",
     "size",
     "multiple",
-    "labelClass",
-    "triggerClass",
-    "contentClass",
-    "listboxClass",
-    "itemClass",
-    "itemIndicatorClass",
-    "descriptionClass",
   );
 
   const selectedOption = createMemo(() => {
@@ -100,16 +85,10 @@ export const Select = (props: SelectProps) => {
       itemComponent={(itemProps) => (
         <KSelect.Item
           item={itemProps.item}
-          class={cn(
-            "relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-foreground focus:text-main data-disabled:pointer-events-none data-disabled:opacity-50",
-            props.itemClass,
-          )}
+          data-slot="select-item" class="relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-foreground focus:text-main data-disabled:pointer-events-none data-disabled:opacity-50"
         >
           <KSelect.ItemIndicator
-            class={cn(
-              "absolute left-2 flex h-3.5 w-3.5 items-center justify-center",
-              props.itemIndicatorClass,
-            )}
+            data-slot="select-item-indicator" class="absolute left-2 flex h-3.5 w-3.5 items-center justify-center"
           >
             <Check size={14} />
           </KSelect.ItemIndicator>
@@ -118,16 +97,13 @@ export const Select = (props: SelectProps) => {
       )}
     >
       <Show when={props.label}>
-        <KSelect.Label class={cn("text-sm font-medium text-muted", props.labelClass)}>
+        <KSelect.Label data-slot="select-label" class="text-sm font-medium text-muted">
           {props.label}
         </KSelect.Label>
       </Show>
 
       <KSelect.Trigger
-        class={cn(
-          "flex h-10 w-full text-main items-center justify-between rounded-md border border-light bg-app px-3 py-2 text-sm ring-offset-white placeholder:text-muted focus:outline-none focus:ring-1 focus:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-50",
-          props.triggerClass,
-        )}
+        data-slot="select-trigger" class="flex h-10 w-full text-main items-center justify-between rounded-md border border-light bg-app px-3 py-2 text-sm ring-offset-white placeholder:text-muted focus:outline-none focus:ring-1 focus:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-50"
       >
         <KSelect.Value<Option>>
           {(state) => (
@@ -143,17 +119,14 @@ export const Select = (props: SelectProps) => {
 
       <KSelect.Portal>
         <KSelect.Content
-          class={cn(
-            "relative z-50 min-w-32 overflow-hidden rounded-md border border-light bg-app shadow-md text-main data-expanded:animate-in data-closed:animate-out",
-            props.contentClass,
-          )}
+          data-slot="select-content" class="relative z-50 min-w-32 overflow-hidden rounded-md border border-light bg-app shadow-md text-main data-expanded:animate-in data-closed:animate-out"
         >
-          <KSelect.Listbox class={cn("p-1", props.listboxClass)} />
+          <KSelect.Listbox data-slot="select-listbox" class="p-1" />
         </KSelect.Content>
       </KSelect.Portal>
 
       <Show when={props.description}>
-        <KSelect.Description class={cn("mt-1 text-xs text-muted", props.descriptionClass)}>
+        <KSelect.Description data-slot="select-description" class="mt-1 text-xs text-muted">
           {props.description}
         </KSelect.Description>
       </Show>

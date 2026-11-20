@@ -1,7 +1,7 @@
 import { Rating as KRating, type RatingRootProps } from "@kobalte/core/rating";
 import { omit, Show, For } from "solid-js";
-import Star from "@lucide/solid/icons/star";
 
+import { Star } from "@lucide/solid";
 import { cn } from "cn";
 
 export interface RatingGroupProps extends Omit<RatingRootProps, "children" | "class"> {
@@ -10,10 +10,6 @@ export interface RatingGroupProps extends Omit<RatingRootProps, "children" | "cl
   class?: string;
   color?: string;
   size?: string;
-  labelClass?: string;
-  controlClass?: string;
-  itemClass?: string;
-  itemIndicatorClass?: string;
 }
 
 /**
@@ -28,30 +24,23 @@ export const RatingGroup = (props: RatingGroupProps) => {
     "class",
     "color",
     "size",
-    "labelClass",
-    "controlClass",
-    "itemClass",
-    "itemIndicatorClass",
   );
 
   return (
     <KRating class={cn("flex flex-col gap-1.5 antialiased", props.class)} {...others}>
       <Show when={props.label}>
         <KRating.Label
-          class={cn("text-sm font-medium text-slate-700 dark:text-slate-300", props.labelClass)}
+          data-slot="rating-label" class="text-sm font-medium text-slate-700 dark:text-slate-300"
         >
           {props.label}
         </KRating.Label>
       </Show>
 
-      <KRating.Control class={cn("flex items-center gap-0.5", props.controlClass)}>
+      <KRating.Control data-slot="rating-control" class="flex items-center gap-0.5">
         <For each={Array(5)}>
           {() => (
             <KRating.Item
-              class={cn(
-                "relative cursor-pointer transition-transform active:scale-90 focus-visible:outline-none",
-                props.itemClass,
-              )}
+              data-slot="rating-item" class="relative cursor-pointer transition-transform active:scale-90 focus-visible:outline-none"
             >
               <KRating.ItemControl>
                 <Star />

@@ -11,9 +11,6 @@ export interface ProgressProps extends Omit<ProgressRootProps, "children"> {
   class?: string;
   size?: string;
   radius?: string;
-  labelContainerClass?: string;
-  trackClass?: string;
-  fillClass?: string;
 }
 
 export const Progress = (props: ProgressProps) => {
@@ -24,19 +21,13 @@ export const Progress = (props: ProgressProps) => {
     "class",
     "size",
     "radius",
-    "labelContainerClass",
-    "trackClass",
-    "fillClass",
   );
 
   return (
     <KProgress class={cn("flex flex-col gap-2 w-full antialiased", props.class)} {...others}>
       <Show when={props.label || props.showValue}>
         <div
-          class={cn(
-            "flex justify-between items-center text-sm font-medium text-slate-700 dark:text-slate-300",
-            props.labelContainerClass,
-          )}
+          data-slot="progress-label-container" class="flex justify-between items-center text-sm font-medium text-slate-700 dark:text-slate-300"
         >
           <Show when={props.label}>
             <KProgress.Label>{props.label}</KProgress.Label>
@@ -48,13 +39,10 @@ export const Progress = (props: ProgressProps) => {
       </Show>
 
       <KProgress.Track
-        class={cn("h-2 w-full rounded-full bg-appoverflow-hidden", props.trackClass)}
+        data-slot="progress-track" class="h-2 w-full rounded-full bg-appoverflow-hidden"
       >
         <KProgress.Fill
-          class={cn(
-            "h-full bg-primary transition-all duration-300 ease-in-out data-indeterminate:animate-progress-indeterminate",
-            props.fillClass,
-          )}
+          data-slot="progress-fill" class="h-full bg-primary transition-all duration-300 ease-in-out data-indeterminate:animate-progress-indeterminate"
           style={{ width: "var(--kb-progress-fill-width)" }}
         />
       </KProgress.Track>

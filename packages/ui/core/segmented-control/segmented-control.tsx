@@ -19,11 +19,6 @@ export interface SegmentedControlProps extends Omit<SegmentedControlRootProps, "
   label?: string;
   class?: string;
   size?: string;
-  containerClass?: string;
-  itemClass?: string;
-  indicatorClass?: string;
-  labelClass?: string;
-  itemLabelClass?: string;
 }
 
 export const SegmentedControl = (props: SegmentedControlProps) => {
@@ -33,47 +28,30 @@ export const SegmentedControl = (props: SegmentedControlProps) => {
     "class",
     "label",
     "size",
-    "containerClass",
-    "itemClass",
-    "indicatorClass",
-    "labelClass",
-    "itemLabelClass",
   );
 
   return (
     <KSegmented class={cn("relative flex flex-col", props.class)} {...others}>
       {props.label && (
         <KSegmented.Label
-          class={cn(
-            "mb-2 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
-            props.labelClass,
-          )}
+          data-slot="segmented-control-label" class="mb-2 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
         >
           {props.label}
         </KSegmented.Label>
       )}
       <div
-        class={cn(
-          "relative flex items-center w-full rounded-lg bg-foreground p-1 text-main",
-          props.containerClass,
-        )}
+        data-slot="segmented-control-container" class="relative flex items-center w-full rounded-lg bg-foreground p-1 text-main"
       >
         <For each={props.options}>
           {(option) => (
             <KSegmented.Item
               value={option.value}
               disabled={option.disabled}
-              class={cn(
-                "z-10 inline-flex flex-1 items-center justify-center whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium transition-all cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 data-disabled:pointer-events-none data-disabled:opacity-50 duration-200",
-                props.itemClass,
-              )}
+              data-slot="segmented-control-item" class="z-10 inline-flex flex-1 items-center justify-center whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium transition-all cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 data-disabled:pointer-events-none data-disabled:opacity-50 duration-200"
             >
               <KSegmented.ItemInput />
               <KSegmented.ItemLabel
-                class={cn(
-                  "flex w-full cursor-pointer items-center justify-center",
-                  props.itemLabelClass,
-                )}
+                data-slot="segmented-control-item-label" class="flex w-full cursor-pointer items-center justify-center"
               >
                 {option.label}
               </KSegmented.ItemLabel>
@@ -81,10 +59,7 @@ export const SegmentedControl = (props: SegmentedControlProps) => {
           )}
         </For>
         <KSegmented.Indicator
-          class={cn(
-            "absolute z-0 bg-app shadow-sm rounded-md transition-all duration-200 ease-in-out",
-            props.indicatorClass,
-          )}
+          data-slot="segmented-control-indicator" class="absolute z-0 bg-app shadow-sm rounded-md transition-all duration-200 ease-in-out"
         />
       </div>
     </KSegmented>

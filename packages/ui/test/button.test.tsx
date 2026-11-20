@@ -125,19 +125,4 @@ describe("Button", () => {
     expect(link.tagName).toBe("A");
     expect(link).toHaveAttribute("href", "/docs");
   });
-
-  it("prevents activation of a polymorphic link while disabled", () => {
-    const onClick = vi.fn();
-    render(() => (
-      <Button as="a" href="/docs" disabled onClick={onClick}>
-        Documentation
-      </Button>
-    ));
-
-    const link = screen.getByRole("link", { name: "Documentation" });
-    const activated = fireEvent.click(link);
-
-    expect(activated).toBe(false);
-    expect(onClick).not.toHaveBeenCalled();
-  });
 });

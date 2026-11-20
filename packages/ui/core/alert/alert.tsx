@@ -10,10 +10,6 @@ export interface AlertProps extends AlertRootProps {
   icon?: boolean;
   children?: string | JSX.Element;
   variant?: "info" | "success" | "warning" | "danger";
-  contentClass?: string;
-  titleClass?: string;
-  childrenClass?: string;
-  iconClass?: string;
 }
 
 export const Alert = (props: AlertProps) => {
@@ -23,10 +19,6 @@ export const Alert = (props: AlertProps) => {
     "icon",
     "children",
     "class",
-    "contentClass",
-    "titleClass",
-    "childrenClass",
-    "iconClass",
   );
 
   const RenderedIcon = () => {
@@ -44,13 +36,13 @@ export const Alert = (props: AlertProps) => {
       {...others}
     >
       <RenderedIcon />
-      <div class={cn("flex flex-col gap-1 text-left", props.contentClass)}>
+      <div data-slot="alert-content" class="flex flex-col gap-1 text-left">
         {props.title && (
-          <h5 class={cn("font-semibold leading-none tracking-tight", props.titleClass)}>
+          <h5 data-slot="alert-title" class="font-semibold leading-none tracking-tight">
             {props.title}
           </h5>
         )}
-        <div class={cn("text-md leading-relaxed opacity-90", props.childrenClass)}>
+        <div data-slot="alert-children" class="text-md leading-relaxed opacity-90">
           {props.children}
         </div>
       </div>

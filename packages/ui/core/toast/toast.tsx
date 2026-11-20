@@ -2,12 +2,8 @@ import { Toast as KToast, toaster, type ToastRootProps } from "@kobalte/core/toa
 
 import { isServer } from "@solidjs/web";
 import { omit, Show, type ParentProps } from "solid-js";
-import X from "@lucide/solid/icons/x";
-import CircleCheck from "@lucide/solid/icons/circle-check";
-import CircleExclamationPoint from "@lucide/solid/icons/circle-exclamation-point";
-import Info from "@lucide/solid/icons/info";
-import TriangleExclamationPoint from "@lucide/solid/icons/triangle-exclamation-point";
 
+import { X, CircleCheck, CircleExclamationPoint, Info, TriangleExclamationPoint } from "@lucide/solid";
 import { cn } from "cn";
 
 export interface ToastProps extends Omit<ToastRootProps, "class"> {
@@ -15,11 +11,6 @@ export interface ToastProps extends Omit<ToastRootProps, "class"> {
   description?: string;
   class?: string;
   variant?: "info" | "success" | "warning" | "error";
-  titleClass?: string;
-  descriptionClass?: string;
-  closeButtonClass?: string;
-  contentClass?: string;
-  iconClass?: string;
 }
 
 const iconMap = {
@@ -48,11 +39,6 @@ const Toast = (props: ToastProps) => {
     "class",
     "toastId",
     "variant",
-    "titleClass",
-    "descriptionClass",
-    "closeButtonClass",
-    "contentClass",
-    "iconClass",
   );
 
   // 显式回退到 info，确保 Icon 组件始终存在
@@ -67,26 +53,23 @@ const Toast = (props: ToastProps) => {
       )}
       {...others}
     >
-      <Icon class={cn("h-5 w-5 shrink-0 mt-0.5", props.iconClass)} />
-      <div class={cn("flex flex-col gap-1 flex-1", props.contentClass)}>
+      <Icon data-slot="toast-icon" class="h-5 w-5 shrink-0 mt-0.5" />
+      <div data-slot="toast-content" class="flex flex-col gap-1 flex-1">
         <Show when={props.title}>
-          <KToast.Title class={cn("text-sm font-semibold", props.titleClass)}>
+          <KToast.Title data-slot="toast-title" class="text-sm font-semibold">
             {props.title}
           </KToast.Title>
         </Show>
         <Show when={props.description}>
           <KToast.Description
-            class={cn("text-xs opacity-90 leading-relaxed", props.descriptionClass)}
+            data-slot="toast-description" class="text-xs opacity-90 leading-relaxed"
           >
             {props.description}
           </KToast.Description>
         </Show>
       </div>
       <KToast.CloseButton
-        class={cn(
-          "absolute right-2 top-2 rounded-md p-1 opacity-0 transition-opacity hover:text-main focus:opacity-100 focus:outline-none focus:ring-2 group-hover:opacity-100",
-          props.closeButtonClass,
-        )}
+        data-slot="toast-close-button" class="absolute right-2 top-2 rounded-md p-1 opacity-0 transition-opacity hover:text-main focus:opacity-100 focus:outline-none focus:ring-2 group-hover:opacity-100"
       >
         <X size={16} />
       </KToast.CloseButton>

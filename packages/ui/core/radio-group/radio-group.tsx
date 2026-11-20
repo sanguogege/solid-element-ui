@@ -13,11 +13,6 @@ export interface RadioGroupProps extends Omit<RadioGroupRootProps, "children" | 
   label?: string;
   options: RadioOption[];
   class?: string;
-  labelClass?: string;
-  itemClass?: string;
-  controlClass?: string;
-  indicatorClass?: string;
-  itemLabelClass?: string;
 }
 
 /**
@@ -31,17 +26,12 @@ export const RadioGroup = (props: RadioGroupProps) => {
     "options",
     "class",
     "orientation",
-    "labelClass",
-    "itemClass",
-    "controlClass",
-    "indicatorClass",
-    "itemLabelClass",
   );
 
   return (
     <KRadioGroup class={cn("flex flex-col gap-3 antialiased", props.class)} {...others}>
       <Show when={props.label}>
-        <KRadioGroup.Label class={cn("text-sm font-semibold text-main mb-1", props.labelClass)}>
+        <KRadioGroup.Label data-slot="radio-group-label" class="text-sm font-semibold text-main mb-1">
           {props.label}
         </KRadioGroup.Label>
       </Show>
@@ -51,27 +41,18 @@ export const RadioGroup = (props: RadioGroupProps) => {
           <KRadioGroup.Item
             value={option.value}
             disabled={option.disabled}
-            class={cn(
-              "group flex items-center gap-3 cursor-pointer disabled:cursor-not-allowed",
-              props.itemClass,
-            )}
+            data-slot="radio-group-item" class="group flex items-center gap-3 cursor-pointer disabled:cursor-not-allowed"
           >
             <KRadioGroup.ItemInput />
             <KRadioGroup.ItemControl
-              class={cn(
-                "flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-slate-300 bg-app transition-all shadow-sm group-hover:border-light group-data-checked:border-primary group-data-checked:bg-primary group-focus-visible:ring-2 group-focus-visible:ring-blue-500/20",
-                props.controlClass,
-              )}
+              data-slot="radio-group-control" class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-slate-300 bg-app transition-all shadow-sm group-hover:border-light group-data-checked:border-primary group-data-checked:bg-primary group-focus-visible:ring-2 group-focus-visible:ring-blue-500/20"
             >
               <KRadioGroup.ItemIndicator
-                class={cn("h-2 w-2 rounded-full bg-app shadow-sm", props.indicatorClass)}
+                data-slot="radio-group-indicator" class="h-2 w-2 rounded-full bg-app shadow-sm"
               />
             </KRadioGroup.ItemControl>
             <KRadioGroup.ItemLabel
-              class={cn(
-                "text-sm font-medium text-main group-data-disabled:opacity-50",
-                props.itemLabelClass,
-              )}
+              data-slot="radio-group-item-label" class="text-sm font-medium text-main group-data-disabled:opacity-50"
             >
               {option.label}
             </KRadioGroup.ItemLabel>

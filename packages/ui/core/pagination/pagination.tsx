@@ -1,19 +1,13 @@
 import { Pagination as KPagination, type PaginationRootProps } from "@kobalte/core/pagination";
 import { omit } from "solid-js";
-import ChevronLeft from "@lucide/solid/icons/chevron-left";
-import ChevronRight from "@lucide/solid/icons/chevron-right";
-import Ellipsis from "@lucide/solid/icons/ellipsis";
 
+import { ChevronLeft, ChevronRight, Ellipsis } from "@lucide/solid";
 import { cn } from "cn";
 
 // FIXME 样式修改，
 
 export interface PaginationProps extends PaginationRootProps {
   class?: string;
-  itemsContainerClass?: string;
-  itemClass?: string;
-  ellipsisClass?: string;
-  triggerClass?: string;
 }
 
 export const Pagination = (props: PaginationProps) => {
@@ -22,10 +16,6 @@ export const Pagination = (props: PaginationProps) => {
     props,
     "class",
     "count",
-    "itemsContainerClass",
-    "itemClass",
-    "ellipsisClass",
-    "triggerClass",
   );
 
   return (
@@ -36,28 +26,22 @@ export const Pagination = (props: PaginationProps) => {
       itemComponent={(p) => (
         <KPagination.Item
           page={p.page}
-          class={cn(
-            "inline-flex h-9 w-9 items-center justify-center rounded-md text-sm font-medium transition-colors text-main hover:bg-foreground hover:text-muted data-current:bg-foreground data-current:text-muted disabled:pointer-events-none disabled:opacity-50",
-            props.itemClass,
-          )}
+          data-slot="pagination-item" class="inline-flex h-9 w-9 items-center justify-center rounded-md text-sm font-medium transition-colors text-main hover:bg-foreground hover:text-muted data-current:bg-foreground data-current:text-muted disabled:pointer-events-none disabled:opacity-50"
         >
           {p.page}
         </KPagination.Item>
       )}
       ellipsisComponent={() => (
         <KPagination.Ellipsis
-          class={cn("flex h-9 w-9 items-center justify-center text-slate-400", props.ellipsisClass)}
+          data-slot="pagination-ellipsis" class="flex h-9 w-9 items-center justify-center text-slate-400"
         >
           <Ellipsis size={16} />
         </KPagination.Ellipsis>
       )}
     >
-      <div class={cn("flex items-center gap-1", props.itemsContainerClass)}>
+      <div data-slot="pagination-items-container" class="flex items-center gap-1">
         <KPagination.Previous
-          class={cn(
-            "inline-flex h-9 w-9 items-center justify-center rounded-md border border-light bg-transparent hover:bg-foreground",
-            props.triggerClass,
-          )}
+          data-slot="pagination-trigger" class="inline-flex h-9 w-9 items-center justify-center rounded-md border border-light bg-transparent hover:bg-foreground"
         >
           <ChevronLeft size={16} />
         </KPagination.Previous>
@@ -65,10 +49,7 @@ export const Pagination = (props: PaginationProps) => {
         <KPagination.Items />
 
         <KPagination.Next
-          class={cn(
-            "inline-flex h-9 w-9 items-center justify-center rounded-md border border-light bg-transparent hover:bg-foreground",
-            props.triggerClass,
-          )}
+          data-slot="pagination-trigger" class="inline-flex h-9 w-9 items-center justify-center rounded-md border border-light bg-transparent hover:bg-foreground"
         >
           <ChevronRight size={16} />
         </KPagination.Next>

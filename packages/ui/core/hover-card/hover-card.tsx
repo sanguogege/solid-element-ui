@@ -2,15 +2,12 @@ import { HoverCard as KHoverCard, type HoverCardRootProps } from "@kobalte/core/
 import { omit } from "solid-js";
 import type { JSX } from "@solidjs/web";
 
-import { cn } from "cn";
 
 export interface HoverCardProps extends HoverCardRootProps {
   trigger: JSX.Element;
   showArrow?: boolean;
   class?: string;
   size?: string;
-  contentClass?: string;
-  arrowClass?: string;
 }
 
 export const HoverCard = (props: HoverCardProps) => {
@@ -21,8 +18,6 @@ export const HoverCard = (props: HoverCardProps) => {
     "showArrow",
     "size",
     "class",
-    "contentClass",
-    "arrowClass",
   );
 
   return (
@@ -31,17 +26,11 @@ export const HoverCard = (props: HoverCardProps) => {
 
       <KHoverCard.Portal>
         <KHoverCard.Content
-          class={cn(
-            "z-50 w-64 rounded-xl border border-light bg-app p-4 shadow-lg outline-none data-expanded:animate-in data-closed:animate-out",
-            props.contentClass,
-          )}
+          data-slot="hover-card-content" class="z-50 w-64 rounded-xl border border-light bg-app p-4 shadow-lg outline-none data-expanded:animate-in data-closed:animate-out"
         >
           {props.showArrow && (
             <KHoverCard.Arrow
-              class={cn(
-                "fill-white stroke-slate-200 dark:fill-slate-900 dark:stroke-slate-800",
-                props.arrowClass,
-              )}
+              data-slot="hover-card-arrow" class="fill-white stroke-slate-200 dark:fill-slate-900 dark:stroke-slate-800"
             />
           )}
           {props.children}

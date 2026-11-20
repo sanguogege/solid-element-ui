@@ -9,8 +9,6 @@ export interface ImageProps extends ImageRootProps {
   fallback?: string | Array<any>; // 支持自定义 fallback 内容
   class?: string;
   radius?: string;
-  imgClass?: string;
-  fallbackClass?: string;
 }
 
 export const Image = (props: ImageProps) => {
@@ -21,8 +19,6 @@ export const Image = (props: ImageProps) => {
     "fallback",
     "class",
     "radius",
-    "imgClass",
-    "fallbackClass",
   );
 
   return (
@@ -33,13 +29,10 @@ export const Image = (props: ImageProps) => {
       <KImage.Img
         src={props.src}
         alt={props.alt}
-        class={cn("h-full w-full aspect-square object-cover", props.imgClass)}
+        data-slot="image-img" class="h-full w-full aspect-square object-cover"
       />
       <KImage.Fallback
-        class={cn(
-          "flex h-full w-full items-center justify-center bg-slate-100 dark:bg-slate-800 text-slate-400",
-          props.fallbackClass,
-        )}
+        data-slot="image-fallback" class="flex h-full w-full items-center justify-center bg-slate-100 dark:bg-slate-800 text-slate-400"
       >
         {props.fallback || (props.alt ? props.alt.slice(0, 2).toUpperCase() : "IMG")}
       </KImage.Fallback>

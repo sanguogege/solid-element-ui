@@ -18,32 +18,21 @@ interface TabsProps extends TabsRootProps {
   onValueChange?: (value: string) => void;
   orientation?: "horizontal" | "vertical";
   class?: string;
-  listClass?: string;
-  triggerClass?: string;
-  indicatorClass?: string;
-  contentClass?: string;
 }
 
 export const Tabs = (props: TabsProps) => {
   const others = omit(
     props,
     "class",
-    "listClass",
-    "triggerClass",
-    "indicatorClass",
-    "contentClass",
   );
 
   return (
     <KTabs class={cn("flex flex-col w-full", props.class)} {...others}>
-      <KTabs.List class={cn("relative flex items-center border-b border-base", props.listClass)}>
+      <KTabs.List data-slot="tabs-list" class="relative flex items-center border-b border-base">
         <For each={props.items}>
           {(item) => (
             <KTabs.Trigger
-              class={cn(
-                "relative flex h-9 items-center justify-center px-4 text-sm font-medium transition-colors outline-none select-none cursor-pointer text-muted hover:text-muted/80 data-selected:text-main",
-                props.triggerClass,
-              )}
+              data-slot="tabs-trigger" class="relative flex h-9 items-center justify-center px-4 text-sm font-medium transition-colors outline-none select-none cursor-pointer text-muted hover:text-muted/80 data-selected:text-main"
               value={item.value}
               disabled={item.disabled}
             >
@@ -52,17 +41,14 @@ export const Tabs = (props: TabsProps) => {
           )}
         </For>
         <KTabs.Indicator
-          class={cn(
-            "absolute -bottom-px h-0.5 bg-reversal-bg transition-all duration-200",
-            props.indicatorClass,
-          )}
+          data-slot="tabs-indicator" class="absolute -bottom-px h-0.5 bg-reversal-bg transition-all duration-200"
         />
       </KTabs.List>
 
       <For each={props.items}>
         {(item) => (
           <KTabs.Content
-            class={cn("mt-4 text-sm text-main focus-visible:outline-none", props.contentClass)}
+            data-slot="tabs-content" class="mt-4 text-sm text-main focus-visible:outline-none"
             value={item.value}
           >
             {item.content}

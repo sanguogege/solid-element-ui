@@ -17,11 +17,10 @@ export interface ToggleGroupProps extends Omit<ToggleGroupRootProps, "class"> {
   class?: string;
   size?: string;
   variant?: string;
-  itemClass?: string;
 }
 
 export const ToggleGroup = (props: ToggleGroupProps) => {
-  const others = omit(props, "options", "class", "size", "variant", "itemClass");
+  const others = omit(props, "options", "class", "size", "variant");
 
   return (
     <KToggleGroup
@@ -36,10 +35,7 @@ export const ToggleGroup = (props: ToggleGroupProps) => {
           <KToggleGroup.Item
             value={option.value}
             disabled={option.disabled}
-            class={cn(
-              "inline-flex items-center justify-center rounded-sm px-3 py-1.5 text-sm font-medium transition-all cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-foreground/80 hover:text-muted/80",
-              props.itemClass,
-            )}
+            data-slot="toggle-group-item" class="inline-flex items-center justify-center rounded-sm px-3 py-1.5 text-sm font-medium transition-all cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-foreground/80 hover:text-muted/80"
           >
             {option.label}
           </KToggleGroup.Item>
